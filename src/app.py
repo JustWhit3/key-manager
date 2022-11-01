@@ -6,10 +6,28 @@ Author: Gianluca Bianco
 """
 
 #############################################################
+#    Modules
+#############################################################
+
+# GUI modules
+import sv_ttk
+
+# Windows
+from GUI.Windows.root import root
+
+#############################################################
 #    Main function
 #############################################################
 def main(): 
-    pass
+    
+    # Creating the root window
+    root_window = root()
+    
+    # Setting the theme
+    sv_ttk.set_theme( "light" )
+    
+    # Running the root window
+    root_window.mainloop()
 
 if __name__ == "__main__":
     main()
