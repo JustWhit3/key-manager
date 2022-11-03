@@ -11,6 +11,7 @@ Author: Gianluca Bianco
 
 # GUI modules
 from tkinter import ttk
+import sv_ttk
 
 #############################################################
 #    options
@@ -60,9 +61,9 @@ class settings( ttk.Frame ):
         """
         
         # Change theme button
-        self.change_theme_button = ttk.Button( self, text = "Change theme", command = None )
+        self.change_theme_button = ttk.Button( self, text = "Change theme", command = sv_ttk.toggle_theme )
         self.change_theme_button.config( cursor = "hand2", width = self.button_width )
-        self.change_theme_button.place( anchor = "center", relx = 0.5, rely = 0.55 )
+        self.change_theme_button.place( anchor = "center", relx = 0.5, rely = 0.55 )    
 
     #############################################################
     #    __create_commands

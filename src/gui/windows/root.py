@@ -17,9 +17,6 @@ import tkinter as tk
 
 # Frames
 from gui.frames.menu import menu
-from gui.frames.settings import settings
-from gui.frames.password_creator import password_creator
-from gui.frames.password_manager import password_manager
 
 #############################################################
 #    root
@@ -75,9 +72,6 @@ class root( tk.Tk ):
         """
         
         # Creating frames
-        self.password_creator = password_creator( self, self.window_width, self.window_height )
-        self.password_manager = password_manager( self, self.window_width, self.window_height )
-        self.settings = settings( self, self.window_width, self.window_height )
         self.menu = menu( self, self.window_width, self.window_height )
         
     #############################################################

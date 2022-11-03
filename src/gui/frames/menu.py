@@ -21,9 +21,6 @@ from gui.frames.settings import settings
 from gui.frames.password_creator import password_creator
 from gui.frames.password_manager import password_manager
 
-# Utility
-from utility.graphics import change_frame
-
 #############################################################
 #    menu
 #############################################################
@@ -58,6 +55,11 @@ class menu( ttk.Frame ):
         
         # Variables
         self.button_width = 18
+
+        # Creating main frames
+        self.password_creator = password_creator( self, width, height )
+        self.password_manager = password_manager( self, width, height )
+        self.settings = settings( self, width, height )
         
         # Creating components
         self.__create_images()
@@ -86,19 +88,19 @@ class menu( ttk.Frame ):
         """
         
         # Password generator button
-        switch_creator = lambda: change_frame( self, password_creator )
+        switch_creator = lambda: self.password_creator.tkraise()
         self.passwd_gen_button = ttk.Button( self, text = "Password generator", command = switch_creator )
         self.passwd_gen_button.config( cursor = "hand2", width = self.button_width )
         self.passwd_gen_button.place( anchor = "center", relx = 0.5, rely = 0.55 )
         
         # Password manager button
-        switch_manager = lambda: change_frame( self, password_manager )
+        switch_manager = lambda: self.password_manager.tkraise()
         self.passwd_man_button = ttk.Button( self, text = "Password manager", command = switch_manager )
         self.passwd_man_button.config( cursor = "hand2", width = self.button_width )
         self.passwd_man_button.place( anchor = "center", relx = 0.5, rely = 0.6 )
 
         # Settings button
-        switch_settings = lambda: change_frame( self, settings )
+        switch_settings = lambda: self.settings.tkraise()
         self.settings_button = ttk.Button( self, text = "Settings", command = switch_settings )
         self.settings_button.config( cursor = "hand2", width = self.button_width )
         self.settings_button.place( anchor = "center", relx = 0.5, rely = 0.65 )
@@ -119,6 +121,6 @@ class menu( ttk.Frame ):
         self.settings_button.bind( "<Up>", lambda e: self.passwd_man_button.focus_set() )
         
         # Enter commands
-        self.settings_button.bind( "<Return>", lambda e: change_frame( self, settings ) )
-        self.passwd_gen_button.bind( "<Return>", lambda e: change_frame( self, password_creator ) )
-        self.passwd_man_button.bind( "<Return>", lambda e: change_frame( self, password_manager ) )
+        self.settings_button.bind( "<Return>", lambda e: self.settings.tkraise() )
+        self.passwd_gen_button.bind( "<Return>", lambda e: self.password_creator.tkraise() )
+        self.passwd_man_button.bind( "<Return>", lambda e: self.password_manager.tkraise() )
