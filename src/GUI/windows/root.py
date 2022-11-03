@@ -14,10 +14,12 @@ import sys, os
 
 # GUI modules
 import tkinter as tk
-from turtle import window_height
 
 # Frames
-from GUI.Frames.menu import menu
+from GUI.frames.menu import menu
+from GUI.frames.settings import settings
+from GUI.frames.password_creator import password_creator
+from GUI.frames.password_manager import password_manager
 
 #############################################################
 #    root
@@ -42,8 +44,8 @@ class root( tk.Tk ):
         super().__init__()
         
         # Resizing the window
-        self.window_width = 1000
-        self.window_height = 800
+        self.window_width = 1200
+        self.window_height = 900
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
         center_x = int( screen_width / 2 - self.window_width / 2 )
@@ -59,14 +61,10 @@ class root( tk.Tk ):
             self.iconbitmap( path_to_icon + ".ico")
         else:
             self.iconbitmap( "@" + path_to_icon + ".xbm" )
-        
-        # Enabling keyboard commands
-        self.bind( "<Control-z>", sys.exit )
-        self.bind( "<Control-c>", sys.exit )
-        self.bind( "<Control-x>", sys.exit )
 
         # Creating widgets
         self.__create_widgets()
+        self.__create_commands()
 
     #############################################################
     #    __create_widgets
@@ -77,4 +75,20 @@ class root( tk.Tk ):
         """
         
         # Creating frames
+        self.password_creator = password_creator( self, self.window_width, self.window_height )
+        self.password_manager = password_manager( self, self.window_width, self.window_height )
+        self.settings = settings( self, self.window_width, self.window_height )
         self.menu = menu( self, self.window_width, self.window_height )
+        
+    #############################################################
+    #    __create_widgets
+    #############################################################
+    def __create_commands( self ):
+        """
+        Method used to create commands.
+        """
+
+        # Enabling keyboard commands
+        self.bind( "<Control-z>", sys.exit )
+        self.bind( "<Control-c>", sys.exit )
+        self.bind( "<Control-x>", sys.exit )
