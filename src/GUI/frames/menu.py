@@ -77,12 +77,6 @@ class menu( ttk.Frame ):
         self.logo_label = tk.Label( self, image = self.logo_img )
         self.logo_label.place( anchor = "center", relx = 0.5, rely = 0.35 )
         
-        # Circle
-        #self.circle_img = ImageTk.PhotoImage( Image.open( "../img/images/circle.png" ).resize( ( 350, 300 ) ) )
-        #self.circle_label = tk.Label( self, image = self.circle_img )
-        #self.circle_label.place( anchor = "center", relx = 0.5, rely = 0.35 )
-        #self.circle_label.config( highlightthickness = 0, bd = 0, bg = "white", fg = "white" )
-        
     #############################################################
     #    __create_widgets
     #############################################################
