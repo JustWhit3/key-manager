@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['window_5fheight_25',['window_height',['../classroot_1_1root.html#a47a2374c3ca0e349cda265e537bf32e3',1,'root::root']]],
-  ['window_5fwidth_26',['window_width',['../classroot_1_1root.html#a250574d79838d365b6de92ee12d7411a',1,'root::root']]]
+  ['logo_5fimg_50',['logo_img',['../classmenu_1_1menu.html#a5e5eb71aa7a51268efd6986090f859cc',1,'menu::menu']]],
+  ['logo_5flabel_51',['logo_label',['../classmenu_1_1menu.html#aaebc43028a3debb2664b775ea75ecaca',1,'menu::menu']]]
 ];

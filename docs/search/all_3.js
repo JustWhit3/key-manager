@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['main_5',['main',['../namespaceapp.html#a5288920ffc95ab586213c4347763775d',1,'app']]],
-  ['menu_6',['menu',['../namespacemenu.html',1,'menu'],['../classroot_1_1root.html#a97221bb3ef84ae9e8920ddfc91f036c6',1,'root.root.menu()'],['../classmenu_1_1menu.html',1,'menu.menu']]],
-  ['menu_2epy_7',['menu.py',['../menu_8py.html',1,'']]]
+  ['change_5fframe_4',['change_frame',['../namespacegraphics.html#a7e8ddc9f25cedd8a2ce57d0e57c60825',1,'graphics']]],
+  ['change_5ftheme_5fbutton_5',['change_theme_button',['../classsettings_1_1settings.html#ae228d91f16f6e09707890526f73723db',1,'settings::settings']]]
 ];

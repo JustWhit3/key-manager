@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['menu_24',['menu',['../classroot_1_1root.html#a97221bb3ef84ae9e8920ddfc91f036c6',1,'root::root']]]
+  ['change_5ftheme_5fbutton_49',['change_theme_button',['../classsettings_1_1settings.html#ae228d91f16f6e09707890526f73723db',1,'settings::settings']]]
 ];
