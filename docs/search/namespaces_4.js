@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['root_36',['root',['../namespaceroot.html',1,'']]]
+  ['settings_33',['settings',['../namespacesettings.html',1,'']]]
 ];
