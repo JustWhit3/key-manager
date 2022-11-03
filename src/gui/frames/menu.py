@@ -17,9 +17,9 @@ import tkinter as tk
 from tkinter import ttk
 
 # Frames
-from GUI.frames.settings import settings
-from GUI.frames.password_creator import password_creator
-from GUI.frames.password_manager import password_manager
+from gui.frames.settings import settings
+from gui.frames.password_creator import password_creator
+from gui.frames.password_manager import password_manager
 
 # Utility
 from utility.graphics import change_frame

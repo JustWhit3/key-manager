@@ -16,10 +16,10 @@ import sys, os
 import tkinter as tk
 
 # Frames
-from GUI.frames.menu import menu
-from GUI.frames.settings import settings
-from GUI.frames.password_creator import password_creator
-from GUI.frames.password_manager import password_manager
+from gui.frames.menu import menu
+from gui.frames.settings import settings
+from gui.frames.password_creator import password_creator
+from gui.frames.password_manager import password_manager
 
 #############################################################
 #    root

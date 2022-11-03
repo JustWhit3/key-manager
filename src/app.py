@@ -13,7 +13,7 @@ Author: Gianluca Bianco
 import sv_ttk
 
 # Windows
-from GUI.windows.root import root
+from gui.windows.root import root
 
 #############################################################
 #    Main function
