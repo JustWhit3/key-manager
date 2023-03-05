@@ -23,7 +23,7 @@ if( EXISTS "${LOC_PATH}" )
                          "remove CMakeCache.txt and CMakeFiles." )
 endif()
 
-# Include directories
+# Include directories 
 #include_directories( ${CMAKE_CURRENT_BINARY_DIR}/_deps/sfml-src/include )
 #include_directories( ${CMAKE_CURRENT_BINARY_DIR}/_deps/ptcprint-src/include )
 
