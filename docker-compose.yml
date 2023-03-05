@@ -1,0 +1,136 @@
+version: "2"
+services:
+
+    ##########################################
+    #      GCC
+    ##########################################
+
+    # gcc 9
+    build_gcc_9:
+        image: ghcr.io/rikorose/gcc-cmake:gcc-9
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: build
+        command: >
+            bash -c "cd /proj
+            && apt update && apt install -y libx11-dev xorg-dev freeglut3-dev libudev-dev libalut-dev libvorbis-dev libflac-dev
+            && rm -rf build
+            && cmake -B build
+            && cmake --build build"
+
+    # gcc 10
+    build_gcc_10:
+        image: ghcr.io/rikorose/gcc-cmake:gcc-10
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: build
+        command: >
+            bash -c "cd /proj
+            && apt update && apt install -y libx11-dev xorg-dev freeglut3-dev libudev-dev libalut-dev libvorbis-dev libflac-dev
+            && rm -rf build
+            && cmake -B build
+            && cmake --build build"
+
+    # gcc 11
+    build_gcc_11:
+        image: ghcr.io/rikorose/gcc-cmake:gcc-11
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: build
+        command: >
+            bash -c "cd /proj
+            && apt update && apt install -y libx11-dev xorg-dev freeglut3-dev libudev-dev libalut-dev libvorbis-dev libflac-dev
+            && rm -rf build
+            && cmake -B build
+            && cmake --build build"
+
+    # gcc 12
+    build_gcc_12:
+        image: ghcr.io/rikorose/gcc-cmake:gcc-12
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: build
+        command: >
+            bash -c "cd /proj
+            && apt update && apt install -y libx11-dev xorg-dev freeglut3-dev libudev-dev libalut-dev libvorbis-dev libflac-dev
+            && rm -rf build
+            && cmake -B build
+            && cmake --build build"
+
+    ##########################################
+    #      CLANG
+    ##########################################
+
+    # clang 9
+    build_clang_9:
+        image: silkeh/clang:9
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: build
+        command: >
+            bash -c "cd /proj
+            && apt update && apt install -y libx11-dev xorg-dev freeglut3-dev libudev-dev libalut-dev libvorbis-dev libflac-dev
+            && rm -rf build
+            && cmake -B build
+            && cmake --build build"
+
+    # clang 10
+    build_clang_10:
+        image: silkeh/clang:10
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: build
+        command: >
+            bash -c "cd /proj
+            && apt update && apt install -y libx11-dev xorg-dev freeglut3-dev libudev-dev libalut-dev libvorbis-dev libflac-dev
+            && rm -rf build
+            && cmake -B build
+            && cmake --build build"
+
+    # clang 11
+    build_clang_11:
+        image: silkeh/clang:11
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: build
+        command: >
+            bash -c "cd /proj
+            && apt update && apt install -y libx11-dev xorg-dev freeglut3-dev libudev-dev libalut-dev libvorbis-dev libflac-dev
+            && rm -rf build
+            && cmake -B build
+            && cmake --build build"
+
+    # clang 12
+    build_clang_12:
+        image: silkeh/clang:12
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: build
+        command: >
+            bash -c "cd /proj
+            && apt update && apt install -y libx11-dev xorg-dev freeglut3-dev libudev-dev libalut-dev libvorbis-dev libflac-dev
+            && rm -rf build
+            && cmake -B build
+            && cmake --build build"
+
+    # clang 13
+    build_clang_13:
+        image: silkeh/clang:13
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: build
+        command: >
+            bash -c "cd /proj
+            && apt update && apt install -y libx11-dev xorg-dev freeglut3-dev libudev-dev libalut-dev libvorbis-dev libflac-dev
+            && rm -rf build
+            && cmake -B build
+            && cmake --build build"

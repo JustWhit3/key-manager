@@ -1,5 +1,5 @@
 # Finding the package
-find_package( Qt6 )
+find_package( Qt6 COMPONENTS Core Widgets REQUIRED )
 
 # Fetching the package if not found
 if( NOT Qt6_FOUND )

@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Doxygen Action
+      - name: Doxygen Action C++
         uses: mattnotmitt/doxygen-action@v1.3.1
         with:
           working-directory: '.'
@@ -41,7 +41,7 @@ jobs:
         with:
           name: doc-files
           path: docs
-
+          
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
         with:
