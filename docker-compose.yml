@@ -16,8 +16,7 @@ services:
             bash -c "cd /proj
             && apt install software-properties-common
             && apt update
-            && apt install gcc-9
-            && apt install g++-9
+            && apt install -y gcc-9 g++-9
             && rm -rf build
             && CC=/usr/bin/gcc-9 CXX=/usr/bin/g++-9 cmake -B build
             && cmake --build build"
@@ -33,8 +32,7 @@ services:
             bash -c "cd /proj
             && apt install software-properties-common
             && apt update
-            && apt install gcc-10
-            && apt install g++-10
+            && apt install -y gcc-10 g++-10
             && rm -rf build
             && CC=/usr/bin/gcc-10 CXX=/usr/bin/g++-10 cmake -B build
             && cmake --build build"
@@ -50,8 +48,7 @@ services:
             bash -c "cd /proj
             && apt install software-properties-common
             && apt update
-            && apt install gcc-11
-            && apt install g++-11
+            && apt install -y gcc-11 g++-11
             && rm -rf build
             && CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake -B build
             && cmake --build build"
@@ -67,8 +64,7 @@ services:
             bash -c "cd /proj
             && apt install software-properties-common
             && apt update
-            && apt install gcc-12
-            && apt install g++-12
+            && apt install -y gcc-12 g++-12
             && rm -rf build
             && CC=/usr/bin/gcc-12 CXX=/usr/bin/g++-12 cmake -B build
             && cmake --build build"
@@ -88,7 +84,7 @@ services:
             bash -c "cd /proj
             && add-apt-repository ppa:ubuntu-toolchain-r/test
             && apt update
-            && apt install libclang-dev clang
+            && apt install -y libclang-dev clang
             && rm -rf build
             && CC=/usr/bin/clang CXX=/usr/bin/clang++ cmake -B build
             && cmake --build build"
