@@ -47,8 +47,8 @@ if( CMAKE_BUILD_TYPE STREQUAL "Debug" )
 endif()
 
 # Link to Qt6
-find_package( Qt6 6.2.4 COMPONENTS Core Widgets )
-target_link_libraries( ${APP} Qt6::Widgets )
+find_package( Qt6 COMPONENTS Core Widgets )
+target_link_libraries( ${APP} Qt6::Core Qt6::Widgets )
 
 # Link to ptc-print
 if( CMAKE_BUILD_TYPE STREQUAL "Debug" )
