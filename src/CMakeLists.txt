@@ -20,13 +20,21 @@ set( CMAKE_CXX_STANDARD 20 )
 set( CMAKE_CXX_STANDARD_REQUIRED ON )
 set( CMAKE_CXX_EXTENSIONS OFF )
 
+# Moc settings
+set( CMAKE_AUTOMOC ON )
+set( CMAKE_AUTORCC ON )
+set( CMAKE_AUTOUIC ON )
+
 # Include directories
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/../include )
 
+# Variables
+file( GLOB_RECURSE INC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/../include/*.hpp )
+file( GLOB_RECURSE SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/../src/*.cpp )
+
 # Creating the main executable
 set( APP "key-manager" )
-file( GLOB_RECURSE SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/../src/*.cpp )
-add_executable( ${APP} ${SRC_FILES} )
+add_executable( ${APP} ${SRC_FILES} ${INC_FILES} )
 
 # Adding specific compiler flags
 if( CMAKE_CXX_COMPILER_ID STREQUAL "MSVC" )
@@ -47,14 +55,8 @@ if( CMAKE_BUILD_TYPE STREQUAL "Debug" )
 endif()
 
 # Link to Qt6
-find_package( Qt6 COMPONENTS Core Widgets )
-target_link_libraries( ${APP} Qt6::Core Qt6::Widgets )
-
-# Link to ptc-print
-if( CMAKE_BUILD_TYPE STREQUAL "Debug" )
-    find_package( ptcprint )
-    target_link_libraries( ${APP} PUBLIC ptcprint::ptcprint )
-endif()
+find_package( Qt6 COMPONENTS Widgets )
+target_link_libraries( ${APP} PRIVATE Qt6::Widgets )
 
 # Install
 install ( TARGETS ${APP} RUNTIME )

@@ -23,16 +23,5 @@ if( EXISTS "${LOC_PATH}" )
                          "remove CMakeCache.txt and CMakeFiles." )
 endif()
 
-# Moc settings
-set( CMAKE_AUTOMOC ON )
-set( CMAKE_AUTORCC ON )
-set( CMAKE_AUTOUIC ON )
-
-# Include directories 
-include_directories( ${CMAKE_CURRENT_BINARY_DIR}/_deps/ptcprint-src/include )
-
-# Fetching deps
-add_subdirectory( deps )
-
 # Compiling the main app
 add_subdirectory( src )
