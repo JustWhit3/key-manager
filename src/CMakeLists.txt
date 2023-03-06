@@ -20,11 +20,6 @@ set( CMAKE_CXX_STANDARD 20 )
 set( CMAKE_CXX_STANDARD_REQUIRED ON )
 set( CMAKE_CXX_EXTENSIONS OFF )
 
-# Extra settings
-set( CMAKE_AUTOMOC ON )
-set( CMAKE_AUTORCC ON )
-set( CMAKE_AUTOUIC ON )
-
 # Include directories
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/../include )
 
@@ -52,7 +47,7 @@ if( CMAKE_BUILD_TYPE STREQUAL "Debug" )
 endif()
 
 # Link to Qt6
-find_package( Qt6 COMPONENTS Core Widgets REQUIRED )
+find_package( Qt6 6.2.4 COMPONENTS Core Widgets )
 target_link_libraries( ${APP} Qt6::Widgets )
 
 # Link to ptc-print
