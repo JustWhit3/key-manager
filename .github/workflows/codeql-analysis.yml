@@ -50,6 +50,9 @@ jobs:
     - name: Installing extra dependencies and compiling (Windows)
       if: matrix.os == 'windows-latest'
       run: |
+       pip install -U pip
+       pip install aqtinstall
+       aqt install-qt windows desktop 6.2.0 -m all
        cmake -B build
        cmake --build build
 
