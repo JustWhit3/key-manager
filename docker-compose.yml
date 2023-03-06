@@ -78,7 +78,7 @@ services:
     ##########################################
 
     # clang 15
-    build_clang_9:
+    build_clang_15:
         image: vookimedlo/ubuntu-qt:qt6_latestDistroOfficial_gcc_lunar
         network_mode: bridge
         volumes:
