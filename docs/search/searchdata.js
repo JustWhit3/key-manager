@@ -1,21 +1,30 @@
 var indexSectionsWithContent =
 {
-  0: "acims",
-  1: "ac",
-  2: "cims"
+  0: "acikm~",
+  1: "m",
+  2: "k",
+  3: "acm",
+  4: "cim~",
+  5: "k"
 };
 
 var indexSectionNames =
 {
   0: "all",
-  1: "files",
-  2: "functions"
+  1: "classes",
+  2: "namespaces",
+  3: "files",
+  4: "functions",
+  5: "defines"
 };
 
 var indexSectionLabels =
 {
   0: "All",
-  1: "Files",
-  2: "Functions"
+  1: "Classes",
+  2: "Namespaces",
+  3: "Files",
+  4: "Functions",
+  5: "Macros"
 };
 
