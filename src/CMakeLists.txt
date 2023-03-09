@@ -20,15 +20,16 @@ set( CMAKE_CXX_STANDARD 20 )
 set( CMAKE_CXX_STANDARD_REQUIRED ON )
 set( CMAKE_CXX_EXTENSIONS OFF )
 
-# Moc settings
+# Specific Qt settings
 set( CMAKE_AUTOMOC ON )
 set( CMAKE_AUTORCC ON )
 set( CMAKE_AUTOUIC ON )
+set( CMAKE_INCLUDE_CURRENT_DIR ON )
 
 # Include directories
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/../include )
 
-# Variables
+# File variables
 file( GLOB_RECURSE INC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/../include/*.hpp )
 file( GLOB_RECURSE SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/../src/*.cpp )
 
@@ -55,8 +56,8 @@ if( CMAKE_BUILD_TYPE STREQUAL "Debug" )
 endif()
 
 # Link to Qt6
-find_package( Qt6 COMPONENTS Widgets )
-target_link_libraries( ${APP} PRIVATE Qt6::Widgets )
+find_package( Qt6 CONFIG REQUIRED COMPONENTS Core Widgets StateMachine )
+target_link_libraries( ${APP} PRIVATE Qt::Core Qt::Widgets Qt::StateMachine )
 
 # Install
 install ( TARGETS ${APP} RUNTIME )

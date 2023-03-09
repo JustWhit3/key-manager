@@ -2,9 +2,9 @@
 //     File data
 //====================================================
 /**
- * @file main_window.hpp
+ * @file menu_state.hpp
  * @author Gianluca Bianco (biancogianluca9@gmail.com)
- * @date 2023-03-06
+ * @date 2023-03-09
  * @copyright Copyright (c) 2022 Gianluca Bianco under the GPL v3.0 license.
  */
 
@@ -12,43 +12,46 @@
 //     Preprocessor directives
 //====================================================
 #pragma once
-#ifndef KEY_MANAGER_MAIN_WINDOW
-#define KEY_MANAGER_MAIN_WINDOW
+#ifndef KEY_MANAGER_MENU_STATE
+#define KEY_MANAGER_MENU_STATE
 
 //====================================================
 //     Headers
 //====================================================
 
-// Windows
-#include <windows/base_window.hpp>
-
 // States
-#include <states/menu_state.hpp>
-#include <states/password_manager_state.hpp>
+#include <states/base_state.hpp>
 
 // Qt
-#include <QtWidgets>
 #include <QStateMachine>
+#include <QSharedPointer>
+#include <QPushButton>
 
-namespace kmanager::window{
+namespace kmanager::state{
 
     //====================================================
-    //     MainWindow
+    //     MenuState
     //====================================================
     /**
-     * @brief Class used to construct the main window of the app.
+     * @brief Class used to construct the menu state of the app.
      * 
      */
-    class MainWindow: public BaseWindow{
-
+    class MenuState: public BaseState{
+    
         //====================================================
         //     Public
         //====================================================
         public:
 
             // Constructors / destructor
-            explicit MainWindow( QWidget *parent = nullptr );
-            ~MainWindow();
+            explicit MenuState( QWidget* host, QState *parent = nullptr );
+            ~MenuState();
+
+            // Variables (widgets)
+            QSharedPointer<QPushButton> p_manager_button;
+
+            // Variables (other)
+            QWidget* host;
         
         //====================================================
         //     Private
@@ -56,14 +59,8 @@ namespace kmanager::window{
         private:
 
             // Methods
-            void keyPressEvent( QKeyEvent *event ) override;
-            void setWindowProperties() override;
-            void initStateMachine() override;
-
-            // Variables (states)
-            QSharedPointer<QStateMachine> state_machine;
-            QSharedPointer<state::MenuState> menu_state;
-            QSharedPointer<state::PasswordManagerState> p_manager_state;
+            void addWidgets() override;
+            void assignProperties() override;
     };
 }
 

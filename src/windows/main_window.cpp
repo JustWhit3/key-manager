@@ -12,8 +12,11 @@
 //     Headers
 //====================================================
 
-// Qt
+// Windows
 #include <windows/main_window.hpp>
+
+// Qt
+#include <QtWidgets>
 
 namespace kmanager::window{
 
@@ -23,15 +26,16 @@ namespace kmanager::window{
     /**
      * @brief Construct a new MainWindow object.
      * 
-     * @param parent The parent widget (if there is one);
+     * @param parent The parent widget (if there is one).
      */
-    MainWindow::MainWindow( QWidget *parent ): QWidget( parent ){
+    MainWindow::MainWindow( QWidget *parent ): 
+        BaseWindow( parent ){
 
         // Set basic window properties
-        this -> setWindowTitle( "Key Manager" );
-        this -> setWindowState( Qt::WindowMaximized );
-        this -> windowHandle() -> setScreen( qApp -> screens()[0] );
-        this -> setWindowIcon( QIcon( "img/icons/app_icon.png" ) );
+        this -> setWindowProperties();
+
+        // Initialize the state machine
+        this -> initStateMachine();
     }
 
     //====================================================
@@ -43,6 +47,20 @@ namespace kmanager::window{
      */
     MainWindow::~MainWindow(){
 
+    }
+
+    //====================================================
+    //     setWindowProperties
+    //====================================================
+    /**
+     * @brief Set basic properties of the window.
+     * 
+     */
+    void MainWindow::setWindowProperties(){
+        this -> setWindowTitle( "Key Manager" );
+        this -> setWindowState( Qt::WindowMaximized );
+        this -> windowHandle() -> setScreen( qApp -> screens()[0] );
+        this -> setWindowIcon( QIcon( "img/icons/app_icon.png" ) );
     }
 
     //====================================================
@@ -70,5 +88,35 @@ namespace kmanager::window{
             default:
                 break;
         }
+    }
+
+    //====================================================
+    //     initStateMachine
+    //====================================================
+    /**
+     * @brief Set basic properties of the window state machine.
+     * 
+     */
+    void MainWindow::initStateMachine(){
+
+        // Create states
+        this -> menu_state = QSharedPointer<state::MenuState>( 
+            new state::MenuState( this ) 
+        );
+        this -> p_manager_state = QSharedPointer<state::PasswordManagerState>( 
+            new state::PasswordManagerState( this -> menu_state.get() ) 
+        );
+
+        // Create transitions
+        this -> menu_state -> addTransition( 
+            this -> menu_state -> p_manager_button.get(), &QPushButton::clicked, this -> p_manager_state.get() 
+        );
+
+        // States machine properties
+        this -> state_machine = QSharedPointer<QStateMachine>( new QStateMachine( this ) );
+        this -> state_machine -> addState( this -> menu_state.get() );
+        this -> state_machine -> addState( this -> p_manager_state.get() );
+        this -> state_machine -> setInitialState( this -> menu_state.get() );
+        this -> state_machine -> start();
     }
 }
