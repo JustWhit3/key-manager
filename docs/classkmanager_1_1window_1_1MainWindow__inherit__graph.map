@@ -1,4 +1,5 @@
 <map id="kmanager::window::MainWindow" name="kmanager::window::MainWindow">
-<area shape="rect" id="node1" title="Class used to construct the main window of the app." alt="" coords="5,80,215,107"/>
-<area shape="rect" id="node2" title=" " alt="" coords="74,5,146,32"/>
+<area shape="rect" id="node1" title="Class used to construct the main window of the app." alt="" coords="6,155,215,181"/>
+<area shape="rect" id="node2" href="$classkmanager_1_1window_1_1BaseWindow.html" title="Class used to construct the base window of the app." alt="" coords="5,80,216,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="75,5,147,32"/>
 </map>

@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['main_7',['main',['../app_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'app.cpp']]],
-  ['main_5fwindow_2ecpp_8',['main_window.cpp',['../main__window_8cpp.html',1,'']]],
-  ['main_5fwindow_2ehpp_9',['main_window.hpp',['../main__window_8hpp.html',1,'']]],
-  ['mainwindow_10',['MainWindow',['../classkmanager_1_1window_1_1MainWindow.html',1,'kmanager::window::MainWindow'],['../classkmanager_1_1window_1_1MainWindow.html#ae6e0936533063d1acf17445582d39912',1,'kmanager::window::MainWindow::MainWindow()']]]
+  ['if_12',['if',['../CMakeLists_8txt.html#a5e1936db633a41de16ac1703fb34b05f',1,'CMakeLists.txt']]],
+  ['initstatemachine_13',['initStateMachine',['../classkmanager_1_1window_1_1BaseWindow.html#a3ac89c196ec927850c3f1f67a61c23ba',1,'kmanager::window::BaseWindow']]]
 ];

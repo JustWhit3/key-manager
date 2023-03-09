@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['cmake_5fminimum_5frequired_19',['cmake_minimum_required',['../CMakeLists_8txt.html#a6e1e7d257181a4c5e7bd2e03ccb39739',1,'CMakeLists.txt']]]
+  ['addwidgets_60',['addWidgets',['../classkmanager_1_1state_1_1BaseState.html#a76600c1525c5bcc3289945fc022bd6af',1,'kmanager::state::BaseState']]],
+  ['assignproperties_61',['assignProperties',['../classkmanager_1_1state_1_1BaseState.html#a05d6efb5121fe78c0dc0586a87dd4a1a',1,'kmanager::state::BaseState']]]
 ];

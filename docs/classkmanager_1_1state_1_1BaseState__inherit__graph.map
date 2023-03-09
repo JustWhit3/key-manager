@@ -1,0 +1,6 @@
+<map id="kmanager::state::BaseState" name="kmanager::state::BaseState">
+<area shape="rect" id="node1" title="Class used to construct the base state of the app." alt="" coords="109,80,290,107"/>
+<area shape="rect" id="node3" href="$classkmanager_1_1state_1_1MenuState.html" title="Class used to construct the menu state of the app." alt="" coords="5,162,188,189"/>
+<area shape="rect" id="node4" href="$classkmanager_1_1state_1_1PasswordManagerState.html" title="Class used to construct the password manager state of the app." alt="" coords="213,155,391,196"/>
+<area shape="rect" id="node2" title=" " alt="" coords="168,5,231,32"/>
+</map>

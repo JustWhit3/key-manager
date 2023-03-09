@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_7emainwindow_23',['~MainWindow',['../classkmanager_1_1window_1_1MainWindow.html#ac9d741cd3c99d280ef01b3ce6c0b3af1',1,'kmanager::window::MainWindow']]]
+  ['if_65',['if',['../CMakeLists_8txt.html#a5e1936db633a41de16ac1703fb34b05f',1,'CMakeLists.txt']]],
+  ['initstatemachine_66',['initStateMachine',['../classkmanager_1_1window_1_1BaseWindow.html#a3ac89c196ec927850c3f1f67a61c23ba',1,'kmanager::window::BaseWindow']]]
 ];
