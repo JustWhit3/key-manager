@@ -30,6 +30,7 @@ namespace kmanager::state{
      */
     BaseState::BaseState( QState *parent ): 
         QState( parent ){
+            
     }
 
     //====================================================

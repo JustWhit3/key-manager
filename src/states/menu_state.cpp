@@ -60,9 +60,11 @@ namespace kmanager::state{
     void MenuState::addWidgets(){
 
         // Password manager button
-        this -> p_manager_button = QSharedPointer<QPushButton>( new QPushButton( "Password manager", this -> host ) );
-        this -> p_manager_button -> setVisible( false );
-        this -> p_manager_button -> setGeometry( QRect( 200, 50, 140, 100 ) );
+        this -> p_manager_button = QSharedPointer<widgets::CustomButton>( 
+            new widgets::CustomButton( "Password manager", this -> host ) 
+        );
+        this -> p_manager_button -> resize( 220, 70 );
+        this -> p_manager_button -> centering();
     }
 
     //====================================================

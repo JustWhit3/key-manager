@@ -2,9 +2,9 @@
 //     File data
 //====================================================
 /**
- * @file menu_state.hpp
+ * @file custom_button.hpp
  * @author Gianluca Bianco (biancogianluca9@gmail.com)
- * @date 2023-03-09
+ * @date 2023-03-10
  * @copyright Copyright (c) 2022 Gianluca Bianco under the GPL v3.0 license.
  */
 
@@ -12,8 +12,8 @@
 //     Preprocessor directives
 //====================================================
 #pragma once
-#ifndef KEY_MANAGER_MENU_STATE
-#define KEY_MANAGER_MENU_STATE
+#ifndef KEY_MANAGER_CUSTOM_BUTTON
+#define KEY_MANAGER_CUSTOM_BUTTON
 
 //====================================================
 //     Headers
@@ -22,23 +22,21 @@
 // States
 #include <states/base_state.hpp>
 
-// Widgets
-#include <widgets/custom_button.hpp>
-
 // Qt
-#include <QStateMachine>
-#include <QSharedPointer>
+#include <QPushButton>
+#include <QString>
+#include <QFont>
 
-namespace kmanager::state{
+namespace kmanager::widgets{
 
     //====================================================
-    //     MenuState
+    //     CustomButton
     //====================================================
     /**
-     * @brief Class used to construct the menu state of the app.
+     * @brief Class used to construct the custom button of the app.
      * 
      */
-    class MenuState: public BaseState{
+    class CustomButton: public QPushButton{
     
         //====================================================
         //     Public
@@ -46,23 +44,23 @@ namespace kmanager::state{
         public:
 
             // Constructors / destructor
-            explicit MenuState( QWidget* host, QState *parent = nullptr );
-            ~MenuState();
+            explicit CustomButton( const QString &text, QWidget *parent = nullptr );
+            ~CustomButton();
 
-            // Variables (widgets)
-            QSharedPointer<widgets::CustomButton> p_manager_button;
-
-            // Variables (other)
-            QWidget* host;
+            // Methods
+            void centering();
         
         //====================================================
         //     Private
         //====================================================
         private:
 
-            // Methods
-            void addWidgets() override;
-            void assignProperties() override;
+            // Setters
+            void setButtonProperties();
+
+            // Variables
+            QFont font;
+            QWidget *parent;
     };
 }
 

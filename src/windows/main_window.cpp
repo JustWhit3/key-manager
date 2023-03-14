@@ -58,9 +58,10 @@ namespace kmanager::window{
      */
     void MainWindow::setWindowProperties(){
         this -> setWindowTitle( "Key Manager" );
-        this -> setWindowState( Qt::WindowMaximized );
+        this -> setWindowState( Qt::WindowActive );
         this -> windowHandle() -> setScreen( qApp -> screens()[0] );
         this -> setWindowIcon( QIcon( "img/icons/app_icon.png" ) );
+        this -> setFixedSize( 1100,  qApp -> screens()[0] -> geometry().height() );
     }
 
     //====================================================
