@@ -36,18 +36,7 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       run: |
        sudo apt update
-       sudo apt install -y build-essential perl python3 git libunwind-dev '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev flex bison gperf libicu-dev libxslt-dev ruby libxcursor-dev libxcomposite-dev libxdamage-dev libxrandr-dev libxtst-dev libxss-dev libdbus-1-dev libevent-dev libfontconfig1-dev libcap-dev libpulse-dev libudev-dev libpci-dev libnss3-dev libasound2-dev libegl1-mesa-dev gperf bison nodejs libasound2-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-good1.0-dev libgstreamer-plugins-bad1.0-dev clang libclang-dev
-       git clone git://code.qt.io/qt/qt5.git qt6
-       cd qt6
-       git checkout v6.4.2
-       perl init-repository
-       cd ..
-       mkdir qt6-build
-       cd qt6-build
-       ../qt6/configure
-       cmake --build . --parallel 4
-       cmake --install .
-       cd ..
+       sudo apt install -y build-essential perl python3 git libunwind-dev '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev flex bison gperf libicu-dev libxslt-dev ruby libxcursor-dev libxcomposite-dev libxdamage-dev libxrandr-dev libxtst-dev libxss-dev libdbus-1-dev libevent-dev libfontconfig1-dev libcap-dev libpulse-dev libudev-dev libpci-dev libnss3-dev libasound2-dev libegl1-mesa-dev gperf bison nodejs libasound2-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-good1.0-dev libgstreamer-plugins-bad1.0-dev clang libclang-dev qt6-base-dev qt6-tools-dev
        cmake -B build
        cmake --build build
 
