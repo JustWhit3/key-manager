@@ -24,7 +24,7 @@ set( CMAKE_CXX_EXTENSIONS OFF )
 set( CMAKE_AUTOMOC ON )
 set( CMAKE_AUTORCC ON )
 set( CMAKE_AUTOUIC ON )
-set( CMAKE_INCLUDE_CURRENT_DIR ON )
+set( CMAKE_INCLUDE_CURRENT_DIR ON ) 
 
 # Include directories
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/../include )
