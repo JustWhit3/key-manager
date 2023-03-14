@@ -1,11 +1,13 @@
 <map id="include/states/base_state.hpp" name="include/states/base_state.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="204,5,339,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="173,5,308,47"/>
 <area shape="rect" id="node2" href="$base__state_8cpp.html" title=" " alt="" coords="5,102,177,129"/>
-<area shape="rect" id="node3" href="$menu__state_8hpp.html" title=" " alt="" coords="202,95,341,136"/>
-<area shape="rect" id="node5" href="$password__manager__state_8hpp.html" title=" " alt="" coords="305,184,467,225"/>
-<area shape="rect" id="node4" href="$menu__state_8cpp.html" title=" " alt="" coords="54,191,230,218"/>
-<area shape="rect" id="node7" href="$main__window_8hpp.html" title=" " alt="" coords="192,273,343,315"/>
-<area shape="rect" id="node6" href="$password__manager__state_8cpp.html" title=" " alt="" coords="367,273,507,315"/>
-<area shape="rect" id="node8" href="$app_8cpp.html" title=" " alt="" coords="137,363,227,389"/>
-<area shape="rect" id="node9" href="$main__window_8cpp.html" title=" " alt="" coords="251,363,454,389"/>
+<area shape="rect" id="node3" href="$menu__state_8hpp.html" title=" " alt="" coords="255,184,394,225"/>
+<area shape="rect" id="node5" href="$password__manager__state_8hpp.html" title=" " alt="" coords="129,273,291,315"/>
+<area shape="rect" id="node10" href="$custom__button_8hpp.html" title=" " alt="" coords="304,95,463,136"/>
+<area shape="rect" id="node4" href="$menu__state_8cpp.html" title=" " alt="" coords="366,281,542,307"/>
+<area shape="rect" id="node7" href="$main__window_8hpp.html" title=" " alt="" coords="253,363,404,404"/>
+<area shape="rect" id="node6" href="$password__manager__state_8cpp.html" title=" " alt="" coords="89,363,229,404"/>
+<area shape="rect" id="node8" href="$app_8cpp.html" title=" " alt="" coords="199,452,288,479"/>
+<area shape="rect" id="node9" href="$main__window_8cpp.html" title=" " alt="" coords="313,452,515,479"/>
+<area shape="rect" id="node11" href="$custom__button_8cpp.html" title=" " alt="" coords="418,184,554,225"/>
 </map>

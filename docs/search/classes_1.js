@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['mainwindow_42',['MainWindow',['../classkmanager_1_1window_1_1MainWindow.html',1,'kmanager::window']]],
-  ['menustate_43',['MenuState',['../classkmanager_1_1state_1_1MenuState.html',1,'kmanager::state']]]
+  ['custombutton_49',['CustomButton',['../classkmanager_1_1widgets_1_1CustomButton.html',1,'kmanager::widgets']]]
 ];
