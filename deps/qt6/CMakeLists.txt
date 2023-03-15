@@ -1,5 +1,5 @@
 # Finding the package
-find_package( Qt6 CONFIG REQUIRED COMPONENTS Core Widgets StateMachine )
+find_package( Qt6 CONFIG COMPONENTS Core Widgets StateMachine )
 
 # Fetching the package if not found
 if( NOT Qt6_FOUND )
