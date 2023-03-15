@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/images/logo.svg" height=220></p>
+<p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/images/logo_GitHub.svg" height=220></p>
 
 <h3 align="center">A desktop app for password management and creation, developed using Qt.</h3>
 <p align="center">
