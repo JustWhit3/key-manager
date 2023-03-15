@@ -77,6 +77,18 @@ namespace kmanager::state{
             this -> version -> mapToGlobal( this -> version -> geometry().center() ).x() * 0.5f,
             this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() * 1.75f
         );
+
+        // Image logo
+        this -> logo_img_label = QSharedPointer<widgets::CustomLabel>(
+            new widgets::CustomLabel( this -> host )
+        );
+        this -> logo_img = "img/images/logo_app.png";
+        this -> img.load( this -> logo_img );
+        this -> logo_img_label -> setPixmap( img );
+        this -> logo_img_label -> move(
+            this -> p_manager_button -> geometry().x() * 0.80f,
+            this -> p_manager_button -> geometry().y() * 0.2f
+        );
     }
 
     //====================================================
@@ -89,5 +101,6 @@ namespace kmanager::state{
     void MenuState::assignProperties(){
         this -> assignProperty( this -> p_manager_button.get(), "visible", true );
         this -> assignProperty( this -> version.get(), "visible", true );
+        this -> assignProperty( this -> logo_img_label.get(), "visible", true );
     }
 }

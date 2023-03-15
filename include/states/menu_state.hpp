@@ -53,6 +53,7 @@ namespace kmanager::state{
             // Variables (widgets)
             QSharedPointer<widgets::CustomButton> p_manager_button;
             QSharedPointer<widgets::CustomLabel> version;
+            QSharedPointer<widgets::CustomLabel> logo_img_label;
 
             // Variables (other)
             QWidget* host;
@@ -65,6 +66,10 @@ namespace kmanager::state{
             // Methods
             void addWidgets() override;
             void assignProperties() override;
+
+            // Variables
+            QString logo_img;
+            QPixmap img;
     };
 }
 
