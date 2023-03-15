@@ -9,9 +9,8 @@ if( NOT Qt6_FOUND )
 
     FetchContent_Declare(
       Qt6
-      GIT_REPOSITORY "https://github.com/qt/qt5"
+      GIT_REPOSITORY "https://code.qt.io/qt/qt5.git"
       GIT_TAG v6.4.2
-      CONFIGURE_COMMAND "perl init-repository && mkdir ../qt6-build && cd ../qt6-build && ./configure"
     )
 
     # Make it available
