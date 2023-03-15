@@ -1,13 +1,15 @@
 <map id="include/states/base_state.hpp" name="include/states/base_state.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="173,5,308,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="265,5,400,47"/>
 <area shape="rect" id="node2" href="$base__state_8cpp.html" title=" " alt="" coords="5,102,177,129"/>
-<area shape="rect" id="node3" href="$menu__state_8hpp.html" title=" " alt="" coords="255,184,394,225"/>
-<area shape="rect" id="node5" href="$password__manager__state_8hpp.html" title=" " alt="" coords="129,273,291,315"/>
-<area shape="rect" id="node10" href="$custom__button_8hpp.html" title=" " alt="" coords="304,95,463,136"/>
-<area shape="rect" id="node4" href="$menu__state_8cpp.html" title=" " alt="" coords="366,281,542,307"/>
-<area shape="rect" id="node7" href="$main__window_8hpp.html" title=" " alt="" coords="253,363,404,404"/>
-<area shape="rect" id="node6" href="$password__manager__state_8cpp.html" title=" " alt="" coords="89,363,229,404"/>
-<area shape="rect" id="node8" href="$app_8cpp.html" title=" " alt="" coords="199,452,288,479"/>
-<area shape="rect" id="node9" href="$main__window_8cpp.html" title=" " alt="" coords="313,452,515,479"/>
-<area shape="rect" id="node11" href="$custom__button_8cpp.html" title=" " alt="" coords="418,184,554,225"/>
+<area shape="rect" id="node3" href="$menu__state_8hpp.html" title=" " alt="" coords="413,184,551,225"/>
+<area shape="rect" id="node5" href="$password__manager__state_8hpp.html" title=" " alt="" coords="145,273,307,315"/>
+<area shape="rect" id="node10" href="$custom__button_8hpp.html" title=" " alt="" coords="253,95,412,136"/>
+<area shape="rect" id="node12" href="$custom__label_8hpp.html" title=" " alt="" coords="488,95,647,136"/>
+<area shape="rect" id="node4" href="$menu__state_8cpp.html" title=" " alt="" coords="413,281,589,307"/>
+<area shape="rect" id="node7" href="$main__window_8hpp.html" title=" " alt="" coords="300,363,451,404"/>
+<area shape="rect" id="node6" href="$password__manager__state_8cpp.html" title=" " alt="" coords="136,363,276,404"/>
+<area shape="rect" id="node8" href="$app_8cpp.html" title=" " alt="" coords="245,452,335,479"/>
+<area shape="rect" id="node9" href="$main__window_8cpp.html" title=" " alt="" coords="359,452,562,479"/>
+<area shape="rect" id="node11" href="$custom__button_8cpp.html" title=" " alt="" coords="253,184,389,225"/>
+<area shape="rect" id="node13" href="$custom__label_8cpp.html" title=" " alt="" coords="575,184,711,225"/>
 </map>

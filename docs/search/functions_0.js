@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['addwidgets_71',['addWidgets',['../classkmanager_1_1state_1_1BaseState.html#a76600c1525c5bcc3289945fc022bd6af',1,'kmanager::state::BaseState']]],
-  ['assignproperties_72',['assignProperties',['../classkmanager_1_1state_1_1BaseState.html#a05d6efb5121fe78c0dc0586a87dd4a1a',1,'kmanager::state::BaseState']]]
+  ['addwidgets_80',['addWidgets',['../classkmanager_1_1state_1_1BaseState.html#a76600c1525c5bcc3289945fc022bd6af',1,'kmanager::state::BaseState']]],
+  ['assignproperties_81',['assignProperties',['../classkmanager_1_1state_1_1BaseState.html#a05d6efb5121fe78c0dc0586a87dd4a1a',1,'kmanager::state::BaseState']]]
 ];
