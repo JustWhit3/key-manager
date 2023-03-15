@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['test_44',['test',['../classkmanager_1_1state_1_1PasswordManagerState.html#a1871e9f40304351cff50e7ebf575e99d',1,'kmanager::state::PasswordManagerState']]]
+  ['setwindowproperties_44',['setWindowProperties',['../classkmanager_1_1window_1_1BaseWindow.html#ae1da44e39b684abf7bc4da148515c3db',1,'kmanager::window::BaseWindow']]]
 ];

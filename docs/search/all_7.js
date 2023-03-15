@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['p_5fmanager_5fbutton_39',['p_manager_button',['../classkmanager_1_1state_1_1MenuState.html#a351d2e468fa6536d7aeef0adaab4806b',1,'kmanager::state::MenuState']]],
-  ['password_5fmanager_5fstate_2ecpp_40',['password_manager_state.cpp',['../password__manager__state_8cpp.html',1,'']]],
-  ['password_5fmanager_5fstate_2ehpp_41',['password_manager_state.hpp',['../password__manager__state_8hpp.html',1,'']]],
-  ['passwordmanagerstate_42',['PasswordManagerState',['../classkmanager_1_1state_1_1PasswordManagerState.html',1,'kmanager::state::PasswordManagerState'],['../classkmanager_1_1state_1_1PasswordManagerState.html#ae5efa795c16c76e5f8badf3a9d1d6c7d',1,'kmanager::state::PasswordManagerState::PasswordManagerState()']]]
+  ['main_33',['main',['../app_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'app.cpp']]],
+  ['main_5fwindow_2ecpp_34',['main_window.cpp',['../main__window_8cpp.html',1,'']]],
+  ['main_5fwindow_2ehpp_35',['main_window.hpp',['../main__window_8hpp.html',1,'']]],
+  ['mainwindow_36',['MainWindow',['../classkmanager_1_1window_1_1MainWindow.html',1,'kmanager::window::MainWindow'],['../classkmanager_1_1window_1_1MainWindow.html#ae6e0936533063d1acf17445582d39912',1,'kmanager::window::MainWindow::MainWindow()']]],
+  ['menu_5fstate_2ecpp_37',['menu_state.cpp',['../menu__state_8cpp.html',1,'']]],
+  ['menu_5fstate_2ehpp_38',['menu_state.hpp',['../menu__state_8hpp.html',1,'']]],
+  ['menustate_39',['MenuState',['../classkmanager_1_1state_1_1MenuState.html',1,'kmanager::state::MenuState'],['../classkmanager_1_1state_1_1MenuState.html#ab16656315a7886f95573e3f2785e94de',1,'kmanager::state::MenuState::MenuState()']]]
 ];

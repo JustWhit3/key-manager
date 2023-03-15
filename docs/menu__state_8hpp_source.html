@@ -115,30 +115,36 @@ $(function() {
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="comment">// Variables (widgets)</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classkmanager_1_1state_1_1MenuState.html#a351d2e468fa6536d7aeef0adaab4806b">   54</a></span>&#160;            QSharedPointer&lt;widgets::CustomButton&gt; <a class="code" href="classkmanager_1_1state_1_1MenuState.html#a351d2e468fa6536d7aeef0adaab4806b">p_manager_button</a>;</div>
 <div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classkmanager_1_1state_1_1MenuState.html#aa471dc312dcc70643dc301493a162bed">   55</a></span>&#160;            QSharedPointer&lt;widgets::CustomLabel&gt; <a class="code" href="classkmanager_1_1state_1_1MenuState.html#aa471dc312dcc70643dc301493a162bed">version</a>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="comment">// Variables (other)</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classkmanager_1_1state_1_1MenuState.html#a825bcbe0caa7b56c7d042c714580da97">   58</a></span>&#160;            QWidget* <a class="code" href="classkmanager_1_1state_1_1MenuState.html#a825bcbe0caa7b56c7d042c714580da97">host</a>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="comment">//====================================================</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="comment">//     Private</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="comment">//====================================================</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="comment">// Methods</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordtype">void</span> addWidgets() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordtype">void</span> assignProperties() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    };</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classkmanager_1_1state_1_1MenuState.html#aebdd225e3491448e906ce9338eb22860">   56</a></span>&#160;            QSharedPointer&lt;widgets::CustomLabel&gt; <a class="code" href="classkmanager_1_1state_1_1MenuState.html#aebdd225e3491448e906ce9338eb22860">logo_img_label</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="comment">// Variables (other)</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classkmanager_1_1state_1_1MenuState.html#a825bcbe0caa7b56c7d042c714580da97">   59</a></span>&#160;            QWidget* <a class="code" href="classkmanager_1_1state_1_1MenuState.html#a825bcbe0caa7b56c7d042c714580da97">host</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="comment">//====================================================</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="comment">//     Private</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="comment">//====================================================</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="comment">// Methods</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordtype">void</span> addWidgets() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordtype">void</span> assignProperties() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="comment">// Variables</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            QString logo_img;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            QPixmap img;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    };</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="abase__state_8hpp_html"><div class="ttname"><a href="base__state_8hpp.html">base_state.hpp</a></div></div>
 <div class="ttc" id="aclasskmanager_1_1state_1_1BaseState_html"><div class="ttname"><a href="classkmanager_1_1state_1_1BaseState.html">kmanager::state::BaseState</a></div><div class="ttdoc">Class used to construct the base state of the app.</div><div class="ttdef"><b>Definition:</b> base_state.hpp:34</div></div>
 <div class="ttc" id="aclasskmanager_1_1state_1_1MenuState_html"><div class="ttname"><a href="classkmanager_1_1state_1_1MenuState.html">kmanager::state::MenuState</a></div><div class="ttdoc">Class used to construct the menu state of the app.</div><div class="ttdef"><b>Definition:</b> menu_state.hpp:42</div></div>
 <div class="ttc" id="aclasskmanager_1_1state_1_1MenuState_html_a351d2e468fa6536d7aeef0adaab4806b"><div class="ttname"><a href="classkmanager_1_1state_1_1MenuState.html#a351d2e468fa6536d7aeef0adaab4806b">kmanager::state::MenuState::p_manager_button</a></div><div class="ttdeci">QSharedPointer&lt; widgets::CustomButton &gt; p_manager_button</div><div class="ttdef"><b>Definition:</b> menu_state.hpp:54</div></div>
 <div class="ttc" id="aclasskmanager_1_1state_1_1MenuState_html_a731312e58ed9fb2d4c80977af1cb55d2"><div class="ttname"><a href="classkmanager_1_1state_1_1MenuState.html#a731312e58ed9fb2d4c80977af1cb55d2">kmanager::state::MenuState::~MenuState</a></div><div class="ttdeci">~MenuState()</div><div class="ttdoc">Destruct a new MenuState object.</div><div class="ttdef"><b>Definition:</b> menu_state.cpp:50</div></div>
-<div class="ttc" id="aclasskmanager_1_1state_1_1MenuState_html_a825bcbe0caa7b56c7d042c714580da97"><div class="ttname"><a href="classkmanager_1_1state_1_1MenuState.html#a825bcbe0caa7b56c7d042c714580da97">kmanager::state::MenuState::host</a></div><div class="ttdeci">QWidget * host</div><div class="ttdef"><b>Definition:</b> menu_state.hpp:58</div></div>
+<div class="ttc" id="aclasskmanager_1_1state_1_1MenuState_html_a825bcbe0caa7b56c7d042c714580da97"><div class="ttname"><a href="classkmanager_1_1state_1_1MenuState.html#a825bcbe0caa7b56c7d042c714580da97">kmanager::state::MenuState::host</a></div><div class="ttdeci">QWidget * host</div><div class="ttdef"><b>Definition:</b> menu_state.hpp:59</div></div>
 <div class="ttc" id="aclasskmanager_1_1state_1_1MenuState_html_aa471dc312dcc70643dc301493a162bed"><div class="ttname"><a href="classkmanager_1_1state_1_1MenuState.html#aa471dc312dcc70643dc301493a162bed">kmanager::state::MenuState::version</a></div><div class="ttdeci">QSharedPointer&lt; widgets::CustomLabel &gt; version</div><div class="ttdef"><b>Definition:</b> menu_state.hpp:55</div></div>
 <div class="ttc" id="aclasskmanager_1_1state_1_1MenuState_html_ab16656315a7886f95573e3f2785e94de"><div class="ttname"><a href="classkmanager_1_1state_1_1MenuState.html#ab16656315a7886f95573e3f2785e94de">kmanager::state::MenuState::MenuState</a></div><div class="ttdeci">MenuState(QWidget *host, QState *parent=nullptr)</div><div class="ttdoc">Construct a new MenuState object.</div><div class="ttdef"><b>Definition:</b> menu_state.cpp:32</div></div>
+<div class="ttc" id="aclasskmanager_1_1state_1_1MenuState_html_aebdd225e3491448e906ce9338eb22860"><div class="ttname"><a href="classkmanager_1_1state_1_1MenuState.html#aebdd225e3491448e906ce9338eb22860">kmanager::state::MenuState::logo_img_label</a></div><div class="ttdeci">QSharedPointer&lt; widgets::CustomLabel &gt; logo_img_label</div><div class="ttdef"><b>Definition:</b> menu_state.hpp:56</div></div>
 <div class="ttc" id="acustom__button_8hpp_html"><div class="ttname"><a href="custom__button_8hpp.html">custom_button.hpp</a></div></div>
 <div class="ttc" id="acustom__label_8hpp_html"><div class="ttname"><a href="custom__label_8hpp.html">custom_label.hpp</a></div></div>
 <div class="ttc" id="anamespacekmanager_1_1state_html"><div class="ttname"><a href="namespacekmanager_1_1state.html">kmanager::state</a></div><div class="ttdef"><b>Definition:</b> base_state.cpp:21</div></div>
