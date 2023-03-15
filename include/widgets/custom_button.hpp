@@ -59,7 +59,6 @@ namespace kmanager::widgets{
             void setButtonProperties();
 
             // Variables
-            QFont font;
             QWidget *parent;
     };
 }

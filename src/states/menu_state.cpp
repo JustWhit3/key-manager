@@ -67,12 +67,16 @@ namespace kmanager::state{
         this -> p_manager_button -> resize( 220, 70 );
         this -> p_manager_button -> centering();
 
-
-QLabel *label = new QLabel(this -> host);
-//label->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-label->setText("License");
-//label->setAlignment(Qt::AlignBottom | Qt::AlignRight);
-//label->setGeometry(QRectF(10,10,30,80));
+        // Version and license label
+        this -> version = QSharedPointer<widgets::CustomLabel>(
+            new widgets::CustomLabel( this -> host )
+        );
+        this -> version -> setText( "Current version: 0.0.0\nCopyright (c) 2023 Gianluca Bianco under the GPL v3.0 license" );
+        this -> version ->  setStyleSheet( "font-size: 15px" );
+        this -> version -> move(
+            this -> version -> mapToGlobal( this -> version -> geometry().center() ).x() * 0.5f,
+            this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() * 1.75f
+        );
     }
 
     //====================================================
@@ -84,5 +88,6 @@ label->setText("License");
      */
     void MenuState::assignProperties(){
         this -> assignProperty( this -> p_manager_button.get(), "visible", true );
+        this -> assignProperty( this -> version.get(), "visible", true );
     }
 }

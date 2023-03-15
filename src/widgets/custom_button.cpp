@@ -32,19 +32,16 @@ namespace kmanager::widgets{
     CustomButton::CustomButton( const QString &text, QWidget *parent ): 
         QPushButton( text, parent ),
         parent( parent ){
-
-        // Init variables
-        this -> font.setFamily( "Noto Sans Tagalog" );
         
         // Set basic button properties
         this -> setButtonProperties();
     }
 
     //====================================================
-    //     MenuState (destructor)
+    //     CustomButton (destructor)
     //====================================================
     /**
-     * @brief Destruct a new MenuState object.
+     * @brief Destruct a CustomButton object.
      * 
      */
     CustomButton::~CustomButton(){
@@ -61,7 +58,6 @@ namespace kmanager::widgets{
     void CustomButton::setButtonProperties(){
         this -> setVisible( false );
         this -> setStyleSheet( "font-size: 20px" );
-        this -> setFont( this -> font );
     }
 
     //====================================================

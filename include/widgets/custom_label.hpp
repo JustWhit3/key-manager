@@ -2,9 +2,9 @@
 //     File data
 //====================================================
 /**
- * @file menu_state.hpp
+ * @file custom_label.hpp
  * @author Gianluca Bianco (biancogianluca9@gmail.com)
- * @date 2023-03-09
+ * @date 2023-03-15
  * @copyright Copyright (c) 2022 Gianluca Bianco under the GPL v3.0 license.
  */
 
@@ -12,8 +12,8 @@
 //     Preprocessor directives
 //====================================================
 #pragma once
-#ifndef KEY_MANAGER_MENU_STATE
-#define KEY_MANAGER_MENU_STATE
+#ifndef KEY_MANAGER_CUSTOM_LABEL
+#define KEY_MANAGER_CUSTOM_LABEL
 
 //====================================================
 //     Headers
@@ -22,24 +22,20 @@
 // States
 #include <states/base_state.hpp>
 
-// Widgets
-#include <widgets/custom_button.hpp>
-#include <widgets/custom_label.hpp>
-
 // Qt
-#include <QStateMachine>
-#include <QSharedPointer>
+#include <QLabel>
+#include <QFont>
 
-namespace kmanager::state{
+namespace kmanager::widgets{
 
     //====================================================
-    //     MenuState
+    //     CustomLabel
     //====================================================
     /**
-     * @brief Class used to construct the menu state of the app.
+     * @brief Class used to construct the custom label of the app.
      * 
      */
-    class MenuState: public BaseState{
+    class CustomLabel: public QLabel{
     
         //====================================================
         //     Public
@@ -47,24 +43,16 @@ namespace kmanager::state{
         public:
 
             // Constructors / destructor
-            explicit MenuState( QWidget* host, QState *parent = nullptr );
-            ~MenuState();
-
-            // Variables (widgets)
-            QSharedPointer<widgets::CustomButton> p_manager_button;
-            QSharedPointer<widgets::CustomLabel> version;
-
-            // Variables (other)
-            QWidget* host;
+            explicit CustomLabel( QWidget *parent = nullptr );
+            ~CustomLabel();
         
         //====================================================
         //     Private
         //====================================================
         private:
 
-            // Methods
-            void addWidgets() override;
-            void assignProperties() override;
+            // Setters
+            void setLabelProperties();
     };
 }
 

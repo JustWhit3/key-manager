@@ -16,7 +16,9 @@
 #include <windows/main_window.hpp>
 
 // Qt
-#include <QtWidgets/QApplication>
+#include <QApplication>
+#include <QFile>
+#include <QString>
 
 //====================================================
 //     Main
@@ -25,6 +27,12 @@ int main( int argc, char **argv ){
 
     // Create the app
     QApplication app( argc, argv );
+
+    // Set the app theme
+    QFile theme_file( "themes/Obit.qss" );
+    theme_file.open( QFile::ReadOnly );
+    QString theme = QLatin1String( theme_file.readAll() );
+    app.setStyleSheet( theme );
 
     // Run the main window
     auto MainWindow{ kmanager::window::MainWindow() };
