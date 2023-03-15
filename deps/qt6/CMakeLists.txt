@@ -10,7 +10,7 @@ if( NOT Qt6_FOUND )
     FetchContent_Declare(
       Qt6
       GIT_REPOSITORY "https://code.qt.io/qt/qt5.git"
-      GIT_TAG v6.4.2
+      GIT_TAG 6.4.2
     )
 
     # Make it available
