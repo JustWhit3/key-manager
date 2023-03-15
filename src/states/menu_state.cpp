@@ -17,6 +17,7 @@
 
 // Qt
 #include <QStateMachine>
+#include <QLabel>
 
 namespace kmanager::state{
 
@@ -65,6 +66,13 @@ namespace kmanager::state{
         );
         this -> p_manager_button -> resize( 220, 70 );
         this -> p_manager_button -> centering();
+
+
+QLabel *label = new QLabel(this -> host);
+//label->setFrameStyle(QFrame::Panel | QFrame::Sunken);
+label->setText("License");
+//label->setAlignment(Qt::AlignBottom | Qt::AlignRight);
+//label->setGeometry(QRectF(10,10,30,80));
     }
 
     //====================================================

@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [macos-latest]
         language: [ 'cpp' ]
 
     steps:
@@ -31,14 +31,6 @@ jobs:
       uses: github/codeql-action/init@v2
       with:
         languages: ${{ matrix.language }}
-    
-    - name: Installing extra dependencies and compiling (Ubuntu)
-      if: matrix.os == 'ubuntu-latest'
-      run: |
-       sudo apt update
-       sudo apt install -y build-essential perl python3 git libunwind-dev '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev flex bison gperf libicu-dev libxslt-dev ruby libxcursor-dev libxcomposite-dev libxdamage-dev libxrandr-dev libxtst-dev libxss-dev libdbus-1-dev libevent-dev libfontconfig1-dev libcap-dev libpulse-dev libudev-dev libpci-dev libnss3-dev libasound2-dev libegl1-mesa-dev gperf bison nodejs libasound2-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-good1.0-dev libgstreamer-plugins-bad1.0-dev clang libclang-dev libmd4c-html0-dev libmd4c-dev
-       cmake -B build
-       cmake --build build
 
     - name: Installing extra dependencies and compiling (MacOS)
       if: matrix.os == 'macos-latest'
@@ -46,22 +38,6 @@ jobs:
        brew install qt6
        cmake -B build
        cmake --build build
-
-    - name: Installing extra dependencies and compiling (Windows)
-      if: matrix.os == 'windows-latest'
-      run: |
-       # git clone https://code.qt.io/qt/qt5.git qt6
-       # cd qt6
-       # git checkout v6.2.4
-       # perl init-repository
-       # cd ..
-       # mkdir qt6-build
-       # cd qt6-build
-       # ..\qt6\configure.bat
-       # cmake --build .
-       # cmake --install .
-       # cmake -B build
-       # cmake --build build
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2

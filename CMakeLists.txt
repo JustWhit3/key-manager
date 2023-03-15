@@ -23,11 +23,5 @@ if( EXISTS "${LOC_PATH}" )
                          "remove CMakeCache.txt and CMakeFiles." )
 endif()
 
-# Include directories
-include_directories( ${CMAKE_CURRENT_BINARY_DIR}/_deps/Qt6-src/include )
-
-# Fetch deps
-add_subdirectory( deps )
-
 # Compiling the main app
 add_subdirectory( src )
