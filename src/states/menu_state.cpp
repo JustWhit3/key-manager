@@ -18,6 +18,7 @@
 // Qt
 #include <QStateMachine>
 #include <QLabel>
+#include <QSize>
 
 namespace kmanager::state{
 
@@ -116,6 +117,20 @@ namespace kmanager::state{
             SLOT( close() ) 
         );
 
+        // Change password button
+        this -> change_password_button = QSharedPointer<QPushButton>( 
+            new QPushButton( "", this -> host ) 
+        );
+        this -> change_password_button -> setVisible( false );
+        this -> change_password_button -> setStyleSheet( "background-color: rgba(255, 255, 255, 0);" );
+        this -> change_password_button -> move(
+            this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() * 1.84f,
+            this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() * 1.68f
+        );
+        this -> change_password_icon.addFile( "img/icons/password_icon.png" );
+        this -> change_password_button -> setIcon( this -> change_password_icon );
+        this -> change_password_button -> setIconSize( QSize( this -> button_height, this -> button_height ) );
+
         // Version and license label
         this -> version = QSharedPointer<QLabel>(
             new QLabel( this -> host )
@@ -156,6 +171,7 @@ namespace kmanager::state{
         this -> assignProperty( this -> p_generator_button.get(), "visible", true );
         this -> assignProperty( this -> options_button.get(), "visible", true );
         this -> assignProperty( this -> exit_button.get(), "visible", true );
+        this -> assignProperty( this -> change_password_button.get(), "visible", true );
 
         // Labels
         this -> assignProperty( this -> version.get(), "visible", true );

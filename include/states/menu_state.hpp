@@ -53,6 +53,7 @@ namespace kmanager::state{
             QSharedPointer<QPushButton> p_generator_button;
             QSharedPointer<QPushButton> exit_button;
             QSharedPointer<QPushButton> options_button;
+            QSharedPointer<QPushButton> change_password_button;
             QSharedPointer<QLabel> version;
             QSharedPointer<QLabel> logo_img_label;
 
@@ -71,6 +72,7 @@ namespace kmanager::state{
             // Variables
             QString logo_img;
             QPixmap img;
+            QIcon change_password_icon;
 
             // Constants
             const QString button_font_size{ "font-size: 20px" };

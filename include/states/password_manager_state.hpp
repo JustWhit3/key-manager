@@ -24,9 +24,8 @@
 #include <states/menu_state.hpp>
 
 // Qt
-#include <QStateMachine>
 #include <QSharedPointer>
-#include <QPushButton>
+#include <QLabel>
 
 namespace kmanager::state{
 
@@ -49,7 +48,7 @@ namespace kmanager::state{
             ~PasswordManagerState();
 
             // Variables (widgets)
-            QSharedPointer<QPushButton> test;
+            QSharedPointer<QLabel> password_platform;
         
         //====================================================
         //     Private
