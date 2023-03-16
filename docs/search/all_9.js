@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['setwindowproperties_44',['setWindowProperties',['../classkmanager_1_1window_1_1BaseWindow.html#ae1da44e39b684abf7bc4da148515c3db',1,'kmanager::window::BaseWindow']]]
+  ['options_5fbutton_31',['options_button',['../classkmanager_1_1state_1_1MenuState.html#ac1540c1d34c4f1da8fba053e24da3a43',1,'kmanager::state::MenuState']]]
 ];

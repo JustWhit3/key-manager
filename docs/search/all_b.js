@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['version_46',['version',['../classkmanager_1_1state_1_1MenuState.html#aa471dc312dcc70643dc301493a162bed',1,'kmanager::state::MenuState']]]
+  ['setwindowproperties_37',['setWindowProperties',['../classkmanager_1_1window_1_1BaseWindow.html#ae1da44e39b684abf7bc4da148515c3db',1,'kmanager::window::BaseWindow']]]
 ];

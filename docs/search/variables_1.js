@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logo_5fimg_5flabel_104',['logo_img_label',['../classkmanager_1_1state_1_1MenuState.html#aebdd225e3491448e906ce9338eb22860',1,'kmanager::state::MenuState']]]
+  ['host_83',['host',['../classkmanager_1_1state_1_1MenuState.html#a825bcbe0caa7b56c7d042c714580da97',1,'kmanager::state::MenuState']]]
 ];
