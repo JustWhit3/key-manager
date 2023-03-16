@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['p_5fgenerator_5fbutton_86',['p_generator_button',['../classkmanager_1_1state_1_1MenuState.html#a7fed60501ea5b0a8cdc1cea8731ef7b4',1,'kmanager::state::MenuState']]],
-  ['p_5fmanager_5fbutton_87',['p_manager_button',['../classkmanager_1_1state_1_1MenuState.html#ac79c48cd901994aad40a684dd23fae11',1,'kmanager::state::MenuState']]]
+  ['note_103',['note',['../classkmanager_1_1entity_1_1Password.html#a49ea2e5a8999460a43bb83b95296aa7d',1,'kmanager::entity::Password']]]
 ];
