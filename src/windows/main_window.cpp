@@ -76,13 +76,7 @@ namespace kmanager::window{
 
             // ESC
             case Qt::Key_Escape:
-                if( this -> isFullScreen() ) this -> showMaximized();
-                else this -> close();
-                break;
-            
-            // F11
-            case Qt::Key_F11:
-                this -> showFullScreen();
+                this -> close();
                 break;
 
             // Default

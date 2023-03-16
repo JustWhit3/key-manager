@@ -22,13 +22,11 @@
 // States
 #include <states/base_state.hpp>
 
-// Widgets
-#include <widgets/custom_button.hpp>
-#include <widgets/custom_label.hpp>
-
 // Qt
 #include <QStateMachine>
 #include <QSharedPointer>
+#include <QPushButton>
+#include <QLabel>
 
 namespace kmanager::state{
 
@@ -51,9 +49,12 @@ namespace kmanager::state{
             ~MenuState();
 
             // Variables (widgets)
-            QSharedPointer<widgets::CustomButton> p_manager_button;
-            QSharedPointer<widgets::CustomLabel> version;
-            QSharedPointer<widgets::CustomLabel> logo_img_label;
+            QSharedPointer<QPushButton> p_manager_button;
+            QSharedPointer<QPushButton> p_generator_button;
+            QSharedPointer<QPushButton> exit_button;
+            QSharedPointer<QPushButton> options_button;
+            QSharedPointer<QLabel> version;
+            QSharedPointer<QLabel> logo_img_label;
 
             // Variables (other)
             QWidget* host;
@@ -70,6 +71,11 @@ namespace kmanager::state{
             // Variables
             QString logo_img;
             QPixmap img;
+
+            // Constants
+            const QString button_font_size{ "font-size: 20px" };
+            const uint32_t button_width{ 220 };
+            const uint32_t button_height{ 70 };
     };
 }
 

@@ -61,16 +61,66 @@ namespace kmanager::state{
     void MenuState::addWidgets(){
 
         // Password manager button
-        this -> p_manager_button = QSharedPointer<widgets::CustomButton>( 
-            new widgets::CustomButton( "Password manager", this -> host ) 
+        this -> p_manager_button = QSharedPointer<QPushButton>( 
+            new QPushButton( "Password manager", this -> host ) 
         );
-        this -> p_manager_button -> resize( 220, 70 );
-        this -> p_manager_button -> centering();
+        this -> p_manager_button -> setVisible( false );
+        this -> p_manager_button -> resize( this -> button_width, this -> button_height );
+        this -> p_manager_button -> setStyleSheet( this -> button_font_size );
+        this -> p_manager_button -> move(
+            this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
+                this -> p_manager_button -> mapToGlobal( this -> p_manager_button -> geometry().center() ).x(),
+            ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() - 
+                this -> p_manager_button -> mapToGlobal( this -> p_manager_button -> geometry().center() ).y() ) * 0.9f
+        );
+
+        // Password generator button
+        this -> p_generator_button = QSharedPointer<QPushButton>( 
+            new QPushButton( "Password generator", this -> host ) 
+        );
+        this -> p_generator_button -> setVisible( false );
+        this -> p_generator_button -> resize( this -> button_width, this -> button_height );
+        this -> p_generator_button -> setStyleSheet( this -> button_font_size );
+        this -> p_generator_button -> move(
+            this -> p_manager_button -> geometry().x(),
+            this -> p_manager_button -> geometry().y() * 1.22f
+        );
+
+        // Options button
+        this -> options_button = QSharedPointer<QPushButton>( 
+            new QPushButton( "Options", this -> host ) 
+        );
+        this -> options_button -> setVisible( false );
+        this -> options_button -> resize( this -> button_width, this -> button_height );
+        this -> options_button -> setStyleSheet( this -> button_font_size );
+        this -> options_button -> move(
+            this -> p_generator_button -> geometry().x(),
+            this -> p_generator_button -> geometry().y() * 1.18f
+        );
+
+        // Exit button
+        this -> exit_button = QSharedPointer<QPushButton>( 
+            new QPushButton( "Exit", this -> host ) 
+        );
+        this -> exit_button -> setVisible( false );
+        this -> exit_button -> resize( this -> button_width, this -> button_height );
+        this -> exit_button -> setStyleSheet( this -> button_font_size );
+        this -> exit_button -> move(
+            this -> options_button -> geometry().x(),
+            this -> options_button -> geometry().y() * 1.153f
+        );
+        QObject::connect( 
+            this -> exit_button.get(), 
+            SIGNAL( clicked() ), 
+            this -> host, 
+            SLOT( close() ) 
+        );
 
         // Version and license label
-        this -> version = QSharedPointer<widgets::CustomLabel>(
-            new widgets::CustomLabel( this -> host )
+        this -> version = QSharedPointer<QLabel>(
+            new QLabel( this -> host )
         );
+        this -> version -> setVisible( false );
         this -> version -> setText( "Current version: 0.0.0\nCopyright (c) 2023 Gianluca Bianco under the GPL v3.0 license" );
         this -> version ->  setStyleSheet( "font-size: 15px" );
         this -> version -> move(
@@ -78,10 +128,11 @@ namespace kmanager::state{
             this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() * 1.75f
         );
 
-        // Image logo
-        this -> logo_img_label = QSharedPointer<widgets::CustomLabel>(
-            new widgets::CustomLabel( this -> host )
+        // Image logo label
+        this -> logo_img_label = QSharedPointer<QLabel>(
+            new QLabel( this -> host )
         );
+        this -> logo_img_label -> setVisible( false );
         this -> logo_img = "img/images/logo_app.png";
         this -> img.load( this -> logo_img );
         this -> logo_img_label -> setPixmap( img );
@@ -99,7 +150,14 @@ namespace kmanager::state{
      * 
      */
     void MenuState::assignProperties(){
+
+        // Buttons
         this -> assignProperty( this -> p_manager_button.get(), "visible", true );
+        this -> assignProperty( this -> p_generator_button.get(), "visible", true );
+        this -> assignProperty( this -> options_button.get(), "visible", true );
+        this -> assignProperty( this -> exit_button.get(), "visible", true );
+
+        // Labels
         this -> assignProperty( this -> version.get(), "visible", true );
         this -> assignProperty( this -> logo_img_label.get(), "visible", true );
     }

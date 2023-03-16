@@ -79,5 +79,10 @@ namespace kmanager::state{
 
         // Hide previous state widgets
         this -> assignProperty( this -> host -> p_manager_button.get(), "visible", false );
+        this -> assignProperty( this -> host -> p_generator_button.get(), "visible", false );
+        this -> assignProperty( this -> host -> options_button.get(), "visible", false );
+        this -> assignProperty( this -> host -> exit_button.get(), "visible", false );
+        this -> assignProperty( this -> host -> version.get(), "visible", false );
+        this -> assignProperty( this -> host -> logo_img_label.get(), "visible", false );
     }
 }
