@@ -42,7 +42,7 @@ namespace kmanager::window{
             explicit BaseWindow( QWidget *parent = nullptr );
             virtual ~BaseWindow();
 
-            // Methods
+            // Pure methods
             virtual void setWindowProperties() = 0;
             virtual void initStateMachine() = 0;
     };

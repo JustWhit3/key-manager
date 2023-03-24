@@ -19,6 +19,9 @@
 //     Headers
 //====================================================
 
+// Windows
+#include <windows/add_password_window.hpp>
+
 // States
 #include <states/base_state.hpp>
 #include <states/menu_state.hpp>
@@ -29,6 +32,7 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QVBoxLayout>
+#include <QWidget>
 
 namespace kmanager::state{
 
@@ -40,6 +44,9 @@ namespace kmanager::state{
      * 
      */
     class PasswordManagerState: public BaseState{
+
+        // Macro for Qt
+        Q_OBJECT
     
         //====================================================
         //     Public
@@ -59,6 +66,7 @@ namespace kmanager::state{
             QSharedPointer<QPushButton> add_password_button;
             QSharedPointer<QPushButton> menu_button;
             QSharedPointer<QLineEdit> find_input;
+            QSharedPointer<window::AddPasswordWindow> add_password_window;
         
         //====================================================
         //     Private
@@ -78,6 +86,14 @@ namespace kmanager::state{
             const int16_t label_width = this -> host -> host -> width() * 0.25f;
             const int16_t label_height = 50.f;
             const QString label_settings = "background-color : #4682b4; color: white; padding: 8%; font-size: 20px";
+
+        //====================================================
+        //     Private slots
+        //====================================================
+        private slots:
+
+            // Methods
+            void addPassword();
     };
 }
 

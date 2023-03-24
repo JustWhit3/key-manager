@@ -13,6 +13,9 @@
 //====================================================
 
 // Windows
+#include <windows/add_password_window.hpp>
+
+// States
 #include <states/password_manager_state.hpp>
 
 // Qt
@@ -155,6 +158,25 @@ namespace kmanager::state{
         this -> add_password_icon.addFile( "img/icons/plus_icon.png" );
         this -> add_password_button -> setIcon( this -> add_password_icon );
         this -> add_password_button -> setIconSize( QSize( this -> label_height, this -> label_height ) );
+
+        QObject::connect( 
+            this -> add_password_button.get(), 
+            SIGNAL( clicked() ), 
+            this, 
+            SLOT( addPassword() ) 
+        );
+    }
+
+    //====================================================
+    //     addPassword
+    //====================================================
+    /**
+     * @brief Add a new password to the database.
+     * 
+     */
+    void PasswordManagerState::addPassword(){
+        this -> add_password_window = QSharedPointer<window::AddPasswordWindow>( new window::AddPasswordWindow() );
+        this -> add_password_window -> show();
     }
 
     //====================================================
@@ -179,6 +201,5 @@ namespace kmanager::state{
 
         // LineEdits
         this -> assignProperty( this -> find_input.get(), "visible", true );
-
     }
 }
