@@ -36,6 +36,9 @@ namespace kmanager::window{
 
         // Initialize the state machine
         this -> initStateMachine();
+
+        // Set actions when buttons are pressed
+        this -> buttonsPressedActions();
     }
 
     //====================================================
@@ -106,6 +109,9 @@ namespace kmanager::window{
         this -> menu_state -> addTransition( 
             this -> menu_state -> p_manager_button.get(), &QPushButton::clicked, this -> p_manager_state.get() 
         );
+        this -> p_manager_state -> addTransition( 
+            this -> p_manager_state -> menu_button.get(), &QPushButton::clicked, this -> menu_state.get() 
+        );
 
         // States machine properties
         this -> state_machine = QSharedPointer<QStateMachine>( new QStateMachine( this ) );
@@ -113,5 +119,76 @@ namespace kmanager::window{
         this -> state_machine -> addState( this -> p_manager_state.get() );
         this -> state_machine -> setInitialState( this -> menu_state.get() );
         this -> state_machine -> start();
+    }
+
+    //====================================================
+    //     buttonsPressedActions
+    //====================================================
+    /**
+     * @brief Set actions when buttons are pressed in transition.
+     * 
+     */
+    void MainWindow::buttonsPressedActions(){
+
+        // Menu state -> Password manager state
+        QObject::connect( 
+            this -> menu_state -> p_manager_button.get(), 
+            SIGNAL( clicked() ), 
+            this, 
+            SLOT( hidePasswordManagerWidgets() ) 
+        );
+
+        // Password manager state -> Menu state
+        QObject::connect( 
+            this -> p_manager_state -> menu_button.get(), 
+            SIGNAL( clicked() ), 
+            this, 
+            SLOT( hideMenuStateWidgets() ) 
+        );
+    }
+
+    //====================================================
+    //     hidePasswordManagerWidgets
+    //====================================================
+    /**
+     * @brief Hide widgets for the PasswordManager state.
+     * 
+     */
+    void MainWindow::hidePasswordManagerWidgets(){
+
+        // Buttons
+        this -> p_manager_state -> assignProperty( this -> menu_state -> p_manager_button.get(), "visible", false );
+        this -> p_manager_state -> assignProperty( this -> menu_state -> p_generator_button.get(), "visible", false );
+        this -> p_manager_state -> assignProperty( this -> menu_state -> options_button.get(), "visible", false );
+        this -> p_manager_state -> assignProperty( this -> menu_state -> exit_button.get(), "visible", false );
+
+        // Labels
+        this -> p_manager_state -> assignProperty( this -> menu_state -> version.get(), "visible", false );
+        this -> p_manager_state -> assignProperty( this -> menu_state -> logo_img_label.get(), "visible", false );
+        this -> p_manager_state -> assignProperty( this -> menu_state -> change_password_button.get(), "visible", false );
+    }
+
+    //====================================================
+    //     hideMenuStateWidgets
+    //====================================================
+    /**
+     * @brief Hide widgets for the MenuState state.
+     * 
+     */
+    void MainWindow::hideMenuStateWidgets(){
+
+        // Buttons
+        this -> menu_state -> assignProperty( this -> p_manager_state -> find_button.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_manager_state -> add_password_button.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_manager_state -> menu_button.get(), "visible", false );
+
+        // Labels
+        this -> menu_state -> assignProperty( this -> p_manager_state -> password_platform.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_manager_state -> password_username.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_manager_state -> password_key.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_manager_state -> password_note.get(), "visible", false );
+
+        // QLineEdit
+        this -> menu_state -> assignProperty( this -> p_manager_state -> find_input.get(), "visible", false );
     }
 }

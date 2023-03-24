@@ -41,6 +41,9 @@ namespace kmanager::window{
      */
     class MainWindow: public BaseWindow{
 
+        // Macro for Qt
+        Q_OBJECT
+
         //====================================================
         //     Public
         //====================================================
@@ -59,11 +62,21 @@ namespace kmanager::window{
             void keyPressEvent( QKeyEvent *event ) override;
             void setWindowProperties() override;
             void initStateMachine() override;
+            void buttonsPressedActions();
 
             // Variables (states)
             QSharedPointer<QStateMachine> state_machine;
             QSharedPointer<state::MenuState> menu_state;
             QSharedPointer<state::PasswordManagerState> p_manager_state;
+
+        //====================================================
+        //     Private slots
+        //====================================================
+        private slots:
+        
+            // Methods
+            void hidePasswordManagerWidgets();
+            void hideMenuStateWidgets();
     };
 }
 

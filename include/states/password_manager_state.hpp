@@ -26,6 +26,9 @@
 // Qt
 #include <QSharedPointer>
 #include <QLabel>
+#include <QPushButton>
+#include <QLineEdit>
+#include <QVBoxLayout>
 
 namespace kmanager::state{
 
@@ -49,6 +52,13 @@ namespace kmanager::state{
 
             // Variables (widgets)
             QSharedPointer<QLabel> password_platform;
+            QSharedPointer<QLabel> password_key;
+            QSharedPointer<QLabel> password_username;
+            QSharedPointer<QLabel> password_note;
+            QSharedPointer<QPushButton> find_button;
+            QSharedPointer<QPushButton> add_password_button;
+            QSharedPointer<QPushButton> menu_button;
+            QSharedPointer<QLineEdit> find_input;
         
         //====================================================
         //     Private
@@ -61,6 +71,13 @@ namespace kmanager::state{
 
             // Variables
             MenuState* host;
+            QIcon add_password_icon;
+            QIcon menu_icon;
+
+            // Constants
+            const int16_t label_width = this -> host -> host -> width() * 0.25f;
+            const int16_t label_height = 50.f;
+            const QString label_settings = "background-color : #4682b4; color: white; padding: 8%; font-size: 20px";
     };
 }
 

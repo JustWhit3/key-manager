@@ -17,6 +17,7 @@
 
 // Qt
 #include <QLabel>
+#include <QPushButton>
 
 namespace kmanager::state{
 
@@ -65,12 +66,95 @@ namespace kmanager::state{
         this -> password_platform -> setText( "Platform / Website" );
         this -> password_platform -> setFrameStyle( QFrame::Panel | QFrame::Sunken );
         this -> password_platform -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
-        this -> password_platform -> setStyleSheet( "background-color : #4682b4; color: white; font-size: 15px; padding: 8%; font-size: 20px" );
-        this -> password_platform -> resize( 250, 50 );
+        this -> password_platform -> setStyleSheet( this -> label_settings );
+        this -> password_platform -> resize( this -> label_width, this -> label_height );
         this -> password_platform -> move(
-            this -> password_platform -> geometry().x(),
-            this -> host -> host -> mapToGlobal( this -> host -> host -> geometry().center() ).y() * 0.4f
+            0,
+            this -> host -> host -> mapToGlobal( this -> host -> host -> geometry().center() ).y() * 0.235f
         );
+
+        // Username label
+        this -> password_username = QSharedPointer<QLabel>( new QLabel( this -> host -> host ) );
+        this -> password_username -> setVisible( false );
+        this -> password_username -> setText( "Username" );
+        this -> password_username -> setFrameStyle( QFrame::Panel | QFrame::Sunken );
+        this -> password_username -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
+        this -> password_username -> setStyleSheet( this -> label_settings );
+        this -> password_username -> resize( this -> label_width, this -> label_height );
+        this -> password_username -> move(
+            this -> password_platform -> geometry().x() + this -> label_width,
+            this -> password_platform -> geometry().y()
+        );
+
+        // Password key label
+        this -> password_key = QSharedPointer<QLabel>( new QLabel( this -> host -> host ) );
+        this -> password_key -> setVisible( false );
+        this -> password_key -> setText( "Password" );
+        this -> password_key -> setFrameStyle( QFrame::Panel | QFrame::Sunken );
+        this -> password_key -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
+        this -> password_key -> setStyleSheet( this -> label_settings );
+        this -> password_key -> resize( this -> label_width, this -> label_height );
+        this -> password_key -> move(
+            this -> password_username -> geometry().x() + this -> label_width,
+            this -> password_username -> geometry().y()
+        );
+
+        // Note label
+        this -> password_note = QSharedPointer<QLabel>( new QLabel( this -> host -> host ) );
+        this -> password_note -> setVisible( false );
+        this -> password_note -> setText( "Note" );
+        this -> password_note -> setFrameStyle( QFrame::Panel | QFrame::Sunken );
+        this -> password_note -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
+        this -> password_note -> setStyleSheet( this -> label_settings );
+        this -> password_note -> resize( this -> label_width, this -> label_height );
+        this -> password_note -> move(
+            this -> password_key -> geometry().x() + this -> label_width,
+            this -> password_key -> geometry().y()
+        );
+
+        // Find button
+        this -> find_button = QSharedPointer<QPushButton>( new QPushButton( "Find", this -> host -> host ) );
+        this -> find_button -> setVisible( false );
+        this -> find_button -> resize( this -> label_width * 0.25f, this -> label_height );
+        this -> find_button -> setStyleSheet( "font-size: 20px;");
+        this -> find_button -> move(
+            this -> password_note -> geometry().x() + 210.f,
+            this -> password_note -> geometry().y() - label_height
+        );
+
+        // Find textbox
+        this -> find_input = QSharedPointer<QLineEdit>( new QLineEdit( this -> host -> host ) );
+        this -> find_input -> setVisible( false );
+        this -> find_input -> resize( this -> label_width * 0.76f, this -> label_height );
+        this -> find_input -> setStyleSheet( "font-size: 20px;");
+        this -> find_input -> move(
+            this -> password_note -> geometry().x(),
+            this -> password_note -> geometry().y() - label_height
+        );
+        this -> find_input -> setPlaceholderText( "Search" );
+
+        // Menu button
+        this -> menu_button = QSharedPointer<QPushButton>( new QPushButton( "", this -> host -> host ) );
+        this -> menu_button -> setVisible( false );
+        this -> menu_button -> resize( this -> label_height * 2.f, this -> label_height * 2.f );
+        this -> menu_button -> setStyleSheet( "font-size: 20px;");
+        this -> menu_button -> move( 0.f, 1.f );
+        this -> menu_icon.addFile( "img/icons/home_icon.png" );
+        this -> menu_button -> setIcon( this -> menu_icon );
+        this -> menu_button -> setIconSize( QSize( this -> label_height, this -> label_height ) );
+
+        // Add password button
+        this -> add_password_button = QSharedPointer<QPushButton>( new QPushButton( "", this -> host -> host ) );
+        this -> add_password_button -> setVisible( false );
+        this -> add_password_button -> resize( this -> label_height * 2.f, this -> label_height * 2.f );
+        this -> add_password_button -> setStyleSheet( "font-size: 20px;");
+        this -> add_password_button -> move(
+            this -> menu_button -> geometry().x() + 101.f,
+            this -> menu_button -> geometry().y()
+        );
+        this -> add_password_icon.addFile( "img/icons/plus_icon.png" );
+        this -> add_password_button -> setIcon( this -> add_password_icon );
+        this -> add_password_button -> setIconSize( QSize( this -> label_height, this -> label_height ) );
     }
 
     //====================================================
@@ -82,16 +166,19 @@ namespace kmanager::state{
      */
     void PasswordManagerState::assignProperties(){
 
-        // Properties
-        this -> assignProperty( this -> password_platform.get(), "visible", true );
+        // Buttons
+        this -> assignProperty( this -> find_button.get(), "visible", true );
+        this -> assignProperty( this -> add_password_button.get(), "visible", true );
+        this -> assignProperty( this -> menu_button.get(), "visible", true );
 
-        // Hide previous state widgets
-        this -> assignProperty( this -> host -> p_manager_button.get(), "visible", false );
-        this -> assignProperty( this -> host -> p_generator_button.get(), "visible", false );
-        this -> assignProperty( this -> host -> options_button.get(), "visible", false );
-        this -> assignProperty( this -> host -> exit_button.get(), "visible", false );
-        this -> assignProperty( this -> host -> version.get(), "visible", false );
-        this -> assignProperty( this -> host -> logo_img_label.get(), "visible", false );
-        this -> assignProperty( this -> host -> change_password_button.get(), "visible", false );
+        // Labels
+        this -> assignProperty( this -> password_platform.get(), "visible", true );
+        this -> assignProperty( this -> password_username.get(), "visible", true );
+        this -> assignProperty( this -> password_key.get(), "visible", true );
+        this -> assignProperty( this -> password_note.get(), "visible", true );
+
+        // LineEdits
+        this -> assignProperty( this -> find_input.get(), "visible", true );
+
     }
 }
