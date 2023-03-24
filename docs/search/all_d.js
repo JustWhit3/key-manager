@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['username_48',['username',['../classkmanager_1_1entity_1_1Password.html#a14ba966edca1069513feadef8b61accd',1,'kmanager::entity::Password']]]
+  ['setwindowproperties_54',['setWindowProperties',['../classkmanager_1_1window_1_1BaseWindow.html#ae1da44e39b684abf7bc4da148515c3db',1,'kmanager::window::BaseWindow']]]
 ];

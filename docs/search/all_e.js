@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['version_49',['version',['../classkmanager_1_1state_1_1MenuState.html#ac151ed1bc44f165704d43e9c27b15fbf',1,'kmanager::state::MenuState']]]
+  ['username_55',['username',['../classkmanager_1_1entity_1_1Password.html#a14ba966edca1069513feadef8b61accd',1,'kmanager::entity::Password']]]
 ];
