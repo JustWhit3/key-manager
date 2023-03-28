@@ -5,7 +5,7 @@ var indexSectionsWithContent =
   2: "k",
   3: "abcmp",
   4: "abcimps~",
-  5: "acefhlmnopuv",
+  5: "acefhlmnopsuv",
   6: "k"
 };
 
