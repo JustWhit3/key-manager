@@ -22,6 +22,9 @@
 // States
 #include <states/base_state.hpp>
 
+// Entities
+#include <entities/password.hpp>
+
 // Qt
 #include <QStateMachine>
 #include <QSharedPointer>
@@ -60,6 +63,7 @@ namespace kmanager::state{
             QSharedPointer<QLineEdit> username_textbox;
             QSharedPointer<QLineEdit> password_textbox;
             QSharedPointer<QLineEdit> note_textbox;
+            QSharedPointer<QPushButton> save_button;
 
             // Variables (other)
             QWidget* host;
@@ -72,6 +76,9 @@ namespace kmanager::state{
             // Methods
             void addWidgets() override;
             void assignProperties() override;
+
+            // Variables
+            entity::Password new_password;
 
             // Constants
             const QString widget_font_size{ "font-size: 20px" };

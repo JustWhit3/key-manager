@@ -134,7 +134,7 @@ namespace kmanager::state{
             this -> password_note -> geometry().x(),
             this -> password_note -> geometry().y() - label_height
         );
-        this -> find_input -> setPlaceholderText( "Search" );
+        this -> find_input -> setPlaceholderText( "Search..." );
 
         // Menu button
         this -> menu_button = QSharedPointer<QPushButton>( new QPushButton( "", this -> host -> host ) );

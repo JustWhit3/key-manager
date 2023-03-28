@@ -95,23 +95,109 @@ namespace kmanager::state{
             this -> platform_website_label -> geometry().width() * 1.75f,
             this -> platform_website_label -> geometry().height()
         );
-        this -> platform_website_textbox ->  setStyleSheet( widget_font_size );
+        this -> platform_website_textbox -> setStyleSheet( widget_font_size );
         this -> platform_website_textbox -> move(
             this -> platform_website_label -> geometry().x() + 200.f,
             this -> platform_website_label -> geometry().y()
         );
+        this -> platform_website_textbox -> setPlaceholderText( "Enter platform name" );
 
         // Username label
+        this -> username_label = QSharedPointer<QLabel>(
+            new QLabel( this -> host )
+        );
+        this -> username_label -> setVisible( false );
+        this -> username_label -> resize( 220, 50 );
+        this -> username_label -> setText( "Username:" );
+        this -> username_label -> setStyleSheet( widget_font_size );
+        this -> username_label -> move(
+            this -> platform_website_label -> geometry().x(),
+            this -> platform_website_label -> geometry().y() + 60.f
+        );
 
         // Username textbox
+        this -> username_textbox = QSharedPointer<QLineEdit>(
+            new QLineEdit( this -> host )
+        );
+        this -> username_textbox -> setVisible( false );
+        this -> username_textbox -> resize( 
+            this -> username_label -> geometry().width() * 1.75f,
+            this -> username_label -> geometry().height()
+        );
+        this -> username_textbox -> setStyleSheet( widget_font_size );
+        this -> username_textbox -> move(
+            this -> username_label -> geometry().x() + 200.f,
+            this -> username_label -> geometry().y()
+        );
+        this -> username_textbox -> setPlaceholderText( "Enter username" );
 
         // Password label
+        this -> password_label = QSharedPointer<QLabel>(
+            new QLabel( this -> host )
+        );
+        this -> password_label -> setVisible( false );
+        this -> password_label -> resize( 220, 50 );
+        this -> password_label -> setText( "Password:" );
+        this -> password_label -> setStyleSheet( widget_font_size );
+        this -> password_label -> move(
+            this -> username_label -> geometry().x(),
+            this -> username_label -> geometry().y() + 60.f
+        );
 
         // Password textbox
+        this -> password_textbox = QSharedPointer<QLineEdit>(
+            new QLineEdit( this -> host )
+        );
+        this -> password_textbox -> setVisible( false );
+        this -> password_textbox -> resize( 
+            this -> password_label -> geometry().width() * 1.75f,
+            this -> password_label -> geometry().height()
+        );
+        this -> password_textbox -> setStyleSheet( widget_font_size );
+        this -> password_textbox -> move(
+            this -> password_label -> geometry().x() + 200.f,
+            this -> password_label -> geometry().y()
+        );
+        this -> password_textbox -> setPlaceholderText( "Enter password" );
 
         // Note label
+        this -> note_label = QSharedPointer<QLabel>(
+            new QLabel( this -> host )
+        );
+        this -> note_label -> setVisible( false );
+        this -> note_label -> resize( 220, 50 );
+        this -> note_label -> setText( "Additional note:" );
+        this -> note_label -> setStyleSheet( widget_font_size );
+        this -> note_label -> move(
+            this -> password_label -> geometry().x(),
+            this -> password_label -> geometry().y() + 60.f
+        );
 
         // Note textbox
+        this -> note_textbox = QSharedPointer<QLineEdit>(
+            new QLineEdit( this -> host )
+        );
+        this -> note_textbox -> setVisible( false );
+        this -> note_textbox -> resize( 
+            this -> note_label -> geometry().width() * 1.75f,
+            this -> note_label -> geometry().height()
+        );
+        this -> note_textbox -> setStyleSheet( widget_font_size );
+        this -> note_textbox -> move(
+            this -> note_label -> geometry().x() + 200.f,
+            this -> note_label -> geometry().y()
+        );
+        this -> note_textbox -> setPlaceholderText( "Enter additional notes" );
+
+        // Save button
+        this -> save_button = QSharedPointer<QPushButton>( new QPushButton( "Save", this -> host ) );
+        this -> save_button -> setVisible( false );
+        this -> save_button -> resize( 100, 50 );
+        this -> save_button -> setStyleSheet( "font-size: 20px;");
+        this -> save_button -> move(
+            this -> save_button -> geometry().x() + 515.f,
+            this -> save_button -> geometry().y() + 25.f
+        );
     }
 
     //====================================================
@@ -126,8 +212,18 @@ namespace kmanager::state{
         // Labels
         this -> assignProperty( this -> create_new_password_label.get(), "visible", true );
         this -> assignProperty( this -> platform_website_label.get(), "visible", true );
+        this -> assignProperty( this -> username_label.get(), "visible", true );
+        this -> assignProperty( this -> password_label.get(), "visible", true );
+        this -> assignProperty( this -> note_label.get(), "visible", true );
+
 
         // Textbox
         this -> assignProperty( this -> platform_website_textbox.get(), "visible", true );
+        this -> assignProperty( this -> username_textbox.get(), "visible", true );
+        this -> assignProperty( this -> password_textbox.get(), "visible", true );
+        this -> assignProperty( this -> note_textbox.get(), "visible", true );
+
+        // Buttons
+        this -> assignProperty( this -> save_button.get(), "visible", true );
     }
 }
