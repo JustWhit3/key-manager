@@ -73,7 +73,7 @@ namespace kmanager::state{
         this -> password_platform -> resize( this -> label_width, this -> label_height );
         this -> password_platform -> move(
             0,
-            this -> host -> host -> mapToGlobal( this -> host -> host -> geometry().center() ).y() * 0.235f
+            this -> host -> host -> mapToGlobal( this -> host -> host -> geometry().center() ).y() * 0.249f
         );
 
         // Username label
@@ -165,6 +165,9 @@ namespace kmanager::state{
             this, 
             SLOT( addPassword() ) 
         );
+
+        // Display password widgets
+        this -> displayPasswords();
     }
 
     //====================================================
@@ -177,6 +180,20 @@ namespace kmanager::state{
     void PasswordManagerState::addPassword(){
         this -> add_password_window = QSharedPointer<window::AddPasswordWindow>( new window::AddPasswordWindow() );
         this -> add_password_window -> show();
+    }
+
+    //====================================================
+    //     displayPasswords
+    //====================================================
+    /**
+     * @brief Display passwords saved in Json file.
+     * 
+     */
+    void PasswordManagerState::displayPasswords(){
+        
+        // Append element to QVector from Json file
+
+        // Draw widgets for each password
     }
 
     //====================================================

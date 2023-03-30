@@ -26,6 +26,9 @@
 #include <states/base_state.hpp>
 #include <states/menu_state.hpp>
 
+// Entities
+#include <entities/password.hpp>
+
 // Qt
 #include <QSharedPointer>
 #include <QLabel>
@@ -33,6 +36,7 @@
 #include <QLineEdit>
 #include <QVBoxLayout>
 #include <QWidget>
+#include <QVector>
 
 namespace kmanager::state{
 
@@ -76,11 +80,13 @@ namespace kmanager::state{
             // Methods
             void addWidgets() override;
             void assignProperties() override;
+            void displayPasswords();
 
             // Variables
             MenuState* host;
             QIcon add_password_icon;
             QIcon menu_icon;
+            QVector<entity::Password> password_list;
 
             // Constants
             const int16_t label_width = this -> host -> host -> width() * 0.25f;

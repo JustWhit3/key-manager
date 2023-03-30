@@ -84,7 +84,7 @@ namespace kmanager::state{
         this -> p_generator_button -> setStyleSheet( this -> button_font_size );
         this -> p_generator_button -> move(
             this -> p_manager_button -> geometry().x(),
-            this -> p_manager_button -> geometry().y() * 1.22f
+            this -> p_manager_button -> geometry().y() + 80.f
         );
 
         // Options button
@@ -96,7 +96,7 @@ namespace kmanager::state{
         this -> options_button -> setStyleSheet( this -> button_font_size );
         this -> options_button -> move(
             this -> p_generator_button -> geometry().x(),
-            this -> p_generator_button -> geometry().y() * 1.18f
+            this -> p_generator_button -> geometry().y() + 80.f
         );
 
         // Exit button
@@ -108,7 +108,7 @@ namespace kmanager::state{
         this -> exit_button -> setStyleSheet( this -> button_font_size );
         this -> exit_button -> move(
             this -> options_button -> geometry().x(),
-            this -> options_button -> geometry().y() * 1.153f
+            this -> options_button -> geometry().y() + 80.f
         );
         QObject::connect( 
             this -> exit_button.get(), 
@@ -125,7 +125,7 @@ namespace kmanager::state{
         this -> change_password_button -> setStyleSheet( "background-color: rgba(255, 255, 255, 0);" );
         this -> change_password_button -> move(
             this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() * 1.84f,
-            this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() * 1.68f
+            this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() + 315.f
         );
         this -> change_password_icon.addFile( "img/icons/password_icon.png" );
         this -> change_password_button -> setIcon( this -> change_password_icon );
@@ -140,7 +140,7 @@ namespace kmanager::state{
         this -> version ->  setStyleSheet( "font-size: 15px" );
         this -> version -> move(
             this -> version -> mapToGlobal( this -> version -> geometry().center() ).x() * 0.5f,
-            this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() * 1.75f
+            this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() + 350.f
         );
 
         // Image logo label
