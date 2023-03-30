@@ -22,6 +22,7 @@
 #include <QJsonDocument>
 #include <QFile>
 #include <QTextStream>
+#include <QTimer>
 
 // STD
 #include <filesystem>
@@ -106,7 +107,7 @@ namespace kmanager::state{
             this -> platform_website_label -> geometry().x() + 200.f,
             this -> platform_website_label -> geometry().y()
         );
-        this -> platform_website_textbox -> setPlaceholderText( "Enter platform name" );
+        this -> platform_website_textbox -> setPlaceholderText( "Enter platform name (mandatory)" );
 
         // Username label
         this -> username_label = QSharedPointer<QLabel>(
@@ -135,7 +136,7 @@ namespace kmanager::state{
             this -> username_label -> geometry().x() + 200.f,
             this -> username_label -> geometry().y()
         );
-        this -> username_textbox -> setPlaceholderText( "Enter username" );
+        this -> username_textbox -> setPlaceholderText( "Enter username (mandatory)" );
 
         // Password label
         this -> password_label = QSharedPointer<QLabel>(
@@ -164,7 +165,7 @@ namespace kmanager::state{
             this -> password_label -> geometry().x() + 200.f,
             this -> password_label -> geometry().y()
         );
-        this -> password_textbox -> setPlaceholderText( "Enter password" );
+        this -> password_textbox -> setPlaceholderText( "Enter password (mandatory)" );
 
         // Note label
         this -> note_label = QSharedPointer<QLabel>(
@@ -193,7 +194,7 @@ namespace kmanager::state{
             this -> note_label -> geometry().x() + 200.f,
             this -> note_label -> geometry().y()
         );
-        this -> note_textbox -> setPlaceholderText( "Enter additional notes" );
+        this -> note_textbox -> setPlaceholderText( "Enter additional note (optional)" );
 
         // Save button
         this -> save_button = QSharedPointer<QPushButton>( new QPushButton( "Save", this -> host ) );
@@ -279,9 +280,9 @@ namespace kmanager::state{
         this -> file_oss.str( "" );
         this -> file_oss.clear();
         #ifdef _WIN32
-            this -> file_oss << "/home/" 
+            this -> file_oss << "C:\\Users\\" 
                              << this -> username 
-                             << "/.key-manager_files/passwords/"
+                             << "\\.key-manager_files\\passwords\\"
                              << this -> new_password.username.toStdString() 
                              << ".json";
         #else
@@ -301,6 +302,7 @@ namespace kmanager::state{
             this -> new_password.username.isEmpty() || 
             this -> new_password.password_str.isEmpty() ){
             this -> error_label -> setVisible( true );
+            QTimer::singleShot( 2000, this -> error_label.get(), &QLabel::hide );
         }
         else {
 
@@ -315,6 +317,7 @@ namespace kmanager::state{
             else {
                 this -> error_label -> setText( "Unable to open the passwords file!" );
                 this -> error_label -> setVisible( true );
+                QTimer::singleShot( 2000, this -> error_label.get(), &QLabel::hide );
             }
         }
     }
