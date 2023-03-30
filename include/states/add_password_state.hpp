@@ -31,6 +31,14 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QLineEdit>
+#include <QObject>
+#include <QJsonObject>
+#include <QJsonDocument>
+#include <QFile>
+
+// STD
+#include <sstream>
+#include <cstdlib>
 
 namespace kmanager::state{
 
@@ -42,6 +50,9 @@ namespace kmanager::state{
      * 
      */
     class AddPasswordState: public BaseState{
+
+        // Macro for Qt
+        Q_OBJECT
     
         //====================================================
         //     Public
@@ -58,6 +69,7 @@ namespace kmanager::state{
             QSharedPointer<QLabel> username_label;
             QSharedPointer<QLabel> password_label;
             QSharedPointer<QLabel> note_label;
+            QSharedPointer<QLabel> error_label;
             QSharedPointer<QLineEdit> create_new_password_textbox;
             QSharedPointer<QLineEdit> platform_website_textbox;
             QSharedPointer<QLineEdit> username_textbox;
@@ -79,9 +91,23 @@ namespace kmanager::state{
 
             // Variables
             entity::Password new_password;
+            std::ostringstream file_oss;
+            QJsonObject main_container;
+            QJsonDocument json_doc;
+            QByteArray json_doc_bytes;
+            QFile json_doc_file;
 
             // Constants
             const QString widget_font_size{ "font-size: 20px" };
+            const std::string username = std::getenv( "USERNAME" );
+
+        //====================================================
+        //     Private slots
+        //====================================================
+        private slots:
+        
+            // Methods
+            void savePassword();
     };
 }
 

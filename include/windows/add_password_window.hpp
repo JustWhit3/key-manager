@@ -25,6 +25,9 @@
 // States
 #include <states/add_password_state.hpp>
 
+// STD
+#include <cstdlib>
+
 namespace kmanager::window{
 
     //====================================================

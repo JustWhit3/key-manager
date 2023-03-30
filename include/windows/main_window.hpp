@@ -29,6 +29,7 @@
 // Qt
 #include <QtWidgets>
 #include <QStateMachine>
+#include <QObject>
 
 namespace kmanager::window{
 

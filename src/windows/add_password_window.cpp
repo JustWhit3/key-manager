@@ -61,7 +61,7 @@ namespace kmanager::window{
         this -> setWindowState( Qt::WindowActive );
         this -> windowHandle() -> setScreen( qApp -> screens()[0] );
         this -> setWindowIcon( QIcon( "img/icons/app_icon.png" ) );
-        this -> setFixedSize( 650,  qApp -> screens()[0] -> geometry().height() * 0.43f );
+        this -> setFixedSize( 650,  qApp -> screens()[0] -> geometry().height() * 0.45f );
         this -> move(
             ( qApp -> screens()[0] -> geometry().width() - this->width() ) * 0.5f,
             ( qApp -> screens()[0] -> geometry().height() - this->height() ) * 0.5f
@@ -81,6 +81,13 @@ namespace kmanager::window{
             // ESC
             case Qt::Key_Escape:
                 this -> close();
+                break;
+
+            // Enter
+            case Qt::Key_Return:
+                if( this -> state_machine -> configuration().contains( this -> add_password_state.get() ) ){
+                    this -> add_password_state -> save_button -> animateClick();
+                }
                 break;
 
             // Default

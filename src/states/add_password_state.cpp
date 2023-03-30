@@ -19,6 +19,12 @@
 #include <QStateMachine>
 #include <QLabel>
 #include <QSize>
+#include <QJsonDocument>
+#include <QFile>
+#include <QTextStream>
+
+// STD
+#include <filesystem>
 
 namespace kmanager::state{
 
@@ -198,6 +204,25 @@ namespace kmanager::state{
             this -> save_button -> geometry().x() + 515.f,
             this -> save_button -> geometry().y() + 25.f
         );
+        QObject::connect( 
+            this -> save_button.get(), 
+            SIGNAL( clicked() ), 
+            this, 
+            SLOT( savePassword() ) 
+        );
+
+        // Error label
+        this -> error_label = QSharedPointer<QLabel>(
+            new QLabel( this -> host )
+        );
+        this -> error_label -> resize( 370, 50 );
+        this -> error_label -> setVisible( false );
+        this -> error_label -> setText( "Some of the main fields are still missing!" );
+        this -> error_label -> setStyleSheet( "QLabel { color : rgb(183, 0, 0); font-size: 20px }" );
+        this -> error_label -> move(
+            this -> note_label -> geometry().x(),
+            this -> note_label -> geometry().y() + 53.f
+        );
     }
 
     //====================================================
@@ -215,7 +240,7 @@ namespace kmanager::state{
         this -> assignProperty( this -> username_label.get(), "visible", true );
         this -> assignProperty( this -> password_label.get(), "visible", true );
         this -> assignProperty( this -> note_label.get(), "visible", true );
-
+        this -> assignProperty( this -> error_label.get(), "visible", false );
 
         // Textbox
         this -> assignProperty( this -> platform_website_textbox.get(), "visible", true );
@@ -225,5 +250,72 @@ namespace kmanager::state{
 
         // Buttons
         this -> assignProperty( this -> save_button.get(), "visible", true );
+    }
+
+    //====================================================
+    //     savePassword
+    //====================================================
+    /**
+     * @brief Save password values entered in textbox.
+     * 
+     */
+    void AddPasswordState::savePassword(){
+
+        // Initialize password object
+        this -> new_password.platform = this -> platform_website_textbox -> text();
+        this -> new_password.password_str = this -> password_textbox -> text();
+        this -> new_password.note = this -> note_textbox -> text();
+        this -> new_password.username = this -> username_textbox -> text();
+
+        // Save results on Json
+        this -> main_container.insert( "Platform / Website", QJsonValue::fromVariant( this -> new_password.platform ) );
+        this -> main_container.insert( "Password", QJsonValue::fromVariant( this -> new_password.password_str ) );
+        this -> main_container.insert( "Username", QJsonValue::fromVariant( this -> new_password.username ) );
+        this -> main_container.insert( "Note", QJsonValue::fromVariant( this -> new_password.note ) );
+        this -> json_doc.setObject( main_container );
+        this -> json_doc_bytes = this -> json_doc.toJson( QJsonDocument::Indented );
+
+        // Set file name and save file
+        this -> file_oss.str( "" );
+        this -> file_oss.clear();
+        #ifdef _WIN32
+            this -> file_oss << "/home/" 
+                             << this -> username 
+                             << "/.key-manager_files/passwords/"
+                             << this -> new_password.username.toStdString() 
+                             << ".json";
+        #else
+            this -> file_oss << "/home/" 
+                             << this -> username 
+                             << "/.key-manager_files/passwords/"
+                             << this -> new_password.username.toStdString() 
+                             << ".json";
+        #endif
+        this -> json_doc_file.setFileName( QString::fromStdString( this -> file_oss.str() ) );
+
+        // Create dirs
+        std::filesystem::create_directories( this -> file_oss.str().erase( this -> file_oss.str().size() - 5 - this -> new_password.username.size() ) );
+
+        // Check if all the mandatory fields have been filled
+        if( this -> new_password.platform.isEmpty() || 
+            this -> new_password.username.isEmpty() || 
+            this -> new_password.password_str.isEmpty() ){
+            this -> error_label -> setVisible( true );
+        }
+        else {
+
+            // Check if the doc can be opened and write into it
+            if( this -> json_doc_file.open( QIODevice::WriteOnly | QIODevice::Text ) ){
+                QTextStream iStream( &this -> json_doc_file );
+                iStream.setEncoding( QStringConverter::Utf8 );
+                iStream << this -> json_doc_bytes;
+                this -> json_doc_file.close();
+                this -> host -> close();
+            }
+            else {
+                this -> error_label -> setText( "Unable to open the passwords file!" );
+                this -> error_label -> setVisible( true );
+            }
+        }
     }
 }
