@@ -18,9 +18,15 @@
 // States
 #include <states/password_manager_state.hpp>
 
+// Entities
+#include <entities/password.hpp>
+
 // Qt
 #include <QLabel>
 #include <QPushButton>
+
+// STD
+#include <filesystem>
 
 namespace kmanager::state{
 
@@ -190,10 +196,57 @@ namespace kmanager::state{
      * 
      */
     void PasswordManagerState::displayPasswords(){
-        
-        // Append element to QVector from Json file
 
-        // Draw widgets for each password
+        // Get passwords path
+        this -> password_dir.str( "" );
+        this -> password_dir.clear();
+        #ifdef _WIN32
+            this -> password_dir << "C:\\Users\\" 
+                                 << this -> username 
+                                 << "\\.key-manager_files\\passwords\\";
+        #else
+            this -> password_dir << "/home/" 
+                                 << this -> username 
+                                 << "/.key-manager_files/passwords/";
+        #endif
+        
+        // Iterate over password files
+        for( const auto& file: std::filesystem::directory_iterator( this -> password_dir.str() ) ){
+
+            // Append element to QVector from Json file
+            this -> password_file.setFileName( file.path().c_str() );
+            this -> password_file.open( QIODevice::ReadOnly | QIODevice::Text );
+            this -> file_val = password_file.readAll();
+            this -> password_file.close();
+            this -> json_doc = QJsonDocument::fromJson( file_val.toUtf8() );
+            this -> json_obj = json_doc.object();
+            this -> current_password.username = json_obj.value( QString( "Username" ) ).toString();
+            this -> current_password.platform = json_obj.value( QString( "Platform / Website" ) ).toString();
+            this -> current_password.note = json_obj.value( QString( "Note" ) ).toString();
+            this -> current_password.password_str = json_obj.value( QString( "Password" ) ).toString();
+
+            // Draw platform label for each password
+            QSharedPointer<QLabel> current_platform_label{ QSharedPointer<QLabel>( new QLabel( this -> host -> host ) ) };
+            current_platform_label -> setVisible( false );
+            current_platform_label -> setText( this -> current_password.platform );
+            current_platform_label -> setStyleSheet( "font-size: 18px" );
+            current_platform_label -> move(
+                this -> password_platform -> geometry().x(),
+                this -> password_platform -> geometry().y() +  this -> x_pos_increment
+            );
+            current_platform_label -> resize( this -> label_width, this -> label_height );
+            current_platform_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
+            this -> platform_label_vec.push_back( current_platform_label );
+
+            // Add label for username
+
+            // Add label for password
+
+            // Add label for note
+
+            // Increment position for next iteration
+            this -> x_pos_increment += 50.f;
+        }
     }
 
     //====================================================
@@ -218,5 +271,14 @@ namespace kmanager::state{
 
         // LineEdits
         this -> assignProperty( this -> find_input.get(), "visible", true );
+
+        // Vector of platform labels
+        std::for_each(
+            this -> platform_label_vec.cbegin(),
+            this -> platform_label_vec.cend(),
+            [ this ]( const auto& label ){
+                this -> assignProperty( label.get(), "visible", true );
+            }
+        );
     }
 }

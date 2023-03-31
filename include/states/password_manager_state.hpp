@@ -36,7 +36,14 @@
 #include <QLineEdit>
 #include <QVBoxLayout>
 #include <QWidget>
+#include <QFile>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QVector>
+
+// STD
+#include <sstream>
+#include <cstdlib>
 
 namespace kmanager::state{
 
@@ -71,6 +78,10 @@ namespace kmanager::state{
             QSharedPointer<QPushButton> menu_button;
             QSharedPointer<QLineEdit> find_input;
             QSharedPointer<window::AddPasswordWindow> add_password_window;
+            QVector<QSharedPointer<QLabel>> platform_label_vec;
+            QVector<QSharedPointer<QLabel>> username_label_vec;
+            QVector<QSharedPointer<QLabel>> password_label_vec;
+            QVector<QSharedPointer<QLabel>> note_label_vec;
         
         //====================================================
         //     Private
@@ -86,12 +97,19 @@ namespace kmanager::state{
             MenuState* host;
             QIcon add_password_icon;
             QIcon menu_icon;
-            QVector<entity::Password> password_list;
+            entity::Password current_password;
+            std::ostringstream password_dir;
+            QFile password_file;
+            QString file_val;
+            QJsonDocument json_doc;
+            QJsonObject json_obj;
+            float x_pos_increment = 50.f;
 
             // Constants
             const int16_t label_width = this -> host -> host -> width() * 0.25f;
             const int16_t label_height = 50.f;
             const QString label_settings = "background-color : #4682b4; color: white; padding: 8%; font-size: 20px";
+            const std::string username = std::getenv( "USERNAME" );
 
         //====================================================
         //     Private slots

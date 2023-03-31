@@ -42,4 +42,18 @@ namespace kmanager::entity{
     Password::~Password(){
     
     }
+
+    //====================================================
+    //     clear
+    //====================================================
+    /**
+     * @brief Clear all the class attributes
+     * 
+     */
+    void Password::clear(){
+        this -> password_str.clear();
+        this -> username.clear();
+        this -> note.clear();
+        this -> platform.clear();
+    }
 }

@@ -42,6 +42,9 @@ namespace kmanager::entity{
             Password();
             virtual ~Password();
 
+            // Methods
+            void clear();
+
             // Attributes
             QString password_str;
             QString platform;
