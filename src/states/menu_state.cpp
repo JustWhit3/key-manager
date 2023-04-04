@@ -110,6 +110,7 @@ namespace kmanager::state{
             this -> options_button -> geometry().x(),
             this -> options_button -> geometry().y() + 80.f
         );
+
         QObject::connect( 
             this -> exit_button.get(), 
             SIGNAL( clicked() ), 

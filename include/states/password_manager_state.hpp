@@ -40,6 +40,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QVector>
+#include <QTimer>
 
 // STD
 #include <sstream>
@@ -103,8 +104,13 @@ namespace kmanager::state{
             QString file_val;
             QJsonDocument json_doc;
             QJsonObject json_obj;
-            float x_pos_increment = 50.f;
-
+            float x_pos_increment;
+            size_t old_passwords_number;
+            size_t current_passwords_number;
+            QSharedPointer<QTimer> timer;
+            bool menu_button_pressed;
+            bool repaint_passwords;
+            
             // Constants
             const int16_t label_width = this -> host -> host -> width() * 0.25f;
             const int16_t label_height = 50.f;
@@ -118,6 +124,9 @@ namespace kmanager::state{
 
             // Methods
             void addPassword();
+            void updatePasswordsView();
+            void stopTimeLoop();
+            void startTimeLoop();
     };
 }
 

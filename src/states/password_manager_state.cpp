@@ -24,6 +24,7 @@
 // Qt
 #include <QLabel>
 #include <QPushButton>
+#include <QTimer>
 
 // STD
 #include <filesystem>
@@ -40,7 +41,27 @@ namespace kmanager::state{
      */
     PasswordManagerState::PasswordManagerState( MenuState *host, QState *parent ):
         BaseState( parent ),
-        host( host ){
+        host( host ),
+        x_pos_increment( 50.f ),
+        menu_button_pressed( false ),
+        repaint_passwords( false ){
+
+        // Get passwords path
+        #ifdef _WIN32
+            this -> password_dir << "C:\\Users\\" 
+                                 << this -> username 
+                                 << "\\.key-manager_files\\passwords\\";
+        #else
+            this -> password_dir << "/home/" 
+                                 << this -> username 
+                                 << "/.key-manager_files/passwords/";
+        #endif
+
+        // Compute old passwords number in the password dir
+        this -> old_passwords_number = std::distance(
+            std::filesystem::directory_iterator( this -> password_dir.str() ),
+            std::filesystem::directory_iterator{}
+        );
     
         // Create widgets
         this -> addWidgets();
@@ -152,6 +173,13 @@ namespace kmanager::state{
         this -> menu_button -> setIcon( this -> menu_icon );
         this -> menu_button -> setIconSize( QSize( this -> label_height, this -> label_height ) );
 
+        QObject::connect( 
+            this -> menu_button.get(), 
+            SIGNAL( clicked() ), 
+            this, 
+            SLOT( stopTimeLoop() ) 
+        );
+
         // Add password button
         this -> add_password_button = QSharedPointer<QPushButton>( new QPushButton( "", this -> host -> host ) );
         this -> add_password_button -> setVisible( false );
@@ -174,6 +202,11 @@ namespace kmanager::state{
 
         // Display password widgets
         this -> displayPasswords();
+
+        // Update passwords at each frame
+        this -> timer = QSharedPointer<QTimer>( new QTimer( this ) );
+        connect( timer.get(), SIGNAL( timeout() ), this, SLOT( updatePasswordsView() ) );
+        timer -> start( 1 );
     }
 
     //====================================================
@@ -196,19 +229,6 @@ namespace kmanager::state{
      * 
      */
     void PasswordManagerState::displayPasswords(){
-
-        // Get passwords path
-        this -> password_dir.str( "" );
-        this -> password_dir.clear();
-        #ifdef _WIN32
-            this -> password_dir << "C:\\Users\\" 
-                                 << this -> username 
-                                 << "\\.key-manager_files\\passwords\\";
-        #else
-            this -> password_dir << "/home/" 
-                                 << this -> username 
-                                 << "/.key-manager_files/passwords/";
-        #endif
         
         // Iterate over password files
         for( const auto& file: std::filesystem::directory_iterator( this -> password_dir.str() ) ){
@@ -244,9 +264,67 @@ namespace kmanager::state{
 
             // Add label for note
 
+            // Add extra buttons
+
             // Increment position for next iteration
             this -> x_pos_increment += 50.f;
         }
+    }
+
+    //====================================================
+    //     updatePasswordsView
+    //====================================================
+    /**
+     * @brief Update passwords view on the screen.
+     * 
+     */
+    void PasswordManagerState::updatePasswordsView(){
+
+        if( ! menu_button_pressed ){
+            
+            // Get current number of password files in the dir
+            this -> current_passwords_number = std::distance(
+                std::filesystem::directory_iterator( this -> password_dir.str() ),
+                std::filesystem::directory_iterator{}
+            );
+
+            // Compare with old number and update the view
+            if( this -> current_passwords_number > this -> old_passwords_number || this -> repaint_passwords ){
+                this -> x_pos_increment = 50.f;
+                this -> displayPasswords();
+                std::for_each(
+                    this -> platform_label_vec.cbegin(),
+                    this -> platform_label_vec.cend(),
+                    [ this ]( const auto& el ){ el -> show(); }
+                );
+                this -> old_passwords_number = this -> current_passwords_number;
+                this -> repaint_passwords = false;
+            }
+        }
+    }
+
+    //====================================================
+    //     stopTimeLoop
+    //====================================================
+    /**
+     * @brief Stop time loop instructions when back to menu state.
+     * 
+     */
+    void PasswordManagerState::stopTimeLoop(){
+        this -> menu_button_pressed = true;
+        
+    }
+
+    //====================================================
+    //     startTimeLoop
+    //====================================================
+    /**
+     * @brief Start time loop instructions when back to menu state.
+     * 
+     */
+    void PasswordManagerState::startTimeLoop(){
+        this -> menu_button_pressed = false;
+        this -> repaint_passwords = true;
     }
 
     //====================================================

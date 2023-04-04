@@ -145,6 +145,14 @@ namespace kmanager::window{
             this, 
             SLOT( hideMenuStateWidgets() ) 
         );
+
+        // Restart time loop when entering password manager state
+        QObject::connect( 
+            this -> menu_state -> p_manager_button.get(), 
+            SIGNAL( clicked() ), 
+            this -> p_manager_state.get(), 
+            SLOT( startTimeLoop() ) 
+        );
     }
 
     //====================================================
@@ -190,5 +198,14 @@ namespace kmanager::window{
 
         // QLineEdit
         this -> menu_state -> assignProperty( this -> p_manager_state -> find_input.get(), "visible", false );
+
+        // Vector of platform labels
+        std::for_each(
+            this -> p_manager_state -> platform_label_vec.cbegin(),
+            this -> p_manager_state -> platform_label_vec.cend(),
+            [ this ]( const auto& label ){
+                this -> menu_state -> assignProperty( label.get(), "visible", false );
+            }
+        );
     }
 }
