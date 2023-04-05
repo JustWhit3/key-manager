@@ -80,10 +80,6 @@ namespace kmanager::state{
             QSharedPointer<QLineEdit> find_input;
             QSharedPointer<window::AddPasswordWindow> add_password_window;
             std::vector<entity::Password<QSharedPointer<QLabel>>> label_vec;
-            std::vector<QSharedPointer<QLabel>> platform_label_vec;
-            std::vector<QSharedPointer<QLabel>> username_label_vec;
-            std::vector<QSharedPointer<QLabel>> password_label_vec;
-            std::vector<QSharedPointer<QLabel>> note_label_vec;
         
         //====================================================
         //     Private

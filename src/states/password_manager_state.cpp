@@ -28,6 +28,9 @@
 
 // STD
 #include <filesystem>
+#include <algorithm>
+#include <iterator>
+#include <vector>
 
 namespace kmanager::state{
 
@@ -250,10 +253,6 @@ namespace kmanager::state{
             current_platform_label -> setVisible( false );
             current_platform_label -> setText( this -> current_password.platform );
             current_platform_label -> setStyleSheet( "font-size: 18px" );
-            current_platform_label -> move(
-                this -> password_platform -> geometry().x(),
-                this -> password_platform -> geometry().y() +  this -> x_pos_increment
-            );
             current_platform_label -> resize( this -> label_width, this -> label_height );
             current_platform_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
 
@@ -262,10 +261,6 @@ namespace kmanager::state{
             current_username_label -> setVisible( false );
             current_username_label -> setText( this -> current_password.username );
             current_username_label -> setStyleSheet( "font-size: 18px" );
-            current_username_label -> move(
-                this -> password_platform -> geometry().x() + this -> password_platform -> geometry().width(),
-                this -> password_platform -> geometry().y() + this -> x_pos_increment
-            );
             current_username_label -> resize( this -> label_width, this -> label_height );
             current_username_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
 
@@ -274,10 +269,6 @@ namespace kmanager::state{
             current_password_label -> setVisible( false );
             current_password_label -> setText( this -> current_password.password_str );
             current_password_label -> setStyleSheet( "font-size: 18px" );
-            current_password_label -> move(
-                this -> password_platform -> geometry().x() + ( 2.f * this -> password_platform -> geometry().width() ),
-                this -> password_platform -> geometry().y() + this -> x_pos_increment
-            );
             current_password_label -> resize( this -> label_width, this -> label_height );
             current_password_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
 
@@ -286,10 +277,6 @@ namespace kmanager::state{
             current_note_label -> setVisible( false );
             current_note_label -> setText( this -> current_password.password_str );
             current_note_label -> setStyleSheet( "font-size: 18px" );
-            current_note_label -> move(
-                this -> password_platform -> geometry().x() + ( 3.f * this -> password_platform -> geometry().width() ),
-                this -> password_platform -> geometry().y() + this -> x_pos_increment
-            );
             current_note_label -> resize( this -> label_width, this -> label_height );
             current_note_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
 
@@ -300,6 +287,41 @@ namespace kmanager::state{
             new_password.password_str = current_password_label;
             new_password.note = current_note_label;
             this -> label_vec.push_back( new_password );
+
+            // Reorder vector elements by platform name string
+            std::sort(
+                this -> label_vec.begin(),
+                this -> label_vec.end(),
+                []( const auto& a, const auto& b ){
+                    return a.platform -> text() < b.platform -> text();
+                }
+            );
+
+            // Place labels on the screen
+            this -> x_pos_increment = 50.f;
+            std::for_each(
+                this -> label_vec.cbegin(),
+                this -> label_vec.cend(),
+                [ this ]( const auto& el ){ 
+                    el.platform -> move(
+                        this -> password_platform -> geometry().x(),
+                        this -> password_platform -> geometry().y() + this -> x_pos_increment
+                    );
+                    el.username -> move(
+                        this -> password_platform -> geometry().x() + this -> password_platform -> geometry().width(),
+                        this -> password_platform -> geometry().y() + this -> x_pos_increment
+                    );
+                    el.password_str -> move(
+                        this -> password_platform -> geometry().x() + ( 2.f * this -> password_platform -> geometry().width() ),
+                        this -> password_platform -> geometry().y() + this -> x_pos_increment
+                    );
+                    el.note -> move(
+                        this -> password_platform -> geometry().x() + ( 3.f * this -> password_platform -> geometry().width() ),
+                        this -> password_platform -> geometry().y() + this -> x_pos_increment
+                    );
+                    this -> x_pos_increment += 50.f;
+                 }
+            );
 
             // Add extra buttons for deleting etc...
 
@@ -327,12 +349,12 @@ namespace kmanager::state{
 
             // Compare with old number and update the view
             if( this -> current_passwords_number > this -> old_passwords_number || this -> repaint_passwords ){
-                this -> x_pos_increment = 50.f;
+                this -> label_vec.clear();
                 this -> displayPasswords();
                 std::for_each(
                     this -> label_vec.cbegin(),
                     this -> label_vec.cend(),
-                    [ this ]( const auto& el ){ 
+                    []( const auto& el ){ 
                         el.platform -> show(); 
                         el.username -> show();
                         el.password_str -> show();
