@@ -25,6 +25,8 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QTimer>
+#include <QVBoxLayout>
+#include <QSizePolicy>
 
 // STD
 #include <filesystem>
@@ -202,6 +204,14 @@ namespace kmanager::state{
             this, 
             SLOT( addPassword() ) 
         );
+
+        // Scroll area CONTINUA DA QUI
+        //QHBoxLayout* layout = new QHBoxLayout( this -> host -> host );
+        //QScrollArea* scroll_area = new QScrollArea();
+        //scroll_area->setWidget(this -> host -> host);
+        //scroll_area -> setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        //scroll_area -> setVerticalScrollBarPolicy( Qt::ScrollBarAsNeeded);
+        //scroll_area->show();
 
         // Display password widgets
         this -> displayPasswords();

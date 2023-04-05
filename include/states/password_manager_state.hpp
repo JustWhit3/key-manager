@@ -40,6 +40,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QTimer>
+#include <QScrollBar>
 
 // STD
 #include <sstream>

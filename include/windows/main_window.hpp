@@ -63,6 +63,7 @@ namespace kmanager::window{
             void keyPressEvent( QKeyEvent *event ) override;
             void setWindowProperties() override;
             void initStateMachine() override;
+            void closeEvent( QCloseEvent* event ) override;
             void buttonsPressedActions();
 
             // Variables (states)

@@ -68,6 +68,18 @@ namespace kmanager::window{
     }
 
     //====================================================
+    //     closeEvent
+    //====================================================
+    /**
+     * @brief MMethod used to deal with close-window event.
+     * 
+     */
+    void MainWindow::closeEvent( QCloseEvent* event ){
+        event -> accept();
+        qApp -> quit();
+    }
+
+    //====================================================
     //     keyPressEvent
     //====================================================
     /**
