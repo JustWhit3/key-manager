@@ -28,9 +28,10 @@ namespace kmanager::entity{
     //     Password
     //====================================================
     /**
-     * @brief Class used to construct the password entity.
+     * @brief Template class used to construct the password entity.
      * 
      */
+    template <typename T>
     class Password{
     
         //====================================================
@@ -38,18 +39,33 @@ namespace kmanager::entity{
         //====================================================
         public:
 
-            // Constructors / destructor
-            Password();
-            virtual ~Password();
+            //====================================================
+            //     Password (constructor)
+            //====================================================
+            /**
+             * @brief Construct a new Password object.
+             * 
+             */
+            Password(){
 
-            // Methods
-            void clear();
+            }
+
+            //====================================================
+            //     Password (destructor)
+            //====================================================
+            /**
+             * @brief Destroy the Password object.
+             * 
+             */
+            virtual ~Password(){
+
+            }
 
             // Attributes
-            QString password_str;
-            QString platform;
-            QString username;
-            QString note;
+            T password_str;
+            T platform;
+            T username;
+            T note;
     };
 }
 

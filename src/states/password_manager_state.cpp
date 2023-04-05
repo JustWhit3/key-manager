@@ -233,7 +233,7 @@ namespace kmanager::state{
         // Iterate over password files
         for( const auto& file: std::filesystem::directory_iterator( this -> password_dir.str() ) ){
 
-            // Append element to QVector from Json file
+            // Append element to vector from Json file
             this -> password_file.setFileName( file.path().c_str() );
             this -> password_file.open( QIODevice::ReadOnly | QIODevice::Text );
             this -> file_val = password_file.readAll();
@@ -256,15 +256,52 @@ namespace kmanager::state{
             );
             current_platform_label -> resize( this -> label_width, this -> label_height );
             current_platform_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
-            this -> platform_label_vec.push_back( current_platform_label );
 
             // Add label for username
+            QSharedPointer<QLabel> current_username_label{ QSharedPointer<QLabel>( new QLabel( this -> host -> host ) ) };
+            current_username_label -> setVisible( false );
+            current_username_label -> setText( this -> current_password.username );
+            current_username_label -> setStyleSheet( "font-size: 18px" );
+            current_username_label -> move(
+                this -> password_platform -> geometry().x() + this -> password_platform -> geometry().width(),
+                this -> password_platform -> geometry().y() + this -> x_pos_increment
+            );
+            current_username_label -> resize( this -> label_width, this -> label_height );
+            current_username_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
 
             // Add label for password
+            QSharedPointer<QLabel> current_password_label{ QSharedPointer<QLabel>( new QLabel( this -> host -> host ) ) };
+            current_password_label -> setVisible( false );
+            current_password_label -> setText( this -> current_password.password_str );
+            current_password_label -> setStyleSheet( "font-size: 18px" );
+            current_password_label -> move(
+                this -> password_platform -> geometry().x() + ( 2.f * this -> password_platform -> geometry().width() ),
+                this -> password_platform -> geometry().y() + this -> x_pos_increment
+            );
+            current_password_label -> resize( this -> label_width, this -> label_height );
+            current_password_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
 
             // Add label for note
+            QSharedPointer<QLabel> current_note_label{ QSharedPointer<QLabel>( new QLabel( this -> host -> host ) ) };
+            current_note_label -> setVisible( false );
+            current_note_label -> setText( this -> current_password.password_str );
+            current_note_label -> setStyleSheet( "font-size: 18px" );
+            current_note_label -> move(
+                this -> password_platform -> geometry().x() + ( 3.f * this -> password_platform -> geometry().width() ),
+                this -> password_platform -> geometry().y() + this -> x_pos_increment
+            );
+            current_note_label -> resize( this -> label_width, this -> label_height );
+            current_note_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
 
-            // Add extra buttons
+            // Fill the label containers
+            entity::Password<QSharedPointer<QLabel>> new_password;
+            new_password.platform = current_platform_label;
+            new_password.username = current_username_label;
+            new_password.password_str = current_password_label;
+            new_password.note = current_note_label;
+            this -> label_vec.push_back( new_password );
+
+            // Add extra buttons for deleting etc...
 
             // Increment position for next iteration
             this -> x_pos_increment += 50.f;
@@ -293,9 +330,14 @@ namespace kmanager::state{
                 this -> x_pos_increment = 50.f;
                 this -> displayPasswords();
                 std::for_each(
-                    this -> platform_label_vec.cbegin(),
-                    this -> platform_label_vec.cend(),
-                    [ this ]( const auto& el ){ el -> show(); }
+                    this -> label_vec.cbegin(),
+                    this -> label_vec.cend(),
+                    [ this ]( const auto& el ){ 
+                        el.platform -> show(); 
+                        el.username -> show();
+                        el.password_str -> show();
+                        el.note -> show();
+                    }
                 );
                 this -> old_passwords_number = this -> current_passwords_number;
                 this -> repaint_passwords = false;
@@ -350,12 +392,15 @@ namespace kmanager::state{
         // LineEdits
         this -> assignProperty( this -> find_input.get(), "visible", true );
 
-        // Vector of platform labels
+        // Vector of password labels
         std::for_each(
-            this -> platform_label_vec.cbegin(),
-            this -> platform_label_vec.cend(),
-            [ this ]( const auto& label ){
-                this -> assignProperty( label.get(), "visible", true );
+            this -> label_vec.cbegin(),
+            this -> label_vec.cend(),
+            [ this ]( const auto& el ){
+                this -> assignProperty( el.platform.get(), "visible", true );
+                this -> assignProperty( el.username.get(), "visible", true );
+                this -> assignProperty( el.password_str.get(), "visible", true );
+                this -> assignProperty( el.note.get(), "visible", true );
             }
         );
     }

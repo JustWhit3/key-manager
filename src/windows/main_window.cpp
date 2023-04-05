@@ -199,12 +199,15 @@ namespace kmanager::window{
         // QLineEdit
         this -> menu_state -> assignProperty( this -> p_manager_state -> find_input.get(), "visible", false );
 
-        // Vector of platform labels
+        // Vector of password labels
         std::for_each(
-            this -> p_manager_state -> platform_label_vec.cbegin(),
-            this -> p_manager_state -> platform_label_vec.cend(),
-            [ this ]( const auto& label ){
-                this -> menu_state -> assignProperty( label.get(), "visible", false );
+            this -> p_manager_state -> label_vec.cbegin(),
+            this -> p_manager_state -> label_vec.cend(),
+            [ this ]( const auto& el ){
+                this -> menu_state -> assignProperty( el.platform.get(), "visible", false );
+                this -> menu_state -> assignProperty( el.username.get(), "visible", false );
+                this -> menu_state -> assignProperty( el.password_str.get(), "visible", false );
+                this -> menu_state -> assignProperty( el.note.get(), "visible", false );
             }
         );
     }

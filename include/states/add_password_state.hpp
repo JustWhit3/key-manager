@@ -90,7 +90,7 @@ namespace kmanager::state{
             void assignProperties() override;
 
             // Variables
-            entity::Password new_password;
+            entity::Password<QString> new_password;
             std::ostringstream file_oss;
             QJsonObject main_container;
             QJsonDocument json_doc;

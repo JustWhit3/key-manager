@@ -39,12 +39,12 @@
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <QVector>
 #include <QTimer>
 
 // STD
 #include <sstream>
 #include <cstdlib>
+#include <vector>
 
 namespace kmanager::state{
 
@@ -79,10 +79,11 @@ namespace kmanager::state{
             QSharedPointer<QPushButton> menu_button;
             QSharedPointer<QLineEdit> find_input;
             QSharedPointer<window::AddPasswordWindow> add_password_window;
-            QVector<QSharedPointer<QLabel>> platform_label_vec;
-            QVector<QSharedPointer<QLabel>> username_label_vec;
-            QVector<QSharedPointer<QLabel>> password_label_vec;
-            QVector<QSharedPointer<QLabel>> note_label_vec;
+            std::vector<entity::Password<QSharedPointer<QLabel>>> label_vec;
+            std::vector<QSharedPointer<QLabel>> platform_label_vec;
+            std::vector<QSharedPointer<QLabel>> username_label_vec;
+            std::vector<QSharedPointer<QLabel>> password_label_vec;
+            std::vector<QSharedPointer<QLabel>> note_label_vec;
         
         //====================================================
         //     Private
@@ -98,7 +99,7 @@ namespace kmanager::state{
             MenuState* host;
             QIcon add_password_icon;
             QIcon menu_icon;
-            entity::Password current_password;
+            entity::Password<QString> current_password;
             std::ostringstream password_dir;
             QFile password_file;
             QString file_val;
