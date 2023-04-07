@@ -81,6 +81,9 @@ namespace kmanager::state{
             QSharedPointer<QLineEdit> find_input;
             QSharedPointer<window::AddPasswordWindow> add_password_window;
             std::vector<entity::Password<QSharedPointer<QLabel>>> label_vec;
+            QSharedPointer<QScrollArea> scroll_area;
+            QSharedPointer<QWidget> scroll_widget;
+            QSharedPointer<QGridLayout> scroll_layout;
         
         //====================================================
         //     Private
@@ -108,6 +111,7 @@ namespace kmanager::state{
             QSharedPointer<QTimer> timer;
             bool menu_button_pressed;
             bool repaint_passwords;
+            int64_t grid_counter;
             
             // Constants
             const int16_t label_width = this -> host -> host -> width() * 0.25f;

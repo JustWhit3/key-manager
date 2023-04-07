@@ -197,6 +197,10 @@ namespace kmanager::window{
      */
     void MainWindow::hideMenuStateWidgets(){
 
+        // Scroll area widgets
+        this -> menu_state -> assignProperty( this -> p_manager_state -> scroll_area.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_manager_state -> scroll_widget.get(), "visible", false );
+
         // Buttons
         this -> menu_state -> assignProperty( this -> p_manager_state -> find_button.get(), "visible", false );
         this -> menu_state -> assignProperty( this -> p_manager_state -> add_password_button.get(), "visible", false );
@@ -210,17 +214,5 @@ namespace kmanager::window{
 
         // QLineEdit
         this -> menu_state -> assignProperty( this -> p_manager_state -> find_input.get(), "visible", false );
-
-        // Vector of password labels
-        std::for_each(
-            this -> p_manager_state -> label_vec.cbegin(),
-            this -> p_manager_state -> label_vec.cend(),
-            [ this ]( const auto& el ){
-                this -> menu_state -> assignProperty( el.platform.get(), "visible", false );
-                this -> menu_state -> assignProperty( el.username.get(), "visible", false );
-                this -> menu_state -> assignProperty( el.password_str.get(), "visible", false );
-                this -> menu_state -> assignProperty( el.note.get(), "visible", false );
-            }
-        );
     }
 }
