@@ -47,7 +47,6 @@ namespace kmanager::state{
     PasswordManagerState::PasswordManagerState( MenuState *host, QState *parent ):
         BaseState( parent ),
         host( host ),
-        x_pos_increment( 50.f ),
         menu_button_pressed( false ),
         repaint_passwords( false ){
 
@@ -94,28 +93,6 @@ namespace kmanager::state{
      * 
      */
     void PasswordManagerState::addWidgets(){
-
-        // Scroll area
-        this -> scroll_area = QSharedPointer<QScrollArea>( new QScrollArea( this -> host -> host ) );
-        this -> scroll_area -> setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOn );
-        this -> scroll_area -> setWidgetResizable( true );
-        this -> scroll_area -> setGeometry(
-            0, 
-            150.f,
-            this -> host -> host -> geometry().width(),
-            this -> host -> host -> geometry().height() - 170.f
-        );
-        this -> scroll_area -> setVisible( false );
-
-        // Scroll widget
-        this -> scroll_widget = QSharedPointer<QWidget>( new QWidget() );
-        this -> scroll_area -> setWidget( this -> scroll_widget.get() );
-        this -> scroll_widget -> setVisible( false );
-
-        // Scroll layout
-        this -> scroll_layout = QSharedPointer<QGridLayout>( new QGridLayout() );
-        this -> scroll_layout -> setVerticalSpacing( 30.f );
-        this -> scroll_widget -> setLayout( this -> scroll_layout.get() );
 
         // Password platform label
         this -> password_platform = QSharedPointer<QLabel>( new QLabel( this -> host -> host ) );
@@ -175,7 +152,7 @@ namespace kmanager::state{
         this -> find_button -> resize( this -> label_width * 0.25f, this -> label_height );
         this -> find_button -> setStyleSheet( "font-size: 20px;");
         this -> find_button -> move(
-            this -> password_note -> geometry().x() + 210.f,
+            this -> password_note -> geometry().x() + 205.f,
             this -> password_note -> geometry().y() - label_height
         );
 
@@ -227,6 +204,29 @@ namespace kmanager::state{
             SLOT( addPassword() ) 
         );
 
+        // Scroll area
+        this -> scroll_area = QSharedPointer<QScrollArea>( new QScrollArea( this -> host -> host ) );
+        this -> scroll_area -> setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOn );
+        this -> scroll_area -> setWidgetResizable( true );
+        this -> scroll_area -> setGeometry(
+            0.f, 
+            150.f,
+            this -> host -> host -> geometry().width(),
+            this -> host -> host -> geometry().height() - 170.f
+        );
+        this -> scroll_area -> setVisible( false );
+
+        // Scroll widget
+        this -> scroll_widget = QSharedPointer<QWidget>( new QWidget() );
+        this -> scroll_area -> setWidget( this -> scroll_widget.get() );
+        this -> scroll_widget -> setVisible( false );
+
+        // Scroll layout
+        this -> scroll_layout = QSharedPointer<QGridLayout>( new QGridLayout() );
+        this -> scroll_layout -> setVerticalSpacing( 10.f );
+        this -> scroll_layout -> setHorizontalSpacing( 20.f );
+        this -> scroll_widget -> setLayout( this -> scroll_layout.get() );
+
         // Display password widgets
         this -> displayPasswords();
 
@@ -273,39 +273,43 @@ namespace kmanager::state{
             this -> current_password.password_str = json_obj.value( QString( "Password" ) ).toString();
 
             // Draw platform label for each password
-            QSharedPointer<QLabel> current_platform_label{ QSharedPointer<QLabel>( new QLabel( this -> scroll_widget.get() ) ) };
+            QLabel* current_platform_label{ new QLabel( this -> scroll_widget.get() ) };
             current_platform_label -> setVisible( false );
             current_platform_label -> setText( this -> current_password.platform );
-            current_platform_label -> setStyleSheet( "font-size: 18px" );
             current_platform_label -> resize( this -> label_width, this -> label_height );
             current_platform_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
+            current_platform_label -> setFrameStyle( QFrame::Panel | QFrame::Sunken );
+            current_platform_label -> setStyleSheet( this -> label_list_settings );
 
             // Add label for username
-            QSharedPointer<QLabel> current_username_label{ QSharedPointer<QLabel>( new QLabel( this -> scroll_widget.get()  ) ) };
+            QLabel* current_username_label{ new QLabel( this -> scroll_widget.get() ) };
             current_username_label -> setVisible( false );
             current_username_label -> setText( this -> current_password.username );
-            current_username_label -> setStyleSheet( "font-size: 18px" );
             current_username_label -> resize( this -> label_width, this -> label_height );
             current_username_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
+            current_username_label -> setFrameStyle( QFrame::Panel | QFrame::Sunken );
+            current_username_label -> setStyleSheet( this -> label_list_settings );
 
             // Add label for password
-            QSharedPointer<QLabel> current_password_label{ QSharedPointer<QLabel>( new QLabel( this -> scroll_widget.get()  ) ) };
+            QLabel* current_password_label{ new QLabel( this -> scroll_widget.get() ) };
             current_password_label -> setVisible( false );
             current_password_label -> setText( this -> current_password.password_str );
-            current_password_label -> setStyleSheet( "font-size: 18px" );
             current_password_label -> resize( this -> label_width, this -> label_height );
             current_password_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
+            current_password_label -> setFrameStyle( QFrame::Panel | QFrame::Sunken );
+            current_password_label -> setStyleSheet( this -> label_list_settings );
 
             // Add label for note
-            QSharedPointer<QLabel> current_note_label{ QSharedPointer<QLabel>( new QLabel( this -> scroll_widget.get()  ) ) };
+            QLabel* current_note_label{ new QLabel( this -> scroll_widget.get() ) };
             current_note_label -> setVisible( false );
             current_note_label -> setText( this -> current_password.note );
-            current_note_label -> setStyleSheet( "font-size: 18px" );
             current_note_label -> resize( this -> label_width, this -> label_height );
             current_note_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
+            current_note_label -> setFrameStyle( QFrame::Panel | QFrame::Sunken );
+            current_note_label -> setStyleSheet( this -> label_list_settings );
 
             // Fill the label containers
-            entity::Password<QSharedPointer<QLabel>> new_password;
+            entity::Password<QLabel*> new_password;
             new_password.platform = current_platform_label;
             new_password.username = current_username_label;
             new_password.password_str = current_password_label;
@@ -322,41 +326,16 @@ namespace kmanager::state{
             );
 
             // Place labels on the screen
-            this -> x_pos_increment = 50.f;
-            this -> grid_counter = 0;
-            std::for_each(
-                this -> label_vec.cbegin(),
-                this -> label_vec.cend(),
-                [ this ]( const auto& el ){ 
-                    el.platform -> move(
-                        this -> password_platform -> geometry().x(),
-                        this -> password_platform -> geometry().y() + this -> x_pos_increment
-                    );
-                    el.username -> move(
-                        this -> password_platform -> geometry().x() + this -> password_platform -> geometry().width(),
-                        this -> password_platform -> geometry().y() + this -> x_pos_increment
-                    );
-                    el.password_str -> move(
-                        this -> password_platform -> geometry().x() + ( 2.f * this -> password_platform -> geometry().width() ),
-                        this -> password_platform -> geometry().y() + this -> x_pos_increment
-                    );
-                    el.note -> move(
-                        this -> password_platform -> geometry().x() + ( 3.f * this -> password_platform -> geometry().width() ),
-                        this -> password_platform -> geometry().y() + this -> x_pos_increment
-                    );
-                    this -> scroll_layout -> addWidget( el.platform.get(), this -> grid_counter, 0 );
-                    this -> scroll_layout -> addWidget( el.username.get(), this -> grid_counter, 1 );
-                    this -> scroll_layout -> addWidget( el.password_str.get(), this -> grid_counter, 2 );
-                    this -> scroll_layout -> addWidget( el.note.get(), this -> grid_counter, 3 );
-                    this -> x_pos_increment += 50.f;
-                    this -> grid_counter++;
-                 }
-            );
+            for( auto it = this -> label_vec.begin(), end = this -> label_vec.end(); it != end; ++it ){
+                auto row = std::distance( this -> label_vec.begin(), it );
+                this -> scroll_layout -> addWidget( it -> platform, row, 0 );
+                this -> scroll_layout -> addWidget( it -> username, row, 1 );
+                this -> scroll_layout -> addWidget( it -> password_str, row, 2 );
+                this -> scroll_layout -> addWidget( it -> note, row, 3 );
+            }
 
             // Add extra buttons for deleting etc...
 
-            // Increment position for next iteration
-            this -> x_pos_increment += 50.f;
         }
     }
 

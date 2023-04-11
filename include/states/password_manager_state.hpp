@@ -80,7 +80,7 @@ namespace kmanager::state{
             QSharedPointer<QPushButton> menu_button;
             QSharedPointer<QLineEdit> find_input;
             QSharedPointer<window::AddPasswordWindow> add_password_window;
-            std::vector<entity::Password<QSharedPointer<QLabel>>> label_vec;
+            std::vector<entity::Password<QLabel*>> label_vec;
             QSharedPointer<QScrollArea> scroll_area;
             QSharedPointer<QWidget> scroll_widget;
             QSharedPointer<QGridLayout> scroll_layout;
@@ -105,18 +105,17 @@ namespace kmanager::state{
             QString file_val;
             QJsonDocument json_doc;
             QJsonObject json_obj;
-            float x_pos_increment;
             size_t old_passwords_number;
             size_t current_passwords_number;
             QSharedPointer<QTimer> timer;
             bool menu_button_pressed;
             bool repaint_passwords;
-            int64_t grid_counter;
             
             // Constants
-            const int16_t label_width = this -> host -> host -> width() * 0.25f;
+            const int16_t label_width = this -> host -> host -> width() * 0.2482f;
             const int16_t label_height = 50.f;
             const QString label_settings = "background-color : #4682b4; color: white; padding: 8%; font-size: 20px";
+            const QString label_list_settings = "padding: 8%";
             const std::string username = std::getenv( "USERNAME" );
 
         //====================================================
