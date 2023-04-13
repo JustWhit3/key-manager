@@ -321,7 +321,7 @@ namespace kmanager::state{
                 this -> label_vec.begin(),
                 this -> label_vec.end(),
                 []( const auto& a, const auto& b ){
-                    return a.platform -> text() < b.platform -> text();
+                    return a.platform -> text().toLower() < b.platform -> text().toLower();
                 }
             );
 
