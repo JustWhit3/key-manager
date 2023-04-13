@@ -99,7 +99,7 @@ namespace kmanager::state{
 
             // Constants
             const QString widget_font_size{ "font-size: 20px" };
-            const std::string username = std::getenv( "USERNAME" );
+            const std::string username{ std::getenv( "USERNAME" ) };
 
         //====================================================
         //     Private slots

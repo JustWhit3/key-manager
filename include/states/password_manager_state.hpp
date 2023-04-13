@@ -113,10 +113,10 @@ namespace kmanager::state{
             
             // Constants
             const int16_t label_width = this -> host -> host -> width() * 0.2482f;
-            const int16_t label_height = 50.f;
-            const QString label_settings = "background-color : #4682b4; color: white; padding: 8%; font-size: 20px";
-            const QString label_list_settings = "padding: 8%";
-            const std::string username = std::getenv( "USERNAME" );
+            const int16_t label_height{ 50.f };
+            const QString label_settings{ "background-color : #4682b4; color: white; padding: 8%; font-size: 20px" };
+            const QString label_list_settings{ "padding: 8%" };
+            const std::string username{ std::getenv( "USERNAME" ) };
 
         //====================================================
         //     Private slots
