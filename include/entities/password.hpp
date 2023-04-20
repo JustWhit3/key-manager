@@ -21,6 +21,8 @@
 
 // Qt
 #include <QString>
+#include <QCheckBox>
+#include <QLayout>
 
 namespace kmanager::entity{
 
@@ -32,7 +34,7 @@ namespace kmanager::entity{
      * 
      */
     template <typename T>
-    class Password{
+    class Password {
     
         //====================================================
         //     public
@@ -96,6 +98,7 @@ namespace kmanager::entity{
             T platform;
             T username;
             T note;
+            QWidget* password_toggle;
     };
 }
 
