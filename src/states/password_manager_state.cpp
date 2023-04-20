@@ -287,21 +287,18 @@ namespace kmanager::state{
 
             // Draw platform label for each password
             this -> current_platform_label = new QLineEdit( this -> scroll_widget.get() );
-            this -> current_platform_label -> setVisible( false );
             this -> current_platform_label -> setText( this -> current_password.platform );
             this -> current_platform_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
             this -> current_platform_label -> setStyleSheet( this -> label_list_settings );
 
             // Add label for username
             this -> current_username_label = new QLineEdit( this -> scroll_widget.get() );
-            this -> current_username_label -> setVisible( false );
             this -> current_username_label -> setText( this -> current_password.username );
             this -> current_username_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
             this -> current_username_label -> setStyleSheet( this -> label_list_settings );
 
             // Add label for password
             this -> current_password_label = new QLineEdit( this -> scroll_widget.get() );
-            this -> current_password_label -> setVisible( false );
             this -> current_password_label -> setText( this -> current_password.password_str );
             this -> current_password_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
             this -> current_password_label -> setStyleSheet( this -> label_list_settings );
@@ -317,15 +314,14 @@ namespace kmanager::state{
 
             // Create widget for password toggle
             this -> password_widget = new QWidget( this -> host -> host );
-            QHBoxLayout* password_toggle{ new QHBoxLayout( password_widget ) };
-            password_toggle -> setSpacing( 5.f );
-            password_toggle -> addWidget( checkbox_password_label );
-            password_toggle -> addWidget( current_password_label );
-            password_widget -> setLayout( password_toggle );
+            this -> password_toggle = new QHBoxLayout( password_widget );
+            this -> password_toggle -> setSpacing( 5.f );
+            this -> password_toggle -> addWidget( checkbox_password_label );
+            this -> password_toggle -> addWidget( current_password_label );
+            this -> password_widget -> setLayout( password_toggle );
 
             // Add label for note
             this -> current_note_label = new QLineEdit( this -> scroll_widget.get() );
-            current_note_label -> setVisible( false );
             current_note_label -> setText( this -> current_password.note );
             current_note_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
             current_note_label -> setStyleSheet( this -> label_list_settings );
@@ -386,17 +382,8 @@ namespace kmanager::state{
                 
                 // Display the new view
                 this -> displayPasswords();
-                std::for_each(
-                    this -> label_vec.cbegin(),
-                    this -> label_vec.cend(),
-                    []( const auto& el ){ 
-                        el.platform -> show(); 
-                        el.username -> show();
-                        el.password_str -> show();
-                        el.note -> show();
-                    }
-                );
-                qDebug() << this -> scroll_layout -> count();
+
+                // Reset indicators
                 this -> old_passwords_number = this -> current_passwords_number;
                 this -> repaint_passwords = false;
             }
