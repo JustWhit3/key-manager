@@ -86,6 +86,39 @@ namespace kmanager::state{
     }
 
     //====================================================
+    //     setScrollArea
+    //====================================================
+    /**
+     * @brief Method used to set-up the scroll area.
+     * 
+     */
+    void PasswordManagerState::setScrollArea(){
+
+        // Scroll area
+        this -> scroll_area = QSharedPointer<QScrollArea>( new QScrollArea( this -> host -> host ) );
+        this -> scroll_area -> setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOn );
+        this -> scroll_area -> setWidgetResizable( true );
+        this -> scroll_area -> setGeometry(
+            0.f, 
+            150.f,
+            this -> host -> host -> geometry().width(),
+            this -> host -> host -> geometry().height() - 170.f
+        );
+        this -> scroll_area -> setVisible( false );
+
+        // Scroll widget
+        this -> scroll_widget = QSharedPointer<QWidget>( new QWidget() );
+        this -> scroll_area -> setWidget( this -> scroll_widget.get() );
+        this -> scroll_widget -> setVisible( false );
+
+        // Scroll layout
+        this -> scroll_layout = QSharedPointer<QGridLayout>( new QGridLayout() );
+        this -> scroll_layout -> setVerticalSpacing( 10.f );
+        this -> scroll_layout -> setHorizontalSpacing( 20.f );
+        this -> scroll_widget -> setLayout( this -> scroll_layout.get() );
+    }
+
+    //====================================================
     //     addWidgets
     //====================================================
     /**
@@ -204,28 +237,8 @@ namespace kmanager::state{
             SLOT( addPassword() ) 
         );
 
-        // Scroll area
-        this -> scroll_area = QSharedPointer<QScrollArea>( new QScrollArea( this -> host -> host ) );
-        this -> scroll_area -> setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOn );
-        this -> scroll_area -> setWidgetResizable( true );
-        this -> scroll_area -> setGeometry(
-            0.f, 
-            150.f,
-            this -> host -> host -> geometry().width(),
-            this -> host -> host -> geometry().height() - 170.f
-        );
-        this -> scroll_area -> setVisible( false );
-
-        // Scroll widget
-        this -> scroll_widget = QSharedPointer<QWidget>( new QWidget() );
-        this -> scroll_area -> setWidget( this -> scroll_widget.get() );
-        this -> scroll_widget -> setVisible( false );
-
-        // Scroll layout
-        this -> scroll_layout = QSharedPointer<QGridLayout>( new QGridLayout() );
-        this -> scroll_layout -> setVerticalSpacing( 10.f );
-        this -> scroll_layout -> setHorizontalSpacing( 20.f );
-        this -> scroll_widget -> setLayout( this -> scroll_layout.get() );
+        // Scroll area setup
+        this -> setScrollArea();
 
         // Display password widgets
         this -> displayPasswords();
@@ -273,40 +286,37 @@ namespace kmanager::state{
             this -> current_password.password_str = json_obj.value( QString( "Password" ) ).toString();
 
             // Draw platform label for each password
-            QLineEdit* current_platform_label{ new QLineEdit( this -> scroll_widget.get() ) };
-            current_platform_label -> setVisible( false );
-            current_platform_label -> setText( this -> current_password.platform );
-            current_platform_label -> resize( this -> label_width, this -> label_height );
-            current_platform_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
-            current_platform_label -> setStyleSheet( this -> label_list_settings );
+            this -> current_platform_label = new QLineEdit( this -> scroll_widget.get() );
+            this -> current_platform_label -> setVisible( false );
+            this -> current_platform_label -> setText( this -> current_password.platform );
+            this -> current_platform_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
+            this -> current_platform_label -> setStyleSheet( this -> label_list_settings );
 
             // Add label for username
-            QLineEdit* current_username_label{ new QLineEdit( this -> scroll_widget.get() ) };
-            current_username_label -> setVisible( false );
-            current_username_label -> setText( this -> current_password.username );
-            current_username_label -> resize( this -> label_width, this -> label_height );
-            current_username_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
-            current_username_label -> setStyleSheet( this -> label_list_settings );
+            this -> current_username_label = new QLineEdit( this -> scroll_widget.get() );
+            this -> current_username_label -> setVisible( false );
+            this -> current_username_label -> setText( this -> current_password.username );
+            this -> current_username_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
+            this -> current_username_label -> setStyleSheet( this -> label_list_settings );
 
             // Add label for password
-            QLineEdit* current_password_label{ new QLineEdit( this -> scroll_widget.get() ) };
-            current_password_label -> setVisible( false );
-            current_password_label -> setText( this -> current_password.password_str );
-            current_password_label -> resize( this -> label_width, this -> label_height );
-            current_password_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
-            current_password_label -> setStyleSheet( this -> label_list_settings );
+            this -> current_password_label = new QLineEdit( this -> scroll_widget.get() );
+            this -> current_password_label -> setVisible( false );
+            this -> current_password_label -> setText( this -> current_password.password_str );
+            this -> current_password_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
+            this -> current_password_label -> setStyleSheet( this -> label_list_settings );
 
             // Add checkbox for password
-            QCheckBox* checkbox_password_label{ new QCheckBox( this -> scroll_widget.get() ) };
-            checkbox_password_label -> setChecked( false );
-            checkbox_password_label -> setStyleSheet( 
+            this -> checkbox_password_label = new QCheckBox( this -> scroll_widget.get() );
+            this -> checkbox_password_label -> setChecked( false );
+            this -> checkbox_password_label -> setStyleSheet( 
                 "QCheckBox::indicator:unchecked { image: url(img/icons/hide.png); }" 
                 "QCheckBox::indicator:checked { image: url(img/icons/eye.png); }"
                 "QCheckBox::indicator { width: 25px; height: 25px; }"
             );
 
             // Create widget for password toggle
-            QWidget* password_widget{ new QWidget( this -> host -> host ) };
+            this -> password_widget = new QWidget( this -> host -> host );
             QHBoxLayout* password_toggle{ new QHBoxLayout( password_widget ) };
             password_toggle -> setSpacing( 5.f );
             password_toggle -> addWidget( checkbox_password_label );
@@ -314,20 +324,18 @@ namespace kmanager::state{
             password_widget -> setLayout( password_toggle );
 
             // Add label for note
-            QLineEdit* current_note_label{ new QLineEdit( this -> scroll_widget.get() ) };
+            this -> current_note_label = new QLineEdit( this -> scroll_widget.get() );
             current_note_label -> setVisible( false );
             current_note_label -> setText( this -> current_password.note );
-            current_note_label -> resize( this -> label_width, this -> label_height );
             current_note_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
             current_note_label -> setStyleSheet( this -> label_list_settings );
 
             // Fill the label containers
-            entity::Password<QLineEdit*> new_password;
-            new_password.platform = current_platform_label;
-            new_password.username = current_username_label;
-            new_password.password_str = current_password_label;
-            new_password.note = current_note_label;
-            new_password.password_toggle = password_widget;
+            this -> new_password.platform = current_platform_label;
+            this -> new_password.username = current_username_label;
+            this -> new_password.password_str = current_password_label;
+            this -> new_password.note = current_note_label;
+            this -> new_password.password_toggle = password_widget;
             this -> label_vec.push_back( new_password );
 
             // Reorder vector elements by platform name string
@@ -369,7 +377,14 @@ namespace kmanager::state{
 
             // Compare with old number and update the view
             if( this -> current_passwords_number > this -> old_passwords_number || this -> repaint_passwords ){
+
+                // Clear previous view
                 this -> label_vec.clear();
+                for( int64_t i = 0; i < this -> scroll_layout -> count(); i++ ){
+                    this -> scroll_layout -> itemAt( i ) -> widget() -> deleteLater();
+                }
+                
+                // Display the new view
                 this -> displayPasswords();
                 std::for_each(
                     this -> label_vec.cbegin(),
@@ -381,6 +396,7 @@ namespace kmanager::state{
                         el.note -> show();
                     }
                 );
+                qDebug() << this -> scroll_layout -> count();
                 this -> old_passwords_number = this -> current_passwords_number;
                 this -> repaint_passwords = false;
             }

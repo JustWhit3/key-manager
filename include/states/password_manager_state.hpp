@@ -81,9 +81,21 @@ namespace kmanager::state{
             QSharedPointer<QLineEdit> find_input;
             QSharedPointer<window::AddPasswordWindow> add_password_window;
             std::vector<entity::Password<QLineEdit*>> label_vec;
+
+            // Variables (widgets fro scroll area)
             QSharedPointer<QScrollArea> scroll_area;
             QSharedPointer<QWidget> scroll_widget;
             QSharedPointer<QGridLayout> scroll_layout;
+
+            // Variables (widgets for scroll area)
+            QLineEdit* current_platform_label;
+            QLineEdit* current_username_label;
+            QLineEdit* current_password_label;
+            QLineEdit* current_note_label;
+            QCheckBox* checkbox_password_label;
+            QWidget* password_widget;
+            QHBoxLayout* password_toggle;
+            entity::Password<QLineEdit*> new_password;
         
         //====================================================
         //     Private
@@ -94,6 +106,7 @@ namespace kmanager::state{
             void addWidgets() override;
             void assignProperties() override;
             void displayPasswords();
+            void setScrollArea();
 
             // Variables
             MenuState* host;
@@ -115,7 +128,7 @@ namespace kmanager::state{
             const float label_width = this -> host -> host -> width() * 0.2482f;
             static constexpr float label_height{ 50.f };
             const QString label_settings{ "background-color: #4682b4; color: white; padding: 8%; font-size: 20px" };
-            const QString label_list_settings{ "padding: 8%" };
+            const QString label_list_settings{ "background-color: rgba( 255, 255, 255, 0% ); padding: 8%" };
             const std::string username{ std::getenv( "USERNAME" ) };
 
         //====================================================
