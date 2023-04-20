@@ -13,9 +13,10 @@ var searchData=
   ['password_5fplatform_67',['password_platform',['../classkmanager_1_1state_1_1PasswordManagerState.html#a19a32fef50349a5ae2215d3fb4e3f8fb',1,'kmanager::state::PasswordManagerState']]],
   ['password_5fstr_68',['password_str',['../classkmanager_1_1entity_1_1Password.html#a0d23370874aeec212e40b7c28d858400',1,'kmanager::entity::Password']]],
   ['password_5ftextbox_69',['password_textbox',['../classkmanager_1_1state_1_1AddPasswordState.html#a633b4f72f0266cf92bf2dfff5ac1535c',1,'kmanager::state::AddPasswordState']]],
-  ['password_5fusername_70',['password_username',['../classkmanager_1_1state_1_1PasswordManagerState.html#a4d9c5404e1e96ae7ced15ac4bfdfcd0b',1,'kmanager::state::PasswordManagerState']]],
-  ['passwordmanagerstate_71',['PasswordManagerState',['../classkmanager_1_1state_1_1PasswordManagerState.html',1,'kmanager::state::PasswordManagerState'],['../classkmanager_1_1state_1_1PasswordManagerState.html#ae5efa795c16c76e5f8badf3a9d1d6c7d',1,'kmanager::state::PasswordManagerState::PasswordManagerState()']]],
-  ['platform_72',['platform',['../classkmanager_1_1entity_1_1Password.html#aee3f26f550875f2ad538f7d20e151d91',1,'kmanager::entity::Password']]],
-  ['platform_5fwebsite_5flabel_73',['platform_website_label',['../classkmanager_1_1state_1_1AddPasswordState.html#a7428c16fbf06670ee344f4014e042d33',1,'kmanager::state::AddPasswordState']]],
-  ['platform_5fwebsite_5ftextbox_74',['platform_website_textbox',['../classkmanager_1_1state_1_1AddPasswordState.html#a5a9a0308d6caafc6d6824210b32455c9',1,'kmanager::state::AddPasswordState']]]
+  ['password_5ftoggle_70',['password_toggle',['../classkmanager_1_1entity_1_1Password.html#a1f0e419701dae436a15f5a080e0e9c61',1,'kmanager::entity::Password']]],
+  ['password_5fusername_71',['password_username',['../classkmanager_1_1state_1_1PasswordManagerState.html#a4d9c5404e1e96ae7ced15ac4bfdfcd0b',1,'kmanager::state::PasswordManagerState']]],
+  ['passwordmanagerstate_72',['PasswordManagerState',['../classkmanager_1_1state_1_1PasswordManagerState.html',1,'kmanager::state::PasswordManagerState'],['../classkmanager_1_1state_1_1PasswordManagerState.html#ae5efa795c16c76e5f8badf3a9d1d6c7d',1,'kmanager::state::PasswordManagerState::PasswordManagerState()']]],
+  ['platform_73',['platform',['../classkmanager_1_1entity_1_1Password.html#aee3f26f550875f2ad538f7d20e151d91',1,'kmanager::entity::Password']]],
+  ['platform_5fwebsite_5flabel_74',['platform_website_label',['../classkmanager_1_1state_1_1AddPasswordState.html#a7428c16fbf06670ee344f4014e042d33',1,'kmanager::state::AddPasswordState']]],
+  ['platform_5fwebsite_5ftextbox_75',['platform_website_textbox',['../classkmanager_1_1state_1_1AddPasswordState.html#a5a9a0308d6caafc6d6824210b32455c9',1,'kmanager::state::AddPasswordState']]]
 ];
