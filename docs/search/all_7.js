@@ -9,7 +9,9 @@ var searchData=
   ['key_5fmanager_5fmenu_5fstate_40',['KEY_MANAGER_MENU_STATE',['../menu__state_8hpp.html#a478a3c6da75280230cc74e883ff28dc2',1,'menu_state.hpp']]],
   ['key_5fmanager_5fpassword_5fentity_41',['KEY_MANAGER_PASSWORD_ENTITY',['../password_8hpp.html#a43ca2df3766fa5d7111cd0c1a1fcc530',1,'password.hpp']]],
   ['key_5fmanager_5fpassword_5fmanager_5fstate_42',['KEY_MANAGER_PASSWORD_MANAGER_STATE',['../password__manager__state_8hpp.html#a010286619248f941d5e038d3e8371f84',1,'password_manager_state.hpp']]],
-  ['kmanager_43',['kmanager',['../namespacekmanager.html',1,'']]],
-  ['state_44',['state',['../namespacekmanager_1_1state.html',1,'kmanager']]],
-  ['window_45',['window',['../namespacekmanager_1_1window.html',1,'kmanager']]]
+  ['key_5fmanager_5fpassword_5ftoggle_5fwidget_43',['KEY_MANAGER_PASSWORD_TOGGLE_WIDGET',['../password__toggle_8hpp.html#a1fee7b42dec398c6c5f1fa5f02f198ba',1,'password_toggle.hpp']]],
+  ['kmanager_44',['kmanager',['../namespacekmanager.html',1,'']]],
+  ['state_45',['state',['../namespacekmanager_1_1state.html',1,'kmanager']]],
+  ['widget_46',['widget',['../namespacekmanager_1_1widget.html',1,'kmanager']]],
+  ['window_47',['window',['../namespacekmanager_1_1window.html',1,'kmanager']]]
 ];
