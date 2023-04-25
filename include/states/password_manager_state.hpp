@@ -29,6 +29,9 @@
 // Entities
 #include <entities/password.hpp>
 
+// Widgets
+#include <widgets/password_toggle.hpp>
+
 // Qt
 #include <QSharedPointer>
 #include <QLabel>
@@ -92,9 +95,7 @@ namespace kmanager::state{
             QLineEdit* current_username_label;
             QLineEdit* current_password_label;
             QLineEdit* current_note_label;
-            QCheckBox* checkbox_password_label;
-            QWidget* password_widget;
-            QHBoxLayout* password_toggle;
+            widget::PasswordToggle* password_widget;
             entity::Password<QLineEdit*> new_password;
         
         //====================================================

@@ -21,6 +21,9 @@
 // Entities
 #include <entities/password.hpp>
 
+// Widgets
+#include <widgets/password_toggle.hpp>
+
 // Qt
 #include <QLabel>
 #include <QPushButton>
@@ -245,7 +248,7 @@ namespace kmanager::state{
 
         // Update passwords at each frame
         this -> timer = QSharedPointer<QTimer>( new QTimer( this ) );
-        connect( timer.get(), SIGNAL( timeout() ), this, SLOT( updatePasswordsView() ) );
+        connect( this -> timer.get(), SIGNAL( timeout() ), this, SLOT( updatePasswordsView() ) );
         timer -> start( 1 );
     }
 
@@ -302,29 +305,18 @@ namespace kmanager::state{
             this -> current_password_label -> setText( this -> current_password.password_str );
             this -> current_password_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
             this -> current_password_label -> setStyleSheet( this -> label_list_settings );
-
-            // Add checkbox for password
-            this -> checkbox_password_label = new QCheckBox( this -> scroll_widget.get() );
-            this -> checkbox_password_label -> setChecked( false );
-            this -> checkbox_password_label -> setStyleSheet( 
-                "QCheckBox::indicator:unchecked { image: url(img/icons/hide.png); }" 
-                "QCheckBox::indicator:checked { image: url(img/icons/eye.png); }"
-                "QCheckBox::indicator { width: 25px; height: 25px; }"
-            );
-
-            // Create widget for password toggle
-            this -> password_widget = new QWidget( this -> host -> host );
-            this -> password_toggle = new QHBoxLayout( password_widget );
-            this -> password_toggle -> setSpacing( 5.f );
-            this -> password_toggle -> addWidget( checkbox_password_label );
-            this -> password_toggle -> addWidget( current_password_label );
-            this -> password_widget -> setLayout( password_toggle );
+            this -> current_password_label -> setEchoMode( QLineEdit::Password );
 
             // Add label for note
             this -> current_note_label = new QLineEdit( this -> scroll_widget.get() );
             current_note_label -> setText( this -> current_password.note );
             current_note_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
             current_note_label -> setStyleSheet( this -> label_list_settings );
+
+            // Create widget for password toggle
+            this -> password_widget = new widget::PasswordToggle( this -> host -> host );
+            this -> password_widget -> password_label = this -> current_password_label;
+            this -> password_widget -> initWidgetProperties();
 
             // Fill the label containers
             this -> new_password.platform = current_platform_label;
