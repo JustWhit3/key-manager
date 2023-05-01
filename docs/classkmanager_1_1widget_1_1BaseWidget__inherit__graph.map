@@ -1,0 +1,6 @@
+<map id="kmanager::widget::BaseWidget" name="kmanager::widget::BaseWidget">
+<area shape="rect" id="node1" title="Class used to construct the base state of the app." alt="" coords="105,80,303,107"/>
+<area shape="rect" id="node3" href="$classkmanager_1_1widget_1_1PasswordActions.html" title="Class used to construct a password actions widget." alt="" coords="5,155,192,196"/>
+<area shape="rect" id="node4" href="$classkmanager_1_1widget_1_1PasswordToggle.html" title="Class used to construct a password toggle widget." alt="" coords="216,155,403,196"/>
+<area shape="rect" id="node2" title=" " alt="" coords="168,5,240,32"/>
+</map>
