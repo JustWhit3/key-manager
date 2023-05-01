@@ -23,6 +23,7 @@
 
 // Widgets
 #include <widgets/password_toggle.hpp>
+#include <widgets/password_actions.hpp>
 
 // Qt
 #include <QLabel>
@@ -170,14 +171,14 @@ namespace kmanager::state{
         );
 
         // Note label
-        this -> password_note = QSharedPointer<QLabel>( new QLabel( this -> host -> host ) );
-        this -> password_note -> setVisible( false );
-        this -> password_note -> setText( "Note" );
-        this -> password_note -> setFrameStyle( QFrame::Panel | QFrame::Sunken );
-        this -> password_note -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
-        this -> password_note -> setStyleSheet( this -> label_settings );
-        this -> password_note -> resize( this -> label_width, this -> label_height );
-        this -> password_note -> move(
+        this -> password_actions = QSharedPointer<QLabel>( new QLabel( this -> host -> host ) );
+        this -> password_actions -> setVisible( false );
+        this -> password_actions -> setText( "Actions" );
+        this -> password_actions -> setFrameStyle( QFrame::Panel | QFrame::Sunken );
+        this -> password_actions -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
+        this -> password_actions -> setStyleSheet( this -> label_settings );
+        this -> password_actions -> resize( this -> label_width, this -> label_height );
+        this -> password_actions -> move(
             this -> password_key -> geometry().x() + this -> label_width,
             this -> password_key -> geometry().y()
         );
@@ -188,8 +189,8 @@ namespace kmanager::state{
         this -> find_button -> resize( this -> label_width * 0.25f, this -> label_height );
         this -> find_button -> setStyleSheet( "font-size: 20px;");
         this -> find_button -> move(
-            this -> password_note -> geometry().x() + 205.f,
-            this -> password_note -> geometry().y() - label_height
+            this -> password_actions -> geometry().x() + 205.f,
+            this -> password_actions -> geometry().y() - label_height
         );
 
         // Find textbox
@@ -198,8 +199,8 @@ namespace kmanager::state{
         this -> find_input -> resize( this -> label_width * 0.76f, this -> label_height );
         this -> find_input -> setStyleSheet( "font-size: 20px;");
         this -> find_input -> move(
-            this -> password_note -> geometry().x(),
-            this -> password_note -> geometry().y() - label_height
+            this -> password_actions -> geometry().x(),
+            this -> password_actions -> geometry().y() - label_height
         );
         this -> find_input -> setPlaceholderText( "Search..." );
 
@@ -285,7 +286,6 @@ namespace kmanager::state{
             this -> json_obj = json_doc.object();
             this -> current_password.username = json_obj.value( QString( "Username" ) ).toString();
             this -> current_password.platform = json_obj.value( QString( "Platform / Website" ) ).toString();
-            this -> current_password.note = json_obj.value( QString( "Note" ) ).toString();
             this -> current_password.password_str = json_obj.value( QString( "Password" ) ).toString();
 
             // Draw platform label for each password
@@ -307,23 +307,20 @@ namespace kmanager::state{
             this -> current_password_label -> setStyleSheet( this -> label_list_settings );
             this -> current_password_label -> setEchoMode( QLineEdit::Password );
 
-            // Add label for note
-            this -> current_note_label = new QLineEdit( this -> scroll_widget.get() );
-            current_note_label -> setText( this -> current_password.note );
-            current_note_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
-            current_note_label -> setStyleSheet( this -> label_list_settings );
-
             // Create widget for password toggle
-            this -> password_widget = new widget::PasswordToggle( this -> host -> host );
+            this -> password_widget = new widget::PasswordToggle( this -> scroll_widget.get());
             this -> password_widget -> password_label = this -> current_password_label;
             this -> password_widget -> initWidgetProperties();
 
+            // Add widget for actions
+            this -> current_password_actions = new widget::PasswordActions( this -> scroll_widget.get() );
+
             // Fill the label containers
-            this -> new_password.platform = current_platform_label;
-            this -> new_password.username = current_username_label;
-            this -> new_password.password_str = current_password_label;
-            this -> new_password.note = current_note_label;
-            this -> new_password.password_toggle = password_widget;
+            this -> new_password.platform = this -> current_platform_label;
+            this -> new_password.username = this -> current_username_label;
+            this -> new_password.password_str = this -> current_password_label;
+            this -> new_password.actions = this -> current_password_actions;
+            this -> new_password.password_toggle = this -> password_widget;
             this -> label_vec.push_back( new_password );
 
             // Reorder vector elements by platform name string
@@ -341,7 +338,7 @@ namespace kmanager::state{
                 this -> scroll_layout -> addWidget( it -> platform, row, 0 );
                 this -> scroll_layout -> addWidget( it -> username, row, 1 );
                 this -> scroll_layout -> addWidget( it -> password_toggle, row, 2 );
-                this -> scroll_layout -> addWidget( it -> note, row, 3 );
+                this -> scroll_layout -> addWidget( it -> actions, row, 3 );
             }
         }
     }
@@ -428,7 +425,7 @@ namespace kmanager::state{
         this -> assignProperty( this -> password_platform.get(), "visible", true );
         this -> assignProperty( this -> password_username.get(), "visible", true );
         this -> assignProperty( this -> password_key.get(), "visible", true );
-        this -> assignProperty( this -> password_note.get(), "visible", true );
+        this -> assignProperty( this -> password_actions.get(), "visible", true );
 
         // LineEdits
         this -> assignProperty( this -> find_input.get(), "visible", true );

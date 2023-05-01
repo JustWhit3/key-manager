@@ -31,6 +31,7 @@
 
 // Widgets
 #include <widgets/password_toggle.hpp>
+#include <widgets/password_actions.hpp>
 
 // Qt
 #include <QSharedPointer>
@@ -77,7 +78,7 @@ namespace kmanager::state{
             QSharedPointer<QLabel> password_platform;
             QSharedPointer<QLabel> password_key;
             QSharedPointer<QLabel> password_username;
-            QSharedPointer<QLabel> password_note;
+            QSharedPointer<QLabel> password_actions;
             QSharedPointer<QPushButton> find_button;
             QSharedPointer<QPushButton> add_password_button;
             QSharedPointer<QPushButton> menu_button;
@@ -94,7 +95,7 @@ namespace kmanager::state{
             QLineEdit* current_platform_label;
             QLineEdit* current_username_label;
             QLineEdit* current_password_label;
-            QLineEdit* current_note_label;
+            widget::PasswordActions* current_password_actions;
             widget::PasswordToggle* password_widget;
             entity::Password<QLineEdit*> new_password;
         

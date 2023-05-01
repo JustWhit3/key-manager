@@ -68,13 +68,11 @@ namespace kmanager::state{
             QSharedPointer<QLabel> platform_website_label;
             QSharedPointer<QLabel> username_label;
             QSharedPointer<QLabel> password_label;
-            QSharedPointer<QLabel> note_label;
             QSharedPointer<QLabel> error_label;
             QSharedPointer<QLineEdit> create_new_password_textbox;
             QSharedPointer<QLineEdit> platform_website_textbox;
             QSharedPointer<QLineEdit> username_textbox;
             QSharedPointer<QLineEdit> password_textbox;
-            QSharedPointer<QLineEdit> note_textbox;
             QSharedPointer<QPushButton> save_button;
 
             // Variables (other)

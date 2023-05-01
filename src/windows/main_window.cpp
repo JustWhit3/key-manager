@@ -210,7 +210,7 @@ namespace kmanager::window{
         this -> menu_state -> assignProperty( this -> p_manager_state -> password_platform.get(), "visible", false );
         this -> menu_state -> assignProperty( this -> p_manager_state -> password_username.get(), "visible", false );
         this -> menu_state -> assignProperty( this -> p_manager_state -> password_key.get(), "visible", false );
-        this -> menu_state -> assignProperty( this -> p_manager_state -> password_note.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_manager_state -> password_actions.get(), "visible", false );
 
         // QLineEdit
         this -> menu_state -> assignProperty( this -> p_manager_state -> find_input.get(), "visible", false );

@@ -74,8 +74,8 @@ namespace kmanager::entity{
              * @return false Otherwise.
              */
             bool operator < ( const Password& other ) const {
-                return std::make_tuple( password_str, platform, username, note ) < 
-                       std::make_tuple( other.password_str, other.platform, other.username, other.note );
+                return std::make_tuple( password_str, platform, username ) < 
+                       std::make_tuple( other.password_str, other.platform, other.username );
             }
 
             //====================================================
@@ -89,16 +89,16 @@ namespace kmanager::entity{
              * @return false Otherwise.
              */
             bool operator == ( const Password& other ) const {
-                return std::make_tuple( password_str, platform, username, note ) == 
-                       std::make_tuple( other.password_str, other.platform, other.username, other.note );
+                return std::make_tuple( password_str, platform, username ) == 
+                       std::make_tuple( other.password_str, other.platform, other.username );
             }
 
             // Attributes
             T password_str;
             T platform;
             T username;
-            T note;
             QWidget* password_toggle;
+            QWidget* actions;
     };
 }
 

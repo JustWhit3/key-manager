@@ -167,35 +167,6 @@ namespace kmanager::state{
         );
         this -> password_textbox -> setPlaceholderText( "Enter password (mandatory)" );
 
-        // Note label
-        this -> note_label = QSharedPointer<QLabel>(
-            new QLabel( this -> host )
-        );
-        this -> note_label -> setVisible( false );
-        this -> note_label -> resize( 220, 50 );
-        this -> note_label -> setText( "Additional note:" );
-        this -> note_label -> setStyleSheet( widget_font_size );
-        this -> note_label -> move(
-            this -> password_label -> geometry().x(),
-            this -> password_label -> geometry().y() + 60.f
-        );
-
-        // Note textbox
-        this -> note_textbox = QSharedPointer<QLineEdit>(
-            new QLineEdit( this -> host )
-        );
-        this -> note_textbox -> setVisible( false );
-        this -> note_textbox -> resize( 
-            this -> note_label -> geometry().width() * 1.75f,
-            this -> note_label -> geometry().height()
-        );
-        this -> note_textbox -> setStyleSheet( widget_font_size );
-        this -> note_textbox -> move(
-            this -> note_label -> geometry().x() + 200.f,
-            this -> note_label -> geometry().y()
-        );
-        this -> note_textbox -> setPlaceholderText( "Enter additional note (optional)" );
-
         // Save button
         this -> save_button = QSharedPointer<QPushButton>( new QPushButton( "Save", this -> host ) );
         this -> save_button -> setVisible( false );
@@ -221,8 +192,8 @@ namespace kmanager::state{
         this -> error_label -> setText( "Some of the main fields are still missing!" );
         this -> error_label -> setStyleSheet( "QLabel { color : rgb(183, 0, 0); font-size: 20px }" );
         this -> error_label -> move(
-            this -> note_label -> geometry().x(),
-            this -> note_label -> geometry().y() + 53.f
+            this -> password_label -> geometry().x(),
+            this -> password_label -> geometry().y() + 53.f
         );
     }
 
@@ -240,14 +211,12 @@ namespace kmanager::state{
         this -> assignProperty( this -> platform_website_label.get(), "visible", true );
         this -> assignProperty( this -> username_label.get(), "visible", true );
         this -> assignProperty( this -> password_label.get(), "visible", true );
-        this -> assignProperty( this -> note_label.get(), "visible", true );
         this -> assignProperty( this -> error_label.get(), "visible", false );
 
         // Textbox
         this -> assignProperty( this -> platform_website_textbox.get(), "visible", true );
         this -> assignProperty( this -> username_textbox.get(), "visible", true );
         this -> assignProperty( this -> password_textbox.get(), "visible", true );
-        this -> assignProperty( this -> note_textbox.get(), "visible", true );
 
         // Buttons
         this -> assignProperty( this -> save_button.get(), "visible", true );
@@ -265,14 +234,12 @@ namespace kmanager::state{
         // Initialize password object
         this -> new_password.platform = this -> platform_website_textbox -> text();
         this -> new_password.password_str = this -> password_textbox -> text();
-        this -> new_password.note = this -> note_textbox -> text();
         this -> new_password.username = this -> username_textbox -> text();
 
         // Save results on Json
         this -> main_container.insert( "Platform / Website", QJsonValue::fromVariant( this -> new_password.platform ) );
         this -> main_container.insert( "Password", QJsonValue::fromVariant( this -> new_password.password_str ) );
         this -> main_container.insert( "Username", QJsonValue::fromVariant( this -> new_password.username ) );
-        this -> main_container.insert( "Note", QJsonValue::fromVariant( this -> new_password.note ) );
         this -> json_doc.setObject( main_container );
         this -> json_doc_bytes = this -> json_doc.toJson( QJsonDocument::Indented );
 

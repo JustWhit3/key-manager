@@ -13,6 +13,7 @@
 //====================================================
 
 // Widgets
+#include <widgets/base_widget.hpp>
 #include <widgets/password_toggle.hpp>
 
 // Qt
@@ -29,7 +30,7 @@ namespace kmanager::widget{
      * @param parent 
      */
     PasswordToggle::PasswordToggle( QWidget* parent ):
-                QWidget( parent ){
+                BaseWidget( parent ){
 
     }
 
@@ -53,13 +54,21 @@ namespace kmanager::widget{
      */
     void PasswordToggle::initWidgetProperties(){
 
+        // Setup layout
+        this -> layout = new QGridLayout( this );
+        this -> layout -> addWidget( password_label, 0, 0 );
+        this -> layout -> setContentsMargins( 0, 0, 0, 0 );
+        this -> setLayout( layout );
+
         // Setup checkbox
-        this -> checkbox = new QCheckBox();
+        this -> checkbox = new QCheckBox( this );
         this -> checkbox -> setStyleSheet( 
             "QCheckBox::indicator:unchecked { image: url(img/icons/hide.png); }" 
             "QCheckBox::indicator:checked { image: url(img/icons/eye.png); }"
             "QCheckBox::indicator { width: 25px; height: 25px; }"
         );
+        this -> checkbox -> setFixedSize( 25, 25 );
+        this -> checkbox -> move( 220.f, 14.f );
 
         QObject::connect( 
              this -> checkbox, 
@@ -67,13 +76,6 @@ namespace kmanager::widget{
              this, 
              SLOT( changeToggleState() ) 
         );
-
-        // Setup layout
-        this -> layout = new QHBoxLayout( this );
-        this -> layout -> setSpacing( 5.f );
-        this -> layout -> addWidget( checkbox );
-        this -> layout -> addWidget( password_label );
-        this -> setLayout( layout );
     }
 
     //====================================================

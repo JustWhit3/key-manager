@@ -2,9 +2,9 @@
 //     File data
 //====================================================
 /**
- * @file password_toggle.hpp
+ * @file password_actions.hpp
  * @author Gianluca Bianco (biancogianluca9@gmail.com)
- * @date 2023-04-25
+ * @date 2023-05-01
  * @copyright Copyright (c) 2022 Gianluca Bianco under the GPL v3.0 license.
  */
 
@@ -12,8 +12,8 @@
 //     Preprocessor directives
 //====================================================
 #pragma once
-#ifndef KEY_MANAGER_PASSWORD_TOGGLE_WIDGET
-#define KEY_MANAGER_PASSWORD_TOGGLE_WIDGET
+#ifndef KEY_MANAGER_PASSWORD_ACTIONS_WIDGET
+#define KEY_MANAGER_PASSWORD_ACTIONS_WIDGET
 
 //====================================================
 //     Headers
@@ -25,20 +25,21 @@
 // Qt
 #include <QWidget>
 #include <QHBoxLayout>
-#include <QCheckBox>
-#include <QLineEdit>
+#include <QPushButton>
 #include <QSharedPointer>
+#include <QIcon>
+#include <QSize>
 
 namespace kmanager::widget{
 
     //====================================================
-    //     PasswordToggle
+    //     PasswordActions
     //====================================================
     /**
-     * @brief Class used to construct a password toggle widget.
+     * @brief Class used to construct a password actions widget.
      * 
      */
-    class PasswordToggle: public BaseWidget{
+    class PasswordActions: public BaseWidget{
 
         // Qt macros
         Q_OBJECT
@@ -49,23 +50,24 @@ namespace kmanager::widget{
         public:
 
             // Constructors / destructor
-            PasswordToggle( QWidget* parent = nullptr );
-            ~PasswordToggle();
+            PasswordActions( QWidget* parent = nullptr );
+            ~PasswordActions();
 
             // Methods
             void initWidgetProperties() override;
 
-            // Variables
-            QLineEdit* password_label;
-        
         //====================================================
         //     private
         //====================================================
         private:
 
             // Variables
-            QGridLayout* layout;
-            QCheckBox* checkbox;
+            QSharedPointer<QHBoxLayout> layout;
+            QSharedPointer<QPushButton> delete_password;
+            QSharedPointer<QPushButton> save_password;
+
+            // Constants
+            const QSize icon_size = QSize( 23.f, 23.f );
 
         //====================================================
         //     private slots
@@ -73,7 +75,7 @@ namespace kmanager::widget{
         private slots:
 
             // Methods
-            void changeToggleState();
+            // ...
     };
 }
 

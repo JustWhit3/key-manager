@@ -61,7 +61,7 @@ namespace kmanager::window{
         this -> setWindowState( Qt::WindowActive );
         this -> windowHandle() -> setScreen( qApp -> screens()[0] );
         this -> setWindowIcon( QIcon( "img/icons/app_icon.png" ) );
-        this -> setFixedSize( 650,  qApp -> screens()[0] -> geometry().height() * 0.45f );
+        this -> setFixedSize( 650,  qApp -> screens()[0] -> geometry().height() * 0.38f );
         this -> move(
             ( qApp -> screens()[0] -> geometry().width() - this->width() ) * 0.5f,
             ( qApp -> screens()[0] -> geometry().height() - this->height() ) * 0.5f
