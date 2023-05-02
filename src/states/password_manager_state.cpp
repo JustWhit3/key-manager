@@ -289,23 +289,29 @@ namespace kmanager::state{
             this -> current_password.password_str = json_obj.value( QString( "Password" ) ).toString();
 
             // Draw platform label for each password
-            this -> current_platform_label = new QLineEdit( this -> scroll_widget.get() );
+            this -> current_platform_label = new widget::CustomQLineEdit( this -> scroll_widget.get() );
             this -> current_platform_label -> setText( this -> current_password.platform );
-            this -> current_platform_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
-            this -> current_platform_label -> setStyleSheet( this -> label_list_settings );
 
             // Add label for username
-            this -> current_username_label = new QLineEdit( this -> scroll_widget.get() );
+            this -> current_username_label = new widget::CustomQLineEdit( this -> scroll_widget.get() );
             this -> current_username_label -> setText( this -> current_password.username );
-            this -> current_username_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
-            this -> current_username_label -> setStyleSheet( this -> label_list_settings );
 
             // Add label for password
-            this -> current_password_label = new QLineEdit( this -> scroll_widget.get() );
+            this -> current_password_label = new widget::CustomQLineEdit( this -> scroll_widget.get() );
             this -> current_password_label -> setText( this -> current_password.password_str );
-            this -> current_password_label -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
-            this -> current_password_label -> setStyleSheet( this -> label_list_settings );
             this -> current_password_label -> setEchoMode( QLineEdit::Password );
+
+            // Pack "current_platform_label" with the others two
+            this -> current_platform_label -> first_widget = this -> current_username_label;
+            this -> current_platform_label -> second_widget = this -> current_password_label;
+
+            // Pack "current_username_label" with the others two
+            this -> current_username_label -> first_widget = this -> current_platform_label;
+            this -> current_username_label -> second_widget = this -> current_password_label;
+
+            // Pack "current_password_label" with the others two
+            this -> current_password_label -> first_widget = this -> current_platform_label;
+            this -> current_password_label -> second_widget = this -> current_username_label;
 
             // Create widget for password toggle
             this -> password_widget = new widget::PasswordToggle( this -> scroll_widget.get());

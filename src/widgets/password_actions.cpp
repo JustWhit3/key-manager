@@ -75,9 +75,10 @@ namespace kmanager::widget{
         this -> layout -> setSpacing( 10.f );
         this -> layout -> addWidget( this -> delete_password.get() );
         this -> layout -> addWidget( this -> save_password.get() );
+        this -> layout -> setContentsMargins( 0, 0, 0, 0 );
         this -> setLayout( layout.get() );
 
         // Widget properties
-        this -> setFixedWidth( 253 );
+        this -> setFixedWidth( 252 );
     }
 }

@@ -2,9 +2,9 @@
 //     File data
 //====================================================
 /**
- * @file password_toggle.hpp
+ * @file custom_line_edit.hpp
  * @author Gianluca Bianco (biancogianluca9@gmail.com)
- * @date 2023-04-25
+ * @date 2023-05-02
  * @copyright Copyright (c) 2022 Gianluca Bianco under the GPL v3.0 license.
  */
 
@@ -12,80 +12,56 @@
 //     Preprocessor directives
 //====================================================
 #pragma once
-#ifndef KEY_MANAGER_PASSWORD_TOGGLE_WIDGET
-#define KEY_MANAGER_PASSWORD_TOGGLE_WIDGET
+#ifndef KEY_MANAGER_CUSTOM_LINE_EDIT_WIDGET
+#define KEY_MANAGER_CUSTOM_LINE_EDIT_WIDGET
 
 //====================================================
 //     Headers
 //====================================================
 
-// Widgets
-#include <widgets/base_widget.hpp>
-
 // Qt
-#include <QWidget>
-#include <QHBoxLayout>
-#include <QCheckBox>
 #include <QLineEdit>
-#include <QSharedPointer>
+#include <QEnterEvent>
+#include <QString>
 
 namespace kmanager::widget{
 
     //====================================================
-    //     PasswordToggle
+    //     CustomQLineEdit
     //====================================================
-    /**
-     * @brief Class used to construct a password toggle widget.
-     * 
-     */
-    class PasswordToggle: public BaseWidget{
-
-        // Qt macros
-        Q_OBJECT
+    class CustomQLineEdit: public QLineEdit{
 
         //====================================================
-        //     public
+        //     Public
         //====================================================
-        public:
-
+        public: 
+        
             // Constructors / destructor
-            explicit PasswordToggle( QWidget* parent = nullptr );
-            ~PasswordToggle();
-
-            // Methods
-            void initWidgetProperties() override;
+            explicit CustomQLineEdit( QWidget *parent = nullptr );
+            ~CustomQLineEdit();
 
             // Variables
-            QLineEdit* password_label;
-        
+            CustomQLineEdit* first_widget;
+            CustomQLineEdit* second_widget;
+
         //====================================================
-        //     private
+        //     Private
         //====================================================
         private:
 
             // Methods
+            void enter();
+            void leave();
             void enterEvent( QEnterEvent* event ) override;
             void leaveEvent( QEvent* event ) override;
 
-            // Variables
-            QGridLayout* layout;
-            QCheckBox* checkbox;
-
             // Constants
             const QString default_settings{ 
-                "background-color: rgba( 255, 255, 255, 0% );" 
+                "background-color: rgba( 255, 255, 255, 0% ); padding: 8%;" 
             };
             const QString hover_settings{ 
-                "background-color: rgba( 255, 255, 255, 0% ); border-color: rgb(255, 255, 255);" 
+                "background-color: rgba( 255, 255, 255, 0% ); padding: 8%; border-color: rgb(255, 255, 255);" 
             };
-
-        //====================================================
-        //     private slots
-        //====================================================
-        private slots:
-
-            // Methods
-            void changeToggleState();
     };
 }
 

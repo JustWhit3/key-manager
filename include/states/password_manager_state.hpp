@@ -32,6 +32,7 @@
 // Widgets
 #include <widgets/password_toggle.hpp>
 #include <widgets/password_actions.hpp>
+#include <widgets/custom_line_edit.hpp>
 
 // Qt
 #include <QSharedPointer>
@@ -92,9 +93,9 @@ namespace kmanager::state{
             QSharedPointer<QGridLayout> scroll_layout;
 
             // Variables (widgets for scroll area)
-            QLineEdit* current_platform_label;
-            QLineEdit* current_username_label;
-            QLineEdit* current_password_label;
+            widget::CustomQLineEdit* current_platform_label;
+            widget::CustomQLineEdit* current_username_label;
+            widget::CustomQLineEdit* current_password_label;
             widget::PasswordActions* current_password_actions;
             widget::PasswordToggle* password_widget;
             entity::Password<QLineEdit*> new_password;
@@ -129,8 +130,7 @@ namespace kmanager::state{
             // Constants
             const float label_width = this -> host -> host -> width() * 0.2482f;
             static constexpr float label_height{ 50.f };
-            const QString label_settings{ "background-color: #4682b4; color: white; padding: 8%; font-size: 20px" };
-            const QString label_list_settings{ "background-color: rgba( 255, 255, 255, 0% ); padding: 8%" };
+            const QString label_settings{ "background-color: #4682b4; color: white; padding: 8%; font-size: 20px; border: green" };
             const std::string username{ std::getenv( "USERNAME" ) };
 
         //====================================================

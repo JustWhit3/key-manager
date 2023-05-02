@@ -18,6 +18,8 @@
 
 // Qt
 #include <QWidget>
+#include <QEvent>
+#include <QEnterEvent>
 
 namespace kmanager::widget{
 
@@ -68,7 +70,7 @@ namespace kmanager::widget{
             "QCheckBox::indicator { width: 25px; height: 25px; }"
         );
         this -> checkbox -> setFixedSize( 25, 25 );
-        this -> checkbox -> move( 220.f, 14.f );
+        this -> checkbox -> move( 220.f, 6.f );
 
         QObject::connect( 
              this -> checkbox, 
@@ -89,5 +91,31 @@ namespace kmanager::widget{
         this -> password_label -> setEchoMode(
             this -> checkbox->checkState() == Qt::Checked ? QLineEdit::Normal : QLineEdit::Password 
         );
+    }
+
+    //====================================================
+    //     enterEvent
+    //====================================================
+    /**
+     * @brief Override the enterEvent widget function.
+     * 
+     * @param event Event triggered when mouse enter the widget.
+     */
+    void PasswordToggle::enterEvent( QEnterEvent* event ){
+        this -> setStyleSheet( this -> hover_settings );
+        event -> accept();
+    }
+
+    //====================================================
+    //     enterEvent
+    //====================================================
+    /**
+     * @brief Override the leaveEvent widget function.
+     * 
+     * @param event Event triggered when mouse leave the widget.
+     */
+    void PasswordToggle::leaveEvent( QEvent* event ){
+        this -> setStyleSheet( this -> default_settings );
+        event -> accept();
     }
 }

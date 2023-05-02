@@ -50,7 +50,7 @@ namespace kmanager::widget{
         public:
 
             // Constructors / destructor
-            PasswordActions( QWidget* parent = nullptr );
+            explicit PasswordActions( QWidget* parent = nullptr );
             ~PasswordActions();
 
             // Methods
