@@ -107,7 +107,7 @@ namespace kmanager::state{
             this -> platform_website_label -> geometry().x() + 200.f,
             this -> platform_website_label -> geometry().y()
         );
-        this -> platform_website_textbox -> setPlaceholderText( "Enter platform name (mandatory)" );
+        this -> platform_website_textbox -> setPlaceholderText( "Enter platform name" );
 
         // Username label
         this -> username_label = QSharedPointer<QLabel>(
@@ -136,7 +136,7 @@ namespace kmanager::state{
             this -> username_label -> geometry().x() + 200.f,
             this -> username_label -> geometry().y()
         );
-        this -> username_textbox -> setPlaceholderText( "Enter username (mandatory)" );
+        this -> username_textbox -> setPlaceholderText( "Enter username" );
 
         // Password label
         this -> password_label = QSharedPointer<QLabel>(
@@ -165,7 +165,7 @@ namespace kmanager::state{
             this -> password_label -> geometry().x() + 200.f,
             this -> password_label -> geometry().y()
         );
-        this -> password_textbox -> setPlaceholderText( "Enter password (mandatory)" );
+        this -> password_textbox -> setPlaceholderText( "Enter password" );
 
         // Save button
         this -> save_button = QSharedPointer<QPushButton>( new QPushButton( "Save", this -> host ) );

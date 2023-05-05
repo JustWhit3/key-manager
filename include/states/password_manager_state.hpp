@@ -110,6 +110,7 @@ namespace kmanager::state{
             void assignProperties() override;
             void displayPasswords();
             void setScrollArea();
+            void redrawWidgets();
 
             // Variables
             MenuState* host;

@@ -364,6 +364,25 @@ namespace kmanager::state{
     }
 
     //====================================================
+    //     redrawWidgets
+    //====================================================
+    /**
+     * @brief Redraw grid widgets.
+     * 
+     */
+    void PasswordManagerState::redrawWidgets(){
+
+        // Clear previous view
+        this -> label_vec.clear();
+        for( int64_t i = 0; i < this -> scroll_layout -> count(); i++ ){
+            this -> scroll_layout -> itemAt( i ) -> widget() -> deleteLater();
+        }
+        
+        // Display the new view
+        this -> displayPasswords();
+    }
+
+    //====================================================
     //     updatePasswordsView
     //====================================================
     /**
@@ -383,14 +402,8 @@ namespace kmanager::state{
             // Compare with old number and update the view
             if( this -> current_passwords_number > this -> old_passwords_number || this -> repaint_passwords ){
 
-                // Clear previous view
-                this -> label_vec.clear();
-                for( int64_t i = 0; i < this -> scroll_layout -> count(); i++ ){
-                    this -> scroll_layout -> itemAt( i ) -> widget() -> deleteLater();
-                }
-                
-                // Display the new view
-                this -> displayPasswords();
+                // Redraw widgets
+                this -> redrawWidgets();
 
                 // Reset indicators
                 this -> old_passwords_number = this -> current_passwords_number;
@@ -431,6 +444,9 @@ namespace kmanager::state{
      * 
      */
     void PasswordManagerState::findAction(){
+
+        // Redraw widgets
+        this -> redrawWidgets();
 
         // Containers
         auto widgets_QLineEdit = this -> scroll_widget -> findChildren<QLineEdit*>();
