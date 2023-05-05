@@ -25,8 +25,8 @@ namespace kmanager::widget{
      * 
      * @param parent Parent widget.
      */
-    CustomQLineEdit::CustomQLineEdit( QWidget *parent ): 
-        QLineEdit( parent ){
+    CustomQLineEdit::CustomQLineEdit( const QString& contents, QWidget *parent ): 
+        QLineEdit( contents, parent ){
 
         // Init base properties
         this -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );

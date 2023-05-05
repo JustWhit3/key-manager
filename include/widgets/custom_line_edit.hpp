@@ -37,7 +37,7 @@ namespace kmanager::widget{
         public: 
         
             // Constructors / destructor
-            explicit CustomQLineEdit( QWidget *parent = nullptr );
+            explicit CustomQLineEdit( const QString& contents, QWidget *parent = nullptr );
             ~CustomQLineEdit();
 
             // Variables

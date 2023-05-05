@@ -170,7 +170,7 @@ namespace kmanager::state{
             this -> password_username -> geometry().y()
         );
 
-        // Note label
+        // Actions label
         this -> password_actions = QSharedPointer<QLabel>( new QLabel( this -> host -> host ) );
         this -> password_actions -> setVisible( false );
         this -> password_actions -> setText( "Actions" );
@@ -193,6 +193,13 @@ namespace kmanager::state{
             this -> password_actions -> geometry().y() - label_height
         );
 
+        QObject::connect( 
+            this -> find_button.get(), 
+            SIGNAL( clicked() ), 
+            this, 
+            SLOT( findAction() ) 
+        );
+
         // Find textbox
         this -> find_input = QSharedPointer<QLineEdit>( new QLineEdit( this -> host -> host ) );
         this -> find_input -> setVisible( false );
@@ -203,6 +210,13 @@ namespace kmanager::state{
             this -> password_actions -> geometry().y() - label_height
         );
         this -> find_input -> setPlaceholderText( "Search..." );
+
+        QObject::connect( 
+            this -> find_input.get(), 
+            SIGNAL( returnPressed() ), 
+            this -> find_button.get(), 
+            SLOT( animateClick() ) 
+        );
 
         // Menu button
         this -> menu_button = QSharedPointer<QPushButton>( new QPushButton( "", this -> host -> host ) );
@@ -289,15 +303,15 @@ namespace kmanager::state{
             this -> current_password.password_str = json_obj.value( QString( "Password" ) ).toString();
 
             // Draw platform label for each password
-            this -> current_platform_label = new widget::CustomQLineEdit( this -> scroll_widget.get() );
+            this -> current_platform_label = new widget::CustomQLineEdit( "Platform", this -> scroll_widget.get() );
             this -> current_platform_label -> setText( this -> current_password.platform );
 
             // Add label for username
-            this -> current_username_label = new widget::CustomQLineEdit( this -> scroll_widget.get() );
+            this -> current_username_label = new widget::CustomQLineEdit( "Username", this -> scroll_widget.get() );
             this -> current_username_label -> setText( this -> current_password.username );
 
             // Add label for password
-            this -> current_password_label = new widget::CustomQLineEdit( this -> scroll_widget.get() );
+            this -> current_password_label = new widget::CustomQLineEdit( "Password", this -> scroll_widget.get() );
             this -> current_password_label -> setText( this -> current_password.password_str );
             this -> current_password_label -> setEchoMode( QLineEdit::Password );
 
@@ -407,6 +421,32 @@ namespace kmanager::state{
     void PasswordManagerState::startTimeLoop(){
         this -> menu_button_pressed = false;
         this -> repaint_passwords = true;
+    }
+
+    //====================================================
+    //     findAction
+    //====================================================
+    /**
+     * @brief Find button machinery.
+     * 
+     */
+    void PasswordManagerState::findAction(){
+
+        // Containers
+        auto widgets_QLineEdit = this -> scroll_widget -> findChildren<QLineEdit*>();
+        auto widgets_Eye = this -> scroll_widget -> findChildren<widget::PasswordToggle*>();
+        auto widgets_Actions = this -> scroll_widget -> findChildren<widget::PasswordActions*>();
+
+        // Display only required passwords
+        for( int i = 0; i < widgets_QLineEdit.size(); ++i ){
+            if( ! widgets_QLineEdit[ i ] -> text().contains( this -> find_input -> text() ) && i % 3 == 0 ){
+                widgets_QLineEdit[ i ] -> deleteLater();
+                widgets_QLineEdit[ i + 1 ] -> deleteLater();
+                widgets_QLineEdit[ i + 2 ] -> deleteLater();
+                widgets_Eye[ i / 3 ] -> deleteLater();
+                widgets_Actions[ i / 3 ] -> deleteLater();
+            }
+        }
     }
 
     //====================================================

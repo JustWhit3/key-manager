@@ -143,6 +143,7 @@ namespace kmanager::state{
             void updatePasswordsView();
             void stopTimeLoop();
             void startTimeLoop();
+            void findAction();
     };
 }
 
