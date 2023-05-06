@@ -86,7 +86,7 @@ namespace kmanager::state{
             QSharedPointer<QPushButton> menu_button;
             QSharedPointer<QLineEdit> find_input;
             QSharedPointer<window::AddPasswordWindow> add_password_window;
-            std::vector<entity::Password<QLineEdit*>> label_vec;
+            std::vector<entity::Password<widget::CustomQLineEdit*>> label_vec;
 
             // Variables (widgets fro scroll area)
             QSharedPointer<QScrollArea> scroll_area;
@@ -99,7 +99,7 @@ namespace kmanager::state{
             widget::CustomQLineEdit* current_password_label;
             widget::PasswordActions* current_password_actions;
             widget::PasswordToggle* password_widget;
-            entity::Password<QLineEdit*> new_password;
+            entity::Password<widget::CustomQLineEdit*> new_password;
         
         //====================================================
         //     Private
@@ -147,6 +147,7 @@ namespace kmanager::state{
             void startTimeLoop();
             void findAction();
             void deleteMachinery();
+            void saveSettingsMachinery();
     };
 }
 

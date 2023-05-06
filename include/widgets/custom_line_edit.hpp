@@ -43,6 +43,7 @@ namespace kmanager::widget{
             // Variables
             CustomQLineEdit* first_widget;
             CustomQLineEdit* second_widget;
+            QString old_label;
 
         //====================================================
         //     Private

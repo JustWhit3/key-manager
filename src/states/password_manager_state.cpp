@@ -309,6 +309,7 @@ namespace kmanager::state{
             // Add label for username
             this -> current_username_label = new widget::CustomQLineEdit( "Username", this -> scroll_widget.get() );
             this -> current_username_label -> setText( this -> current_password.username );
+            this -> current_username_label -> old_label = this -> current_password.username;
 
             // Add label for password
             this -> current_password_label = new widget::CustomQLineEdit( "Password", this -> scroll_widget.get() );
@@ -347,6 +348,20 @@ namespace kmanager::state{
                 SIGNAL( clicked() ), 
                 this,
                 SLOT( deleteMachinery() ) 
+            );
+
+            QObject::connect( 
+                this -> current_password_actions -> save_password.get(), 
+                SIGNAL( clicked() ), 
+                this -> current_password_actions,
+                SLOT( setSaveMySettingsTrue() ) 
+            );
+
+            QObject::connect( 
+                this -> current_password_actions -> save_password.get(), 
+                SIGNAL( clicked() ), 
+                this,
+                SLOT( saveSettingsMachinery() ) 
             );
 
             // Fill the label containers
@@ -493,7 +508,7 @@ namespace kmanager::state{
             this -> label_vec.cbegin(),
             this -> label_vec.cend(),
             [ this ]( const auto& el ){
-                if( el.actions ->  deleteMe == true ){
+                if( el.actions -> deleteMe == true ){
                     std::ostringstream password_to_remove;
                     password_to_remove << this -> password_dir.str()
                                        << el.username -> text().toStdString() 
@@ -505,6 +520,71 @@ namespace kmanager::state{
 
         // Save the modify in the member
         this -> old_passwords_number--;
+
+        // Repaint everything
+        this -> redrawWidgets();
+    }
+
+    //====================================================
+    //     saveSettingsMachinery
+    //====================================================
+    /**
+     * @brief Machinery for saving widgets settings.
+     * 
+     */
+    void PasswordManagerState::saveSettingsMachinery(){
+            
+        // Remove the interested widget
+        std::for_each(
+            this -> label_vec.cbegin(),
+            this -> label_vec.cend(),
+            [ this ]( const auto& el ){
+                if( el.actions -> saveMySettings == true ){
+                    
+                    // Reset bool variable
+                    el.actions -> saveMySettings = false;
+
+                    // Get file name
+                    std::ostringstream password_to_remove;
+                    password_to_remove << this -> password_dir.str()
+                                       << el.username -> text().toStdString() 
+                                       << ".json";
+
+                    // Doc file settings
+                    QFile json_doc_file;
+                    json_doc_file.setFileName( QString::fromStdString( password_to_remove.str() ) );
+                    json_doc_file.open( QIODevice::WriteOnly | QIODevice::Text );
+
+                    // Text stream settings
+                    QTextStream iStream( &json_doc_file );
+                    iStream.setEncoding( QStringConverter::Utf8 );
+
+                    // Json object settings
+                    QJsonObject main_container;
+                    main_container.insert( "Platform / Website", QJsonValue::fromVariant( el.platform -> text() ) );
+                    main_container.insert( "Password", QJsonValue::fromVariant( el.password_str -> text() ) );
+                    main_container.insert( "Username", QJsonValue::fromVariant( el.username -> text() ) );
+
+                    // Json document settings
+                    QJsonDocument json_doc;
+                    json_doc.setObject( main_container );
+
+                    // Byte array settings
+                    QByteArray json_doc_bytes;
+                    json_doc_bytes = json_doc.toJson( QJsonDocument::Indented );
+                    iStream << json_doc_bytes;
+                    json_doc_file.close();
+
+                    // Remove old file
+                    password_to_remove.str( "" );
+                    password_to_remove.clear();
+                    password_to_remove << this -> password_dir.str()
+                                       << el.username -> old_label.toStdString() 
+                                       << ".json";
+                    std::filesystem::remove( password_to_remove.str() );
+                }
+            }
+        );
 
         // Repaint everything
         this -> redrawWidgets();

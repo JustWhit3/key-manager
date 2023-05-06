@@ -60,6 +60,7 @@ namespace kmanager::widget{
             QSharedPointer<QPushButton> delete_password;
             QSharedPointer<QPushButton> save_password;
             bool deleteMe;
+            bool saveMySettings;
 
         //====================================================
         //     private
@@ -79,6 +80,7 @@ namespace kmanager::widget{
 
             // Methods
             void setDeleteTrue();
+            void setSaveMySettingsTrue();
     };
 }
 

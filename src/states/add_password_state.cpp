@@ -262,7 +262,9 @@ namespace kmanager::state{
         this -> json_doc_file.setFileName( QString::fromStdString( this -> file_oss.str() ) );
 
         // Create dirs
-        std::filesystem::create_directories( this -> file_oss.str().erase( this -> file_oss.str().size() - 5 - this -> new_password.username.size() ) );
+        std::filesystem::create_directories( 
+            this -> file_oss.str().erase( this -> file_oss.str().size() - 5 - this -> new_password.username.size() ) 
+        );
 
         // Check if all the mandatory fields have been filled
         if( this -> new_password.platform.isEmpty() || 
