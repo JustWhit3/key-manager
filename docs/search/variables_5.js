@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['label_5fvec_216',['label_vec',['../classkmanager_1_1state_1_1PasswordManagerState.html#a44ca1156ba10b7389f5d8ffe52cddcb4',1,'kmanager::state::PasswordManagerState']]],
-  ['logo_5fimg_5flabel_217',['logo_img_label',['../classkmanager_1_1state_1_1MenuState.html#a22a295464b986e1f478ef47e333d79dd',1,'kmanager::state::MenuState']]]
+  ['host_220',['host',['../classkmanager_1_1state_1_1AddPasswordState.html#ab995f88b92a6ef41178885fabbeb73e2',1,'kmanager::state::AddPasswordState::host()'],['../classkmanager_1_1state_1_1MenuState.html#a825bcbe0caa7b56c7d042c714580da97',1,'kmanager::state::MenuState::host()']]]
 ];
