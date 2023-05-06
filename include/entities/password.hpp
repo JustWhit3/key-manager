@@ -19,6 +19,10 @@
 //     Headers
 //====================================================
 
+// Widgets
+#include <widgets/password_actions.hpp>
+#include <widgets/password_toggle.hpp>
+
 // Qt
 #include <QString>
 #include <QCheckBox>
@@ -97,8 +101,8 @@ namespace kmanager::entity{
             T password_str;
             T platform;
             T username;
-            QWidget* password_toggle;
-            QWidget* actions;
+            widget::PasswordToggle* password_toggle;
+            widget::PasswordActions* actions;
     };
 }
 

@@ -335,6 +335,20 @@ namespace kmanager::state{
             // Add widget for actions
             this -> current_password_actions = new widget::PasswordActions( this -> scroll_widget.get() );
 
+            QObject::connect( 
+                this -> current_password_actions -> delete_password.get(), 
+                SIGNAL( clicked() ), 
+                this -> current_password_actions,
+                SLOT( setDeleteTrue() ) 
+            );
+
+            QObject::connect( 
+                this -> current_password_actions -> delete_password.get(), 
+                SIGNAL( clicked() ), 
+                this,
+                SLOT( deleteMachinery() ) 
+            );
+
             // Fill the label containers
             this -> new_password.platform = this -> current_platform_label;
             this -> new_password.username = this -> current_username_label;
@@ -463,6 +477,37 @@ namespace kmanager::state{
                 widgets_Actions[ i / 3 ] -> deleteLater();
             }
         }
+    }
+
+    //====================================================
+    //     deleteMachinery
+    //====================================================
+    /**
+     * @brief Machinery for deleting selected widgets.
+     * 
+     */
+    void PasswordManagerState::deleteMachinery(){
+            
+        // Remove the interested widget
+        std::for_each(
+            this -> label_vec.cbegin(),
+            this -> label_vec.cend(),
+            [ this ]( const auto& el ){
+                if( el.actions ->  deleteMe == true ){
+                    std::ostringstream password_to_remove;
+                    password_to_remove << this -> password_dir.str()
+                                       << el.username -> text().toStdString() 
+                                       << ".json";
+                    std::filesystem::remove( password_to_remove.str() );
+                }
+            }
+        );
+
+        // Save the modify in the member
+        this -> old_passwords_number--;
+
+        // Repaint everything
+        this -> redrawWidgets();
     }
 
     //====================================================

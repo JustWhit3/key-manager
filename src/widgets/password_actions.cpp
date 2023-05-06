@@ -32,7 +32,8 @@ namespace kmanager::widget{
      * @param parent 
      */
     PasswordActions::PasswordActions( QWidget* parent ):
-                BaseWidget( parent ){
+                BaseWidget( parent ),
+                deleteMe( false ){
         
         // Initialize widget properties
         this -> initWidgetProperties();
@@ -47,6 +48,17 @@ namespace kmanager::widget{
      */
     PasswordActions::~PasswordActions(){
 
+    }
+
+    //====================================================
+    //     setDeleteTrue
+    //====================================================
+    /**
+     * @brief Set deleteMe variable to true.
+     * 
+     */
+    void PasswordActions::setDeleteTrue(){
+        this -> deleteMe = true;
     }
 
     //====================================================

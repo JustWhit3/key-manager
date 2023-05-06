@@ -46,6 +46,7 @@
 #include <QJsonObject>
 #include <QTimer>
 #include <QScrollBar>
+#include <QSignalMapper>
 
 // STD
 #include <sstream>
@@ -145,6 +146,7 @@ namespace kmanager::state{
             void stopTimeLoop();
             void startTimeLoop();
             void findAction();
+            void deleteMachinery();
     };
 }
 

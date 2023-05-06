@@ -56,6 +56,11 @@ namespace kmanager::widget{
             // Methods
             void initWidgetProperties() override;
 
+            // Variables
+            QSharedPointer<QPushButton> delete_password;
+            QSharedPointer<QPushButton> save_password;
+            bool deleteMe;
+
         //====================================================
         //     private
         //====================================================
@@ -63,8 +68,6 @@ namespace kmanager::widget{
 
             // Variables
             QSharedPointer<QHBoxLayout> layout;
-            QSharedPointer<QPushButton> delete_password;
-            QSharedPointer<QPushButton> save_password;
 
             // Constants
             const QSize icon_size = QSize( 23.f, 23.f );
@@ -75,7 +78,7 @@ namespace kmanager::widget{
         private slots:
 
             // Methods
-            // ...
+            void setDeleteTrue();
     };
 }
 
