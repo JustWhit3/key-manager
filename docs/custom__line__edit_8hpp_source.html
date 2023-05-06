@@ -109,32 +109,34 @@ $(function() {
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="comment">// Variables</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classkmanager_1_1widget_1_1CustomQLineEdit.html#a346f48a36aa5c3178634270e188140f2">   44</a></span>&#160;            <a class="code" href="classkmanager_1_1widget_1_1CustomQLineEdit.html">CustomQLineEdit</a>* <a class="code" href="classkmanager_1_1widget_1_1CustomQLineEdit.html#a346f48a36aa5c3178634270e188140f2">first_widget</a>;</div>
 <div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classkmanager_1_1widget_1_1CustomQLineEdit.html#aff8105689fc449fe5611b5abe120fd28">   45</a></span>&#160;            <a class="code" href="classkmanager_1_1widget_1_1CustomQLineEdit.html">CustomQLineEdit</a>* <a class="code" href="classkmanager_1_1widget_1_1CustomQLineEdit.html#aff8105689fc449fe5611b5abe120fd28">second_widget</a>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="comment">//====================================================</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="comment">//     Private</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">//====================================================</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="comment">// Methods</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordtype">void</span> enter();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordtype">void</span> leave();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordtype">void</span> enterEvent( QEnterEvent* event ) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordtype">void</span> leaveEvent( QEvent* event ) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="comment">// Constants</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keyword">const</span> QString default_settings{ </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="stringliteral">&quot;background-color: rgba( 255, 255, 255, 0% ); padding: 8%;&quot;</span> </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            };</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keyword">const</span> QString hover_settings{ </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <span class="stringliteral">&quot;background-color: rgba( 255, 255, 255, 0% ); padding: 8%; border-color: rgb(255, 255, 255);&quot;</span> </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            };</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    };</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classkmanager_1_1widget_1_1CustomQLineEdit.html#aaefc8c95568ccfbf2e9d5be926dc509b">   46</a></span>&#160;            QString <a class="code" href="classkmanager_1_1widget_1_1CustomQLineEdit.html#aaefc8c95568ccfbf2e9d5be926dc509b">old_label</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="comment">//====================================================</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">//     Private</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment">//====================================================</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="comment">// Methods</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordtype">void</span> enter();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordtype">void</span> leave();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordtype">void</span> enterEvent( QEnterEvent* event ) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordtype">void</span> leaveEvent( QEvent* event ) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="comment">// Constants</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keyword">const</span> QString default_settings{ </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <span class="stringliteral">&quot;background-color: rgba( 255, 255, 255, 0% ); padding: 8%;&quot;</span> </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            };</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keyword">const</span> QString hover_settings{ </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <span class="stringliteral">&quot;background-color: rgba( 255, 255, 255, 0% ); padding: 8%; border-color: rgb(255, 255, 255);&quot;</span> </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            };</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    };</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclasskmanager_1_1widget_1_1CustomQLineEdit_html"><div class="ttname"><a href="classkmanager_1_1widget_1_1CustomQLineEdit.html">kmanager::widget::CustomQLineEdit</a></div><div class="ttdef"><b>Definition:</b> custom_line_edit.hpp:32</div></div>
 <div class="ttc" id="aclasskmanager_1_1widget_1_1CustomQLineEdit_html_a346f48a36aa5c3178634270e188140f2"><div class="ttname"><a href="classkmanager_1_1widget_1_1CustomQLineEdit.html#a346f48a36aa5c3178634270e188140f2">kmanager::widget::CustomQLineEdit::first_widget</a></div><div class="ttdeci">CustomQLineEdit * first_widget</div><div class="ttdef"><b>Definition:</b> custom_line_edit.hpp:44</div></div>
-<div class="ttc" id="aclasskmanager_1_1widget_1_1CustomQLineEdit_html_ad785d1ccaf0a6573dfbb78e64d123a38"><div class="ttname"><a href="classkmanager_1_1widget_1_1CustomQLineEdit.html#ad785d1ccaf0a6573dfbb78e64d123a38">kmanager::widget::CustomQLineEdit::~CustomQLineEdit</a></div><div class="ttdeci">~CustomQLineEdit()</div><div class="ttdoc">Destroy the CustomQLineEdit object.</div><div class="ttdef"><b>Definition:</b> custom_line_edit.cpp:43</div></div>
+<div class="ttc" id="aclasskmanager_1_1widget_1_1CustomQLineEdit_html_aaefc8c95568ccfbf2e9d5be926dc509b"><div class="ttname"><a href="classkmanager_1_1widget_1_1CustomQLineEdit.html#aaefc8c95568ccfbf2e9d5be926dc509b">kmanager::widget::CustomQLineEdit::old_label</a></div><div class="ttdeci">QString old_label</div><div class="ttdef"><b>Definition:</b> custom_line_edit.hpp:46</div></div>
+<div class="ttc" id="aclasskmanager_1_1widget_1_1CustomQLineEdit_html_ad785d1ccaf0a6573dfbb78e64d123a38"><div class="ttname"><a href="classkmanager_1_1widget_1_1CustomQLineEdit.html#ad785d1ccaf0a6573dfbb78e64d123a38">kmanager::widget::CustomQLineEdit::~CustomQLineEdit</a></div><div class="ttdeci">~CustomQLineEdit()</div><div class="ttdoc">Destroy the CustomQLineEdit object.</div><div class="ttdef"><b>Definition:</b> custom_line_edit.cpp:44</div></div>
 <div class="ttc" id="aclasskmanager_1_1widget_1_1CustomQLineEdit_html_af5512696ebd705bd7a12aa603efad828"><div class="ttname"><a href="classkmanager_1_1widget_1_1CustomQLineEdit.html#af5512696ebd705bd7a12aa603efad828">kmanager::widget::CustomQLineEdit::CustomQLineEdit</a></div><div class="ttdeci">CustomQLineEdit(const QString &amp;contents, QWidget *parent=nullptr)</div><div class="ttdoc">Construct a new CustomQLineEdit object.</div><div class="ttdef"><b>Definition:</b> custom_line_edit.cpp:28</div></div>
 <div class="ttc" id="aclasskmanager_1_1widget_1_1CustomQLineEdit_html_aff8105689fc449fe5611b5abe120fd28"><div class="ttname"><a href="classkmanager_1_1widget_1_1CustomQLineEdit.html#aff8105689fc449fe5611b5abe120fd28">kmanager::widget::CustomQLineEdit::second_widget</a></div><div class="ttdeci">CustomQLineEdit * second_widget</div><div class="ttdef"><b>Definition:</b> custom_line_edit.hpp:45</div></div>
 <div class="ttc" id="anamespacekmanager_1_1widget_html"><div class="ttname"><a href="namespacekmanager_1_1widget.html">kmanager::widget</a></div><div class="ttdef"><b>Definition:</b> base_widget.cpp:21</div></div>
