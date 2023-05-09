@@ -119,6 +119,7 @@ namespace kmanager::state{
         this -> scroll_layout = QSharedPointer<QGridLayout>( new QGridLayout() );
         this -> scroll_layout -> setVerticalSpacing( 10.f );
         this -> scroll_layout -> setHorizontalSpacing( 20.f );
+        this -> scroll_layout -> setAlignment( Qt::AlignTop );
         this -> scroll_widget -> setLayout( this -> scroll_layout.get() );
     }
 
@@ -576,12 +577,14 @@ namespace kmanager::state{
                     json_doc_file.close();
 
                     // Remove old file
-                    password_to_remove.str( "" );
-                    password_to_remove.clear();
-                    password_to_remove << this -> password_dir.str()
-                                       << el.username -> old_label.toStdString() 
-                                       << ".json";
-                    std::filesystem::remove( password_to_remove.str() );
+                    if( el.username -> old_label != el.username -> text() ){
+                        password_to_remove.str( "" );
+                        password_to_remove.clear();
+                        password_to_remove << this -> password_dir.str()
+                                           << el.username -> old_label.toStdString() 
+                                           << ".json";
+                        std::filesystem::remove( password_to_remove.str() );
+                    }
                 }
             }
         );
