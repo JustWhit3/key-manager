@@ -46,6 +46,7 @@ var menudata={children:[
 {text:"o",url:"functions.html#index_o"},
 {text:"p",url:"functions.html#index_p"},
 {text:"s",url:"functions.html#index_s"},
+{text:"t",url:"functions.html#index_t"},
 {text:"u",url:"functions.html#index_u"},
 {text:"v",url:"functions.html#index_v"},
 {text:"~",url:"functions.html#index__7E"}]},
@@ -72,6 +73,7 @@ var menudata={children:[
 {text:"o",url:"functions_vars.html#index_o"},
 {text:"p",url:"functions_vars.html#index_p"},
 {text:"s",url:"functions_vars.html#index_s"},
+{text:"t",url:"functions_vars.html#index_t"},
 {text:"u",url:"functions_vars.html#index_u"},
 {text:"v",url:"functions_vars.html#index_v"}]}]}]},
 {text:"Files",url:"files.html",children:[
