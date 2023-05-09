@@ -336,6 +336,9 @@ namespace kmanager::state{
 
             // Add widget for actions
             this -> current_password_actions = new widget::PasswordActions( this -> scroll_widget.get() );
+            this -> current_password_actions -> first_widget = this -> current_platform_label;
+            this -> current_password_actions -> second_widget = this -> current_password_label;
+            this -> current_password_actions -> third_widget = this -> current_username_label;
 
             QObject::connect( 
                 this -> current_password_actions -> delete_password.get(), 

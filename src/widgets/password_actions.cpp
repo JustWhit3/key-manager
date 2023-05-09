@@ -105,4 +105,34 @@ namespace kmanager::widget{
         // Widget properties
         this -> setFixedWidth( 252 );
     }
+
+    //====================================================
+    //     enterEvent
+    //====================================================
+    /**
+     * @brief Override the enterEvent widget function.
+     * 
+     * @param event Event triggered when mouse enter the widget.
+     */
+    void PasswordActions::enterEvent( QEnterEvent* event ){
+        this -> first_widget -> setStyleSheet( this -> hover_settings );
+        this -> second_widget -> setStyleSheet( this -> hover_settings );
+        this -> third_widget -> setStyleSheet( this -> hover_settings );
+        event -> accept();
+    }
+
+    //====================================================
+    //     leaveEvent
+    //====================================================
+    /**
+     * @brief Override the leaveEvent widget function.
+     * 
+     * @param event Event triggered when mouse leave the widget.
+     */
+    void PasswordActions::leaveEvent( QEvent* event ){
+        this -> first_widget -> setStyleSheet( this -> default_settings );
+        this -> second_widget -> setStyleSheet( this -> default_settings );
+        this -> third_widget -> setStyleSheet( this -> default_settings );
+        event -> accept();
+    }
 }

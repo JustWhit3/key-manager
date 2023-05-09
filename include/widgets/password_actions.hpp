@@ -21,6 +21,7 @@
 
 // Widgets
 #include <widgets/base_widget.hpp>
+#include <widgets/custom_line_edit.hpp>
 
 // Qt
 #include <QWidget>
@@ -29,6 +30,7 @@
 #include <QSharedPointer>
 #include <QIcon>
 #include <QSize>
+#include <QString>
 
 namespace kmanager::widget{
 
@@ -61,6 +63,9 @@ namespace kmanager::widget{
             QSharedPointer<QPushButton> save_password;
             bool deleteMe;
             bool saveMySettings;
+            CustomQLineEdit* first_widget;
+            CustomQLineEdit* second_widget;
+            CustomQLineEdit* third_widget;
 
         //====================================================
         //     private
@@ -68,10 +73,20 @@ namespace kmanager::widget{
         private:
 
             // Variables
+            void enterEvent( QEnterEvent* event ) override;
+            void leaveEvent( QEvent* event ) override;
+
+            // Variables
             QSharedPointer<QHBoxLayout> layout;
 
             // Constants
             const QSize icon_size = QSize( 23.f, 23.f );
+            const QString default_settings{ 
+                "background-color: rgba( 255, 255, 255, 0% ); padding: 8%;" 
+            };
+            const QString hover_settings{ 
+                "background-color: rgba( 255, 255, 255, 0% ); padding: 8%; border-color: rgb(255, 255, 255);" 
+            };
 
         //====================================================
         //     private slots

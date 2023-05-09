@@ -85,7 +85,7 @@ namespace kmanager::widget{
     }
 
     //====================================================
-    //     enterEvent
+    //     leaveEvent
     //====================================================
     /**
      * @brief Override the leaveEvent widget function.
