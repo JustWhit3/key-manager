@@ -6,8 +6,14 @@ declare -a source_files=(
   "states/base_state.cpp"
   "states/menu_state.cpp"
   "states/password_manager_state.cpp"
+  "states/add_password_state.cpp"
+  "widgets/base_widget.cpp"
+  "widgets/custom_line_edit.cpp"
+  "widgets/password_actions.cpp"
+  "widgets/password_toggle.cpp"
   "windows/base_window.cpp"
   "windows/main_window.cpp"
+  "windows/add_password_window.cpp"
 )
 
 # Source code check

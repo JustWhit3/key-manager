@@ -322,8 +322,8 @@ namespace kmanager::state{
             this -> current_platform_label -> second_widget = this -> current_password_label;
 
             // Pack "current_username_label" with the others two
-            this -> current_username_label -> first_widget = this -> current_platform_label;
-            this -> current_username_label -> second_widget = this -> current_password_label;
+            this -> current_username_label -> first_widget = this -> current_password_label;
+            this -> current_username_label -> second_widget = this -> current_platform_label;
 
             // Pack "current_password_label" with the others two
             this -> current_password_label -> first_widget = this -> current_platform_label;

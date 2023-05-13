@@ -96,4 +96,31 @@ namespace kmanager::widget{
         this -> leave();
         event -> accept();
     }
+
+    //====================================================
+    //     keyPressEvent
+    //====================================================
+    /**
+     * @brief Override the keyPressEvent widget function for the arrows movements.
+     * 
+     * @param event Event triggered when a key is pressed.
+     */
+    void CustomQLineEdit::keyPressEvent( QKeyEvent *event ){
+        switch( event -> key() ){
+
+            // Right
+            case Qt::Key_Right:
+                this -> first_widget -> setFocus();
+                break;
+
+            // Left
+            case Qt::Key_Left:
+                this -> second_widget -> setFocus();
+                break;
+
+            // Default
+            default:
+                QLineEdit::keyPressEvent( event );
+        }
+    }
 }
