@@ -35,6 +35,7 @@ file( GLOB_RECURSE SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/../src/*.cpp )
 
 # Creating the main executable
 set( APP "key-manager" )
+set( LIB "key-manager-static" )
 add_executable( ${APP} ${SRC_FILES} ${INC_FILES} )
 
 # Adding specific compiler flags

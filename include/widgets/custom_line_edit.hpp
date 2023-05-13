@@ -51,8 +51,6 @@ namespace kmanager::widget{
         private:
 
             // Methods
-            void enter();
-            void leave();
             void enterEvent( QEnterEvent* event ) override;
             void leaveEvent( QEvent* event ) override;
             void keyPressEvent( QKeyEvent *event ) override;

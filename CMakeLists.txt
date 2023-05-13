@@ -25,3 +25,8 @@ endif()
 
 # Compiling the main app
 add_subdirectory( src )
+
+# Compile tests
+if( CMAKE_BUILD_TYPE STREQUAL "Debug" )
+    add_subdirectory( test/unit_tests )
+endif()
