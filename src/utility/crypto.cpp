@@ -16,20 +16,46 @@
 #include <utility/crypto.hpp>
 
 // STD
+#include <string>
 #include <string_view>
+#include <unistd.h>
+#include <ctime>
 
 namespace kmanager::utility{
 
     //====================================================
-    //     Crypto (default constructor)
+    //     Static constants
+    //====================================================
+    const char Crypto::alpha_num[] =
+        "0123456789" 
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
+        "abcdefghijklmnopqrstuvwxyz";
+
+    //====================================================
+    //     Crypto (parametric constructor)
     //====================================================
     /**
-     * @brief Construct a new Crypto object.
+     * @brief Construct a new Crypto object, by using a default input key.
      * 
      */
     Crypto::Crypto( std::string_view message, std::string_view key ): 
         message( message ),
         key( key ){
+
+    }
+
+    //====================================================
+    //     Crypto (parametric constructor)
+    //====================================================
+    /**
+     * @brief Construct a new Crypto object, by using a random key of lenght 100.
+     * 
+     */
+    Crypto::Crypto( std::string_view message ): 
+        message( message ){
+
+        // Generate random key
+        this -> key = this -> generateRandomKey( 100 );
 
     }
 
@@ -114,7 +140,7 @@ namespace kmanager::utility{
     //     setMessage
     //====================================================
     /**
-     * @brief CHange value of the "message" variable.
+     * @brief Change value of the "message" variable.
      * 
      * @param message The new value of the "message" variable.
      */
@@ -126,11 +152,35 @@ namespace kmanager::utility{
     //     setKey
     //====================================================
     /**
-     * @brief CHange value of the "key" variable.
+     * @brief Change value of the "key" variable.
      * 
      * @param message The new value of the "key" variable.
      */
     void Crypto::setKey( std::string_view key ){
         this -> key = key;
+    }
+
+    //====================================================
+    //     generateRandomKey
+    //====================================================
+    /**
+     * @brief Generate a random alpha-numeric key of length "length".
+     * 
+     */
+    std::string Crypto::generateRandomKey( int64_t length ){
+
+        // Variables
+        std::string result;
+        result.reserve( length );
+
+        // Change random seed
+        srand( ( unsigned ) time( NULL ) * getpid() ); 
+
+        // Generate random key
+        for( int16_t i = 0; i < length; ++i ){
+            result += this -> alpha_num[ rand() % ( sizeof( this -> alpha_num ) - 1 ) ];
+        }
+
+        return result;
     }
 }

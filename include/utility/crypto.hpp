@@ -41,6 +41,7 @@ namespace kmanager::utility{
 
             // Constructors / destructor
             Crypto( std::string_view message, std::string_view key );
+            Crypto( std::string_view message );
             ~Crypto();
 
             // Methods
@@ -61,9 +62,15 @@ namespace kmanager::utility{
         //====================================================
         private:
 
+            // Methods
+            std::string generateRandomKey( int64_t length );
+
             // Members
             std::string message;
             std::string key;
+
+            // Constants
+            static const char alpha_num[];
     };
 }
 

@@ -81,4 +81,18 @@ TEST_CASE( "Testing the Crypto class." ){
         crypto.setKey( "12345" );
         CHECK_EQ( crypto.getKey(), "12345" );
     }
+
+    //====================================================
+    //     generateRandomKey
+    //====================================================
+    SUBCASE( "Testing the generateRandomKey method." ){
+
+        // Check length of generated key
+        kmanager::utility::Crypto crypto_random_key( "Test message" );
+        CHECK_EQ( crypto_random_key.getKey().length(), 100 );
+
+        // Check that starting seed is the same
+        kmanager::utility::Crypto crypto_random_key_2( "Test message" );
+        CHECK( crypto_random_key.getKey() == crypto_random_key_2.getKey() );
+    }
 }
