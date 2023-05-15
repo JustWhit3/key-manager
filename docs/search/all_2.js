@@ -6,7 +6,7 @@ var searchData=
   ['cmakelists_2etxt_24',['CMakeLists.txt',['../CMakeLists_8txt.html',1,'']]],
   ['create_5fnew_5fpassword_5flabel_25',['create_new_password_label',['../classkmanager_1_1state_1_1AddPasswordState.html#ac081ce523faa8f5633b7c7b759634d23',1,'kmanager::state::AddPasswordState']]],
   ['create_5fnew_5fpassword_5ftextbox_26',['create_new_password_textbox',['../classkmanager_1_1state_1_1AddPasswordState.html#afa1a061f88220a141be71ab139314b3a',1,'kmanager::state::AddPasswordState']]],
-  ['crypto_27',['Crypto',['../classkmanager_1_1utility_1_1Crypto.html#a444ad9debdf2394f41e41a149235aca6',1,'kmanager::utility::Crypto::Crypto()'],['../classkmanager_1_1utility_1_1Crypto.html',1,'kmanager::utility::Crypto']]],
+  ['crypto_27',['Crypto',['../classkmanager_1_1utility_1_1Crypto.html#a444ad9debdf2394f41e41a149235aca6',1,'kmanager::utility::Crypto::Crypto(std::string_view message, std::string_view key)'],['../classkmanager_1_1utility_1_1Crypto.html#a01e670f15dab8acfe7d454dd25750fbf',1,'kmanager::utility::Crypto::Crypto(std::string_view message)'],['../classkmanager_1_1utility_1_1Crypto.html',1,'kmanager::utility::Crypto']]],
   ['crypto_2ecpp_28',['crypto.cpp',['../crypto_8cpp.html',1,'']]],
   ['crypto_2ehpp_29',['crypto.hpp',['../crypto_8hpp.html',1,'']]],
   ['current_5fpassword_5factions_30',['current_password_actions',['../classkmanager_1_1state_1_1PasswordManagerState.html#a259a8df534aee3f4b5c94f16934ddcaa',1,'kmanager::state::PasswordManagerState']]],
