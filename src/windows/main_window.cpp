@@ -110,6 +110,9 @@ namespace kmanager::window{
     void MainWindow::initStateMachine(){
 
         // Create states
+        this -> login_state = QSharedPointer<state::LoginState>( 
+            new state::LoginState( this ) 
+        );
         this -> menu_state = QSharedPointer<state::MenuState>( 
             new state::MenuState( this ) 
         );
@@ -118,18 +121,25 @@ namespace kmanager::window{
         );
 
         // Create transitions
-        this -> menu_state -> addTransition( 
-            this -> menu_state -> p_manager_button.get(), &QPushButton::clicked, this -> p_manager_state.get() 
+        this -> menu_state -> addTransition( // menu -> password manager
+            this -> menu_state -> p_manager_button.get(), SIGNAL( clicked() ), this -> p_manager_state.get() 
         );
-        this -> p_manager_state -> addTransition( 
-            this -> p_manager_state -> menu_button.get(), &QPushButton::clicked, this -> menu_state.get() 
+        this -> p_manager_state -> addTransition( // password_manager -> menu
+            this -> p_manager_state -> menu_button.get(), SIGNAL( clicked() ), this -> menu_state.get() 
+        );
+        this -> login_state -> addTransition( // login -> menu
+            this -> login_state.get(), SIGNAL( login_successful() ), this -> menu_state.get() 
+        );
+        this -> menu_state -> addTransition( // menu -> login
+            this -> menu_state -> change_password_button.get(), SIGNAL( clicked() ), this -> login_state.get() 
         );
 
         // States machine properties
         this -> state_machine = QSharedPointer<QStateMachine>( new QStateMachine( this ) );
+        this -> state_machine -> addState( this -> login_state.get() );
         this -> state_machine -> addState( this -> menu_state.get() );
         this -> state_machine -> addState( this -> p_manager_state.get() );
-        this -> state_machine -> setInitialState( this -> menu_state.get() );
+        this -> state_machine -> setInitialState( this -> login_state.get() );
         this -> state_machine -> start();
     }
 
@@ -147,7 +157,7 @@ namespace kmanager::window{
             this -> menu_state -> p_manager_button.get(), 
             SIGNAL( clicked() ), 
             this, 
-            SLOT( hidePasswordManagerWidgets() ) 
+            SLOT( MenuState_PasswordManagerState() ) 
         );
 
         // Password manager state -> Menu state
@@ -155,7 +165,7 @@ namespace kmanager::window{
             this -> p_manager_state -> menu_button.get(), 
             SIGNAL( clicked() ), 
             this, 
-            SLOT( hideMenuStateWidgets() ) 
+            SLOT( PasswordManagerState_MenuState() ) 
         );
 
         // Restart time loop when entering password manager state
@@ -165,16 +175,32 @@ namespace kmanager::window{
             this -> p_manager_state.get(), 
             SLOT( startTimeLoop() ) 
         );
+
+        // Login state -> Menu state
+        QObject::connect( 
+            this -> login_state.get(), 
+            SIGNAL( login_successful() ), 
+            this, 
+            SLOT( LoginState_MenuState() ) 
+        );
+
+        // Menu state -> Login state
+        QObject::connect( 
+            this -> menu_state -> change_password_button.get(), 
+            SIGNAL( clicked() ), 
+            this, 
+            SLOT( MenuState_PasswordManagerState() ) 
+        );
     }
 
     //====================================================
-    //     hidePasswordManagerWidgets
+    //     MenuState_PasswordManagerState
     //====================================================
     /**
      * @brief Hide widgets for the PasswordManager state.
      * 
      */
-    void MainWindow::hidePasswordManagerWidgets(){
+    void MainWindow::MenuState_PasswordManagerState(){
 
         // Buttons
         this -> p_manager_state -> assignProperty( this -> menu_state -> p_manager_button.get(), "visible", false );
@@ -182,20 +208,29 @@ namespace kmanager::window{
         this -> p_manager_state -> assignProperty( this -> menu_state -> options_button.get(), "visible", false );
         this -> p_manager_state -> assignProperty( this -> menu_state -> exit_button.get(), "visible", false );
 
+        this -> login_state -> assignProperty( this -> menu_state -> p_manager_button.get(), "visible", false );
+        this -> login_state -> assignProperty( this -> menu_state -> p_generator_button.get(), "visible", false );
+        this -> login_state -> assignProperty( this -> menu_state -> options_button.get(), "visible", false );
+        this -> login_state -> assignProperty( this -> menu_state -> exit_button.get(), "visible", false );
+
         // Labels
         this -> p_manager_state -> assignProperty( this -> menu_state -> version.get(), "visible", false );
         this -> p_manager_state -> assignProperty( this -> menu_state -> logo_img_label.get(), "visible", false );
         this -> p_manager_state -> assignProperty( this -> menu_state -> change_password_button.get(), "visible", false );
+
+        this -> login_state -> assignProperty( this -> menu_state -> version.get(), "visible", false );
+        this -> login_state -> assignProperty( this -> menu_state -> logo_img_label.get(), "visible", false );
+        this -> login_state -> assignProperty( this -> menu_state -> change_password_button.get(), "visible", false );
     }
 
     //====================================================
-    //     hideMenuStateWidgets
+    //     PasswordManagerState_MenuState
     //====================================================
     /**
      * @brief Hide widgets for the MenuState state.
      * 
      */
-    void MainWindow::hideMenuStateWidgets(){
+    void MainWindow::PasswordManagerState_MenuState(){
 
         // Scroll area widgets
         this -> menu_state -> assignProperty( this -> p_manager_state -> scroll_area.get(), "visible", false );
@@ -214,5 +249,24 @@ namespace kmanager::window{
 
         // QLineEdit
         this -> menu_state -> assignProperty( this -> p_manager_state -> find_input.get(), "visible", false );
+    }
+
+    //====================================================
+    //     LoginState_MenuState
+    //====================================================
+    /**
+     * @brief Hide widgets for the MenuState state when coming from the LoginState state.
+     * 
+     */
+    void MainWindow::LoginState_MenuState(){
+
+        // QLineEdit
+        this -> menu_state -> assignProperty( this -> login_state -> enter_password.get(), "visible", false );
+
+        // QLabel
+        this -> menu_state -> assignProperty( this -> login_state -> enter_password_label.get(), "visible", false );
+
+        // QCheckBox
+        this -> menu_state -> assignProperty( this -> login_state -> checkbox.get(), "visible", false );
     }
 }

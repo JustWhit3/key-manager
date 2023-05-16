@@ -2,9 +2,9 @@
 //     File data
 //====================================================
 /**
- * @file main_window.hpp
+ * @file login_state.hpp
  * @author Gianluca Bianco (biancogianluca9@gmail.com)
- * @date 2023-03-06
+ * @date 2023-05-15
  * @copyright Copyright (c) 2022 Gianluca Bianco under the GPL v3.0 license.
  */
 
@@ -12,48 +12,52 @@
 //     Preprocessor directives
 //====================================================
 #pragma once
-#ifndef KEY_MANAGER_MAIN_WINDOW
-#define KEY_MANAGER_MAIN_WINDOW
+#ifndef KEY_MANAGER_LOGIN_STATE
+#define KEY_MANAGER_LOGIN_STATE
 
 //====================================================
 //     Headers
 //====================================================
 
-// Windows
-#include <windows/base_window.hpp>
-
 // States
-#include <states/menu_state.hpp>
-#include <states/password_manager_state.hpp>
-#include <states/login_state.hpp>
+#include <states/base_state.hpp>
 
 // Qt
-#include <QtWidgets>
 #include <QStateMachine>
-#include <QObject>
+#include <QLineEdit>
+#include <QCheckBox>
+#include <QLabel>
 
-namespace kmanager::window{
+namespace kmanager::state{
 
     //====================================================
-    //     MainWindow
+    //     LoginState
     //====================================================
     /**
-     * @brief Class used to construct the main window of the app.
+     * @brief Class used to construct the login state of the app.
      * 
      */
-    class MainWindow: public BaseWindow{
+    class LoginState: public BaseState{
 
         // Macro for Qt
         Q_OBJECT
-
+    
         //====================================================
         //     Public
         //====================================================
         public:
 
             // Constructors / destructor
-            explicit MainWindow( QWidget *parent = nullptr );
-            ~MainWindow();
+            explicit LoginState( QWidget* host, QState *parent = nullptr );
+            ~LoginState();
+
+            // Variables (widgets)
+            QSharedPointer<QLineEdit> enter_password;
+            QSharedPointer<QCheckBox> checkbox;
+            QSharedPointer<QLabel> enter_password_label;
+
+            // Variables (other)
+            QWidget* host;
         
         //====================================================
         //     Private
@@ -61,27 +65,25 @@ namespace kmanager::window{
         private:
 
             // Methods
-            void keyPressEvent( QKeyEvent *event ) override;
-            void setWindowProperties() override;
-            void initStateMachine() override;
-            void closeEvent( QCloseEvent* event ) override;
-            void buttonsPressedActions();
+            void addWidgets() override;
+            void assignProperties() override;
 
-            // Variables (states)
-            QSharedPointer<QStateMachine> state_machine;
-            QSharedPointer<state::MenuState> menu_state;
-            QSharedPointer<state::PasswordManagerState> p_manager_state;
-            QSharedPointer<state::LoginState> login_state;
+            // Constants
+            const uint32_t width{ 270 };
+            const uint32_t height{ 70 };
 
         //====================================================
-        //     Private slots
+        //     private slots
         //====================================================
         private slots:
-        
-            // Methods
-            void MenuState_PasswordManagerState();
-            void PasswordManagerState_MenuState();
-            void LoginState_MenuState();
+            void changeToggleState();
+            void login();
+
+        //====================================================
+        //     signals
+        //====================================================
+        signals:
+            void login_successful( bool checked = false );
     };
 }
 

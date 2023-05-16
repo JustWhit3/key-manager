@@ -33,7 +33,7 @@ namespace kmanager::widget{
      */
     PasswordToggle::PasswordToggle( QWidget* parent ):
                 BaseWidget( parent ){
-
+                    
     }
 
     //====================================================
