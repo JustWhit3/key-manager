@@ -19,6 +19,7 @@
 #include <QStateMachine>
 #include <QLineEdit>
 #include <QSharedPointer>
+#include <QTimer>
 
 namespace kmanager::state{
 
@@ -121,6 +122,19 @@ namespace kmanager::state{
         );
         this -> enter_password_label -> resize( this -> width, this -> height );
         this -> enter_password_label -> setStyleSheet( "font-size: 30px" );
+
+        // Error label
+        this -> error_label = QSharedPointer<QLabel>(
+            new QLabel( this -> host )
+        );
+        this -> error_label -> resize( this -> width, this -> height / 2 );
+        this -> error_label -> setVisible( false );
+        this -> error_label -> setText( "Inserted password is wrong!" );
+        this -> error_label -> setStyleSheet( "QLabel { color : rgb(183, 0, 0); font-size: 20px }" );
+        this -> error_label -> move(
+            this -> enter_password -> geometry().x() + 7.f,
+            this -> enter_password -> geometry().y() + 90.f
+        );
     }
 
     //====================================================
@@ -149,7 +163,8 @@ namespace kmanager::state{
             emit this -> login_successful( true );
         }
         else{
-            // Error case...
+            this -> error_label -> setVisible( true );
+            QTimer::singleShot( 2000, this -> error_label.get(), &QLabel::hide );
         }
     }
 
