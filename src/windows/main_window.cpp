@@ -18,6 +18,9 @@
 // Qt
 #include <QtWidgets>
 
+// STD
+#include <filesystem>
+
 namespace kmanager::window{
 
     //====================================================
@@ -30,6 +33,17 @@ namespace kmanager::window{
      */
     MainWindow::MainWindow( QWidget *parent ): 
         BaseWindow( parent ){
+
+        // Get login key path
+        #ifdef _WIN32
+            this -> login_key_file << "C:\\Users\\" 
+                                 << this -> username 
+                                 << "\\.key-manager_files\\.key\\";
+        #else
+            this -> login_key_file << "/home/" 
+                                 << this -> username 
+                                 << "/.key-manager_files/.key/";
+        #endif
 
         // Set basic window properties
         this -> setWindowProperties();
@@ -93,6 +107,30 @@ namespace kmanager::window{
             case Qt::Key_Escape:
                 this -> close();
                 break;
+            
+            // Down
+            case Qt::Key_Down:
+                if( this -> state_machine -> configuration().contains( set_password_state.get() ) ){
+                    if( this -> set_password_state -> enter_password_first -> hasFocus() ){
+                        this -> set_password_state -> enter_password_second -> setFocus();
+                    }
+                    else if( this -> set_password_state -> enter_password_second -> hasFocus() ){
+                        this -> set_password_state -> enter_password_first -> setFocus();
+                    }
+                }
+                break;
+
+            // Up
+            case Qt::Key_Up:
+                if( this -> state_machine -> configuration().contains( set_password_state.get() ) ){
+                    if( this -> set_password_state -> enter_password_first -> hasFocus() ){
+                        this -> set_password_state -> enter_password_second -> setFocus();
+                    }
+                    else if( this -> set_password_state -> enter_password_second -> hasFocus() ){
+                        this -> set_password_state -> enter_password_first -> setFocus();
+                    }
+                }
+                break;
 
             // Default
             default:
@@ -119,6 +157,9 @@ namespace kmanager::window{
         this -> p_manager_state = QSharedPointer<state::PasswordManagerState>( 
             new state::PasswordManagerState( this -> menu_state.get() ) 
         );
+        this -> set_password_state = QSharedPointer<state::SetPasswordState>( 
+            new state::SetPasswordState( this ) 
+        );
 
         // Create transitions
         this -> menu_state -> addTransition( // menu -> password manager
@@ -133,13 +174,22 @@ namespace kmanager::window{
         this -> menu_state -> addTransition( // menu -> login
             this -> menu_state -> change_password_button.get(), SIGNAL( clicked() ), this -> login_state.get() 
         );
+        this -> set_password_state -> addTransition( // set_password -> menu
+            this -> set_password_state.get(), SIGNAL( save_password_successful() ), this -> menu_state.get() 
+        );
 
         // States machine properties
         this -> state_machine = QSharedPointer<QStateMachine>( new QStateMachine( this ) );
         this -> state_machine -> addState( this -> login_state.get() );
         this -> state_machine -> addState( this -> menu_state.get() );
         this -> state_machine -> addState( this -> p_manager_state.get() );
-        this -> state_machine -> setInitialState( this -> login_state.get() );
+        this -> state_machine -> addState( this -> set_password_state.get() );
+        if( std::filesystem::exists( this -> login_key_file.str() ) ){
+            this -> state_machine -> setInitialState( this -> login_state.get() );
+        }
+        else{
+            this -> state_machine -> setInitialState( this -> set_password_state.get() );
+        }
         this -> state_machine -> start();
     }
 
@@ -182,6 +232,14 @@ namespace kmanager::window{
             SIGNAL( login_successful() ), 
             this, 
             SLOT( LoginState_MenuState() ) 
+        );
+
+        // Set password state -> Menu state
+        QObject::connect( 
+            this -> set_password_state.get(), 
+            SIGNAL( save_password_successful() ), 
+            this, 
+            SLOT( SetPasswordState_MenuState() ) 
         );
 
         // Menu state -> Login state
@@ -268,5 +326,26 @@ namespace kmanager::window{
 
         // QCheckBox
         this -> menu_state -> assignProperty( this -> login_state -> checkbox.get(), "visible", false );
+    }
+
+    //====================================================
+    //     SetPasswordState_MenuState
+    //====================================================
+    /**
+     * @brief Hide widgets for the MenuState state when coming from the SetPasswordState state.
+     * 
+     */
+    void MainWindow::SetPasswordState_MenuState(){
+
+        // QLineEdit
+        this -> menu_state -> assignProperty( this -> set_password_state -> enter_password_first.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> set_password_state -> enter_password_second.get(), "visible", false );
+
+        // QCheckBox
+        this -> menu_state -> assignProperty( this -> set_password_state -> checkbox_first.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> set_password_state -> checkbox_second.get(), "visible", false );
+
+        // QLabel
+        this -> menu_state -> assignProperty( this -> set_password_state -> enter_password_label.get(), "visible", false );
     }
 }

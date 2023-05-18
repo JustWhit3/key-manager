@@ -89,6 +89,7 @@ namespace kmanager::state{
         this -> checkbox = QSharedPointer<QCheckBox>( 
             new QCheckBox( this -> host ) 
         );
+        this -> checkbox -> setVisible( false );
         this -> checkbox -> setStyleSheet( 
             "QCheckBox::indicator:unchecked { image: url(img/icons/hide.png); }" 
             "QCheckBox::indicator:checked { image: url(img/icons/eye.png); }"
@@ -114,10 +115,11 @@ namespace kmanager::state{
         this -> enter_password_label = QSharedPointer<QLabel>(
             new QLabel( this -> host )
         );
+        this -> enter_password_label -> setVisible( false );
         this -> enter_password_label -> setText( "Welcome back!" );
         this -> enter_password_label -> move(
             ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
-                this -> enter_password_label -> mapToGlobal( this -> enter_password_label -> geometry().center() ).x() ) * 0.9f,
+                this -> enter_password_label -> mapToGlobal( this -> enter_password_label -> geometry().center() ).x() ) * 0.89f,
             this -> enter_password -> geometry().y() * 0.75f
         );
         this -> enter_password_label -> resize( this -> width, this -> height );

@@ -26,11 +26,16 @@
 #include <states/menu_state.hpp>
 #include <states/password_manager_state.hpp>
 #include <states/login_state.hpp>
+#include <states/set_password_state.hpp>
 
 // Qt
 #include <QtWidgets>
 #include <QStateMachine>
 #include <QObject>
+
+// STD
+#include <sstream>
+#include <cstdlib>
 
 namespace kmanager::window{
 
@@ -72,6 +77,13 @@ namespace kmanager::window{
             QSharedPointer<state::MenuState> menu_state;
             QSharedPointer<state::PasswordManagerState> p_manager_state;
             QSharedPointer<state::LoginState> login_state;
+            QSharedPointer<state::SetPasswordState> set_password_state;
+
+            // Variables (other)
+            std::ostringstream login_key_file;
+
+            // Constants
+            const std::string username{ std::getenv( "USERNAME" ) };
 
         //====================================================
         //     Private slots
@@ -82,6 +94,7 @@ namespace kmanager::window{
             void MenuState_PasswordManagerState();
             void PasswordManagerState_MenuState();
             void LoginState_MenuState();
+            void SetPasswordState_MenuState();
     };
 }
 
