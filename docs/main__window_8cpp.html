@@ -75,50 +75,53 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="main__window_8hpp_source.html">windows/main_window.hpp</a>&gt;</code><br />
 <code>#include &lt;QtWidgets&gt;</code><br />
+<code>#include &lt;filesystem&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for main_window.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="main__window_8cpp__incl.png" border="0" usemap="#asrc_2windows_2main__window_8cpp" alt=""/></div>
 <map name="asrc_2windows_2main__window_8cpp" id="asrc_2windows_2main__window_8cpp">
-<area shape="rect" title=" " alt="" coords="424,5,627,32"/>
-<area shape="rect" href="main__window_8hpp.html" title=" " alt="" coords="1301,80,1481,107"/>
-<area shape="rect" title=" " alt="" coords="15,423,97,449"/>
-<area shape="rect" href="base__window_8hpp.html" title=" " alt="" coords="94,341,274,367"/>
-<area shape="rect" href="menu__state_8hpp.html" title=" " alt="" coords="1772,341,1927,367"/>
-<area shape="rect" title=" " alt="" coords="1861,497,1973,524"/>
-<area shape="rect" href="password__manager__state_8hpp.html" title=" " alt="" coords="958,155,1133,196"/>
-<area shape="rect" title=" " alt="" coords="1537,423,1607,449"/>
-<area shape="rect" href="login__state_8hpp.html" title=" " alt="" coords="1991,341,2140,367"/>
-<area shape="rect" href="base__state_8hpp.html" title=" " alt="" coords="1771,423,1922,449"/>
-<area shape="rect" title=" " alt="" coords="1031,579,1145,606"/>
-<area shape="rect" title=" " alt="" coords="1682,579,1782,606"/>
-<area shape="rect" title=" " alt="" coords="1632,423,1696,449"/>
-<area shape="rect" href="add__password__window_8hpp.html" title=" " alt="" coords="1134,244,1295,285"/>
-<area shape="rect" href="password_8hpp.html" title=" " alt="" coords="589,423,737,449"/>
-<area shape="rect" href="password__actions_8hpp.html" title=" " alt="" coords="260,497,460,524"/>
-<area shape="rect" title=" " alt="" coords="337,661,409,688"/>
-<area shape="rect" href="custom__line__edit_8hpp.html" title=" " alt="" coords="764,572,905,613"/>
-<area shape="rect" title=" " alt="" coords="1274,661,1353,688"/>
-<area shape="rect" href="password__toggle_8hpp.html" title=" " alt="" coords="566,497,759,524"/>
-<area shape="rect" title=" " alt="" coords="812,423,911,449"/>
-<area shape="rect" title=" " alt="" coords="935,423,1054,449"/>
-<area shape="rect" title=" " alt="" coords="1079,423,1132,449"/>
-<area shape="rect" title=" " alt="" coords="1156,423,1225,449"/>
-<area shape="rect" title=" " alt="" coords="1453,423,1513,449"/>
-<area shape="rect" title=" " alt="" coords="1507,251,1610,278"/>
-<area shape="rect" title=" " alt="" coords="1634,251,1699,278"/>
-<area shape="rect" title=" " alt="" coords="451,251,536,278"/>
-<area shape="rect" title=" " alt="" coords="561,251,671,278"/>
-<area shape="rect" title=" " alt="" coords="696,251,755,278"/>
-<area shape="rect" href="add__password__state_8hpp.html" title=" " alt="" coords="1133,333,1280,375"/>
-<area shape="rect" title=" " alt="" coords="855,661,921,688"/>
-<area shape="rect" title=" " alt="" coords="1169,579,1260,606"/>
-<area shape="rect" title=" " alt="" coords="835,497,906,524"/>
-<area shape="rect" href="base__widget_8hpp.html" title=" " alt="" coords="521,579,689,606"/>
-<area shape="rect" title=" " alt="" coords="394,579,497,606"/>
-<area shape="rect" title=" " alt="" coords="261,579,318,606"/>
-<area shape="rect" title=" " alt="" coords="179,579,237,606"/>
-<area shape="rect" title=" " alt="" coords="735,661,830,688"/>
+<area shape="rect" title=" " alt="" coords="369,5,572,32"/>
+<area shape="rect" href="main__window_8hpp.html" title=" " alt="" coords="381,80,561,107"/>
+<area shape="rect" title=" " alt="" coords="273,423,356,449"/>
+<area shape="rect" title=" " alt="" coords="585,80,665,107"/>
+<area shape="rect" href="base__window_8hpp.html" title=" " alt="" coords="369,341,549,367"/>
+<area shape="rect" href="menu__state_8hpp.html" title=" " alt="" coords="841,341,996,367"/>
+<area shape="rect" title=" " alt="" coords="516,497,628,524"/>
+<area shape="rect" href="password__manager__state_8hpp.html" title=" " alt="" coords="1442,155,1617,196"/>
+<area shape="rect" title=" " alt="" coords="1877,423,1947,449"/>
+<area shape="rect" title=" " alt="" coords="2145,423,2215,449"/>
+<area shape="rect" title=" " alt="" coords="949,423,1009,449"/>
+<area shape="rect" href="login__state_8hpp.html" title=" " alt="" coords="43,341,192,367"/>
+<area shape="rect" href="set__password__state_8hpp.html" title=" " alt="" coords="573,333,715,375"/>
+<area shape="rect" href="base__state_8hpp.html" title=" " alt="" coords="533,423,683,449"/>
+<area shape="rect" title=" " alt="" coords="1517,579,1632,606"/>
+<area shape="rect" title=" " alt="" coords="1393,579,1493,606"/>
+<area shape="rect" title=" " alt="" coords="708,423,772,449"/>
+<area shape="rect" href="add__password__window_8hpp.html" title=" " alt="" coords="957,244,1118,285"/>
+<area shape="rect" href="password_8hpp.html" title=" " alt="" coords="1681,423,1829,449"/>
+<area shape="rect" href="password__actions_8hpp.html" title=" " alt="" coords="2085,497,2285,524"/>
+<area shape="rect" title=" " alt="" coords="2317,661,2389,688"/>
+<area shape="rect" href="custom__line__edit_8hpp.html" title=" " alt="" coords="1885,572,2027,613"/>
+<area shape="rect" title=" " alt="" coords="778,661,857,688"/>
+<area shape="rect" href="password__toggle_8hpp.html" title=" " alt="" coords="1777,497,1970,524"/>
+<area shape="rect" title=" " alt="" coords="1456,423,1555,449"/>
+<area shape="rect" title=" " alt="" coords="1033,423,1151,449"/>
+<area shape="rect" title=" " alt="" coords="1379,423,1432,449"/>
+<area shape="rect" title=" " alt="" coords="1287,251,1390,278"/>
+<area shape="rect" title=" " alt="" coords="1719,251,1785,278"/>
+<area shape="rect" title=" " alt="" coords="1809,251,1895,278"/>
+<area shape="rect" title=" " alt="" coords="1919,251,2030,278"/>
+<area shape="rect" title=" " alt="" coords="2055,251,2113,278"/>
+<area shape="rect" href="add__password__state_8hpp.html" title=" " alt="" coords="1244,333,1391,375"/>
+<area shape="rect" title=" " alt="" coords="1869,661,1936,688"/>
+<area shape="rect" title=" " alt="" coords="1277,579,1368,606"/>
+<area shape="rect" title=" " alt="" coords="1630,497,1701,524"/>
+<area shape="rect" href="base__widget_8hpp.html" title=" " alt="" coords="2101,579,2269,606"/>
+<area shape="rect" title=" " alt="" coords="1758,579,1861,606"/>
+<area shape="rect" title=" " alt="" coords="2294,579,2351,606"/>
+<area shape="rect" title=" " alt="" coords="2375,579,2433,606"/>
+<area shape="rect" title=" " alt="" coords="1961,661,2055,688"/>
 </map>
 </div>
 </div><table class="memberdecls">
