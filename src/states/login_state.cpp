@@ -15,11 +15,18 @@
 // Windows
 #include <states/login_state.hpp>
 
+// Utility
+#include <utility/crypto.hpp>
+
 // Qt
 #include <QStateMachine>
 #include <QLineEdit>
 #include <QSharedPointer>
 #include <QTimer>
+
+// STD
+#include <fstream>
+#include <iostream>
 
 namespace kmanager::state{
 
@@ -34,6 +41,17 @@ namespace kmanager::state{
     LoginState::LoginState( QWidget *host, QState *parent ): 
         BaseState( parent ),
         host( host ){
+
+        // Get login key path
+        #ifdef _WIN32
+            this -> login_key_file << "C:\\Users\\" 
+                                 << this -> username 
+                                 << "\\.key-manager_files\\.key";
+        #else
+            this -> login_key_file << "/home/" 
+                                 << this -> username 
+                                 << "/.key-manager_files/.key";
+        #endif
     
         // Create widgets
         this -> addWidgets();
@@ -160,7 +178,17 @@ namespace kmanager::state{
      * 
      */
     void LoginState::login(){
-        if( this -> enter_password -> text() == "ciao" ){
+        
+        // Read encrypted texts
+        std::string key, password;
+        std::ifstream input( this -> login_key_file.str() );
+        std::getline( input, password );
+        std::getline( input, key );
+        input.close();
+        utility::Crypto crypto( this -> enter_password -> text().toStdString(), key );
+
+        // Analyze cases
+        if( crypto.decrypt() == password ){
             this -> enter_password -> setText( "" );
             emit this -> login_successful( true );
         }

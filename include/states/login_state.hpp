@@ -28,6 +28,11 @@
 #include <QCheckBox>
 #include <QLabel>
 
+// STD
+#include <sstream>
+#include <string>
+#include <cstdlib>
+
 namespace kmanager::state{
 
     //====================================================
@@ -69,9 +74,13 @@ namespace kmanager::state{
             void addWidgets() override;
             void assignProperties() override;
 
+            // Variables
+            std::ostringstream login_key_file;
+
             // Constants
             const uint32_t width{ 270 };
             const uint32_t height{ 70 };
+            const std::string username{ std::getenv( "USERNAME" ) };
 
         //====================================================
         //     private slots
