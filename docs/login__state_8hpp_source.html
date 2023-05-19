@@ -94,74 +94,83 @@ $(function() {
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;QCheckBox&gt;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;QLabel&gt;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacekmanager_1_1state.html">kmanager::state</a>{</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">//====================================================</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">//     LoginState</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">//====================================================</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classkmanager_1_1state_1_1LoginState.html">   40</a></span>&#160;<span class="comment"></span>    <span class="keyword">class </span><a class="code" href="classkmanager_1_1state_1_1LoginState.html">LoginState</a>: <span class="keyword">public</span> <a class="code" href="classkmanager_1_1state_1_1BaseState.html">BaseState</a>{</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="comment">// Macro for Qt</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        Q_OBJECT</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="comment">//====================================================</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="comment">//     Public</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="comment">//====================================================</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="comment">// Constructors / destructor</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keyword">explicit</span> <a class="code" href="classkmanager_1_1state_1_1LoginState.html#a506df48ef20045b7398e4c768bab8621">LoginState</a>( QWidget* <a class="code" href="classkmanager_1_1state_1_1LoginState.html#ae30e715c020da40d80d73b3ccd485454">host</a>, QState *parent = <span class="keyword">nullptr</span> );</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <a class="code" href="classkmanager_1_1state_1_1LoginState.html#aeb18628dfbfbc7fa9e032240cf2e3c05">~LoginState</a>();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="comment">// Variables (widgets)</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classkmanager_1_1state_1_1LoginState.html#a6d16e72bad2e82f022ae99c856c7b39e">   55</a></span>&#160;            QSharedPointer&lt;QLineEdit&gt; <a class="code" href="classkmanager_1_1state_1_1LoginState.html#a6d16e72bad2e82f022ae99c856c7b39e">enter_password</a>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classkmanager_1_1state_1_1LoginState.html#af689f36ec168fabde1f3a9a8a6cc63e4">   56</a></span>&#160;            QSharedPointer&lt;QCheckBox&gt; <a class="code" href="classkmanager_1_1state_1_1LoginState.html#af689f36ec168fabde1f3a9a8a6cc63e4">checkbox</a>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classkmanager_1_1state_1_1LoginState.html#a16c6cdc04d12c5e04512200db6e82526">   57</a></span>&#160;            QSharedPointer&lt;QLabel&gt; <a class="code" href="classkmanager_1_1state_1_1LoginState.html#a16c6cdc04d12c5e04512200db6e82526">enter_password_label</a>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classkmanager_1_1state_1_1LoginState.html#a5dfe34e8462d9e5452b07c75343c09b1">   58</a></span>&#160;            QSharedPointer&lt;QLabel&gt; <a class="code" href="classkmanager_1_1state_1_1LoginState.html#a5dfe34e8462d9e5452b07c75343c09b1">error_label</a>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="comment">// Variables (other)</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classkmanager_1_1state_1_1LoginState.html#ae30e715c020da40d80d73b3ccd485454">   61</a></span>&#160;            QWidget* <a class="code" href="classkmanager_1_1state_1_1LoginState.html#ae30e715c020da40d80d73b3ccd485454">host</a>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="comment">//====================================================</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="comment">//     Private</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">//====================================================</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="comment">// Methods</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordtype">void</span> addWidgets() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordtype">void</span> assignProperties() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="comment">// Constants</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keyword">const</span> uint32_t width{ 270 };</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keyword">const</span> uint32_t height{ 70 };</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="comment">//====================================================</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="comment">//     private slots</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="comment">//====================================================</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keyword">private</span> slots:</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordtype">void</span> changeToggleState();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordtype">void</span> login();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="comment">//====================================================</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="comment">//     signals</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">// STD</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacekmanager_1_1state.html">kmanager::state</a>{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">//====================================================</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">//     LoginState</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">//====================================================</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classkmanager_1_1state_1_1LoginState.html">   45</a></span>&#160;<span class="comment"></span>    <span class="keyword">class </span><a class="code" href="classkmanager_1_1state_1_1LoginState.html">LoginState</a>: <span class="keyword">public</span> <a class="code" href="classkmanager_1_1state_1_1BaseState.html">BaseState</a>{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="comment">// Macro for Qt</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        Q_OBJECT</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment">//====================================================</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="comment">//     Public</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="comment">//====================================================</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="comment">// Constructors / destructor</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keyword">explicit</span> <a class="code" href="classkmanager_1_1state_1_1LoginState.html#a506df48ef20045b7398e4c768bab8621">LoginState</a>( QWidget* <a class="code" href="classkmanager_1_1state_1_1LoginState.html#ae30e715c020da40d80d73b3ccd485454">host</a>, QState *parent = <span class="keyword">nullptr</span> );</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <a class="code" href="classkmanager_1_1state_1_1LoginState.html#aeb18628dfbfbc7fa9e032240cf2e3c05">~LoginState</a>();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="comment">// Variables (widgets)</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classkmanager_1_1state_1_1LoginState.html#a6d16e72bad2e82f022ae99c856c7b39e">   60</a></span>&#160;            QSharedPointer&lt;QLineEdit&gt; <a class="code" href="classkmanager_1_1state_1_1LoginState.html#a6d16e72bad2e82f022ae99c856c7b39e">enter_password</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classkmanager_1_1state_1_1LoginState.html#af689f36ec168fabde1f3a9a8a6cc63e4">   61</a></span>&#160;            QSharedPointer&lt;QCheckBox&gt; <a class="code" href="classkmanager_1_1state_1_1LoginState.html#af689f36ec168fabde1f3a9a8a6cc63e4">checkbox</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classkmanager_1_1state_1_1LoginState.html#a16c6cdc04d12c5e04512200db6e82526">   62</a></span>&#160;            QSharedPointer&lt;QLabel&gt; <a class="code" href="classkmanager_1_1state_1_1LoginState.html#a16c6cdc04d12c5e04512200db6e82526">enter_password_label</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classkmanager_1_1state_1_1LoginState.html#a5dfe34e8462d9e5452b07c75343c09b1">   63</a></span>&#160;            QSharedPointer&lt;QLabel&gt; <a class="code" href="classkmanager_1_1state_1_1LoginState.html#a5dfe34e8462d9e5452b07c75343c09b1">error_label</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="comment">// Variables (other)</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classkmanager_1_1state_1_1LoginState.html#ae30e715c020da40d80d73b3ccd485454">   66</a></span>&#160;            QWidget* <a class="code" href="classkmanager_1_1state_1_1LoginState.html#ae30e715c020da40d80d73b3ccd485454">host</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="comment">//====================================================</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="comment">//     Private</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="comment">//====================================================</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="comment">// Methods</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordtype">void</span> addWidgets() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordtype">void</span> assignProperties() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="comment">// Variables</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            std::ostringstream login_key_file;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="comment">// Constants</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keyword">const</span> uint32_t width{ 270 };</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keyword">const</span> uint32_t height{ 70 };</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keyword">const</span> std::string username{ std::getenv( <span class="stringliteral">&quot;USERNAME&quot;</span> ) };</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="comment">//====================================================</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        signals:</div>
-<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classkmanager_1_1state_1_1LoginState.html#ac3a7719f98c729e202136f5d8996e64d">   87</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classkmanager_1_1state_1_1LoginState.html#ac3a7719f98c729e202136f5d8996e64d">login_successful</a>( <span class="keywordtype">bool</span> checked = <span class="keyword">false</span> );</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    };</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="comment">//     private slots</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="comment">//====================================================</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keyword">private</span> slots:</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordtype">void</span> changeToggleState();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordtype">void</span> login();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="comment">//====================================================</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="comment">//     signals</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="comment">//====================================================</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        signals:</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="classkmanager_1_1state_1_1LoginState.html#ac3a7719f98c729e202136f5d8996e64d">   96</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classkmanager_1_1state_1_1LoginState.html#ac3a7719f98c729e202136f5d8996e64d">login_successful</a>( <span class="keywordtype">bool</span> checked = <span class="keyword">false</span> );</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    };</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="abase__state_8hpp_html"><div class="ttname"><a href="base__state_8hpp.html">base_state.hpp</a></div></div>
 <div class="ttc" id="aclasskmanager_1_1state_1_1BaseState_html"><div class="ttname"><a href="classkmanager_1_1state_1_1BaseState.html">kmanager::state::BaseState</a></div><div class="ttdoc">Class used to construct the base state of the app.</div><div class="ttdef"><b>Definition:</b> base_state.hpp:34</div></div>
-<div class="ttc" id="aclasskmanager_1_1state_1_1LoginState_html"><div class="ttname"><a href="classkmanager_1_1state_1_1LoginState.html">kmanager::state::LoginState</a></div><div class="ttdoc">Class used to construct the login state of the app.</div><div class="ttdef"><b>Definition:</b> login_state.hpp:40</div></div>
-<div class="ttc" id="aclasskmanager_1_1state_1_1LoginState_html_a16c6cdc04d12c5e04512200db6e82526"><div class="ttname"><a href="classkmanager_1_1state_1_1LoginState.html#a16c6cdc04d12c5e04512200db6e82526">kmanager::state::LoginState::enter_password_label</a></div><div class="ttdeci">QSharedPointer&lt; QLabel &gt; enter_password_label</div><div class="ttdef"><b>Definition:</b> login_state.hpp:57</div></div>
-<div class="ttc" id="aclasskmanager_1_1state_1_1LoginState_html_a506df48ef20045b7398e4c768bab8621"><div class="ttname"><a href="classkmanager_1_1state_1_1LoginState.html#a506df48ef20045b7398e4c768bab8621">kmanager::state::LoginState::LoginState</a></div><div class="ttdeci">LoginState(QWidget *host, QState *parent=nullptr)</div><div class="ttdoc">Construct a new LoginState object.</div><div class="ttdef"><b>Definition:</b> login_state.cpp:34</div></div>
-<div class="ttc" id="aclasskmanager_1_1state_1_1LoginState_html_a5dfe34e8462d9e5452b07c75343c09b1"><div class="ttname"><a href="classkmanager_1_1state_1_1LoginState.html#a5dfe34e8462d9e5452b07c75343c09b1">kmanager::state::LoginState::error_label</a></div><div class="ttdeci">QSharedPointer&lt; QLabel &gt; error_label</div><div class="ttdef"><b>Definition:</b> login_state.hpp:58</div></div>
-<div class="ttc" id="aclasskmanager_1_1state_1_1LoginState_html_a6d16e72bad2e82f022ae99c856c7b39e"><div class="ttname"><a href="classkmanager_1_1state_1_1LoginState.html#a6d16e72bad2e82f022ae99c856c7b39e">kmanager::state::LoginState::enter_password</a></div><div class="ttdeci">QSharedPointer&lt; QLineEdit &gt; enter_password</div><div class="ttdef"><b>Definition:</b> login_state.hpp:55</div></div>
+<div class="ttc" id="aclasskmanager_1_1state_1_1LoginState_html"><div class="ttname"><a href="classkmanager_1_1state_1_1LoginState.html">kmanager::state::LoginState</a></div><div class="ttdoc">Class used to construct the login state of the app.</div><div class="ttdef"><b>Definition:</b> login_state.hpp:45</div></div>
+<div class="ttc" id="aclasskmanager_1_1state_1_1LoginState_html_a16c6cdc04d12c5e04512200db6e82526"><div class="ttname"><a href="classkmanager_1_1state_1_1LoginState.html#a16c6cdc04d12c5e04512200db6e82526">kmanager::state::LoginState::enter_password_label</a></div><div class="ttdeci">QSharedPointer&lt; QLabel &gt; enter_password_label</div><div class="ttdef"><b>Definition:</b> login_state.hpp:62</div></div>
+<div class="ttc" id="aclasskmanager_1_1state_1_1LoginState_html_a506df48ef20045b7398e4c768bab8621"><div class="ttname"><a href="classkmanager_1_1state_1_1LoginState.html#a506df48ef20045b7398e4c768bab8621">kmanager::state::LoginState::LoginState</a></div><div class="ttdeci">LoginState(QWidget *host, QState *parent=nullptr)</div><div class="ttdoc">Construct a new LoginState object.</div><div class="ttdef"><b>Definition:</b> login_state.cpp:41</div></div>
+<div class="ttc" id="aclasskmanager_1_1state_1_1LoginState_html_a5dfe34e8462d9e5452b07c75343c09b1"><div class="ttname"><a href="classkmanager_1_1state_1_1LoginState.html#a5dfe34e8462d9e5452b07c75343c09b1">kmanager::state::LoginState::error_label</a></div><div class="ttdeci">QSharedPointer&lt; QLabel &gt; error_label</div><div class="ttdef"><b>Definition:</b> login_state.hpp:63</div></div>
+<div class="ttc" id="aclasskmanager_1_1state_1_1LoginState_html_a6d16e72bad2e82f022ae99c856c7b39e"><div class="ttname"><a href="classkmanager_1_1state_1_1LoginState.html#a6d16e72bad2e82f022ae99c856c7b39e">kmanager::state::LoginState::enter_password</a></div><div class="ttdeci">QSharedPointer&lt; QLineEdit &gt; enter_password</div><div class="ttdef"><b>Definition:</b> login_state.hpp:60</div></div>
 <div class="ttc" id="aclasskmanager_1_1state_1_1LoginState_html_ac3a7719f98c729e202136f5d8996e64d"><div class="ttname"><a href="classkmanager_1_1state_1_1LoginState.html#ac3a7719f98c729e202136f5d8996e64d">kmanager::state::LoginState::login_successful</a></div><div class="ttdeci">void login_successful(bool checked=false)</div></div>
-<div class="ttc" id="aclasskmanager_1_1state_1_1LoginState_html_ae30e715c020da40d80d73b3ccd485454"><div class="ttname"><a href="classkmanager_1_1state_1_1LoginState.html#ae30e715c020da40d80d73b3ccd485454">kmanager::state::LoginState::host</a></div><div class="ttdeci">QWidget * host</div><div class="ttdef"><b>Definition:</b> login_state.hpp:61</div></div>
-<div class="ttc" id="aclasskmanager_1_1state_1_1LoginState_html_aeb18628dfbfbc7fa9e032240cf2e3c05"><div class="ttname"><a href="classkmanager_1_1state_1_1LoginState.html#aeb18628dfbfbc7fa9e032240cf2e3c05">kmanager::state::LoginState::~LoginState</a></div><div class="ttdeci">~LoginState()</div><div class="ttdoc">Destruct a new LoginState object.</div><div class="ttdef"><b>Definition:</b> login_state.cpp:52</div></div>
-<div class="ttc" id="aclasskmanager_1_1state_1_1LoginState_html_af689f36ec168fabde1f3a9a8a6cc63e4"><div class="ttname"><a href="classkmanager_1_1state_1_1LoginState.html#af689f36ec168fabde1f3a9a8a6cc63e4">kmanager::state::LoginState::checkbox</a></div><div class="ttdeci">QSharedPointer&lt; QCheckBox &gt; checkbox</div><div class="ttdef"><b>Definition:</b> login_state.hpp:56</div></div>
+<div class="ttc" id="aclasskmanager_1_1state_1_1LoginState_html_ae30e715c020da40d80d73b3ccd485454"><div class="ttname"><a href="classkmanager_1_1state_1_1LoginState.html#ae30e715c020da40d80d73b3ccd485454">kmanager::state::LoginState::host</a></div><div class="ttdeci">QWidget * host</div><div class="ttdef"><b>Definition:</b> login_state.hpp:66</div></div>
+<div class="ttc" id="aclasskmanager_1_1state_1_1LoginState_html_aeb18628dfbfbc7fa9e032240cf2e3c05"><div class="ttname"><a href="classkmanager_1_1state_1_1LoginState.html#aeb18628dfbfbc7fa9e032240cf2e3c05">kmanager::state::LoginState::~LoginState</a></div><div class="ttdeci">~LoginState()</div><div class="ttdoc">Destruct a new LoginState object.</div><div class="ttdef"><b>Definition:</b> login_state.cpp:70</div></div>
+<div class="ttc" id="aclasskmanager_1_1state_1_1LoginState_html_af689f36ec168fabde1f3a9a8a6cc63e4"><div class="ttname"><a href="classkmanager_1_1state_1_1LoginState.html#af689f36ec168fabde1f3a9a8a6cc63e4">kmanager::state::LoginState::checkbox</a></div><div class="ttdeci">QSharedPointer&lt; QCheckBox &gt; checkbox</div><div class="ttdef"><b>Definition:</b> login_state.hpp:61</div></div>
 <div class="ttc" id="anamespacekmanager_1_1state_html"><div class="ttname"><a href="namespacekmanager_1_1state.html">kmanager::state</a></div><div class="ttdef"><b>Definition:</b> add_password_state.cpp:30</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
