@@ -95,6 +95,7 @@ namespace kmanager::state{
         );
         this -> enter_password -> setPlaceholderText( "Enter password..." );
         this -> enter_password -> setEchoMode( QLineEdit::Password );
+        this -> enter_password -> setContextMenuPolicy( Qt::NoContextMenu );
 
         QObject::connect( 
              this -> enter_password.get(), 

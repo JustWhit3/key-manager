@@ -211,6 +211,7 @@ namespace kmanager::state{
             this -> password_actions -> geometry().y() - label_height
         );
         this -> find_input -> setPlaceholderText( "Search..." );
+        this -> find_input -> setContextMenuPolicy( Qt::NoContextMenu );
 
         QObject::connect( 
             this -> find_input.get(), 

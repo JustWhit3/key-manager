@@ -94,6 +94,7 @@ namespace kmanager::state{
         );
         this -> enter_password_first -> setPlaceholderText( "Enter password..." );
         this -> enter_password_first -> setEchoMode( QLineEdit::Password );
+        this -> enter_password_first -> setContextMenuPolicy( Qt::NoContextMenu );
 
         QObject::connect( 
              this -> enter_password_first.get(), 
@@ -124,6 +125,7 @@ namespace kmanager::state{
         );
         this -> enter_password_second -> setPlaceholderText( "Enter again..." );
         this -> enter_password_second -> setEchoMode( QLineEdit::Password );
+        this -> enter_password_second -> setContextMenuPolicy( Qt::NoContextMenu );
 
         QObject::connect( 
              this -> enter_password_second.get(), 

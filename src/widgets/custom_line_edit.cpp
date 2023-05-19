@@ -32,6 +32,7 @@ namespace kmanager::widget{
         // Init base properties
         this -> setAlignment( Qt::AlignBottom | Qt::AlignCenter );
         this -> setStyleSheet( this -> default_settings );
+        this -> setContextMenuPolicy( Qt::NoContextMenu );
     }
 
     //====================================================
