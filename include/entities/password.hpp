@@ -67,36 +67,6 @@ namespace kmanager::entity{
 
             }
 
-            //====================================================
-            //     Operator <
-            //====================================================
-            /**
-             * @brief Operator overload to compare Password objects.
-             * 
-             * @param other The Password object to be compared with.
-             * @return true If current Password object is smaller than the one used for comparison.
-             * @return false Otherwise.
-             */
-            bool operator < ( const Password& other ) const {
-                return std::make_tuple( password_str, platform, username ) < 
-                       std::make_tuple( other.password_str, other.platform, other.username );
-            }
-
-            //====================================================
-            //     Operator ==
-            //====================================================
-            /**
-             * @brief Operator overload to compare Password objects.
-             * 
-             * @param other The Password object to be compared with.
-             * @return true If current Password object is qual to the one used for comparison.
-             * @return false Otherwise.
-             */
-            bool operator == ( const Password& other ) const {
-                return std::make_tuple( password_str, platform, username ) == 
-                       std::make_tuple( other.password_str, other.platform, other.username );
-            }
-
             // Attributes
             T password_str;
             T platform;
