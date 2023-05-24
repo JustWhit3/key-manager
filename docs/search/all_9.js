@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['entity_59',['entity',['../namespacekmanager_1_1entity.html',1,'kmanager']]],
+  ['entity_58',['entity',['../namespacekmanager_1_1entity.html',1,'kmanager']]],
+  ['key_5ffile_59',['key_file',['../classkmanager_1_1state_1_1BaseState.html#a7410b2ad4cdcd8c0293d824b04eab7d4',1,'kmanager::state::BaseState']]],
   ['key_5fmanager_5fadd_5fpassword_5fstate_60',['KEY_MANAGER_ADD_PASSWORD_STATE',['../add__password__state_8hpp.html#adc3008b05ffcc7f05d81d2ab2511a6eb',1,'add_password_state.hpp']]],
   ['key_5fmanager_5fadd_5fpassword_5fwindow_61',['KEY_MANAGER_ADD_PASSWORD_WINDOW',['../add__password__window_8hpp.html#a333c7b902911d398bb6e9273b1c46854',1,'add_password_window.hpp']]],
   ['key_5fmanager_5fbase_5fstate_62',['KEY_MANAGER_BASE_STATE',['../base__state_8hpp.html#a5a5a9f2466593deb56a2d73a2af380c6',1,'base_state.hpp']]],

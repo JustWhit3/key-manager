@@ -1,8 +1,10 @@
 <map id="include/states/menu_state.hpp" name="include/states/menu_state.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="219,5,358,47"/>
-<area shape="rect" id="node2" href="$base__state_8hpp.html" title=" " alt="" coords="5,95,156,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="81,169,193,196"/>
-<area shape="rect" id="node4" title=" " alt="" coords="231,95,346,121"/>
-<area shape="rect" id="node5" title=" " alt="" coords="371,95,471,121"/>
-<area shape="rect" id="node6" title=" " alt="" coords="495,95,559,121"/>
+<area shape="rect" id="node1" title=" " alt="" coords="263,5,401,47"/>
+<area shape="rect" id="node2" href="$base__state_8hpp.html" title=" " alt="" coords="99,95,250,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,169,117,196"/>
+<area shape="rect" id="node6" title=" " alt="" coords="275,95,389,121"/>
+<area shape="rect" id="node7" title=" " alt="" coords="414,95,514,121"/>
+<area shape="rect" id="node8" title=" " alt="" coords="539,95,603,121"/>
+<area shape="rect" id="node4" title=" " alt="" coords="141,169,211,196"/>
+<area shape="rect" id="node5" title=" " alt="" coords="235,169,295,196"/>
 </map>
