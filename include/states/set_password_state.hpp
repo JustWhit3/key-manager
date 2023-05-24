@@ -30,7 +30,6 @@
 
 // STD
 #include <sstream>
-#include <cstdlib>
 #include <string>
 
 namespace kmanager::state{
@@ -82,7 +81,6 @@ namespace kmanager::state{
             // Constants
             const uint32_t width{ 270 };
             const uint32_t height{ 70 };
-            const std::string username{ std::getenv( "USERNAME" ) };
 
         //====================================================
         //     private slots

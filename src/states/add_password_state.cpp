@@ -15,6 +15,9 @@
 // Windows
 #include <states/add_password_state.hpp>
 
+// Utility
+#include <utility/crypto.hpp>
+
 // Qt
 #include <QStateMachine>
 #include <QLabel>
@@ -26,6 +29,8 @@
 
 // STD
 #include <filesystem>
+#include <string>
+#include <fstream>
 
 namespace kmanager::state{
 
@@ -236,10 +241,23 @@ namespace kmanager::state{
         this -> new_password.password_str = this -> password_textbox -> text();
         this -> new_password.username = this -> username_textbox -> text();
 
+        // Prepare encryption of username and password data
+        std::string key, password;
+        std::ifstream input( this -> key_file.str() );
+        std::getline( input, password );
+        std::getline( input, key );
+        input.close();
+        utility::Crypto crypto_password( this -> new_password.password_str.toStdString(), key );
+        utility::Crypto crypto_username( this -> new_password.username.toStdString(), key );
+
         // Save results on Json
         this -> main_container.insert( "Platform / Website", QJsonValue::fromVariant( this -> new_password.platform ) );
-        this -> main_container.insert( "Password", QJsonValue::fromVariant( this -> new_password.password_str ) );
-        this -> main_container.insert( "Username", QJsonValue::fromVariant( this -> new_password.username ) );
+        this -> main_container.insert( "Password", QJsonValue::fromVariant( 
+            QString::fromStdString( crypto_password.encrypt() ) ) 
+        );
+        this -> main_container.insert( "Username", QJsonValue::fromVariant( 
+            QString::fromStdString( crypto_username.encrypt() ) ) 
+        );
         this -> json_doc.setObject( main_container );
         this -> json_doc_bytes = this -> json_doc.toJson( QJsonDocument::Indented );
 

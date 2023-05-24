@@ -21,6 +21,9 @@
 // Entities
 #include <entities/password.hpp>
 
+// Utility
+#include <utility/crypto.hpp>
+
 // Widgets
 #include <widgets/password_toggle.hpp>
 #include <widgets/password_actions.hpp>
@@ -37,6 +40,8 @@
 #include <algorithm>
 #include <iterator>
 #include <vector>
+#include <string>
+#include <fstream>
 
 namespace kmanager::state{
 
@@ -300,9 +305,17 @@ namespace kmanager::state{
             this -> password_file.close();
             this -> json_doc = QJsonDocument::fromJson( file_val.toUtf8() );
             this -> json_obj = json_doc.object();
-            this -> current_password.username = json_obj.value( QString( "Username" ) ).toString();
             this -> current_password.platform = json_obj.value( QString( "Platform / Website" ) ).toString();
-            this -> current_password.password_str = json_obj.value( QString( "Password" ) ).toString();
+
+            // Read encrypted username and password data
+            std::ifstream input( this -> key_file.str() );
+            std::getline( input, this -> file_password );
+            std::getline( input, this -> file_key );
+            input.close();
+            utility::Crypto crypto_password( json_obj.value( QString( "Password" ) ).toString().toStdString(), this -> file_key );
+            utility::Crypto crypto_username( json_obj.value( QString( "Username" ) ).toString().toStdString(), this -> file_key );
+            this -> current_password.username = QString::fromStdString( crypto_username.decrypt() );
+            this -> current_password.password_str = QString::fromStdString( crypto_password.decrypt() );
 
             // Draw platform label for each password
             this -> current_platform_label = new widget::CustomQLineEdit( "Platform", this -> scroll_widget.get() );

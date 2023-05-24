@@ -38,7 +38,6 @@
 
 // STD
 #include <sstream>
-#include <cstdlib>
 
 namespace kmanager::state{
 
@@ -69,7 +68,6 @@ namespace kmanager::state{
             QSharedPointer<QLabel> username_label;
             QSharedPointer<QLabel> password_label;
             QSharedPointer<QLabel> error_label;
-            QSharedPointer<QLineEdit> create_new_password_textbox;
             QSharedPointer<QLineEdit> platform_website_textbox;
             QSharedPointer<QLineEdit> username_textbox;
             QSharedPointer<QLineEdit> password_textbox;
@@ -97,7 +95,6 @@ namespace kmanager::state{
 
             // Constants
             const QString widget_font_size{ "font-size: 20px" };
-            const std::string username{ std::getenv( "USERNAME" ) };
 
         //====================================================
         //     Private slots

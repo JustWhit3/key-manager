@@ -50,7 +50,6 @@
 
 // STD
 #include <sstream>
-#include <cstdlib>
 #include <vector>
 
 namespace kmanager::state{
@@ -128,12 +127,13 @@ namespace kmanager::state{
             QSharedPointer<QTimer> timer;
             bool menu_button_pressed;
             bool repaint_passwords;
+            std::string file_key;
+            std::string file_password;
             
             // Constants
             const float label_width = this -> host -> host -> width() * 0.2482f;
             static constexpr float label_height{ 50.f };
             const QString label_settings{ "background-color: #4682b4; color: white; padding: 8%; font-size: 20px; border: green" };
-            const std::string username{ std::getenv( "USERNAME" ) };
 
         //====================================================
         //     Private slots

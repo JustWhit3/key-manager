@@ -22,6 +22,10 @@
 // Qt
 #include <QStateMachine>
 
+// STD
+#include <sstream>
+#include <cstdlib>
+
 namespace kmanager::state{
 
     //====================================================
@@ -45,6 +49,12 @@ namespace kmanager::state{
             // Methods
             virtual void addWidgets() = 0;
             virtual void assignProperties() = 0;
+
+            // Variables
+            std::ostringstream key_file;
+
+            // Constants
+            const std::string username{ std::getenv( "USERNAME" ) };
     };
 }
 

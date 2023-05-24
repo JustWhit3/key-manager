@@ -90,6 +90,36 @@ namespace kmanager::window{
                 }
                 break;
 
+            // Down
+            case Qt::Key_Down:
+                if( this -> state_machine -> configuration().contains( add_password_state.get() ) ){
+                    if( this -> add_password_state -> platform_website_textbox -> hasFocus() ){
+                        this -> add_password_state -> username_textbox -> setFocus();
+                    }
+                    else if( this -> add_password_state -> username_textbox -> hasFocus() ){
+                        this -> add_password_state -> password_textbox -> setFocus();
+                    }
+                    else if( this -> add_password_state -> password_textbox -> hasFocus() ){
+                        this -> add_password_state -> platform_website_textbox -> setFocus();
+                    }
+                }
+                break;
+
+            // Up
+            case Qt::Key_Up:
+                if( this -> state_machine -> configuration().contains( add_password_state.get() ) ){
+                    if( this -> add_password_state -> password_textbox -> hasFocus() ){
+                        this -> add_password_state -> username_textbox -> setFocus();
+                    }
+                    else if( this -> add_password_state -> username_textbox -> hasFocus() ){
+                        this -> add_password_state -> platform_website_textbox -> setFocus();
+                    }
+                    else if( this -> add_password_state -> platform_website_textbox -> hasFocus() ){
+                        this -> add_password_state -> password_textbox -> setFocus();
+                    }
+                }
+                break;
+
             // Default
             default:
                 break;
