@@ -20,6 +20,7 @@
 #include <string_view>
 #include <unistd.h>
 #include <ctime>
+#include <cstdlib>
 
 namespace kmanager::utility{
 

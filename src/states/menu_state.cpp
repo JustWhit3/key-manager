@@ -23,6 +23,12 @@
 #include <QObject>
 #include <QPushButton>
 #include <QWidget>
+#include <QSharedPointer>
+#include <QIcon>
+#include <QObject>
+#include <QPixmap>
+#include <QString>
+#include <QWidget>
 
 namespace kmanager::state{
 
