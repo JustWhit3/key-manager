@@ -1,6 +1,7 @@
 <map id="include/states/base_state.hpp" name="include/states/base_state.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="109,5,243,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,95,117,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="141,95,211,121"/>
-<area shape="rect" id="node4" title=" " alt="" coords="235,95,295,121"/>
+<area shape="rect" id="node1" title=" " alt="" coords="104,5,239,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,95,68,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="93,95,162,121"/>
+<area shape="rect" id="node4" title=" " alt="" coords="187,95,247,121"/>
+<area shape="rect" id="node5" title=" " alt="" coords="271,95,325,121"/>
 </map>

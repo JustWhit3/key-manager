@@ -1,16 +1,16 @@
 <map id="include/widgets/custom_line_edit.hpp" name="include/widgets/custom_line_edit.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="342,5,501,47"/>
-<area shape="rect" id="node2" href="$custom__line__edit_8cpp.html" title=" " alt="" coords="175,95,311,136"/>
-<area shape="rect" id="node3" href="$password__manager__state_8hpp.html" title=" " alt="" coords="401,452,564,493"/>
-<area shape="rect" id="node8" href="$password__actions_8hpp.html" title=" " alt="" coords="335,95,507,136"/>
-<area shape="rect" id="node4" href="$password__manager__state_8cpp.html" title=" " alt="" coords="115,541,255,583"/>
-<area shape="rect" id="node5" href="$main__window_8hpp.html" title=" " alt="" coords="407,541,558,583"/>
-<area shape="rect" id="node6" href="$app_8cpp.html" title=" " alt="" coords="353,631,442,657"/>
-<area shape="rect" id="node7" href="$main__window_8cpp.html" title=" " alt="" coords="467,631,669,657"/>
-<area shape="rect" id="node9" href="$password__actions_8cpp.html" title=" " alt="" coords="347,184,496,225"/>
-<area shape="rect" id="node10" href="$password_8hpp.html" title=" " alt="" coords="129,191,322,218"/>
-<area shape="rect" id="node11" href="$add__password__state_8hpp.html" title=" " alt="" coords="153,273,298,315"/>
-<area shape="rect" id="node12" href="$add__password__state_8cpp.html" title=" " alt="" coords="93,363,261,404"/>
-<area shape="rect" id="node13" href="$add__password__window_8hpp.html" title=" " alt="" coords="285,363,445,404"/>
-<area shape="rect" id="node14" href="$add__password__window_8cpp.html" title=" " alt="" coords="143,452,326,493"/>
+<area shape="rect" id="node1" title=" " alt="" coords="688,5,847,47"/>
+<area shape="rect" id="node2" href="$password__manager__state_8cpp.html" title=" " alt="" coords="423,541,563,583"/>
+<area shape="rect" id="node3" href="$custom__line__edit_8cpp.html" title=" " alt="" coords="911,95,1047,136"/>
+<area shape="rect" id="node4" href="$password__actions_8cpp.html" title=" " alt="" coords="687,184,837,225"/>
+<area shape="rect" id="node5" href="$password__manager__state_8hpp.html" title=" " alt="" coords="82,452,245,493"/>
+<area shape="rect" id="node9" href="$password__actions_8hpp.html" title=" " alt="" coords="557,95,729,136"/>
+<area shape="rect" id="node6" href="$main__window_8cpp.html" title=" " alt="" coords="119,631,322,657"/>
+<area shape="rect" id="node7" href="$main__window_8hpp.html" title=" " alt="" coords="32,541,183,583"/>
+<area shape="rect" id="node8" href="$app_8cpp.html" title=" " alt="" coords="5,631,95,657"/>
+<area shape="rect" id="node10" href="$password_8hpp.html" title=" " alt="" coords="299,191,492,218"/>
+<area shape="rect" id="node11" href="$add__password__state_8cpp.html" title=" " alt="" coords="311,363,479,404"/>
+<area shape="rect" id="node12" href="$add__password__state_8hpp.html" title=" " alt="" coords="472,273,617,315"/>
+<area shape="rect" id="node13" href="$add__password__window_8cpp.html" title=" " alt="" coords="531,452,713,493"/>
+<area shape="rect" id="node14" href="$add__password__window_8hpp.html" title=" " alt="" coords="503,363,663,404"/>
 </map>

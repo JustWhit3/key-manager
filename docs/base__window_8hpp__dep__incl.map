@@ -1,11 +1,11 @@
 <map id="include/windows/base_window.hpp" name="include/windows/base_window.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="237,5,387,47"/>
-<area shape="rect" id="node2" href="$base__window_8cpp.html" title=" " alt="" coords="5,102,208,129"/>
-<area shape="rect" id="node3" href="$add__password__window_8hpp.html" title=" " alt="" coords="232,95,392,136"/>
-<area shape="rect" id="node7" href="$main__window_8hpp.html" title=" " alt="" coords="394,273,545,315"/>
-<area shape="rect" id="node4" href="$password__manager__state_8cpp.html" title=" " alt="" coords="151,273,291,315"/>
-<area shape="rect" id="node5" href="$add__password__window_8cpp.html" title=" " alt="" coords="122,184,305,225"/>
-<area shape="rect" id="node6" href="$password__manager__state_8hpp.html" title=" " alt="" coords="329,184,492,225"/>
-<area shape="rect" id="node8" href="$app_8cpp.html" title=" " alt="" coords="339,363,429,389"/>
-<area shape="rect" id="node9" href="$main__window_8cpp.html" title=" " alt="" coords="453,363,656,389"/>
+<area shape="rect" id="node1" title=" " alt="" coords="189,5,340,47"/>
+<area shape="rect" id="node2" href="$add__password__window_8cpp.html" title=" " alt="" coords="101,184,284,225"/>
+<area shape="rect" id="node3" href="$base__window_8cpp.html" title=" " alt="" coords="24,102,227,129"/>
+<area shape="rect" id="node4" href="$main__window_8cpp.html" title=" " alt="" coords="310,363,512,389"/>
+<area shape="rect" id="node5" href="$add__password__window_8hpp.html" title=" " alt="" coords="302,95,462,136"/>
+<area shape="rect" id="node8" href="$main__window_8hpp.html" title=" " alt="" coords="481,273,632,315"/>
+<area shape="rect" id="node6" href="$password__manager__state_8cpp.html" title=" " alt="" coords="254,273,394,315"/>
+<area shape="rect" id="node7" href="$password__manager__state_8hpp.html" title=" " alt="" coords="359,184,522,225"/>
+<area shape="rect" id="node9" href="$app_8cpp.html" title=" " alt="" coords="537,363,626,389"/>
 </map>
