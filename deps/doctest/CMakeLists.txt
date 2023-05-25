@@ -1,17 +1,9 @@
 # Project settings
 cmake_minimum_required( VERSION 3.15 )
 
-# Info about the build type
-if( CMAKE_BUILD_TYPE STREQUAL "Debug" )
-    message( STATUS "Build type: DEBUG" )
-    add_compile_definitions( DEBUG_KEY_MANAGER )
-else()
-    message( STATUS "Build type: RELEASE" )
-endif()
-
-project( key-manager-build
+project( key-manager-dependencies-doctest
     VERSION 1.0
-    DESCRIPTION "Build system for key manager app."
+    DESCRIPTION "Build system for key-manager doctest dependency."
     LANGUAGES CXX
 )
 
@@ -23,13 +15,16 @@ if( EXISTS "${LOC_PATH}" )
                          "remove CMakeCache.txt and CMakeFiles." )
 endif()
 
-# Fetching deps
-add_subdirectory( deps )
+# Fetch the package
+find_package( doctest )
 
-# Compiling the main app
-add_subdirectory( src )
-
-# Compile tests
-if( CMAKE_BUILD_TYPE STREQUAL "Debug" )
-    add_subdirectory( test/unit_tests )
+if( NOT doctest_FOUND )
+    include(FetchContent)
+    FetchContent_Declare(
+      doctest
+      GIT_REPOSITORY "https://github.com/doctest/doctest"
+      GIT_TAG master
+    )
+    message( STATUS "Fetching doctest..." )
+    FetchContent_MakeAvailable( doctest )
 endif()

@@ -1,17 +1,9 @@
 # Project settings
 cmake_minimum_required( VERSION 3.15 )
 
-# Info about the build type
-if( CMAKE_BUILD_TYPE STREQUAL "Debug" )
-    message( STATUS "Build type: DEBUG" )
-    add_compile_definitions( DEBUG_KEY_MANAGER )
-else()
-    message( STATUS "Build type: RELEASE" )
-endif()
-
-project( key-manager-build
+project( key-manager-dependencies
     VERSION 1.0
-    DESCRIPTION "Build system for key manager app."
+    DESCRIPTION "Build system for key-manager dependencies."
     LANGUAGES CXX
 )
 
@@ -23,13 +15,7 @@ if( EXISTS "${LOC_PATH}" )
                          "remove CMakeCache.txt and CMakeFiles." )
 endif()
 
-# Fetching deps
-add_subdirectory( deps )
-
-# Compiling the main app
-add_subdirectory( src )
-
-# Compile tests
+# Fetch deps
 if( CMAKE_BUILD_TYPE STREQUAL "Debug" )
-    add_subdirectory( test/unit_tests )
+    add_subdirectory( doctest )
 endif()
