@@ -12,11 +12,31 @@
 //     Headers
 //====================================================
 
+// States
+#include <states/login_state.hpp>
+#include <states/menu_state.hpp>
+#include <states/password_manager_state.hpp>
+#include <states/set_password_state.hpp>
+
 // Windows
+#include <windows/base_window.hpp>
 #include <windows/main_window.hpp>
 
 // Qt
-#include <QtWidgets>
+#include <QWidget>
+#include <QApplication>
+#include <QWindow>
+#include <QCheckBox>
+#include <QEvent>
+#include <QIcon>
+#include <QLabel>
+#include <QLineEdit>
+#include <QObject>
+#include <QPushButton>
+#include <QScreen>
+#include <QScrollArea>
+#include <QStateMachine>
+#include <QSet>
 
 // STD
 #include <filesystem>

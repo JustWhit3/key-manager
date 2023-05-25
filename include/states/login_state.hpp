@@ -23,14 +23,16 @@
 #include <states/base_state.hpp>
 
 // Qt
-#include <QStateMachine>
+#include <QState>
 #include <QLineEdit>
 #include <QCheckBox>
 #include <QLabel>
+#include <QSharedPointer>
+#include <QObject>
 
 // STD
 #include <sstream>
-#include <string>
+#include <cstdint>
 
 namespace kmanager::state{
 

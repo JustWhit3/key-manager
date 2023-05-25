@@ -26,7 +26,7 @@
 #include <entities/password.hpp>
 
 // Qt
-#include <QStateMachine>
+#include <QState>
 #include <QSharedPointer>
 #include <QPushButton>
 #include <QLabel>
@@ -34,7 +34,11 @@
 #include <QObject>
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QJsonObject>
 #include <QFile>
+#include <QByteArray>
+#include <QString>
+#include <QObject>
 
 // STD
 #include <sstream>

@@ -13,19 +13,31 @@
 //====================================================
 
 // Windows
+#include <states/base_state.hpp>
 #include <states/add_password_state.hpp>
+
+// Entities
+#include <entities/password.hpp>
 
 // Utility
 #include <utility/crypto.hpp>
 
 // Qt
-#include <QStateMachine>
+#include <QState>
 #include <QLabel>
 #include <QSize>
 #include <QJsonDocument>
+#include <QJsonValue>
 #include <QFile>
 #include <QTextStream>
 #include <QTimer>
+#include <QIODevice>
+#include <QLineEdit>
+#include <QObject>
+#include <QPushButton>
+#include <QStringConverter>
+#include <QVariant>
+#include <QWidget>
 
 // STD
 #include <filesystem>

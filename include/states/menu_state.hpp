@@ -27,6 +27,12 @@
 #include <QSharedPointer>
 #include <QPushButton>
 #include <QLabel>
+#include <QIcon>
+#include <QPixmap>
+#include <QString>
+
+// STD
+#include <cstdint>
 
 namespace kmanager::state{
 

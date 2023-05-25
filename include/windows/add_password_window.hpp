@@ -25,8 +25,8 @@
 // States
 #include <states/add_password_state.hpp>
 
-// STD
-#include <cstdlib>
+// Qt
+#include <QSharedPointer>
 
 namespace kmanager::window{
 

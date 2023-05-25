@@ -12,11 +12,24 @@
 //     Headers
 //====================================================
 
+// States
+#include <states/add_password_state.hpp>
+
 // Windows
+#include <windows/base_window.hpp>
 #include <windows/add_password_window.hpp>
 
 // Qt
-#include <QtWidgets>
+#include <QWidget>
+#include <QApplication>
+#include <QWindow>
+#include <QEvent>
+#include <QIcon>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QScreen>
+#include <QSet>
+#include <QStateMachine>
 
 namespace kmanager::window{
 

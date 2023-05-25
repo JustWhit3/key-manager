@@ -16,7 +16,7 @@
 #include <windows/base_window.hpp>
 
 // Qt
-#include <QtWidgets>
+#include <QWidget>
 
 namespace kmanager::window{
 

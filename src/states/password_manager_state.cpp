@@ -16,7 +16,9 @@
 #include <windows/add_password_window.hpp>
 
 // States
+#include <states/base_state.hpp>
 #include <states/password_manager_state.hpp>
+#include <states/menu_state.hpp>
 
 // Entities
 #include <entities/password.hpp>
@@ -27,13 +29,30 @@
 // Widgets
 #include <widgets/password_toggle.hpp>
 #include <widgets/password_actions.hpp>
+#include <widgets/custom_line_edit.hpp>
 
 // Qt
 #include <QLabel>
 #include <QPushButton>
 #include <QTimer>
 #include <QHBoxLayout>
-#include <QSizePolicy>
+#include <QSharedPointer>
+#include <QByteArray>
+#include <QFile>
+#include <QFrame>
+#include <QGridLayout>
+#include <QIcon>
+#include <QIODevice>
+#include <QJsonDocument>
+#include <QJsonValue>
+#include <QJsonObject>
+#include <QLineEdit>
+#include <QObject>
+#include <QScrollArea>
+#include <QSize>
+#include <QString>
+#include <QTextStream>
+#include <QWidget>
 
 // STD
 #include <filesystem>
@@ -42,6 +61,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <cstdint>
 
 namespace kmanager::state{
 

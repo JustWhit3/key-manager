@@ -15,11 +15,15 @@
 // Widgets
 #include <widgets/base_widget.hpp>
 #include <widgets/password_actions.hpp>
+#include <widgets/custom_line_edit.hpp>
 
 // Qt
 #include <QWidget>
 #include <QApplication>
 #include <QStyle>
+#include <QSharedPointer>
+#include <QObject>
+#include <QPushButton>
 
 namespace kmanager::widget{
 

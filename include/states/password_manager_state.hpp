@@ -47,6 +47,7 @@
 #include <QTimer>
 #include <QScrollBar>
 #include <QSignalMapper>
+#include <QScrollArea>
 
 // STD
 #include <sstream>

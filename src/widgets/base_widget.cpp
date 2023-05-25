@@ -16,7 +16,7 @@
 #include <widgets/base_widget.hpp>
 
 // Qt
-#include <QtWidgets>
+#include <QWidget>
 
 namespace kmanager::widget{
 

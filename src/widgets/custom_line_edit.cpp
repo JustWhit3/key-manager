@@ -15,6 +15,11 @@
 // Widgets
 #include <widgets/custom_line_edit.hpp>
 
+// QT
+#include <QEvent>
+#include <QLineEdit>
+#include <QString>
+
 namespace kmanager::widget{
 
     //====================================================

@@ -19,6 +19,8 @@
 #include <QApplication>
 #include <QFile>
 #include <QString>
+#include <QIODeviceBase>
+#include <QByteArray>
 
 //====================================================
 //     Main

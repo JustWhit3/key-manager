@@ -20,7 +20,7 @@
 //====================================================
 
 // Qt
-#include <QtWidgets>
+#include <QWidget>
 
 namespace kmanager::window{
 

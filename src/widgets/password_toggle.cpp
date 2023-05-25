@@ -20,6 +20,10 @@
 #include <QWidget>
 #include <QEvent>
 #include <QEnterEvent>
+#include <QCheckBox>
+#include <QGridLayout>
+#include <QLineEdit>
+#include <QObject>
 
 namespace kmanager::widget{
 

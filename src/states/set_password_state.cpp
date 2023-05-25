@@ -13,19 +13,28 @@
 //====================================================
 
 // Windows
+#include <states/base_state.hpp>
 #include <states/set_password_state.hpp>
 
 // Utility
 #include <utility/crypto.hpp>
 
 // Qt
-#include <QStateMachine>
+#include <QState>
 #include <QLineEdit>
 #include <QSharedPointer>
 #include <QTimer>
+#include <QCheckBox>
+#include <QLabel>
+#include <QObject>
+#include <QString>
+#include <QTimer>
+#include <QWidget>
 
 // STD
 #include <fstream>
+#include <string>
+#include <string_view>
 
 namespace kmanager::state{
 

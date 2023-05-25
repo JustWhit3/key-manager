@@ -12,13 +12,17 @@
 //     Headers
 //====================================================
 
-// Windows
+// States
+#include <states/base_state.hpp>
 #include <states/menu_state.hpp>
 
 // Qt
-#include <QStateMachine>
+#include <QState>
 #include <QLabel>
 #include <QSize>
+#include <QObject>
+#include <QPushButton>
+#include <QWidget>
 
 namespace kmanager::state{
 

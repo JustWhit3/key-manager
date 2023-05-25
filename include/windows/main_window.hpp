@@ -29,13 +29,15 @@
 #include <states/set_password_state.hpp>
 
 // Qt
-#include <QtWidgets>
+#include <QWidget>
 #include <QStateMachine>
 #include <QObject>
+#include <QSharedPointer>
 
 // STD
 #include <sstream>
 #include <cstdlib>
+#include <string>
 
 namespace kmanager::window{
 

@@ -20,11 +20,12 @@
 //====================================================
 
 // Qt
-#include <QStateMachine>
+#include <QState>
 
 // STD
 #include <sstream>
 #include <cstdlib>
+#include <string>
 
 namespace kmanager::state{
 
