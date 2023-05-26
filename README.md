@@ -1,6 +1,6 @@
 <p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/images/logo_GitHub.svg" height=220></p>
 
-<h3 align="center">A desktop app for password management and creation, developed using Qt.</h3>
+<h3 align="center">A desktop app for password management and creation, developed using Qt</h3>
 <p align="center">
     <img title="v0.0" alt="v0.0" src="https://img.shields.io/badge/version-v0.0-informational?style=flat-square"
     <a href="LICENSE">
@@ -121,7 +121,7 @@ Work in progress.
 
 ### Password manager state
 
-Work in progress.
+<p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/password_manager_state.png" width = "500"></p>
 
 ### Password creation state
 
