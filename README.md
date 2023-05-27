@@ -27,6 +27,7 @@
   - [Password creation state](#password-creation-state)
   - [Options state](#options-state)
   - [Other states](#other-states)
+- [Todo](#todo)
 - [Credits](#credits)
   - [Project leaders](#project-leaders)
 - [Stargazers over time](#stargazers-over-time)
@@ -39,12 +40,14 @@
 
 > :warning: Windows compatibility is still work in progress.
 
-Two base features can be accessed through the app:
+The app offers two services.
 
-- Password management system: a password storage tool to safely lock information about given accounts (ex: platform, password, username, etc...). See the [corresponding paragraph](#how-passwords-are-protected) of this README for further information about how passwords are protected.
-- Password creation: a tool to generate strong passwords based on several requirements chosen by the user (upper/lower letters only, length, etc...).
+- **Password management**: a password storage tool to safely lock information about given accounts (ex: platform, password, username, etc...). See the [corresponding paragraph](#how-passwords-are-protected) of this README for further information about how passwords are protected.
+- **Password creation**: a tool to generate strong passwords based on several requirements chosen by the user (upper/lower letters only, length, etc...).
 
 All the app files are saved into an hidden directory `~/.key-manager_files` created at the beginning of the first app run.
+
+All contributions are more than welcome. Before contributing, please look at the [contributing file](https://github.com/JustWhit3/key-manager/blob/main/CONTRIBUTING.md) and pick one of the [todo items](#todo) of the list. To propose ideas post something in the [discussion page](https://github.com/JustWhit3/key-manager/discussions).
 
 ## How passwords are protected
 
@@ -57,6 +60,8 @@ Work in progress.
 Steps to be reproduced:
 
 **0)** Be sure of having the required Qt version already installed before proceeding with the app installation, since Qt dependency is not taken into account into the CMake deps, since it is too big and too complex to build within the app deps.
+
+> :eight_spoked_asterisk: to install Qt remember to install first the [required prerequisites](https://wiki.qt.io/Building_Qt_5_from_Git), and then the [main library](https://wiki.qt.io/Building_Qt_6_from_Git).
 
 **1)** Download one of the [releases](https://github.com/JustWhit3/key-manager/releases) of the repository.
 
@@ -113,6 +118,8 @@ Optional prerequisites for debug mode:
 - [cppcheck](https://cppcheck.sourceforge.io/)
 - [doctest](https://github.com/doctest/doctest)
 
+All the code documentation is generated automatically using [Doxygen](https://www.doxygen.nl/) and is stored [here](https://justwhit3.github.io/key-manager/).
+
 ## States
 
 ### Menu state
@@ -134,6 +141,10 @@ Work in progress.
 ### Other states
 
 Work in progress.
+
+## Todo
+
+- Make a Qt6 installer or find a way to incorporate Qt into CMake dependency manager.
 
 ## Credits
 
