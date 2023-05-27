@@ -51,10 +51,6 @@ All contributions are more than welcome. Before contributing, please look at the
 
 ## How passwords are protected
 
-Dire che la key è generata
-
-Parlare dell'algoritmo
-
 A login system is applied to the app and a new password setup is required during the first app run. The inserted user password is encrypted using a [XOR cipher method](https://en.wikipedia.org/wiki/XOR_cipher) and a generated random key of lenght 100 alpha-numerical characters is used for encryption and decryption operations. The encrypted password and the key are then saved into a configuration file `~/.key-manager_files/.key`.
 
 > :warning: there are work in progress plans to find a way to protect these sensitive data from reading.
@@ -178,6 +174,7 @@ Other states are:
 ## Todo
 
 - Make a Qt6 installer or find a way to incorporate Qt into CMake dependency manager. See the [corresponding issue](https://github.com/JustWhit3/key-manager/issues/1).
+- Many other stuff which will be mentioned when the app will reach version 1.0.0.
 
 ## Credits
 
