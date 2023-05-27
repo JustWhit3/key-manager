@@ -42,8 +42,8 @@
 
 The app offers two services.
 
-- **Password management**: a password storage tool to safely lock information about given accounts (ex: platform, password, username, etc...). See the [corresponding paragraph](#how-passwords-are-protected) of this README for further information about how passwords are protected.
-- **Password creation**: a tool to generate strong passwords based on several requirements chosen by the user (upper/lower letters only, length, etc...).
+- [**Password management**](#password-manager-state): a password storage tool to safely lock information about given accounts (ex: platform, password, username, etc...). See the [corresponding paragraph](#how-passwords-are-protected) of this README for further information about how passwords are protected.
+- [**Password creation**](#password-creation-state): a tool to generate strong passwords based on several requirements chosen by the user (upper/lower letters only, length, etc...).
 
 All the app files are saved into an hidden directory `~/.key-manager_files` created at the beginning of the first app run.
 
@@ -51,7 +51,19 @@ All contributions are more than welcome. Before contributing, please look at the
 
 ## How passwords are protected
 
-Work in progress.
+Dire che la key è generata
+
+Parlare dell'algoritmo
+
+A login system is applied to the app and a new password setup is required during the first app run. The inserted user password is encrypted using a [XOR cipher method](https://en.wikipedia.org/wiki/XOR_cipher) and a generated random key of lenght 100 alpha-numerical characters is used for encryption and decryption operations. The encrypted password and the key are then saved into a configuration file `~/.key-manager_files/.key`.
+
+> :warning: there are work in progress plans to find a way to protect these sensitive data from reading.
+
+At every login the user password is required and it is verified the matching among it and the user password of the configuration file, which for this occasion is decrypted using the previously mentioned algorithm and the saved key.
+
+Once a new password is added to the database, it is saved into a [Json](https://it.wikipedia.org/wiki/JavaScript_Object_Notation) file located into the `~/.key-manager_files/passwords` directory, which is created at the first app run. Every password sensitive data (username and password itself) is encrypted using the previous algorithm and the saved key.
+
+Once a password is displayed into the [password manager state](#password-manager-state) it is decrypted and shown in the corresponding interface so only the logged user can see it. Passwords reading is also protected with a toggle system.
 
 ## Install and use
 
@@ -118,17 +130,34 @@ Optional prerequisites for debug mode:
 - [cppcheck](https://cppcheck.sourceforge.io/)
 - [doctest](https://github.com/doctest/doctest)
 
+To run all the tests (unit tests and profiling):
+
+```bash
+./build/test/unit_tests/key-manager_unit_tests
+```
+
+To run [IWYU](https://github.com/include-what-you-use/include-what-you-use) checks:
+
+```bash
+./test/IWYU.sh
+```
+
 All the code documentation is generated automatically using [Doxygen](https://www.doxygen.nl/) and is stored [here](https://justwhit3.github.io/key-manager/).
 
 ## States
 
 ### Menu state
 
-Work in progress.
+<p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/menu_state.png" width = "500"></p>
+
+This state contains the main menu of the app and is used to access [password manager](#password-manager-state) and [password creation](#password-creation-state) tools and the [options state](#options-state). App metadata and release information is displayed on the left side. From this state it is possible also to come back to the [login state](#other-states).
+
 
 ### Password manager state
 
 <p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/password_manager_state.png" width = "500"></p>
+
+This state contains the password manager tool. Here you can add, delete and modify passwords from the database. See the [corresponding paragraph](#how-passwords-are-protected) to understand how passwords are keeping safe. Passwords are ordered in alphabetical order and can be searched through the corresponding tool.
 
 ### Password creation state
 
@@ -140,11 +169,15 @@ Work in progress.
 
 ### Other states
 
-Work in progress.
+Other states are:
+
+- Add password state: work in progress.
+- Login state: work in progress.
+- Set new password state: work in progress.
 
 ## Todo
 
-- Make a Qt6 installer or find a way to incorporate Qt into CMake dependency manager.
+- Make a Qt6 installer or find a way to incorporate Qt into CMake dependency manager. See the [corresponding issue](https://github.com/JustWhit3/key-manager/issues/1).
 
 ## Credits
 

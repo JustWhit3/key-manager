@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # Unit tests
-#echo "======================================================"
-#echo "     UNIT TESTS"
-#echo "======================================================"
-#echo ""
-# Empty for the moment...
+echo ""
+echo "======================================================"
+echo "     UNIT TESTS"
+echo "======================================================"
+echo ""
+./build/test/unit_tests/key-manager_unit_tests
 
 # Memory tests
 echo ""

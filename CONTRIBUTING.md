@@ -22,7 +22,10 @@ To add your contribution, please follow these guidelines:
 
 ```bash
 ./tests/all_tests.sh
+./tests/IWYU.sh
 ```
+
+> :warning: the [IWYU](https://github.com/include-what-you-use/include-what-you-use) tool may detect wrong errors sometimes.
 
 and possibly update also the respective files with your news tests, if necessary.
 
