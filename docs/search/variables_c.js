@@ -1,10 +1,19 @@
 var searchData=
 [
-  ['save_5fbutton_304',['save_button',['../classkmanager_1_1state_1_1AddPasswordState.html#a586e07e0faa24e6f28303532146c58ab',1,'kmanager::state::AddPasswordState']]],
-  ['save_5fpassword_305',['save_password',['../classkmanager_1_1widget_1_1PasswordActions.html#a2d0eff38aaa59a7b1359e6c8d3616b1c',1,'kmanager::widget::PasswordActions']]],
-  ['savemysettings_306',['saveMySettings',['../classkmanager_1_1widget_1_1PasswordActions.html#a3657bf3a6427e886436a09415dda582d',1,'kmanager::widget::PasswordActions']]],
-  ['scroll_5farea_307',['scroll_area',['../classkmanager_1_1state_1_1PasswordManagerState.html#af63517acc21db606e0e37db97802a16b',1,'kmanager::state::PasswordManagerState']]],
-  ['scroll_5flayout_308',['scroll_layout',['../classkmanager_1_1state_1_1PasswordManagerState.html#af12b25ba985a7a0138db1a0e01092bd2',1,'kmanager::state::PasswordManagerState']]],
-  ['scroll_5fwidget_309',['scroll_widget',['../classkmanager_1_1state_1_1PasswordManagerState.html#a626b6dd9160696d894f9582efadf50a8',1,'kmanager::state::PasswordManagerState']]],
-  ['second_5fwidget_310',['second_widget',['../classkmanager_1_1widget_1_1CustomQLineEdit.html#aff8105689fc449fe5611b5abe120fd28',1,'kmanager::widget::CustomQLineEdit::second_widget()'],['../classkmanager_1_1widget_1_1PasswordActions.html#a2f002256483c18be5c0ec9c0745deb1b',1,'kmanager::widget::PasswordActions::second_widget()']]]
+  ['p_5fgenerator_5fbutton_315',['p_generator_button',['../classkmanager_1_1state_1_1MenuState.html#a7fed60501ea5b0a8cdc1cea8731ef7b4',1,'kmanager::state::MenuState']]],
+  ['p_5fmanager_5fbutton_316',['p_manager_button',['../classkmanager_1_1state_1_1MenuState.html#ac79c48cd901994aad40a684dd23fae11',1,'kmanager::state::MenuState']]],
+  ['password_5factions_317',['password_actions',['../classkmanager_1_1state_1_1PasswordManagerState.html#a83a78ae6968b750ca92f7166d0c6518f',1,'kmanager::state::PasswordManagerState']]],
+  ['password_5fgenerator_5flabel_318',['password_generator_label',['../classkmanager_1_1state_1_1PasswordGeneratorState.html#aebb8746a85068218f95ce57ca3a7fb2e',1,'kmanager::state::PasswordGeneratorState']]],
+  ['password_5fgenerator_5foutput_319',['password_generator_output',['../classkmanager_1_1state_1_1PasswordGeneratorState.html#a79a525c5232dbdf606593b2697aef830',1,'kmanager::state::PasswordGeneratorState']]],
+  ['password_5fkey_320',['password_key',['../classkmanager_1_1state_1_1PasswordManagerState.html#a9c2d49131b4a01ced3cbfb5bda58c146',1,'kmanager::state::PasswordManagerState']]],
+  ['password_5flabel_321',['password_label',['../classkmanager_1_1state_1_1AddPasswordState.html#ae87866915282ed6a4d830a19d738885b',1,'kmanager::state::AddPasswordState::password_label()'],['../classkmanager_1_1widget_1_1PasswordToggle.html#aafd23cd94a3b177d6395d1ba2c22ea5b',1,'kmanager::widget::PasswordToggle::password_label()']]],
+  ['password_5fplatform_322',['password_platform',['../classkmanager_1_1state_1_1PasswordManagerState.html#a19a32fef50349a5ae2215d3fb4e3f8fb',1,'kmanager::state::PasswordManagerState']]],
+  ['password_5fstr_323',['password_str',['../classkmanager_1_1entity_1_1Password.html#a0d23370874aeec212e40b7c28d858400',1,'kmanager::entity::Password']]],
+  ['password_5ftextbox_324',['password_textbox',['../classkmanager_1_1state_1_1AddPasswordState.html#a633b4f72f0266cf92bf2dfff5ac1535c',1,'kmanager::state::AddPasswordState']]],
+  ['password_5ftoggle_325',['password_toggle',['../classkmanager_1_1entity_1_1Password.html#ae6193b63b54709278d396cbbd7da3a5f',1,'kmanager::entity::Password']]],
+  ['password_5fusername_326',['password_username',['../classkmanager_1_1state_1_1PasswordManagerState.html#a4d9c5404e1e96ae7ced15ac4bfdfcd0b',1,'kmanager::state::PasswordManagerState']]],
+  ['password_5fwidget_327',['password_widget',['../classkmanager_1_1state_1_1PasswordManagerState.html#aae23d4a7a7f3d31d45439a5c0f7872a5',1,'kmanager::state::PasswordManagerState']]],
+  ['platform_328',['platform',['../classkmanager_1_1entity_1_1Password.html#aee3f26f550875f2ad538f7d20e151d91',1,'kmanager::entity::Password']]],
+  ['platform_5fwebsite_5flabel_329',['platform_website_label',['../classkmanager_1_1state_1_1AddPasswordState.html#a7428c16fbf06670ee344f4014e042d33',1,'kmanager::state::AddPasswordState']]],
+  ['platform_5fwebsite_5ftextbox_330',['platform_website_textbox',['../classkmanager_1_1state_1_1AddPasswordState.html#a5a9a0308d6caafc6d6824210b32455c9',1,'kmanager::state::AddPasswordState']]]
 ];
