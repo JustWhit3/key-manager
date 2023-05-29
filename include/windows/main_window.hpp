@@ -27,6 +27,7 @@
 #include <states/password_manager_state.hpp>
 #include <states/login_state.hpp>
 #include <states/set_password_state.hpp>
+#include <states/password_generator_state.hpp>
 
 // Qt
 #include <QWidget>
@@ -80,6 +81,7 @@ namespace kmanager::window{
             QSharedPointer<state::PasswordManagerState> p_manager_state;
             QSharedPointer<state::LoginState> login_state;
             QSharedPointer<state::SetPasswordState> set_password_state;
+            QSharedPointer<state::PasswordGeneratorState> p_generator_state;
 
             // Variables (other)
             std::ostringstream login_key_file;
@@ -97,6 +99,7 @@ namespace kmanager::window{
             void PasswordManagerState_MenuState();
             void LoginState_MenuState();
             void SetPasswordState_MenuState();
+            void PasswordGeneratorState_MenuState();
     };
 }
 

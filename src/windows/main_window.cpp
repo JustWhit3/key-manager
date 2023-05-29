@@ -17,6 +17,7 @@
 #include <states/menu_state.hpp>
 #include <states/password_manager_state.hpp>
 #include <states/set_password_state.hpp>
+#include <states/password_generator_state.hpp>
 
 // Windows
 #include <windows/base_window.hpp>
@@ -180,6 +181,9 @@ namespace kmanager::window{
         this -> set_password_state = QSharedPointer<state::SetPasswordState>( 
             new state::SetPasswordState( this ) 
         );
+        this -> p_generator_state = QSharedPointer<state::PasswordGeneratorState>( 
+            new state::PasswordGeneratorState( this -> menu_state.get() ) 
+        );
 
         // Create transitions
         this -> menu_state -> addTransition( // menu -> password manager
@@ -197,6 +201,12 @@ namespace kmanager::window{
         this -> set_password_state -> addTransition( // set_password -> menu
             this -> set_password_state.get(), SIGNAL( save_password_successful() ), this -> menu_state.get() 
         );
+        this -> menu_state -> addTransition( // menu -> password_generator
+            this -> menu_state -> p_generator_button.get(), SIGNAL( clicked() ), this -> p_generator_state.get() 
+        );
+        this -> p_generator_state -> addTransition( // password generator -> menu
+            this -> p_generator_state -> menu_button.get(), SIGNAL( clicked() ), this -> menu_state.get() 
+        );
 
         // States machine properties
         this -> state_machine = QSharedPointer<QStateMachine>( new QStateMachine( this ) );
@@ -204,6 +214,7 @@ namespace kmanager::window{
         this -> state_machine -> addState( this -> menu_state.get() );
         this -> state_machine -> addState( this -> p_manager_state.get() );
         this -> state_machine -> addState( this -> set_password_state.get() );
+        this -> state_machine -> addState( this -> p_generator_state.get() );
         if( std::filesystem::exists( this -> login_key_file.str() ) ){
             this -> state_machine -> setInitialState( this -> login_state.get() );
         }
@@ -269,6 +280,22 @@ namespace kmanager::window{
             this, 
             SLOT( MenuState_PasswordManagerState() ) 
         );
+
+        // Menu state -> Password generator state
+        QObject::connect( 
+            this -> menu_state -> p_generator_button.get(), 
+            SIGNAL( clicked() ), 
+            this, 
+            SLOT( MenuState_PasswordManagerState() ) 
+        );
+
+        // Password generator state -> Menu state
+        QObject::connect( 
+            this -> p_generator_state -> menu_button.get(), 
+            SIGNAL( clicked() ), 
+            this, 
+            SLOT( PasswordGeneratorState_MenuState() ) 
+        );
     }
 
     //====================================================
@@ -291,6 +318,11 @@ namespace kmanager::window{
         this -> login_state -> assignProperty( this -> menu_state -> options_button.get(), "visible", false );
         this -> login_state -> assignProperty( this -> menu_state -> exit_button.get(), "visible", false );
 
+        this -> p_generator_state -> assignProperty( this -> menu_state -> p_manager_button.get(), "visible", false );
+        this -> p_generator_state -> assignProperty( this -> menu_state -> p_generator_button.get(), "visible", false );
+        this -> p_generator_state -> assignProperty( this -> menu_state -> options_button.get(), "visible", false );
+        this -> p_generator_state -> assignProperty( this -> menu_state -> exit_button.get(), "visible", false );
+
         // Labels
         this -> p_manager_state -> assignProperty( this -> menu_state -> version.get(), "visible", false );
         this -> p_manager_state -> assignProperty( this -> menu_state -> logo_img_label.get(), "visible", false );
@@ -299,6 +331,10 @@ namespace kmanager::window{
         this -> login_state -> assignProperty( this -> menu_state -> version.get(), "visible", false );
         this -> login_state -> assignProperty( this -> menu_state -> logo_img_label.get(), "visible", false );
         this -> login_state -> assignProperty( this -> menu_state -> change_password_button.get(), "visible", false );
+
+        this -> p_generator_state -> assignProperty( this -> menu_state -> version.get(), "visible", false );
+        this -> p_generator_state -> assignProperty( this -> menu_state -> logo_img_label.get(), "visible", false );
+        this -> p_generator_state -> assignProperty( this -> menu_state -> change_password_button.get(), "visible", false );
     }
 
     //====================================================
@@ -367,5 +403,32 @@ namespace kmanager::window{
 
         // QLabel
         this -> menu_state -> assignProperty( this -> set_password_state -> enter_password_label.get(), "visible", false );
+    }
+
+    //====================================================
+    //     PasswordGeneratorState_MenuState
+    //====================================================
+    /**
+     * @brief Hide widgets for the MenuState state when coming from the PasswordManagerState state.
+     * 
+     */
+    void MainWindow::PasswordGeneratorState_MenuState(){
+
+        // QLabel
+        this -> menu_state -> assignProperty( this -> p_generator_state -> password_generator_label.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_generator_state -> password_generator_output.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_generator_state -> separator.get(), "visible", false );
+
+        // QPushButton
+        this -> menu_state -> assignProperty( this -> p_generator_state -> menu_button.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_generator_state -> generate_button.get(), "visible", false );
+
+        // QCheckBox
+        this -> menu_state -> assignProperty( this -> p_generator_state -> lowercase_checkbox.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_generator_state -> uppercase_checkbox.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_generator_state -> symbols_checkbox.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_generator_state -> length_checkbox.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_generator_state -> ambiguous_characters_checkbox.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_generator_state -> numbers_checkbox.get(), "visible", false );
     }
 }
