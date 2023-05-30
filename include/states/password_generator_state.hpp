@@ -32,6 +32,9 @@
 #include <QString>
 #include <QLineEdit>
 
+// STD
+#include <string>
+
 namespace kmanager::state{
 
     //====================================================
@@ -93,6 +96,8 @@ namespace kmanager::state{
             QIcon menu_icon;
             QIcon generate_icon;
             QIcon copy_icon;
+            std::string chars_container;
+            std::string output_password;
 
             // Constants
             QString checkbox_style =

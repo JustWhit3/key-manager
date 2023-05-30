@@ -23,6 +23,13 @@
 #include <QCheckBox>
 #include <QLineEdit>
 #include <QTimer>
+#include <QString>
+
+// STD
+#include <ctime>
+#include <cstdlib>
+#include <cstdint>
+#include <string>
 
 namespace kmanager::state{
 
@@ -37,7 +44,9 @@ namespace kmanager::state{
      */
     PasswordGeneratorState::PasswordGeneratorState( MenuState *host, QState *parent ): 
         BaseState( parent ),
-        host( host ){
+        host( host ),
+        chars_container( "" ),
+        output_password( "" ){
     
         // Create widgets
         this -> addWidgets();
@@ -417,9 +426,11 @@ namespace kmanager::state{
      * 
      */
     void PasswordGeneratorState::generatePassword(){
+
+        // Check if at least one field has been filled
         if( ! this -> numbers_checkbox -> isChecked() && ! this -> uppercase_checkbox -> isChecked() &&
             ! this -> lowercase_checkbox -> isChecked() && ! this -> symbols_checkbox -> isChecked() &&
-            ! this -> ambiguous_characters_checkbox -> isChecked() && this -> length_line_edit -> text() == "" ){
+            ! this -> ambiguous_characters_checkbox -> isChecked() ){
             this -> copied -> setStyleSheet( 
                 "font-size: 20px;"
                 "color: rgb(183, 0, 0);"
@@ -427,6 +438,45 @@ namespace kmanager::state{
             this -> copied -> setText( "Select at least one!" );
             this -> copied -> setVisible( true );
             QTimer::singleShot( 2000, this -> copied.get(), &QLabel::hide );
+        }
+        else if( this -> length_line_edit -> text() == "" ){
+            this -> copied -> setStyleSheet( 
+                "font-size: 20px;"
+                "color: rgb(183, 0, 0);"
+            );
+            this -> copied -> setText( "Insert a lenght!" );
+            this -> copied -> setVisible( true );
+            QTimer::singleShot( 2000, this -> copied.get(), &QLabel::hide ); 
+        }
+        else {
+            
+            // Create the chars container string
+            if( this -> lowercase_checkbox -> isChecked() ){
+                this -> chars_container += "abcdefghijklmnopqrstuvwxyz";
+            }
+            if( this -> uppercase_checkbox -> isChecked() ){
+                this -> chars_container += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            }
+            if( this -> numbers_checkbox -> isChecked() ){
+                this -> chars_container += "1234567890";
+            }
+            if( this -> symbols_checkbox -> isChecked() ){
+                this -> chars_container += "@#$%!&-_?";
+            }
+            if( this -> ambiguous_characters_checkbox -> isChecked() ){
+                this -> chars_container += "{}[]():/*\"'+,.\\;<>=|~°";
+            }
+
+            // Generate random password
+            srand( time( 0 ) );
+            for( int32_t i = 0; i < std::stoi( this -> length_line_edit -> text().toStdString() ); ++i ){
+                this -> output_password += this -> chars_container[ rand() % 94 ];
+            }
+
+            // Print random password
+            this -> password_generator_output -> setText( QString::fromStdString( this -> output_password ) );
+            this -> chars_container.clear();
+            this -> output_password.clear();
         }
     }
 }
