@@ -30,6 +30,7 @@
 #include <QIcon>
 #include <QCheckBox>
 #include <QString>
+#include <QLineEdit>
 
 namespace kmanager::state{
 
@@ -56,16 +57,24 @@ namespace kmanager::state{
 
             // Variables (widgets)
             QSharedPointer<QLabel> password_generator_label;
+            QSharedPointer<QLabel> comment_label;
             QSharedPointer<QLabel> password_generator_output;
             QSharedPointer<QLabel> separator;
+            QSharedPointer<QLabel> lowercase_label;
+            QSharedPointer<QLabel> uppercase_label;
+            QSharedPointer<QLabel> length_label;
+            QSharedPointer<QLabel> symbols_label;
+            QSharedPointer<QLabel> numbers_label;
+            QSharedPointer<QLabel> ambiguous_characters_label;
             QSharedPointer<QPushButton> menu_button;
             QSharedPointer<QPushButton> generate_button;
+            QSharedPointer<QPushButton> copy_button;
             QSharedPointer<QCheckBox> lowercase_checkbox;
             QSharedPointer<QCheckBox> uppercase_checkbox;
-            QSharedPointer<QCheckBox> length_checkbox;
             QSharedPointer<QCheckBox> symbols_checkbox;
             QSharedPointer<QCheckBox> numbers_checkbox;
             QSharedPointer<QCheckBox> ambiguous_characters_checkbox;
+            QSharedPointer<QLineEdit> length_line_edit;
 
             // Variables (other)
             MenuState* host;
@@ -82,6 +91,7 @@ namespace kmanager::state{
             // Variables
             QIcon menu_icon;
             QIcon generate_icon;
+            QIcon copy_icon;
 
             // Constants
             QString checkbox_style =

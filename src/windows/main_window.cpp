@@ -418,17 +418,27 @@ namespace kmanager::window{
         this -> menu_state -> assignProperty( this -> p_generator_state -> password_generator_label.get(), "visible", false );
         this -> menu_state -> assignProperty( this -> p_generator_state -> password_generator_output.get(), "visible", false );
         this -> menu_state -> assignProperty( this -> p_generator_state -> separator.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_generator_state -> lowercase_label.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_generator_state -> uppercase_label.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_generator_state -> symbols_label.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_generator_state -> length_label.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_generator_state -> ambiguous_characters_label.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_generator_state -> numbers_label.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_generator_state -> comment_label.get(), "visible", false );
 
         // QPushButton
         this -> menu_state -> assignProperty( this -> p_generator_state -> menu_button.get(), "visible", false );
         this -> menu_state -> assignProperty( this -> p_generator_state -> generate_button.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_generator_state -> copy_button.get(), "visible", false );
 
         // QCheckBox
         this -> menu_state -> assignProperty( this -> p_generator_state -> lowercase_checkbox.get(), "visible", false );
         this -> menu_state -> assignProperty( this -> p_generator_state -> uppercase_checkbox.get(), "visible", false );
         this -> menu_state -> assignProperty( this -> p_generator_state -> symbols_checkbox.get(), "visible", false );
-        this -> menu_state -> assignProperty( this -> p_generator_state -> length_checkbox.get(), "visible", false );
         this -> menu_state -> assignProperty( this -> p_generator_state -> ambiguous_characters_checkbox.get(), "visible", false );
         this -> menu_state -> assignProperty( this -> p_generator_state -> numbers_checkbox.get(), "visible", false );
+
+        // QLineEdit
+        this -> menu_state -> assignProperty( this -> p_generator_state -> length_line_edit.get(), "visible", false );
     }
 }
