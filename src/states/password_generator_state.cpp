@@ -22,6 +22,7 @@
 #include <QPushButton>
 #include <QCheckBox>
 #include <QLineEdit>
+#include <QTimer>
 
 namespace kmanager::state{
 
@@ -89,11 +90,11 @@ namespace kmanager::state{
         this -> comment_label -> setStyleSheet( "font-size: 20px"  );
         this -> comment_label -> move(
             ( this -> host -> host -> mapToGlobal( this -> host -> host -> geometry().center() ).x() - 
-                this -> comment_label -> mapToGlobal( this -> comment_label -> geometry().center() ).x() ) * 1.07f,
+                this -> comment_label -> mapToGlobal( this -> comment_label -> geometry().center() ).x() ) * 1.08f,
             ( this -> host -> host -> mapToGlobal( this -> host -> host -> geometry().center() ).y() - 
                 this -> comment_label -> mapToGlobal( this -> comment_label -> geometry().center() ).y() ) * 0.85f
         );
-        this -> comment_label -> setText( "Generate a strong and safe password!" );
+        this -> comment_label -> setText( "Generate strong and safe passwords!" );
 
         // Menu button
         this -> menu_button = QSharedPointer<QPushButton>( new QPushButton( "", this -> host -> host ) );
@@ -139,21 +140,46 @@ namespace kmanager::state{
             this -> password_generator_output -> geometry().center().y() - 34.f
         );
 
+        QObject::connect( 
+             this -> generate_button.get(), 
+             SIGNAL( clicked() ), 
+             this, 
+             SLOT( generatePassword() ) 
+        );
+
         // Copy button
         this -> copy_button = QSharedPointer<QPushButton>( new QPushButton( "", this -> host -> host ) );
         this -> copy_button -> setVisible( false );
         this -> copy_button -> resize( 70.f, 70.f );
         this -> copy_button -> setStyleSheet( 
             "QPushButton{ font-size: 20px; background-color: rgba(255, 255, 255, 0); }"
-            "QPushButton::hover { background-color: #ffaf5d; }"
-            "QPushButton::pressed { background-color: #dd872f; }"
+            "QPushButton::hover { background-color: rgba(255, 255, 255, 50); }"
+            "QPushButton::pressed { background-color: rgba(255, 255, 255, 70); }"
         );
-        this -> copy_icon.addFile( "img/icons/refresh_icon.png" );
-        this -> copy_button -> setIcon( this -> generate_icon );
+        this -> copy_icon.addFile( "img/icons/copy.png" );
+        this -> copy_button -> setIcon( this -> copy_icon );
         this -> copy_button -> setIconSize( QSize( 35.f, 35.f ) );
         this -> copy_button -> move(
             this -> password_generator_output -> geometry().center().x() + 109.f,
             this -> password_generator_output -> geometry().center().y() - 34.f
+        );
+
+        QObject::connect( 
+             this -> copy_button.get(), 
+             SIGNAL( clicked() ), 
+             this, 
+             SLOT( copiedPassword() ) 
+        );
+
+        // Copied label
+        this -> copied = QSharedPointer<QLabel>( 
+            new QLabel( this -> host -> host ) 
+        );
+        this -> copied -> setVisible( false );
+        this -> copied -> resize( 250, 25 );
+        this -> copied -> move(
+            this -> copy_button -> geometry().center().x() + 140.f,
+            this -> copy_button -> geometry().center().y() - 12.f
         );
 
         // Separator line
@@ -183,7 +209,7 @@ namespace kmanager::state{
             new QLineEdit( this -> host -> host ) 
         );
         this -> length_line_edit -> setVisible( false );
-        this -> length_line_edit -> setStyleSheet( "font-size: 20px" );
+        this -> length_line_edit -> setStyleSheet( "font-size: 15px" );
         this -> length_line_edit -> setFixedSize( 25, 25 );
         this -> length_line_edit -> move(
             this -> separator -> geometry().center().x() - 35.f,
@@ -270,7 +296,7 @@ namespace kmanager::state{
             new QLabel( this -> host -> host ) 
         );
         this -> symbols_label -> setVisible( false );
-        this -> symbols_label -> resize( 160, 25 );
+        this -> symbols_label -> resize( 170, 25 );
         this -> symbols_label -> setStyleSheet( "font-size: 20px" );
         this -> symbols_label -> move(
             symbols_checkbox -> geometry().x() - 310.f,
@@ -364,5 +390,43 @@ namespace kmanager::state{
 
         // QLineEdit
         this -> assignProperty( this -> length_line_edit.get(), "visible", true );
+    }
+
+    //====================================================
+    //     copiedPassword
+    //====================================================
+    /**
+     * @brief Slot used to manage the copy button action.
+     * 
+     */
+    void PasswordGeneratorState::copiedPassword(){
+        this -> copied -> setStyleSheet( 
+            "font-size: 20px;"
+            "color: #c1c1c1;"
+        );
+        this -> copied -> setText( "Copied!" );
+        this -> copied -> setVisible( true );
+        QTimer::singleShot( 2000, this -> copied.get(), &QLabel::hide );
+    }
+
+    //====================================================
+    //     generatePassword
+    //====================================================
+    /**
+     * @brief Slot used to manage the generate password button action.
+     * 
+     */
+    void PasswordGeneratorState::generatePassword(){
+        if( ! this -> numbers_checkbox -> isChecked() && ! this -> uppercase_checkbox -> isChecked() &&
+            ! this -> lowercase_checkbox -> isChecked() && ! this -> symbols_checkbox -> isChecked() &&
+            ! this -> ambiguous_characters_checkbox -> isChecked() && this -> length_line_edit -> text() == "" ){
+            this -> copied -> setStyleSheet( 
+                "font-size: 20px;"
+                "color: rgb(183, 0, 0);"
+            );
+            this -> copied -> setText( "Select at least one!" );
+            this -> copied -> setVisible( true );
+            QTimer::singleShot( 2000, this -> copied.get(), &QLabel::hide );
+        }
     }
 }

@@ -66,6 +66,7 @@ namespace kmanager::state{
             QSharedPointer<QLabel> symbols_label;
             QSharedPointer<QLabel> numbers_label;
             QSharedPointer<QLabel> ambiguous_characters_label;
+            QSharedPointer<QLabel> copied;
             QSharedPointer<QPushButton> menu_button;
             QSharedPointer<QPushButton> generate_button;
             QSharedPointer<QPushButton> copy_button;
@@ -97,6 +98,13 @@ namespace kmanager::state{
             QString checkbox_style =
                 "QCheckBox::indicator { width: 25px; height: 25px; background-color: #38394e; }"
                 "QCheckBox::indicator:checked { image: url(img/icons/done.png); }";
+
+        //====================================================
+        //     Private slots
+        //====================================================
+        private slots:
+            void copiedPassword();
+            void generatePassword();
     };
 }
 
