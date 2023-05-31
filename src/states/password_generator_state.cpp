@@ -470,7 +470,7 @@ namespace kmanager::state{
             // Generate random password
             srand( time( 0 ) );
             for( int32_t i = 0; i < std::stoi( this -> length_line_edit -> text().toStdString() ); ++i ){
-                this -> output_password += this -> chars_container[ rand() % 94 ];
+                this -> output_password += this -> chars_container[ rand() % this -> chars_container.size() ];
             }
 
             // Print random password
