@@ -24,6 +24,8 @@
 #include <QLineEdit>
 #include <QTimer>
 #include <QString>
+#include <QGuiApplication>
+#include <QClipboard>
 
 // STD
 #include <ctime>
@@ -135,6 +137,8 @@ namespace kmanager::state{
             this -> host -> host -> mapToGlobal( this -> host -> host -> geometry().center() ).y() - 
                 this -> password_generator_output -> mapToGlobal( this -> password_generator_output -> geometry().center() ).y()
         );
+        this -> password_generator_output -> setTextInteractionFlags( Qt::TextSelectableByMouse );
+        this -> password_generator_output -> setAlignment( Qt::AlignCenter );
 
         // Generate button
         this -> generate_button = QSharedPointer<QPushButton>( new QPushButton( "", this -> host -> host ) );
@@ -409,6 +413,12 @@ namespace kmanager::state{
      * 
      */
     void PasswordGeneratorState::copiedPassword(){
+
+        // Copy text to clipboard
+        QClipboard *clipboard = QGuiApplication::clipboard();
+        clipboard -> setText( this -> password_generator_output -> text() );
+
+        // Display message
         this -> copied -> setStyleSheet( 
             "font-size: 20px;"
             "color: #c1c1c1;"
