@@ -34,8 +34,8 @@
 
 ## Introduction
 
-<p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/password_manager_state.png" width = "500"></p>
-<p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/password_generator_state.png" width = "500"></p>
+<p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/password_manager_state.png" width = "250"></p>
+<p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/password_generator_state.png" width = "250"></p>
 
 `key-manager` is a cross-platform (Linux/Windows/MacOS) and safe desktop app for password management and creation written in C++20 and developed using [Qt v6.4.2](https://www.qt.io/blog/qt-6.4.2-released). No use of QtCreator was made for development, but only "raw" code written by hand and [CMake](https://cmake.org/) tool for building.
 
