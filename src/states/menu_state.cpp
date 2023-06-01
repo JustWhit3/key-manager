@@ -147,7 +147,7 @@ namespace kmanager::state{
             new QLabel( this -> host )
         );
         this -> version -> setVisible( false );
-        this -> version -> setText( "Current version: 0.0.0\nCopyright (c) 2023 Gianluca Bianco under the GPL v3.0 license" );
+        this -> version -> setText( "Current version: 0.2.0\nCopyright (c) 2023 Gianluca Bianco under the GPL v3.0 license" );
         this -> version -> setStyleSheet( "font-size: 15px" );
         this -> version -> move(
             this -> version -> mapToGlobal( this -> version -> geometry().center() ).x() * 0.5f,
