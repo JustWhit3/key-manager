@@ -70,6 +70,7 @@ namespace kmanager::state{
             QSharedPointer<QLabel> numbers_label;
             QSharedPointer<QLabel> ambiguous_characters_label;
             QSharedPointer<QLabel> copied;
+            QSharedPointer<QLabel> rectangle;
             QSharedPointer<QPushButton> menu_button;
             QSharedPointer<QPushButton> generate_button;
             QSharedPointer<QPushButton> copy_button;

@@ -425,6 +425,7 @@ namespace kmanager::window{
         this -> menu_state -> assignProperty( this -> p_generator_state -> ambiguous_characters_label.get(), "visible", false );
         this -> menu_state -> assignProperty( this -> p_generator_state -> numbers_label.get(), "visible", false );
         this -> menu_state -> assignProperty( this -> p_generator_state -> comment_label.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> p_generator_state -> rectangle.get(), "visible", false );
 
         // QPushButton
         this -> menu_state -> assignProperty( this -> p_generator_state -> menu_button.get(), "visible", false );

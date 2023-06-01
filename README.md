@@ -24,7 +24,7 @@
 - [States](#states)
   - [Menu state](#menu-state)
   - [Password manager state](#password-manager-state)
-  - [Password creation state](#password-creation-state)
+  - [Password generator state](#password-generator-state)
   - [Options state](#options-state)
   - [Other states](#other-states)
 - [Todo](#todo)
@@ -35,6 +35,7 @@
 ## Introduction
 
 <p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/password_manager_state.png" width = "500"></p>
+<p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/password_generator_state.png" width = "500"></p>
 
 `key-manager` is a cross-platform (Linux/Windows/MacOS) and safe desktop app for password management and creation written in C++20 and developed using [Qt v6.4.2](https://www.qt.io/blog/qt-6.4.2-released). No use of QtCreator was made for development, but only "raw" code written by hand and [CMake](https://cmake.org/) tool for building.
 
@@ -43,7 +44,7 @@
 The app offers two services.
 
 - [**Password management**](#password-manager-state): a password storage tool to safely lock information about given accounts (ex: platform, password, username, etc...). See the [corresponding paragraph](#how-passwords-are-protected) of this README for further information about how passwords are protected.
-- [**Password creation**](#password-creation-state): a tool to generate strong passwords based on several requirements chosen by the user (upper/lower letters only, length, etc...).
+- [**Password creation**](#password-generator-state): a tool to generate strong passwords based on several requirements chosen by the user (upper/lower letters only, length, etc...).
 
 All the app files are saved into an hidden directory `~/.key-manager_files` created at the beginning of the first app run.
 
@@ -155,9 +156,11 @@ This state contains the main menu of the app and is used to access [password man
 
 This state contains the password manager tool. Here you can add, delete and modify passwords from the database. See the [corresponding paragraph](#how-passwords-are-protected) to understand how passwords are keeping safe. Passwords are ordered in alphabetical order and can be searched through the corresponding tool.
 
-### Password creation state
+### Password generator state
 
-Work in progress.
+<p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/password_generator_state.png" width = "500"></p>
+
+This state contains the password generator. Here you can generate strong and safe passwords and save them to clipboard with a click. You can also chose which kind of letters and symbols type you want to use for the password generation.
 
 ### Options state
 

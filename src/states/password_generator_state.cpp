@@ -12,7 +12,7 @@
 //     Headers
 //====================================================
 
-// Windows
+// States
 #include <states/menu_state.hpp>
 #include <states/password_generator_state.hpp>
 
@@ -77,6 +77,26 @@ namespace kmanager::state{
      */
     void PasswordGeneratorState::addWidgets(){
 
+        // Rectangle decoration
+        this -> rectangle = QSharedPointer<QLabel>(
+            new QLabel( this -> host -> host )
+        );
+        this -> rectangle -> setVisible( false );
+        this -> rectangle -> resize( 800, 600 );
+        this -> rectangle -> setStyleSheet( 
+            "background-color: rgba( 255, 255, 255, 0% );"
+            "color: #c1c1c1;"
+	        "border-style: solid;"
+	        "border-width: 5px;"
+	        "border-color: #4a4c68;"
+        );
+        this -> rectangle -> move(
+            this -> host -> host -> mapToGlobal( this -> host -> host -> geometry().center() ).x() - 
+                this -> rectangle -> mapToGlobal( this -> rectangle -> geometry().center() ).x(),
+            this -> host -> host -> mapToGlobal( this -> host -> host -> geometry().center() ).y() - 
+                this -> rectangle -> mapToGlobal( this -> rectangle -> geometry().center() ).y()
+        );
+
         // Password generator label
         this -> password_generator_label = QSharedPointer<QLabel>( 
             new QLabel( this -> host -> host ) 
@@ -138,7 +158,6 @@ namespace kmanager::state{
                 this -> password_generator_output -> mapToGlobal( this -> password_generator_output -> geometry().center() ).y()
         );
         this -> password_generator_output -> setTextInteractionFlags( Qt::TextSelectableByMouse );
-        this -> password_generator_output -> setAlignment( Qt::AlignCenter );
 
         // Generate button
         this -> generate_button = QSharedPointer<QPushButton>( new QPushButton( "", this -> host -> host ) );
@@ -388,6 +407,7 @@ namespace kmanager::state{
         this -> assignProperty( this -> numbers_label.get(), "visible", true );
         this -> assignProperty( this -> length_label.get(), "visible", true );
         this -> assignProperty( this -> comment_label.get(), "visible", true );
+        this -> assignProperty( this -> rectangle.get(), "visible", true );
 
         // QPushButton
         this -> assignProperty( this -> menu_button.get(), "visible", true );
