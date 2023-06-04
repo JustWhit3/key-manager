@@ -159,9 +159,7 @@ namespace kmanager::state{
             new QLabel( this -> host )
         );
         this -> logo_img_label -> setVisible( false );
-        this -> logo_img = "img/images/logo_app.png";
-        this -> img.load( this -> logo_img );
-        this -> logo_img_label -> setPixmap( img );
+        this -> logo_img_label -> setPixmap( QPixmap( "img/images/logo_app.png" ) );
         this -> logo_img_label -> move(
             this -> p_manager_button -> geometry().x() * 0.80f,
             this -> p_manager_button -> geometry().y() * 0.2f

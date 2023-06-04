@@ -76,8 +76,6 @@ namespace kmanager::state{
             void assignProperties() override;
 
             // Variables
-            QString logo_img;
-            QPixmap img;
             QIcon change_password_icon;
 
             // Constants
