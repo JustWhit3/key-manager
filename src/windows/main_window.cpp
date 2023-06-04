@@ -136,6 +136,9 @@ namespace kmanager::window{
                         this -> set_password_state -> enter_password_second -> setFocus();
                     }
                     else if( this -> set_password_state -> enter_password_second -> hasFocus() ){
+                        this -> set_password_state -> confirm_button -> setFocus();
+                    }
+                    else if( this -> set_password_state -> confirm_button -> hasFocus() ){
                         this -> set_password_state -> enter_password_first -> setFocus();
                     }
                 }
@@ -145,6 +148,9 @@ namespace kmanager::window{
             case Qt::Key_Up:
                 if( this -> state_machine -> configuration().contains( set_password_state.get() ) ){
                     if( this -> set_password_state -> enter_password_first -> hasFocus() ){
+                        this -> set_password_state -> confirm_button -> setFocus();
+                    }
+                    else if( this -> set_password_state -> confirm_button -> hasFocus() ){
                         this -> set_password_state -> enter_password_second -> setFocus();
                     }
                     else if( this -> set_password_state -> enter_password_second -> hasFocus() ){
@@ -405,6 +411,11 @@ namespace kmanager::window{
 
         // QLabel
         this -> menu_state -> assignProperty( this -> set_password_state -> enter_password_label.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> set_password_state -> rectangle.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> set_password_state -> user_img_label.get(), "visible", false );
+
+        // QPushButton
+        this -> menu_state -> assignProperty( this -> set_password_state -> confirm_button.get(), "visible", false );
     }
 
     //====================================================

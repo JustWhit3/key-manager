@@ -88,6 +88,27 @@ namespace kmanager::state{
      */
     void SetPasswordState::addWidgets(){
 
+        // Rectangle decoration
+        this -> rectangle = QSharedPointer<QLabel>(
+            new QLabel( this -> host )
+        );
+        this -> rectangle -> setVisible( false );
+        this -> rectangle -> resize( 400, 600 );
+        this -> rectangle -> setStyleSheet( 
+            "background-color: rgba( 255, 255, 255, 0% );"
+            "color: #c1c1c1;"
+	        "border-style: solid;"
+	        "border-width: 5px;"
+	        "border-color: #4a4c68;"
+            "border-radius: 50%"
+        );
+        this -> rectangle -> move(
+            this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
+                this -> rectangle -> mapToGlobal( this -> rectangle -> geometry().center() ).x(),
+            this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() - 
+                this -> rectangle -> mapToGlobal( this -> rectangle -> geometry().center() ).y()
+        );
+
         // Enter first password line edit
         this -> enter_password_first = QSharedPointer<QLineEdit>( 
             new QLineEdit( this -> host ) 
@@ -99,7 +120,7 @@ namespace kmanager::state{
             this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
                 this -> enter_password_first -> mapToGlobal( this -> enter_password_first -> geometry().center() ).x(),
             ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() - 
-                this -> enter_password_first -> mapToGlobal( this -> enter_password_first -> geometry().center() ).y() ) * 0.9f
+                this -> enter_password_first -> mapToGlobal( this -> enter_password_first -> geometry().center() ).y() ) * 1.1f
         );
         this -> enter_password_first -> setPlaceholderText( "Enter password..." );
         this -> enter_password_first -> setEchoMode( QLineEdit::Password );
@@ -130,7 +151,7 @@ namespace kmanager::state{
             this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
                 this -> enter_password_second -> mapToGlobal( this -> enter_password_second -> geometry().center() ).x(),
             ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() - 
-                this -> enter_password_second -> mapToGlobal( this -> enter_password_second -> geometry().center() ).y() ) * 1.1f
+                this -> enter_password_second -> mapToGlobal( this -> enter_password_second -> geometry().center() ).y() ) * 1.3f
         );
         this -> enter_password_second -> setPlaceholderText( "Enter again..." );
         this -> enter_password_second -> setEchoMode( QLineEdit::Password );
@@ -158,7 +179,7 @@ namespace kmanager::state{
             ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
                 this -> checkbox_first -> mapToGlobal( this -> checkbox_first -> geometry().center() ).x() ) * 1.29f,
             ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() - 
-                this -> checkbox_first -> mapToGlobal( this -> checkbox_first -> geometry().center() ).y() ) * 0.9f
+                this -> checkbox_first -> mapToGlobal( this -> checkbox_first -> geometry().center() ).y() ) * 1.1f
         );
         this -> checkbox_first -> setFixedSize( 35, 35 );
 
@@ -184,7 +205,7 @@ namespace kmanager::state{
             ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
                 this -> checkbox_second -> mapToGlobal( this -> checkbox_second -> geometry().center() ).x() ) * 1.29f,
             ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() - 
-                this -> checkbox_second -> mapToGlobal( this -> checkbox_second -> geometry().center() ).y() ) * 1.09f
+                this -> checkbox_second -> mapToGlobal( this -> checkbox_second -> geometry().center() ).y() ) * 1.29f
         );
         this -> checkbox_second -> setFixedSize( 35, 35 );
 
@@ -203,19 +224,54 @@ namespace kmanager::state{
         this -> enter_password_label -> setText( "Set a new password:" );
         this -> enter_password_label -> move(
             ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
-                this -> enter_password_label -> mapToGlobal( this -> enter_password_label -> geometry().center() ).x() ) * 0.825f,
-            this -> enter_password_first -> geometry().y() * 0.75f
+                this -> enter_password_label -> mapToGlobal( this -> enter_password_label -> geometry().center() ).x() ) * 0.865f,
+            this -> enter_password_first -> geometry().y() * 0.87f
         );
-        this -> enter_password_label -> resize( this -> width + 50, this -> height );
-        this -> enter_password_label -> setStyleSheet( "font-size: 30px" );
+        this -> enter_password_label -> setStyleSheet( "font-size: 25px" );
 
         // Error label
         this -> error_label = QSharedPointer<QLabel>(
             new QLabel( this -> host )
         );
-        this -> error_label -> resize( this -> width + 200.f, this -> height / 2 );
+        this -> error_label -> resize( this -> width + 50.f, this -> height / 2 );
         this -> error_label -> setVisible( false );
         this -> error_label -> setStyleSheet( "QLabel { color : rgb(183, 0, 0); font-size: 20px }" );
+
+        // User image label
+        this -> user_img_label = QSharedPointer<QLabel>(
+            new QLabel( this -> host )
+        );
+        this -> user_img_label -> setVisible( false );
+        this -> user_img_label -> setPixmap( QPixmap( "img/icons/user.png" ) );
+        this -> user_img_label -> move(
+            this -> enter_password_second -> geometry().x() + 33.f,
+            this -> enter_password_label -> geometry().y() * 0.4f
+        );
+
+        // Confirm button
+        this -> confirm_button = QSharedPointer<QPushButton>( 
+            new QPushButton( "", this -> host ) 
+        );
+        this -> confirm_button -> setVisible( false );
+        this -> confirm_button -> setStyleSheet( "font-size: 20px" );
+        this -> confirm_button -> move(
+            this -> enter_password_second -> geometry().x(),
+            this -> enter_password_second -> geometry().y() * 1.18f
+        );
+        this -> confirm_button -> setFixedSize( 
+            QSize( 
+                this -> enter_password_first -> geometry().width() , 
+                this -> enter_password_second -> geometry().height() 
+            ) 
+        );
+        this -> confirm_button -> setText( "Confirm" );
+
+        QObject::connect( 
+             this -> confirm_button.get(), 
+             SIGNAL( clicked() ), 
+             this, 
+             SLOT( savePassword() ) 
+        );
     }
 
     //====================================================
@@ -256,10 +312,10 @@ namespace kmanager::state{
         // Case in which one of the two is empty
         if( this -> enter_password_first -> text() == "" || this -> enter_password_second -> text() == "" ){
             this -> error_label -> setVisible( true );
-            this -> error_label -> setText( "One of the two password entries is empty!" );
+            this -> error_label -> setText( "One of the two entries is empty!" );
             this -> error_label -> move(
-                this -> enter_password_second -> geometry().x() - 55.f,
-                this -> enter_password_second -> geometry().y() + 90.f
+                this -> enter_password_second -> geometry().x() - 10.f,
+                this -> enter_password_second -> geometry().y() + 170.f
             );
             QTimer::singleShot( 2000, this -> error_label.get(), &QLabel::hide );
         }
@@ -267,10 +323,10 @@ namespace kmanager::state{
         // Case in which the two passwords are different
         else if( this -> enter_password_first -> text() != this -> enter_password_second -> text() ){
             this -> error_label -> setVisible( true );
-            this -> error_label -> setText( "The two passwords are different!" );
+            this -> error_label -> setText( "The two entries are different!" );
             this -> error_label -> move(
-                this -> enter_password_second -> geometry().x() - 15.f,
-                this -> enter_password_second -> geometry().y() + 90.f
+                this -> enter_password_second -> geometry().x(),
+                this -> enter_password_second -> geometry().y() + 170.f
             );
             QTimer::singleShot( 2000, this -> error_label.get(), &QLabel::hide );
         }
@@ -308,5 +364,10 @@ namespace kmanager::state{
 
         // QLabel
         this -> assignProperty( this -> enter_password_label.get(), "visible", true );
+        this -> assignProperty( this -> rectangle.get(), "visible", true );
+        this -> assignProperty( this -> user_img_label.get(), "visible", true );
+
+        // QPushButton
+        this -> assignProperty( this -> confirm_button.get(), "visible", true );
     }
 }

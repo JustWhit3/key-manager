@@ -29,6 +29,7 @@
 #include <QLabel>
 #include <QSharedPointer>
 #include <QObject>
+#include <QPushButton>
 
 // STD
 #include <sstream>
@@ -62,8 +63,11 @@ namespace kmanager::state{
             QSharedPointer<QLineEdit> enter_password_second;
             QSharedPointer<QLabel> enter_password_label;
             QSharedPointer<QLabel> error_label;
+            QSharedPointer<QLabel> rectangle;
+            QSharedPointer<QLabel> user_img_label;
             QSharedPointer<QCheckBox> checkbox_first;
             QSharedPointer<QCheckBox> checkbox_second;
+            QSharedPointer<QPushButton> confirm_button;
 
             // Variables (other)
             QWidget* host;
