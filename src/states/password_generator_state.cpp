@@ -209,7 +209,7 @@ namespace kmanager::state{
             new QLabel( this -> host -> host ) 
         );
         this -> copied -> setVisible( false );
-        this -> copied -> resize( 250, 25 );
+        this -> copied -> resize( 70, 25 );
         this -> copied -> move(
             this -> copy_button -> geometry().center().x() + 140.f,
             this -> copy_button -> geometry().center().y() - 12.f
@@ -467,6 +467,11 @@ namespace kmanager::state{
                 "color: rgb(183, 0, 0);"
             );
             this -> copied -> setText( "Select at least one!" );
+            this -> copied -> resize( 250, 25 );
+            this -> copied -> move(
+                separator -> geometry().center().x() - 80.f,
+                separator -> geometry().center().y() + 70.f
+            );
             this -> copied -> setVisible( true );
             QTimer::singleShot( 2000, this -> copied.get(), &QLabel::hide );
         }
@@ -476,6 +481,11 @@ namespace kmanager::state{
                 "color: rgb(183, 0, 0);"
             );
             this -> copied -> setText( "Insert a lenght!" );
+            this -> copied -> resize( 250, 25 );
+            this -> copied -> move(
+                separator -> geometry().center().x() - 70.f,
+                separator -> geometry().center().y() + 70.f
+            );
             this -> copied -> setVisible( true );
             QTimer::singleShot( 2000, this -> copied.get(), &QLabel::hide ); 
         }
