@@ -98,7 +98,7 @@ namespace kmanager::state{
             this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
                 this -> enter_password -> mapToGlobal( this -> enter_password -> geometry().center() ).x(),
             ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() - 
-                this -> enter_password -> mapToGlobal( this -> enter_password -> geometry().center() ).y() ) * 0.9f
+                this -> enter_password -> mapToGlobal( this -> enter_password -> geometry().center() ).y() ) * 1.2f
         );
         this -> enter_password -> setPlaceholderText( "Enter password..." );
         this -> enter_password -> setEchoMode( QLineEdit::Password );
@@ -123,10 +123,8 @@ namespace kmanager::state{
             
         );
         this -> checkbox -> move(
-            ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
-                this -> checkbox -> mapToGlobal( this -> checkbox -> geometry().center() ).x() ) * 1.29f,
-            ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() - 
-                this -> checkbox -> mapToGlobal( this -> checkbox -> geometry().center() ).y() ) * 0.9f
+            ( this -> enter_password -> geometry().center().x() - this -> checkbox -> geometry().center().x() * 0.5f ) + 115.f,
+            ( this -> enter_password -> geometry().center().y() - this -> checkbox -> geometry().center().y() * 0.5f ) - 7.8f
         );
         this -> checkbox -> setFixedSize( 35, 35 );
 
@@ -146,7 +144,7 @@ namespace kmanager::state{
         this -> enter_password_label -> move(
             ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
                 this -> enter_password_label -> mapToGlobal( this -> enter_password_label -> geometry().center() ).x() ) * 0.89f,
-            this -> enter_password -> geometry().y() * 0.75f
+            this -> enter_password -> geometry().y() * 0.8f
         );
         this -> enter_password_label -> resize( this -> width, this -> height );
         this -> enter_password_label -> setStyleSheet( "font-size: 30px" );
@@ -162,6 +160,17 @@ namespace kmanager::state{
         this -> error_label -> move(
             this -> enter_password -> geometry().x() + 7.f,
             this -> enter_password -> geometry().y() + 90.f
+        );
+
+        // User image label
+        this -> user_img_label = QSharedPointer<QLabel>(
+            new QLabel( this -> host )
+        );
+        this -> user_img_label -> setVisible( false );
+        this -> user_img_label -> setPixmap( QPixmap( "img/icons/user.png" ) );
+        this -> user_img_label -> move(
+            this -> enter_password_label -> geometry().x() * 1.01f,
+            this -> enter_password_label -> geometry().y() * 0.45f
         );
     }
 
@@ -223,5 +232,6 @@ namespace kmanager::state{
 
         // Labels
         this -> assignProperty( this -> enter_password_label.get(), "visible", true );
+        this -> assignProperty( this -> user_img_label.get(), "visible", true );
     }
 }
