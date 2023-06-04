@@ -87,6 +87,27 @@ namespace kmanager::state{
      */
     void LoginState::addWidgets(){
 
+        // Rectangle decoration
+        this -> rectangle = QSharedPointer<QLabel>(
+            new QLabel( this -> host )
+        );
+        this -> rectangle -> setVisible( false );
+        this -> rectangle -> resize( 400, 500 );
+        this -> rectangle -> setStyleSheet( 
+            "background-color: rgba( 255, 255, 255, 0% );"
+            "color: #c1c1c1;"
+	        "border-style: solid;"
+	        "border-width: 5px;"
+	        "border-color: #4a4c68;"
+            "border-radius: 50%"
+        );
+        this -> rectangle -> move(
+            this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
+                this -> rectangle -> mapToGlobal( this -> rectangle -> geometry().center() ).x(),
+            this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() - 
+                this -> rectangle -> mapToGlobal( this -> rectangle -> geometry().center() ).y()
+        );
+
         // Enter password line edit
         this -> enter_password = QSharedPointer<QLineEdit>( 
             new QLineEdit( this -> host ) 
@@ -98,7 +119,7 @@ namespace kmanager::state{
             this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
                 this -> enter_password -> mapToGlobal( this -> enter_password -> geometry().center() ).x(),
             ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() - 
-                this -> enter_password -> mapToGlobal( this -> enter_password -> geometry().center() ).y() ) * 1.2f
+                this -> enter_password -> mapToGlobal( this -> enter_password -> geometry().center() ).y() ) * 1.3f
         );
         this -> enter_password -> setPlaceholderText( "Enter password..." );
         this -> enter_password -> setEchoMode( QLineEdit::Password );
@@ -144,7 +165,7 @@ namespace kmanager::state{
         this -> enter_password_label -> move(
             ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
                 this -> enter_password_label -> mapToGlobal( this -> enter_password_label -> geometry().center() ).x() ) * 0.89f,
-            this -> enter_password -> geometry().y() * 0.8f
+            this -> enter_password -> geometry().y() * 0.83f
         );
         this -> enter_password_label -> resize( this -> width, this -> height );
         this -> enter_password_label -> setStyleSheet( "font-size: 30px" );
@@ -170,7 +191,7 @@ namespace kmanager::state{
         this -> user_img_label -> setPixmap( QPixmap( "img/icons/user.png" ) );
         this -> user_img_label -> move(
             this -> enter_password_label -> geometry().x() * 1.01f,
-            this -> enter_password_label -> geometry().y() * 0.45f
+            this -> enter_password_label -> geometry().y() * 0.55f
         );
     }
 
@@ -233,5 +254,6 @@ namespace kmanager::state{
         // Labels
         this -> assignProperty( this -> enter_password_label.get(), "visible", true );
         this -> assignProperty( this -> user_img_label.get(), "visible", true );
+        this -> assignProperty( this -> rectangle.get(), "visible", true );
     }
 }

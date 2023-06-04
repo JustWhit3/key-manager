@@ -89,6 +89,7 @@ namespace kmanager::state{
 	        "border-style: solid;"
 	        "border-width: 5px;"
 	        "border-color: #4a4c68;"
+            "border-radius: 50%"
         );
         this -> rectangle -> move(
             this -> host -> host -> mapToGlobal( this -> host -> host -> geometry().center() ).x() - 

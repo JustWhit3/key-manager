@@ -383,6 +383,7 @@ namespace kmanager::window{
         // QCheckBox
         this -> menu_state -> assignProperty( this -> login_state -> checkbox.get(), "visible", false );
         this -> menu_state -> assignProperty( this -> login_state -> user_img_label.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> login_state -> rectangle.get(), "visible", false );
     }
 
     //====================================================
