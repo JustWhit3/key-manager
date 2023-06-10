@@ -84,7 +84,7 @@ namespace kmanager::state{
         this -> rectangle -> setVisible( false );
         this -> rectangle -> resize( 800, 600 );
         this -> rectangle -> setStyleSheet( 
-            "background-color: rgba( 255, 255, 255, 0% );"
+            "background-color: rgba( 0, 0, 0, 15% );"
             "color: #c1c1c1;"
 	        "border-style: solid;"
 	        "border-width: 5px;"
@@ -104,7 +104,9 @@ namespace kmanager::state{
         );
         this -> password_generator_label -> setVisible( false );
         this -> password_generator_label -> resize( 400, 70 );
-        this -> password_generator_label -> setStyleSheet( "font-size: 40px"  );
+        this -> password_generator_label -> setStyleSheet( 
+            "QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 40px; }"
+        );
         this -> password_generator_label -> move(
             ( this -> host -> host -> mapToGlobal( this -> host -> host -> geometry().center() ).x() - 
                 this -> password_generator_label -> mapToGlobal( this -> password_generator_label -> geometry().center() ).x() ) * 1.05f,
@@ -119,7 +121,9 @@ namespace kmanager::state{
         );
         this -> comment_label -> setVisible( false );
         this -> comment_label -> resize( 400, 25 );
-        this -> comment_label -> setStyleSheet( "font-size: 20px"  );
+        this -> comment_label -> setStyleSheet( 
+            "QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 20px; }"
+        );
         this -> comment_label -> move(
             ( this -> host -> host -> mapToGlobal( this -> host -> host -> geometry().center() ).x() - 
                 this -> comment_label -> mapToGlobal( this -> comment_label -> geometry().center() ).x() ) * 1.08f,
@@ -210,10 +214,6 @@ namespace kmanager::state{
         );
         this -> copied -> setVisible( false );
         this -> copied -> resize( 70, 25 );
-        this -> copied -> move(
-            this -> copy_button -> geometry().center().x() + 140.f,
-            this -> copy_button -> geometry().center().y() - 12.f
-        );
 
         // Separator line
         this -> separator = QSharedPointer<QLabel>( 
@@ -255,7 +255,9 @@ namespace kmanager::state{
         );
         this -> length_label -> setVisible( false );
         this -> length_label -> resize( 100, 25 );
-        this -> length_label -> setStyleSheet( "font-size: 20px" );
+        this -> length_label -> setStyleSheet( 
+            "QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 20px; }"
+         );
         this -> length_label -> move(
             length_line_edit -> geometry().x() - 300.f,
             length_line_edit -> geometry().y()
@@ -280,7 +282,9 @@ namespace kmanager::state{
         );
         this -> uppercase_label -> setVisible( false );
         this -> uppercase_label -> resize( 300, 25 );
-        this -> uppercase_label -> setStyleSheet( "font-size: 20px" );
+        this -> uppercase_label -> setStyleSheet( 
+            "QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 20px; }"
+        );
         this -> uppercase_label -> move(
             uppercase_checkbox -> geometry().x() - 300.f,
             uppercase_checkbox -> geometry().y() - 2.f
@@ -305,7 +309,9 @@ namespace kmanager::state{
         );
         this -> lowercase_label -> setVisible( false );
         this -> lowercase_label -> resize( 300, 25 );
-        this -> lowercase_label -> setStyleSheet( "font-size: 20px" );
+        this -> lowercase_label -> setStyleSheet( 
+            "QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 20px; }"
+         );
         this -> lowercase_label -> move(
             lowercase_checkbox -> geometry().x() - 300.f,
             lowercase_checkbox -> geometry().y() - 2.f
@@ -330,7 +336,9 @@ namespace kmanager::state{
         );
         this -> symbols_label -> setVisible( false );
         this -> symbols_label -> resize( 170, 25 );
-        this -> symbols_label -> setStyleSheet( "font-size: 20px" );
+        this -> symbols_label -> setStyleSheet( 
+            "QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 20px; }"
+         );
         this -> symbols_label -> move(
             symbols_checkbox -> geometry().x() - 310.f,
             symbols_checkbox -> geometry().y()
@@ -355,7 +363,9 @@ namespace kmanager::state{
         );
         this -> numbers_label -> setVisible( false );
         this -> numbers_label -> resize( 160, 25 );
-        this -> numbers_label -> setStyleSheet( "font-size: 20px" );
+        this -> numbers_label -> setStyleSheet( 
+            "QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 20px; }"
+         );
         this -> numbers_label -> move(
             numbers_checkbox -> geometry().x() - 310.f,
             numbers_checkbox -> geometry().y()
@@ -380,12 +390,28 @@ namespace kmanager::state{
         );
         this -> ambiguous_characters_label -> setVisible( false );
         this -> ambiguous_characters_label -> resize( 300, 25 );
-        this -> ambiguous_characters_label -> setStyleSheet( "font-size: 20px" );
+        this -> ambiguous_characters_label -> setStyleSheet( 
+            "QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 20px; }"
+         );
         this -> ambiguous_characters_label -> move(
             ambiguous_characters_checkbox -> geometry().x() - 310.f,
             ambiguous_characters_checkbox -> geometry().y()
         );
         this -> ambiguous_characters_label -> setText( "Ambiguous characters ({}()[]:/*...)" );
+
+        // Lock img
+        this -> lock_img = QSharedPointer<QLabel>(
+            new QLabel( this -> host -> host )
+        );
+        this -> lock_img -> setVisible( false );
+        this -> lock_img -> setPixmap( QPixmap( "img/icons/lock.png" ) );
+        this -> lock_img -> move(
+            this -> password_generator_label -> geometry().center().x() - this -> lock_img -> geometry().width() * 0.5f - 20.f,
+            ( this -> password_generator_label -> geometry().center().y() - this -> lock_img -> geometry().height() * 0.5f ) * 0.55f
+        );
+        this -> lock_img -> setStyleSheet(
+            "background-color: rgba( 255, 255, 255, 0% );"
+        );
     }
 
     //====================================================
@@ -409,6 +435,7 @@ namespace kmanager::state{
         this -> assignProperty( this -> length_label.get(), "visible", true );
         this -> assignProperty( this -> comment_label.get(), "visible", true );
         this -> assignProperty( this -> rectangle.get(), "visible", true );
+        this -> assignProperty( this -> lock_img.get(), "visible", true );
 
         // QPushButton
         this -> assignProperty( this -> menu_button.get(), "visible", true );
@@ -443,6 +470,11 @@ namespace kmanager::state{
         this -> copied -> setStyleSheet( 
             "font-size: 20px;"
             "color: #c1c1c1;"
+            "background-color: rgba( 255, 255, 255, 0% );"
+        );
+        this -> copied -> move(
+            this -> copy_button -> geometry().center().x() + 120.f,
+            this -> copy_button -> geometry().center().y() - 12.f
         );
         this -> copied -> setText( "Copied!" );
         this -> copied -> setVisible( true );
@@ -465,6 +497,7 @@ namespace kmanager::state{
             this -> copied -> setStyleSheet( 
                 "font-size: 20px;"
                 "color: rgb(183, 0, 0);"
+                "background-color: rgba( 255, 255, 255, 0% );"
             );
             this -> copied -> setText( "Select at least one!" );
             this -> copied -> resize( 250, 25 );
@@ -479,6 +512,7 @@ namespace kmanager::state{
             this -> copied -> setStyleSheet( 
                 "font-size: 20px;"
                 "color: rgb(183, 0, 0);"
+                "background-color: rgba( 255, 255, 255, 0% );"
             );
             this -> copied -> setText( "Insert a lenght!" );
             this -> copied -> resize( 250, 25 );

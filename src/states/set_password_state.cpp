@@ -113,7 +113,7 @@ namespace kmanager::state{
         this -> rectangle -> setVisible( false );
         this -> rectangle -> resize( 400, 600 );
         this -> rectangle -> setStyleSheet( 
-            "background-color: rgba( 35, 36, 48, 90% );"
+            "background-color: rgba( 35, 36, 48, 100% );"
             "color: #c1c1c1;"
 	        "border-style: solid;"
 	        "border-width: 5px;"

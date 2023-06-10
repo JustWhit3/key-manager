@@ -71,6 +71,7 @@ namespace kmanager::state{
             QSharedPointer<QLabel> ambiguous_characters_label;
             QSharedPointer<QLabel> copied;
             QSharedPointer<QLabel> rectangle;
+            QSharedPointer<QLabel> lock_img;
             QSharedPointer<QPushButton> menu_button;
             QSharedPointer<QPushButton> generate_button;
             QSharedPointer<QPushButton> copy_button;
@@ -103,7 +104,8 @@ namespace kmanager::state{
             // Constants
             QString checkbox_style =
                 "QCheckBox::indicator { width: 25px; height: 25px; background-color: #38394e; }"
-                "QCheckBox::indicator:checked { image: url(img/icons/done.png); background-color: #38394e; }";
+                "QCheckBox::indicator:checked { image: url(img/icons/done.png); background-color: #38394e; }"
+                "QCheckBox:disabled { background-color:rgba( 255, 255, 255, 0% ); }";
 
         //====================================================
         //     Private slots
