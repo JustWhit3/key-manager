@@ -132,7 +132,9 @@ namespace kmanager::state{
         );
         this -> enter_password -> setVisible( false );
         this -> enter_password -> resize( this -> width, this -> height );
-        this -> enter_password -> setStyleSheet( "font-size: 20px" );
+        this -> enter_password -> setStyleSheet( 
+            "font-size: 20px;"
+        );
         this -> enter_password -> move(
             this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
                 this -> enter_password -> mapToGlobal( this -> enter_password -> geometry().center() ).x(),
