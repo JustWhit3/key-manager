@@ -23,6 +23,7 @@
 #include <utility/crypto.hpp>
 
 // Qt
+#include <QObject>
 #include <QState>
 #include <QLabel>
 #include <QSize>
@@ -33,7 +34,6 @@
 #include <QTimer>
 #include <QIODevice>
 #include <QLineEdit>
-#include <QObject>
 #include <QPushButton>
 #include <QStringConverter>
 #include <QVariant>

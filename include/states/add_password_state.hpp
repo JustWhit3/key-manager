@@ -26,19 +26,18 @@
 #include <entities/password.hpp>
 
 // Qt
+#include <QObject>
 #include <QState>
 #include <QSharedPointer>
 #include <QPushButton>
 #include <QLabel>
 #include <QLineEdit>
-#include <QObject>
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QFile>
 #include <QByteArray>
 #include <QString>
-#include <QObject>
 
 // STD
 #include <sstream>
