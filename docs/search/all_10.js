@@ -15,6 +15,7 @@ var searchData=
   ['setmessage_158',['setMessage',['../classkmanager_1_1utility_1_1Crypto.html#a61ae6df28c047a2b601d545e54b3b418',1,'kmanager::utility::Crypto']]],
   ['setpasswordstate_159',['SetPasswordState',['../classkmanager_1_1state_1_1SetPasswordState.html',1,'kmanager::state::SetPasswordState'],['../classkmanager_1_1state_1_1SetPasswordState.html#aff35745f69a23edd0579e6b011c4ddae',1,'kmanager::state::SetPasswordState::SetPasswordState()']]],
   ['setwindowproperties_160',['setWindowProperties',['../classkmanager_1_1window_1_1BaseWindow.html#ae1da44e39b684abf7bc4da148515c3db',1,'kmanager::window::BaseWindow']]],
-  ['symbols_5fcheckbox_161',['symbols_checkbox',['../classkmanager_1_1state_1_1PasswordGeneratorState.html#a837f487e11ec835c9a8dce3212db7875',1,'kmanager::state::PasswordGeneratorState']]],
-  ['symbols_5flabel_162',['symbols_label',['../classkmanager_1_1state_1_1PasswordGeneratorState.html#a55687cccfab53d521e4971aab5b12a35',1,'kmanager::state::PasswordGeneratorState']]]
+  ['side_5frectangle_161',['side_rectangle',['../classkmanager_1_1state_1_1MenuState.html#a20768b13616b4f829c5aa2e31530fbec',1,'kmanager::state::MenuState']]],
+  ['symbols_5fcheckbox_162',['symbols_checkbox',['../classkmanager_1_1state_1_1PasswordGeneratorState.html#a837f487e11ec835c9a8dce3212db7875',1,'kmanager::state::PasswordGeneratorState']]],
+  ['symbols_5flabel_163',['symbols_label',['../classkmanager_1_1state_1_1PasswordGeneratorState.html#a55687cccfab53d521e4971aab5b12a35',1,'kmanager::state::PasswordGeneratorState']]]
 ];
