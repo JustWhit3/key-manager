@@ -330,17 +330,17 @@ namespace kmanager::window{
         this -> p_generator_state -> assignProperty( this -> menu_state -> exit_button.get(), "visible", false );
 
         // Labels
-        this -> p_manager_state -> assignProperty( this -> menu_state -> version.get(), "visible", false );
         this -> p_manager_state -> assignProperty( this -> menu_state -> logo_img_label.get(), "visible", false );
         this -> p_manager_state -> assignProperty( this -> menu_state -> change_password_button.get(), "visible", false );
+        this -> p_manager_state -> assignProperty( this -> menu_state -> side_rectangle.get(), "visible", false );
 
-        this -> login_state -> assignProperty( this -> menu_state -> version.get(), "visible", false );
         this -> login_state -> assignProperty( this -> menu_state -> logo_img_label.get(), "visible", false );
         this -> login_state -> assignProperty( this -> menu_state -> change_password_button.get(), "visible", false );
-
-        this -> p_generator_state -> assignProperty( this -> menu_state -> version.get(), "visible", false );
+        this -> login_state -> assignProperty( this -> menu_state -> side_rectangle.get(), "visible", false );
+        
         this -> p_generator_state -> assignProperty( this -> menu_state -> logo_img_label.get(), "visible", false );
         this -> p_generator_state -> assignProperty( this -> menu_state -> change_password_button.get(), "visible", false );
+        this -> p_generator_state -> assignProperty( this -> menu_state -> side_rectangle.get(), "visible", false );
     }
 
     //====================================================

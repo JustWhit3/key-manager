@@ -62,6 +62,7 @@ namespace kmanager::state{
             QSharedPointer<QPushButton> change_password_button;
             QSharedPointer<QLabel> version;
             QSharedPointer<QLabel> logo_img_label;
+            QSharedPointer<QLabel> side_rectangle;
 
             // Variables (other)
             QWidget* host;

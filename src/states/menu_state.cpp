@@ -29,6 +29,7 @@
 #include <QPixmap>
 #include <QString>
 #include <QWidget>
+#include <QFile>
 
 namespace kmanager::state{
 
@@ -79,8 +80,8 @@ namespace kmanager::state{
         this -> p_manager_button -> resize( this -> button_width, this -> button_height );
         this -> p_manager_button -> setStyleSheet( this -> button_font_size );
         this -> p_manager_button -> move(
-            this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
-                this -> p_manager_button -> mapToGlobal( this -> p_manager_button -> geometry().center() ).x(),
+            ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
+                this -> p_manager_button -> mapToGlobal( this -> p_manager_button -> geometry().center() ).x() ) * 1.45f,
             ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() - 
                 this -> p_manager_button -> mapToGlobal( this -> p_manager_button -> geometry().center() ).y() ) * 0.9f
         );
@@ -142,18 +143,6 @@ namespace kmanager::state{
         this -> change_password_button -> setIcon( this -> change_password_icon );
         this -> change_password_button -> setIconSize( QSize( this -> button_height, this -> button_height ) );
 
-        // Version and license label
-        this -> version = QSharedPointer<QLabel>(
-            new QLabel( this -> host )
-        );
-        this -> version -> setVisible( false );
-        this -> version -> setText( "Current version: 0.2.0\nCopyright (c) 2023 Gianluca Bianco under the GPL v3.0 license" );
-        this -> version -> setStyleSheet( "font-size: 15px" );
-        this -> version -> move(
-            this -> version -> mapToGlobal( this -> version -> geometry().center() ).x() * 0.5f,
-            this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() + 350.f
-        );
-
         // Image logo label
         this -> logo_img_label = QSharedPointer<QLabel>(
             new QLabel( this -> host )
@@ -161,9 +150,30 @@ namespace kmanager::state{
         this -> logo_img_label -> setVisible( false );
         this -> logo_img_label -> setPixmap( QPixmap( "img/images/logo_app.png" ) );
         this -> logo_img_label -> move(
-            this -> p_manager_button -> geometry().x() * 0.80f,
+            this -> p_manager_button -> geometry().x() * 0.86f,
             this -> p_manager_button -> geometry().y() * 0.2f
         );
+
+        // Side rectangle decoration
+        this -> side_rectangle = QSharedPointer<QLabel>(
+            new QLabel( this -> host )
+        );
+        this -> side_rectangle -> setVisible( false );
+        this -> side_rectangle -> resize( 
+            this -> host -> geometry().width() * 0.35f, 
+            this -> host -> geometry().height()
+        );
+        this -> side_rectangle -> setStyleSheet( 
+            "background-color: rgba( 32, 32, 32, 80% );"
+	        "border-style: solid;"
+	        "border-width: 2px;"
+	        "border-color: #4a4c68;"
+            "font-size: 20px;"
+        );
+        QFile file("html/metadata.html");
+        file.open( QFile::ReadOnly );
+        this -> side_rectangle -> setText( QLatin1String( file.readAll() ) );
+        this -> side_rectangle -> setAlignment( Qt::AlignTop );
     }
 
     //====================================================
@@ -183,7 +193,7 @@ namespace kmanager::state{
         this -> assignProperty( this -> change_password_button.get(), "visible", true );
 
         // Labels
-        this -> assignProperty( this -> version.get(), "visible", true );
         this -> assignProperty( this -> logo_img_label.get(), "visible", true );
+        this -> assignProperty( this -> side_rectangle.get(), "visible", true );
     }
 }
