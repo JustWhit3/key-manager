@@ -64,6 +64,7 @@ namespace kmanager::state{
             QSharedPointer<QLabel> error_label;
             QSharedPointer<QLabel> user_img_label;
             QSharedPointer<QLabel> rectangle;
+            QSharedPointer<QLabel> background_rectangle;
 
             // Variables (other)
             QWidget* host;

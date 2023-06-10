@@ -64,6 +64,7 @@ namespace kmanager::state{
             QSharedPointer<QLabel> enter_password_label;
             QSharedPointer<QLabel> error_label;
             QSharedPointer<QLabel> rectangle;
+            QSharedPointer<QLabel> background_rectangle;
             QSharedPointer<QLabel> user_img_label;
             QSharedPointer<QCheckBox> checkbox_first;
             QSharedPointer<QCheckBox> checkbox_second;

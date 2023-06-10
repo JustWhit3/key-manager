@@ -390,6 +390,7 @@ namespace kmanager::window{
         this -> menu_state -> assignProperty( this -> login_state -> checkbox.get(), "visible", false );
         this -> menu_state -> assignProperty( this -> login_state -> user_img_label.get(), "visible", false );
         this -> menu_state -> assignProperty( this -> login_state -> rectangle.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> login_state -> background_rectangle.get(), "visible", false );
     }
 
     //====================================================
@@ -412,6 +413,7 @@ namespace kmanager::window{
         // QLabel
         this -> menu_state -> assignProperty( this -> set_password_state -> enter_password_label.get(), "visible", false );
         this -> menu_state -> assignProperty( this -> set_password_state -> rectangle.get(), "visible", false );
+        this -> menu_state -> assignProperty( this -> set_password_state -> background_rectangle.get(), "visible", false );
         this -> menu_state -> assignProperty( this -> set_password_state -> user_img_label.get(), "visible", false );
 
         // QPushButton
