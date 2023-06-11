@@ -134,12 +134,16 @@ namespace kmanager::state{
             new QPushButton( "", this -> host ) 
         );
         this -> change_password_button -> setVisible( false );
-        this -> change_password_button -> setStyleSheet( "background-color: rgba(255, 255, 255, 0);" );
+        this -> change_password_button -> setStyleSheet( 
+            "QPushButton{ background-color: rgba(255, 255, 255, 0); }"
+            "QPushButton::hover { background-color: rgba(255, 255, 255, 50); }"
+            "QPushButton::pressed { background-color: rgba(255, 255, 255, 70); }"
+        );
         this -> change_password_button -> move(
             this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() * 1.84f,
             this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() + 315.f
         );
-        this -> change_password_icon.addFile( "img/icons/password_icon.png" );
+        this -> change_password_icon.addFile( "img/icons/user.png" );
         this -> change_password_button -> setIcon( this -> change_password_icon );
         this -> change_password_button -> setIconSize( QSize( this -> button_height, this -> button_height ) );
 
