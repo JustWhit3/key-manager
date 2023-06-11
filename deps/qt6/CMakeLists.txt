@@ -16,35 +16,35 @@ if( EXISTS "${LOC_PATH}" )
 endif()
 
 # Fetch the package
-find_package(Qt6 6.4.2 QUIET)
+find_package( Qt6 6.4.2 QUIET )
 
-if(NOT Qt6_FOUND)
-    message(STATUS "Qt 6.4.2 not found. Downloading and configuring Qt...")
+if( NOT Qt6_FOUND )
+    message( STATUS "Qt 6.4.2 not found. Downloading and configuring Qt..." )
 
     # Download and extract archive of Qt 6.4.2
-    set(QT_VERSION "6.4.2")
-    set(QT_ARCHIVE_URL "https://download.qt.io/official_releases/qt/6.4/${QT_VERSION}/single/qt-everywhere-src-${QT_VERSION}.tar.xz")
-    set(QT_ARCHIVE_FILE "${CMAKE_CURRENT_BINARY_DIR}/qt-everywhere-src-${QT_VERSION}.tar.xz")
-    set(QT_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/qt-everywhere-src-${QT_VERSION}")
+    set( QT_VERSION "6.4.2" )
+    set( QT_ARCHIVE_URL "https://download.qt.io/official_releases/qt/6.4/${QT_VERSION}/single/qt-everywhere-src-${QT_VERSION}.tar.xz ")
+    set( QT_ARCHIVE_FILE "${CMAKE_CURRENT_BINARY_DIR}/qt-everywhere-src-${QT_VERSION}.tar.xz" )
+    set( QT_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/qt-everywhere-src-${QT_VERSION}" )
 
-    file(DOWNLOAD ${QT_ARCHIVE_URL} ${QT_ARCHIVE_FILE}
-         SHOW_PROGRESS
-         EXPECTED_HASH SHA256=689f53e6652da82fccf7c2ab58066787487339f28d1ec66a8765ad357f4976be)
+    file( DOWNLOAD ${QT_ARCHIVE_URL} ${QT_ARCHIVE_FILE}
+          SHOW_PROGRESS
+          EXPECTED_HASH SHA256=689f53e6652da82fccf7c2ab58066787487339f28d1ec66a8765ad357f4976be )
 
-    execute_process(COMMAND ${CMAKE_COMMAND} -E tar xvf ${QT_ARCHIVE_FILE}
-                    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+    execute_process( COMMAND ${CMAKE_COMMAND} -E tar xvf ${QT_ARCHIVE_FILE}
+                     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} )
 
     # Configure and compile Qt
-    set(QT_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/qt-build")
-    file(MAKE_DIRECTORY ${QT_BUILD_DIR})
-    execute_process(COMMAND ${QT_SOURCE_DIR}/configure -prefix ${QT_BUILD_DIR}
-                    WORKING_DIRECTORY ${QT_BUILD_DIR})
-    execute_process(COMMAND make
-                    WORKING_DIRECTORY ${QT_BUILD_DIR})
+    set( QT_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/qt-build" )
+    file( MAKE_DIRECTORY ${QT_BUILD_DIR} )
+    execute_process( COMMAND ${QT_SOURCE_DIR}/configure -prefix ${QT_BUILD_DIR}
+                     WORKING_DIRECTORY ${QT_BUILD_DIR})
+    execute_process( COMMAND make
+                     WORKING_DIRECTORY ${QT_BUILD_DIR})
 
     # Set necessary environment variables to use Qt
-    set(ENV{QTDIR} ${QT_BUILD_DIR})
-    set(ENV{PATH} ${QT_BUILD_DIR}/bin:$ENV{PATH})
+    set( ENV{QTDIR} ${QT_BUILD_DIR} )
+    set( ENV{PATH} ${QT_BUILD_DIR}/bin:$ENV{PATH} )
 else()
-    message(STATUS "Qt 6.4.2 trovato nel sistema.")
+    message( STATUS "Qt 6.4.2 trovato nel sistema." )
 endif()
