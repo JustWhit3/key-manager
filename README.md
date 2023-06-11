@@ -34,7 +34,7 @@
 
 ## Introduction
 
-*Important note*: the app is not ready to use. Wait to v1.0.0 (coming soon).
+**IMPORTANT NOTE**: the app is not ready to use. Wait to v1.0.0 (coming soon).
 
 <p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/password_manager_state.png" width = "500"></p>
 <p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/password_generator_state.png" width = "500"></p>
