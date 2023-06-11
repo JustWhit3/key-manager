@@ -170,7 +170,7 @@ namespace kmanager::state{
 	        "border-color: #4a4c68;"
             "font-size: 20px;"
         );
-        QFile file("html/metadata.html");
+        QFile file( "html/metadata.html" );
         file.open( QFile::ReadOnly );
         this -> side_rectangle -> setText( QLatin1String( file.readAll() ) );
         this -> side_rectangle -> setAlignment( Qt::AlignTop );
