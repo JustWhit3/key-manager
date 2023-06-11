@@ -23,7 +23,7 @@ if( NOT Qt6_FOUND )
 
     # Download and extract archive of Qt 6.4.2
     set( QT_VERSION "6.4.2" )
-    set( QT_ARCHIVE_URL "https://download.qt.io/official_releases/qt/6.4/${QT_VERSION}/single/qt-everywhere-src-${QT_VERSION}.tar.xz ")
+    set( QT_ARCHIVE_URL "https://download.qt.io/official_releases/qt/6.4/${QT_VERSION}/single/qt-everywhere-src-${QT_VERSION}.tar.xz" )
     set( QT_ARCHIVE_FILE "${CMAKE_CURRENT_BINARY_DIR}/qt-everywhere-src-${QT_VERSION}.tar.xz" )
     set( QT_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/qt-everywhere-src-${QT_VERSION}" )
 
@@ -38,13 +38,13 @@ if( NOT Qt6_FOUND )
     set( QT_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/qt-build" )
     file( MAKE_DIRECTORY ${QT_BUILD_DIR} )
     execute_process( COMMAND ${QT_SOURCE_DIR}/configure -prefix ${QT_BUILD_DIR}
-                     WORKING_DIRECTORY ${QT_BUILD_DIR})
+                     WORKING_DIRECTORY ${QT_BUILD_DIR} )
     execute_process( COMMAND make
-                     WORKING_DIRECTORY ${QT_BUILD_DIR})
+                     WORKING_DIRECTORY ${QT_BUILD_DIR} )
 
     # Set necessary environment variables to use Qt
     set( ENV{QTDIR} ${QT_BUILD_DIR} )
-    set( ENV{PATH} ${QT_BUILD_DIR}/bin:$ENV{PATH} )
+    set( ENV{PATH} ${QT_BUILD_DIR}/bin:$ENV{PATH})
 else()
     message( STATUS "Qt 6.4.2 trovato nel sistema." )
 endif()
