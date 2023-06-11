@@ -16,6 +16,7 @@ if( EXISTS "${LOC_PATH}" )
 endif()
 
 # Fetch deps
+add_subdirectory( qt6 )
 if( CMAKE_BUILD_TYPE STREQUAL "Debug" )
     add_subdirectory( doctest )
 endif()
