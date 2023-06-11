@@ -57,7 +57,7 @@ if( CMAKE_BUILD_TYPE STREQUAL "Debug" )
 endif()
 
 # Link to Qt6
-find_package( Qt6 CONFIG REQUIRED COMPONENTS Core Widgets StateMachine )
+find_package( Qt6 6.4.2 CONFIG REQUIRED COMPONENTS Core Widgets StateMachine )
 target_link_libraries( ${APP} PRIVATE Qt::Core Qt::Widgets Qt::StateMachine )
 
 # Install

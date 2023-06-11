@@ -18,7 +18,7 @@ endif()
 # Fetch the package
 find_package(Qt6 6.4.2 QUIET)
 
-if(Qt6_FOUND)
+if(NOT Qt6_FOUND)
     message(STATUS "Qt 6.4.2 not found. Downloading and configuring Qt...")
 
     # Download and extract archive of Qt 6.4.2
