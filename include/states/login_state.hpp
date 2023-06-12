@@ -31,7 +31,6 @@
 #include <QObject>
 
 // STD
-#include <sstream>
 #include <cstdint>
 
 namespace kmanager::state{
@@ -77,9 +76,6 @@ namespace kmanager::state{
             // Methods
             void addWidgets() override;
             void assignProperties() override;
-
-            // Variables
-            std::ostringstream login_key_file;
 
             // Constants
             const uint32_t width{ 270 };

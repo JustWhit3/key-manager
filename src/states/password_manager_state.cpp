@@ -90,6 +90,11 @@ namespace kmanager::state{
                                  << "/.key-manager_files/passwords/";
         #endif
 
+        // Create directories recursively
+        std::filesystem::create_directories( 
+            this -> password_dir.str()
+        );
+
         // Compute old passwords number in the password dir
         this -> old_passwords_number = std::distance(
             std::filesystem::directory_iterator( this -> password_dir.str() ),

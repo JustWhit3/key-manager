@@ -48,17 +48,6 @@ namespace kmanager::state{
     LoginState::LoginState( QWidget *host, QState *parent ): 
         BaseState( parent ),
         host( host ){
-
-        // Get login key path
-        #ifdef _WIN32
-            this -> login_key_file << "C:\\Users\\" 
-                                 << this -> username 
-                                 << "\\.key-manager_files\\.key";
-        #else
-            this -> login_key_file << "/home/" 
-                                 << this -> username 
-                                 << "/.key-manager_files/.key";
-        #endif
     
         // Create widgets
         this -> addWidgets();
@@ -244,7 +233,7 @@ namespace kmanager::state{
         
         // Read encrypted texts
         std::string key, password;
-        std::ifstream input( this -> login_key_file.str() );
+        std::ifstream input( this -> key_file.str() );
         std::getline( input, password );
         std::getline( input, key );
         input.close();
