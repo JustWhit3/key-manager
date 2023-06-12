@@ -1,0 +1,158 @@
+version: "2"
+services:
+
+    ##########################################
+    #      GCC
+    ##########################################
+
+    # gcc 9
+    build_gcc_9:
+        image: ghcr.io/rikorose/gcc-cmake:gcc-9
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: build
+        command: >
+            bash -c "cd /proj
+            && apt update && apt upgrade
+            && apt install -y build-essential libfontconfig1-dev libfreetype6-dev libx11-dev libxext-dev libxfixes-dev libxi-dev libxrender-dev libxcb1-dev libx11-xcb-dev libxcb-glx0-dev libxcb-keysyms1-dev libxcb-image0-dev libxcb-shm0-dev libxcb-icccm4-dev libxcb-sync0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-randr0-dev libxcb-render-util0-dev libxcb-xinerama0-dev libxcb-util0-dev libxcb-xinput-dev libxcb-xkb-dev libxkbcommon-x11-dev libwayland-dev libwayland-egl1 libgl-dev libglu-dev libegl1-mesa-dev libgles2-mesa-dev libudev-dev libinput-dev libicu-dev libsqlite3-dev libssl-dev libpng-dev libjpeg-dev libgif-dev libwebp-dev liblzma-dev libzstd-dev libdouble-conversion-dev libpcre2-dev libharfbuzz-dev libxslt1-dev libxml2-dev libbz2-dev libz3-dev
+            && rm -rf build
+            && cmake -B build
+            && cmake --build build"
+
+    # gcc 10
+    build_gcc_10:
+        image: ghcr.io/rikorose/gcc-cmake:gcc-10
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: build
+        command: >
+            bash -c "cd /proj
+            && rm -rf build
+            && cmake -B build -D CMAKE_CXX_STANDARD=17 -D CMAKE_CXX_STANDARD_REQUIRED=ON 
+            && cmake --build build
+            && rm -rf build
+            && cmake -B build -D CMAKE_CXX_STANDARD=20 -D CMAKE_CXX_STANDARD_REQUIRED=ON 
+            && cmake --build build"
+
+    # gcc 11
+    build_gcc_11:
+        image: ghcr.io/rikorose/gcc-cmake:gcc-11
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: build
+        command: >
+            bash -c "cd /proj
+            && rm -rf build
+            && cmake -B build -D CMAKE_CXX_STANDARD=17 -D CMAKE_CXX_STANDARD_REQUIRED=ON 
+            && cmake --build build
+            && rm -rf build
+            && cmake -B build -D CMAKE_CXX_STANDARD=20 -D CMAKE_CXX_STANDARD_REQUIRED=ON 
+            && cmake --build build"
+
+    # gcc 12
+    build_gcc_12:
+        image: ghcr.io/rikorose/gcc-cmake:gcc-12
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: build
+        command: >
+            bash -c "cd /proj
+            && rm -rf build
+            && cmake -B build -D CMAKE_CXX_STANDARD=17 -D CMAKE_CXX_STANDARD_REQUIRED=ON 
+            && cmake --build build
+            && rm -rf build
+            && cmake -B build -D CMAKE_CXX_STANDARD=20 -D CMAKE_CXX_STANDARD_REQUIRED=ON 
+            && cmake --build build"
+
+    ##########################################
+    #      CLANG
+    ##########################################
+
+    # clang 6
+    build_clang_6:
+        image: silkeh/clang:6
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: build
+        command: >
+            bash -c "cd /proj
+            && rm -rf build
+            && cmake -B build -D CMAKE_CXX_compiler=clang++
+            && cmake --build build"
+
+    # clang 11
+    build_clang_11:
+        image: silkeh/clang:11
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: build
+        command: >
+            bash -c "cd /proj
+            && apt update
+            && apt install -y git
+            && rm -rf build
+            && cmake -B build -D CMAKE_CXX_compiler=clang++ -D CMAKE_CXX_STANDARD=17 -D CMAKE_CXX_STANDARD_REQUIRED=ON 
+            && cmake --build build
+            && rm -rf build
+            && cmake -B build -D CMAKE_CXX_compiler=clang++ -D CMAKE_CXX_STANDARD=20 -D CMAKE_CXX_STANDARD_REQUIRED=ON 
+            && cmake --build build"
+
+    # clang 12
+    build_clang_12:
+        image: silkeh/clang:12
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: build
+        command: >
+            bash -c "cd /proj
+            && apt update
+            && apt install -y git
+            && rm -rf build
+            && cmake -B build -D CMAKE_CXX_compiler=clang++ -D CMAKE_CXX_STANDARD=17 -D CMAKE_CXX_STANDARD_REQUIRED=ON 
+            && cmake --build build
+            && rm -rf build
+            && cmake -B build -D CMAKE_CXX_compiler=clang++ -D CMAKE_CXX_STANDARD=20 -D CMAKE_CXX_STANDARD_REQUIRED=ON 
+            && cmake --build build"
+
+    # clang 13
+    build_clang_13:
+        image: silkeh/clang:13
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: build
+        command: >
+            bash -c "cd /proj
+            && apt update
+            && apt install -y git
+            && rm -rf build
+            && cmake -B build -D CMAKE_CXX_compiler=clang++ -D CMAKE_CXX_STANDARD=17 -D CMAKE_CXX_STANDARD_REQUIRED=ON 
+            && cmake --build build
+            && rm -rf build
+            && cmake -B build -D CMAKE_CXX_compiler=clang++ -D CMAKE_CXX_STANDARD=20 -D CMAKE_CXX_STANDARD_REQUIRED=ON 
+            && cmake --build build"
+
+    # clang 14
+    build_clang_14:
+        image: silkeh/clang:14
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: build
+        command: >
+            bash -c "cd /proj
+            && apt update
+            && apt install -y git
+            && rm -rf build
+            && cmake -B build -D CMAKE_CXX_compiler=clang++ -D CMAKE_CXX_STANDARD=17 -D CMAKE_CXX_STANDARD_REQUIRED=ON 
+            && cmake --build build
+            && rm -rf build
+            && cmake -B build -D CMAKE_CXX_compiler=clang++ -D CMAKE_CXX_STANDARD=20 -D CMAKE_CXX_STANDARD_REQUIRED=ON 
+            && cmake --build build"
