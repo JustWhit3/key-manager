@@ -602,11 +602,24 @@ namespace kmanager::state{
                     QTextStream iStream( &json_doc_file );
                     iStream.setEncoding( QStringConverter::Utf8 );
 
+                    // Prepare encryption of username and password data
+                    std::string key, password;
+                    std::ifstream input( this -> key_file.str() );
+                    std::getline( input, password );
+                    std::getline( input, key );
+                    input.close();
+                    utility::Crypto crypto_password( el.password_str -> text().toStdString(), key );
+                    utility::Crypto crypto_username( el.username -> text().toStdString(), key );
+
                     // Json object settings
                     QJsonObject main_container;
                     main_container.insert( "Platform / Website", QJsonValue::fromVariant( el.platform -> text() ) );
-                    main_container.insert( "Password", QJsonValue::fromVariant( el.password_str -> text() ) );
-                    main_container.insert( "Username", QJsonValue::fromVariant( el.username -> text() ) );
+                    main_container.insert( "Password", QJsonValue::fromVariant( 
+                        QString::fromStdString( crypto_password.encrypt() ) ) 
+                    );
+                    main_container.insert( "Username", QJsonValue::fromVariant( 
+                        QString::fromStdString( crypto_username.encrypt() ) ) 
+                    );
 
                     // Json document settings
                     QJsonDocument json_doc;
