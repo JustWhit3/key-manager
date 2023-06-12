@@ -25,6 +25,9 @@ endif()
 
 # Fetching deps
 add_subdirectory( deps )
+include_directories( ${CMAKE_CURRENT_BINARY_DIR}/deps/qt6/qt-everywhere-src-6.4.2/qtbase/include )
+include_directories( ${CMAKE_CURRENT_BINARY_DIR}/deps/qt6/qt-everywhere-src-6.4.2/qtbase/include/QtWidgets )
+include_directories( ${CMAKE_CURRENT_BINARY_DIR}/deps/qt6/qt-everywhere-src-6.4.2/qtbase/include/QtStateMachine )
 
 # Compiling the main app
 add_subdirectory( src )
