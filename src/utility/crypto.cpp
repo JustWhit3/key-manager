@@ -178,7 +178,7 @@ namespace kmanager::utility{
         srand( ( unsigned ) time( NULL ) * getpid() ); 
 
         // Generate random key
-        for( int16_t i = 0; i < length; ++i ){
+        for( int64_t i = 0; i < length; ++i ){
             result += this -> alpha_num[ rand() % ( sizeof( this -> alpha_num ) - 1 ) ];
         }
 

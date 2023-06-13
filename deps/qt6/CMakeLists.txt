@@ -19,6 +19,11 @@ endif()
 find_package( Qt6 6.4.2 QUIET )
 
 if( NOT Qt6_FOUND )
+
+    # Set Ninja for compilation
+    set( CMAKE_GENERATOR "Ninja" CACHE STRING "CMake generator" FORCE )
+
+    # Initial message
     message( STATUS "Qt 6.4.2 not found. Downloading and configuring Qt..." )
 
     # Download and extract archive of Qt 6.4.2
@@ -36,19 +41,38 @@ if( NOT Qt6_FOUND )
                      OUTPUT_QUIET
     )
 
-    # Configure and compile Qt
+    # Configure Qt (skip building of useless modules)
     set( QT_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/qt-build" )
     file( MAKE_DIRECTORY ${QT_BUILD_DIR} )
     message( STATUS "Configuring..." )
-    execute_process( COMMAND ${QT_SOURCE_DIR}/configure -prefix ${QT_BUILD_DIR} --skip qtwebengine,qtwebsockets,qtserialport,qtbluetooth,qtcharts,qtdatavisualization,qtnetworkauth
+    set( SKIP_MODULES qtwebengine,qtwebsockets,qtserialport,qtbluetooth,qtcharts,qtdatavisualization,qtnetworkauth )
+    execute_process( COMMAND ${QT_SOURCE_DIR}/configure -prefix ${QT_BUILD_DIR} -nomake examples -nomake tests -skip ${SKIP_MODULES}
                      WORKING_DIRECTORY ${QT_BUILD_DIR} )
-    message( STATUS "Compiling..." )
-    execute_process( COMMAND make
+
+    # Check if system supports parallelization
+    if( DEFINED ENV{NUMBER_OF_PROCESSORS} )
+        set( JOBS_OPTION "-j$ENV{NUMBER_OF_PROCESSORS}" )
+    elseif( DEFINED ENV{PROCESSOR_COUNT} )
+        set( JOBS_OPTION "-j$ENV{PROCESSOR_COUNT}" )
+    else()
+        set( JOBS_OPTION "" )
+    endif()
+
+    # Use -j option to compile if possible (qt is very big)
+    if( JOBS_OPTION )
+        message( STATUS "Compiling with parallelization..." )
+        execute_process( COMMAND ninja ${JOBS_OPTION}
                      WORKING_DIRECTORY ${QT_BUILD_DIR} )
+    else()
+        message( STATUS "Compiling without parallelization..." )
+        execute_process( COMMAND ninja
+                     WORKING_DIRECTORY ${QT_BUILD_DIR} )
+    endif()
 
     # Set necessary environment variables to use Qt
     set( ENV{QTDIR} ${QT_BUILD_DIR} )
     set( ENV{PATH} ${QT_BUILD_DIR}/bin:$ENV{PATH})
+
 else()
     message( STATUS "Qt 6.4.2 found in the system." )
 endif()
