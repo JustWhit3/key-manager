@@ -45,7 +45,7 @@ if( NOT Qt6_FOUND )
     set( QT_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/qt-build" )
     file( MAKE_DIRECTORY ${QT_BUILD_DIR} )
     message( STATUS "Configuring..." )
-    set( SKIP_MODULES qtwebengine,qtwebsockets,qtserialport,qtbluetooth,qtcharts,qtdatavisualization,qtnetworkauth,qtgamepad,qtvirtualkeyboard,qtlocation,qtremoteobjects,qtspeech,qtsensors,qtscxml,qtcanvas3d,qt3d,qtpurchasing,qtquick3d,qtwebview,qtscript,qtwebchannel,qtwebglplugin,qtwebview,qtlottie,qtvirtualkeyboard,qtnetworkauth )
+    set( SKIP_MODULES qtwebengine,qtwebsockets,qtserialport,qtbluetooth,qtcharts,qtdatavisualization,qtnetworkauth,qtgamepad,qtvirtualkeyboard,qtlocation,qtremoteobjects,qtspeech,qtsensors,qtscxml,qtcanvas3d,qt3d,qtpurchasing,qtquick3d,qtwebview,qtscript,qtwebchannel,qtwebglplugin,qtwebview,qtlottie,qtvirtualkeyboard,qtnetworkauth,qtquick3dphysics )
     execute_process( COMMAND ${QT_SOURCE_DIR}/configure -prefix ${QT_BUILD_DIR} -nomake examples -nomake tests -skip ${SKIP_MODULES}
                      WORKING_DIRECTORY ${QT_BUILD_DIR} )
 
