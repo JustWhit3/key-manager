@@ -1,5 +1,5 @@
 # Project settings
-cmake_minimum_required( VERSION 3.15 )
+#[[cmake_minimum_required( VERSION 3.15 )
 
 project( key-manager-dependencies-qt6
     VERSION 1.0
@@ -75,3 +75,54 @@ if( NOT Qt6_FOUND )
 else()
     message( STATUS "Qt 6.4.2 found in the system." )
 endif()
+]]#
+
+cmake_minimum_required(VERSION 3.15)
+project(fetch-qt6.4.2)
+
+# Imposta la versione di Qt desiderata
+set(QT_VERSION "6.4.2")
+
+# Cerca la versione di Qt nel sistema
+find_package(Qt6 ${QT_VERSION} QUIET COMPONENTS Core Widgets StateMachine)
+
+# Se Qt 6.4.2 non è trovato, scarica il repository di Qt da GitHub
+if( NOT Qt6_FOUND)
+    include(FetchContent)
+    set(FETCHCONTENT_QUIET OFF)
+
+    # Scarica il repository di Qt da GitHub
+    FetchContent_Declare(
+        qt
+        GIT_REPOSITORY https://github.com/qt/qt5.git
+        GIT_TAG v${QT_VERSION}
+    )
+
+    # Imposta la directory di output per il repository scaricato
+    set(QT_SOURCE_DIR "${CMAKE_BINARY_DIR}/qt-src")
+
+    # Esegui il download e la configurazione di Qt
+    FetchContent_GetProperties(qt)
+    if(NOT qt_POPULATED)
+        FetchContent_Populate(qt)
+        message(STATUS "Qt repository scaricato in: ${qt_SOURCE_DIR}")
+    endif()
+
+    # Imposta la variabile Qt6_DIR per specificare il percorso della versione scaricata di Qt
+    set(Qt6_DIR "${QT_SOURCE_DIR}/lib/cmake/Qt6")
+endif()
+
+# Stampa il percorso completo alla directory del codice sorgente di Qt
+message(STATUS "Percorso completo alla directory del codice sorgente di Qt: ${QT_SOURCE_DIR}")
+
+# Utilizza Qt 6.4.2 se è stato trovato nel sistema o se è stato appena scaricato
+if(Qt6_FOUND)
+    message(STATUS "Qt 6.4.2 trovato nel sistema.")
+    # Aggiungi qui le tue configurazioni per utilizzare Qt 6.4.2
+else()
+    message(STATUS "Qt 6.4.2 non trovato nel sistema. Utilizzerà la versione scaricata.")
+    # Aggiungi qui le tue configurazioni per utilizzare la versione scaricata di Qt 6.4.2
+endif()
+
+
+# TODO: essere sicuri di usare ninja per build
