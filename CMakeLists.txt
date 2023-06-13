@@ -25,9 +25,8 @@ endif()
 
 # Fetching deps
 add_subdirectory( deps )
-#include_directories( ${CMAKE_CURRENT_BINARY_DIR}/deps/qt6/qt-everywhere-src-6.4.2/qtbase/include )
-#include_directories( ${CMAKE_CURRENT_BINARY_DIR}/deps/qt6/qt-everywhere-src-6.4.2/qtbase/include/QtWidgets )
-#include_directories( ${CMAKE_CURRENT_BINARY_DIR}/deps/qt6/qt-everywhere-src-6.4.2/qtbase/include/QtStateMachine )
+
+# Setting Qt environment variables
 set( QT_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/deps/qt6/qt-build/qtbase" )
 set( ENV{QTDIR} ${QT_BUILD_DIR} )
 set( ENV{PATH} ${QT_BUILD_DIR}/bin:$ENV{PATH} )

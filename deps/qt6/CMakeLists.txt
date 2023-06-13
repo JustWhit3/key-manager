@@ -28,13 +28,13 @@ if( NOT Qt6_FOUND )
 
     # Download and extract archive of Qt 6.4.2
     set( QT_VERSION "6.4.2" )
-    set( QT_ARCHIVE_URL "https://download.qt.io/official_releases/qt/6.4/${QT_VERSION}/single/qt-everywhere-src-${QT_VERSION}.tar.xz" )
-    set( QT_ARCHIVE_FILE "${CMAKE_CURRENT_BINARY_DIR}/qt-everywhere-src-${QT_VERSION}.tar.xz" )
-    set( QT_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/qt-everywhere-src-${QT_VERSION}" )
+    set( QT_ARCHIVE_URL "https://download.qt.io/official_releases/qt/6.4/${QT_VERSION}/submodules/qtbase-everywhere-src-${QT_VERSION}.tar.xz" )
+    set( QT_ARCHIVE_FILE "${CMAKE_CURRENT_BINARY_DIR}/qtbase-everywhere-src-${QT_VERSION}.tar.xz" )
+    set( QT_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/qtbase-everywhere-src-${QT_VERSION}" )
     message( STATUS "Downloading the package from the official repository..." )
     file( DOWNLOAD ${QT_ARCHIVE_URL} ${QT_ARCHIVE_FILE}
           SHOW_PROGRESS
-          EXPECTED_HASH SHA256=689f53e6652da82fccf7c2ab58066787487339f28d1ec66a8765ad357f4976be )
+          EXPECTED_HASH SHA256=a88bc6cedbb34878a49a622baa79cace78cfbad4f95fdbd3656ddb21c705525d )
     message( STATUS "Unpacking the release..." )
     execute_process( COMMAND ${CMAKE_COMMAND} -E tar xvf ${QT_ARCHIVE_FILE}
                      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} 
@@ -45,8 +45,7 @@ if( NOT Qt6_FOUND )
     set( QT_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/qt-build" )
     file( MAKE_DIRECTORY ${QT_BUILD_DIR} )
     message( STATUS "Configuring..." )
-    set( SKIP_MODULES qtwebengine,qtwebsockets,qtserialport,qtbluetooth,qtcharts,qtdatavisualization,qtnetworkauth,qtgamepad,qtvirtualkeyboard,qtlocation,qtremoteobjects,qtspeech,qtsensors,qtscxml,qtcanvas3d,qt3d,qtpurchasing,qtquick3d,qtwebview,qtscript,qtwebchannel,qtwebglplugin,qtlottie,qtvirtualkeyboard,qtnetworkauth,qtquick3dphysics )
-    execute_process( COMMAND ${QT_SOURCE_DIR}/configure -prefix ${QT_BUILD_DIR} -nomake examples -nomake tests -skip ${SKIP_MODULES}
+    execute_process( COMMAND ${QT_SOURCE_DIR}/configure -prefix ${QT_BUILD_DIR}
                      WORKING_DIRECTORY ${QT_BUILD_DIR} )
 
     # Check if system supports parallelization
