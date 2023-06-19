@@ -27,7 +27,7 @@ endif()
 add_subdirectory( deps )
 
 # Qt paths
-set( QT_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/_deps/qt6/qt6-build" )
+set( QT_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/_deps/qt6/qt6-build/qtbase" )
 set( ENV{QTDIR} ${QT_BUILD_DIR} )
 set( ENV{PATH} ${QT_BUILD_DIR}/bin:$ENV{PATH} )
 set( CMAKE_PREFIX_PATH ${QT_BUILD_DIR} CACHE PATH "Qt installation path" )
