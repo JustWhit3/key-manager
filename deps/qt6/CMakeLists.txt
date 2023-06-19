@@ -17,7 +17,7 @@ endif()
 
 # Fetch the package
 find_package( Qt6 6.4.2 QUIET )
-if( Qt6_FOUND )
+if( NOT Qt6_FOUND )
 
     # MacOS
     if( CMAKE_SYSTEM_NAME STREQUAL "Darwin" )
