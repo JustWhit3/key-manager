@@ -26,23 +26,14 @@ endif()
 # Fetching deps
 add_subdirectory( deps )
 
-# Setting Qt environment variables
-#set( QT_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/deps/qt6/qt-build/qtbase" )
-#set( ENV{QTDIR} ${QT_BUILD_DIR} )
-#set( ENV{PATH} ${QT_BUILD_DIR}/bin:$ENV{PATH} )
-#set( CMAKE_PREFIX_PATH ${QT_BUILD_DIR} CACHE PATH "Qt installation path" )
-#list( APPEND CMAKE_INCLUDE_PATH ${QT_BUILD_DIR}/include )
-#list( APPEND CMAKE_INCLUDE_PATH ${QT_BUILD_DIR}/include/QtWidgets )
-#list( APPEND CMAKE_INCLUDE_PATH ${QT_BUILD_DIR}/include/QtStateMachine )
-
-
-set( QT_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/_deps/qt-src" )
+# Qt paths
+set( QT_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/_deps/qt6/qt6-build" )
 set( ENV{QTDIR} ${QT_BUILD_DIR} )
 set( ENV{PATH} ${QT_BUILD_DIR}/bin:$ENV{PATH} )
 set( CMAKE_PREFIX_PATH ${QT_BUILD_DIR} CACHE PATH "Qt installation path" )
-list( APPEND CMAKE_INCLUDE_PATH ${QT_BUILD_DIR}/include )
-list( APPEND CMAKE_INCLUDE_PATH ${QT_BUILD_DIR}/include/QtWidgets )
-list( APPEND CMAKE_INCLUDE_PATH ${QT_BUILD_DIR}/include/QtStateMachine )
+list( APPEND CMAKE_INCLUDE_PATH ${QT_BUILD_DIR}/qtbase/include )
+list( APPEND CMAKE_INCLUDE_PATH ${QT_BUILD_DIR}/qtbase/include/QtWidgets )
+list( APPEND CMAKE_INCLUDE_PATH ${QT_BUILD_DIR}/qtbase/include/QtStateMachine )
 
 # Compiling the main app
 add_subdirectory( src )
