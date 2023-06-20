@@ -170,8 +170,14 @@ Work in progress.
 
 Other states are:
 
-- Add password state: work in progress.
-- Login state: work in progress.
+- Add password state:
+
+<p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/set_password_state.png" width = "500"></p>
+
+- Login state:
+
+<p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/login_state.png" width = "500"></p>
+
 - Set new password state: work in progress.
 
 ## Todo
