@@ -41,7 +41,7 @@
 
 `key-manager` is a cross-platform (Linux/Windows/MacOS) and safe desktop app for password management and creation written in C++20 and developed using [Qt v6.4.2](https://www.qt.io/blog/qt-6.4.2-released). No use of QtCreator was made for development, but only "raw" code written by hand and [CMake](https://cmake.org/) tool for building.
 
-> :warning: Windows compatibility is still work in progress.
+The app has been tested with `gcc` and `clang` compilers and required minimum versions are respectively 9.3 and 10. It can be compiled on `MSVC` too of course.
 
 The app offers two services.
 
@@ -70,10 +70,6 @@ Once a password is displayed into the [password manager state](#password-manager
 
 Steps to be reproduced:
 
-**0)** Be sure of having the required Qt version already installed before proceeding with the app installation, since Qt dependency is not taken into account into the CMake deps, since it is too big and too complex to build within the app deps.
-
-> :eight_spoked_asterisk: to install Qt remember to install first the [required prerequisites](https://wiki.qt.io/Building_Qt_5_from_Git), and then the [main library](https://wiki.qt.io/Building_Qt_6_from_Git).
-
 **1)** Download one of the [releases](https://github.com/JustWhit3/key-manager/releases) of the repository.
 
 **2)** Unzip and enter the downloaded repository directory.
@@ -83,6 +79,8 @@ Steps to be reproduced:
 ```bash
 cmake -B build
 ```
+
+> :warning: The three Qt modules required for the project building (`QtCore`, `QtWidgets` and `QtStateMachine`) will be installed during the build part and in case of Ubuntu installation all the prerequisite packages will be installed with `apt`. The Qt build is supported on Ubuntu, Windows and MacOS. On Windows there may be a [known issue](https://github.com/JustWhit3/key-manager/tree/main/img/images/windows_qt_error.png) related to the Qt building, so if you encounter it proceed with a separated installation of Qt and then build the project.
 
 Install:
 
