@@ -2,7 +2,7 @@
 
 <h3 align="center">A desktop app for password management and creation, developed using Qt</h3>
 <p align="center">
-    <img title="v0.2" alt="v0.2" src="https://img.shields.io/badge/version-v0.2-informational?style=flat-square"
+    <img title="v0.3" alt="v0.3" src="https://img.shields.io/badge/version-v0.3-informational?style=flat-square"
     <a href="LICENSE">
         <img title="MIT License" alt="license" src="https://img.shields.io/badge/license-MIT-informational?style=flat-square">
     </a>
@@ -182,8 +182,7 @@ Other states are:
 
 ## Todo
 
-- Make a Qt6 installer or find a way to incorporate Qt into CMake dependency manager. See the [corresponding issue](https://github.com/JustWhit3/key-manager/issues/1).
-- Many other stuff which will be mentioned when the app will reach version 1.0.0.
+- Other stuff which will be mentioned when the app will reach version 1.0.0.
 
 ## Credits
 
