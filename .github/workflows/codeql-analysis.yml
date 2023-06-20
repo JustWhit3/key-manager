@@ -39,6 +39,14 @@ jobs:
        cmake --build build
        sudo cmake --build build --target install
 
+    - name: Cache qt (Ubuntu)
+      if: matrix.os == 'ubuntu-latest'
+      id: cache-qt-ubuntu
+      uses: actions/cache@v3
+      with:
+        path: key-manager/build/_deps/qt6
+        key: 'key-manager/build/_deps/qt6'
+
     - name: Installing extra dependencies and compiling (MacOS)
       if: matrix.os == 'macos-latest'
       run: |
@@ -52,6 +60,14 @@ jobs:
        cmake -B build
        cmake --build build
        cmake --build build --target install
+
+    - name: Cache qt (Windows)
+      if: matrix.os == 'windows-latest'
+      id: cache-qt-windows
+      uses: actions/cache@v3
+      with:
+        path: key-manager/build/_deps/qt6
+        key: 'key-manager/build/_deps/qt6'
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2

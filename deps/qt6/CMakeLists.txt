@@ -16,6 +16,7 @@ if( EXISTS "${LOC_PATH}" )
 endif()
 
 # Fetch the package
+set( CMAKE_PREFIX_PATH "${CMAKE_CURRENT_BINARY_DIR}/_deps/qt6/qt6-build/qtbase" ${CMAKE_PREFIX_PATH} )
 find_package( Qt6 6.4.2 QUIET )
 if( NOT Qt6_FOUND )
 
