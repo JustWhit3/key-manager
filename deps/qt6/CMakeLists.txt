@@ -21,8 +21,8 @@ if( NOT Qt6_FOUND )
 
     # Create directories
     execute_process(
-        COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/_deps/qt6
-        COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/_deps/qt6/qt6-build
+        COMMAND ${CMAKE_COMMAND} -E make_directory build/_deps/qt6
+        COMMAND ${CMAKE_COMMAND} -E make_directory build/_deps/qt6/qt6-build
     )
 
     # MacOS
@@ -68,7 +68,7 @@ if( NOT Qt6_FOUND )
         message( STATUS "Downloading Qt..." )
         execute_process(
             COMMAND git clone git://code.qt.io/qt/qt5.git
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/_deps/qt6
+            WORKING_DIRECTORY build/_deps/qt6
         )
 
         # Initialize the repository
@@ -76,28 +76,28 @@ if( NOT Qt6_FOUND )
         execute_process(
             COMMAND git checkout v6.4.2
             COMMAND perl init-repository
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/_deps/qt6/qt5
+            WORKING_DIRECTORY build/_deps/qt6/qt5
         )
 
         # Configure Qt 
         message( STATUS "Configuring..." )
         execute_process(
             COMMAND ../qt5/configure -prefix . -opensource -confirm-license -nomake examples -nomake tests
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/_deps/qt6/qt6-build
+            WORKING_DIRECTORY build/_deps/qt6/qt6-build
         )
 
         # Compile Qt
         message( STATUS "Compiling..." )
         execute_process(
             COMMAND cmake --build . --target qtbase qtscxml --parallel
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/_deps/qt6/qt6-build
+            WORKING_DIRECTORY build/_deps/qt6/qt6-build
         )
 
         # Install Qt
         message( STATUS "Installing..." )
         execute_process(
             COMMAND cmake --install .
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/_deps/qt6/qt6-build
+            WORKING_DIRECTORY build/_deps/qt6/qt6-build
         )
 
     # Windows
@@ -107,7 +107,7 @@ if( NOT Qt6_FOUND )
         message( STATUS "Downloading Qt..." )
         execute_process(
             COMMAND cmd /c git.exe clone git://code.qt.io/qt/qt5.git
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/_deps/qt6
+            WORKING_DIRECTORY build/_deps/qt6
         )
 
         # Initialize the repository
@@ -115,28 +115,28 @@ if( NOT Qt6_FOUND )
         execute_process(
             COMMAND cmd /c git.exe checkout v6.4.2
             COMMAND cmd /c perl init-repository
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/_deps/qt6/qt5
+            WORKING_DIRECTORY build/_deps/qt6/qt5
         )
 
         # Configure Qt 
         message( STATUS "Configuring..." )
         execute_process(
-            COMMAND ${CMAKE_CURRENT_BINARY_DIR}/_deps/qt6/qt5/configure -prefix . -opensource -confirm-license -nomake examples -nomake tests
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/_deps/qt6/qt6-build
+            COMMAND build/_deps/qt6/qt5/configure -prefix . -opensource -confirm-license -nomake examples -nomake tests
+            WORKING_DIRECTORY build/_deps/qt6/qt6-build
         )
         
         # Compile Qt
         message( STATUS "Compiling..." )
         execute_process(
             COMMAND cmake --build . --target qtbase qtscxml --parallel
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/_deps/qt6/qt6-build
+            WORKING_DIRECTORY build/_deps/qt6/qt6-build
         )
 
         # Install Qt
         message( STATUS "Installing..." )
         execute_process(
             COMMAND cmake --install .
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/_deps/qt6/qt6-build
+            WORKING_DIRECTORY build/_deps/qt6/qt6-build
         )
     endif()
 
