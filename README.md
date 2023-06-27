@@ -52,6 +52,10 @@ All the app files are saved into an hidden directory `~/.key-manager_files` crea
 
 All contributions are more than welcome. Before contributing, please look at the [contributing file](https://github.com/JustWhit3/key-manager/blob/main/CONTRIBUTING.md) and pick one of the [todo items](#todo) of the list. To propose ideas post something in the [discussion page](https://github.com/JustWhit3/key-manager/discussions).
 
+The app is and will stay **free**, but if you want to support me with a donation it would be really appreciated!
+
+<a href="https://www.buymeacoffee.com/JustWhit33" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
 ## How passwords are protected
 
 A login system is applied to the app and a new password setup is required during the first app run. The inserted user password is encrypted using a [XOR cipher method](https://en.wikipedia.org/wiki/XOR_cipher) and a generated random key of lenght 100 alpha-numerical characters is used for encryption and decryption operations. The encrypted password and the key are then saved into a configuration file `~/.key-manager_files/.key`.
