@@ -99,7 +99,7 @@ Mandatory prerequisites:
 - C++20 standard
 - g++ compiler (developed on Ubuntu v22.04.1 with g++ v11.3.0)
 - [CMake](https://cmake.org/) (at least version 3.15)
-- [Qt](https://www.qt.io/blog/qt-6.4.2-released) library (version 6.4.2)
+- [Qt](https://www.qt.io/blog/qt-6.4.2-released) library (version 6.4.2), installed during the app installation.
 
 To run the app:
 
