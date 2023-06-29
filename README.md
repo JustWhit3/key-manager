@@ -186,7 +186,13 @@ Other states are:
 
 ## Todo
 
-- Other stuff which will be mentioned when the app will reach version 1.0.0.
+- Add setup to password recovery in case of troubles.
+- Add possibility to change the app password.
+- Improve the encryption algorithm.
+- Add a feature to visualize a small report for each inserted password in the password manager state (date of creation, strenght, etc...).
+- Add the options state.
+- Add sounds.
+- Add (maybe) animations in transitions among states.
 
 ## Credits
 
@@ -210,4 +216,3 @@ Other states are:
 ## Stargazers over time
 
 [![Stargazers over time](https://starchart.cc/JustWhit3/key-manager.svg)](https://starchart.cc/JustWhit3/key-manager)
-
