@@ -379,6 +379,7 @@ namespace kmanager::state{
             this -> current_password_actions -> second_widget = this -> current_password_label;
             this -> current_password_actions -> third_widget = this -> current_username_label;
 
+            // Actions buttons pressed
             QObject::connect( 
                 this -> current_password_actions -> delete_password.get(), 
                 SIGNAL( clicked() ), 
@@ -405,6 +406,28 @@ namespace kmanager::state{
                 SIGNAL( clicked() ), 
                 this,
                 SLOT( saveSettingsMachinery() ) 
+            );
+
+            // Enter pressed
+            QObject::connect( 
+                 this -> current_password_label, 
+                 SIGNAL( returnPressed() ), 
+                 this -> current_password_actions -> save_password.get(), 
+                 SLOT( animateClick() ) 
+            );
+
+            QObject::connect( 
+                 this -> current_username_label, 
+                 SIGNAL( returnPressed() ), 
+                 this -> current_password_actions -> save_password.get(), 
+                 SLOT( animateClick() ) 
+            );
+
+            QObject::connect( 
+                 this -> current_platform_label, 
+                 SIGNAL( returnPressed() ), 
+                 this -> current_password_actions -> save_password.get(), 
+                 SLOT( animateClick() ) 
             );
 
             // Fill the label containers
