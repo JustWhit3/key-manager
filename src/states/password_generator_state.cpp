@@ -543,15 +543,32 @@ namespace kmanager::state{
             }
 
             // Generate random password
-            srand( time( 0 ) );
-            for( int32_t i = 0; i < std::stoi( this -> length_line_edit -> text().toStdString() ); ++i ){
-                this -> output_password += this -> chars_container[ rand() % this -> chars_container.size() ];
+            try{
+                srand( time( 0 ) );
+                for( int32_t i = 0; i < std::stoi( this -> length_line_edit -> text().toStdString() ); ++i ){
+                    this -> output_password += this -> chars_container[ rand() % this -> chars_container.size() ];
+                }
+                this -> password_generator_output -> setText( QString::fromStdString( this -> output_password ) );
+                this -> output_password.clear();
+            }
+            catch( const std::invalid_argument& ){
+                this -> copied -> setStyleSheet( 
+                    "font-size: 20px;"
+                    "color: rgb(183, 0, 0);"
+                    "background-color: rgba( 255, 255, 255, 0% );"
+                );
+                this -> copied -> setText( "Insert numbers, not letters!" );
+                this -> copied -> resize( 250, 25 );
+                this -> copied -> move(
+                    separator -> geometry().center().x() - 125.f,
+                    separator -> geometry().center().y() + 70.f
+                );
+                this -> copied -> setVisible( true );
+                QTimer::singleShot( 2000, this -> copied.get(), &QLabel::hide );
             }
 
-            // Print random password
-            this -> password_generator_output -> setText( QString::fromStdString( this -> output_password ) );
+            // Clear containers
             this -> chars_container.clear();
-            this -> output_password.clear();
         }
     }
 }
