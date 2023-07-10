@@ -50,6 +50,8 @@ namespace kmanager::state{
             // Methods
             virtual void addWidgets() = 0;
             virtual void assignProperties() = 0;
+            QString getCurrentDateTime();
+            QString evaluatePasswordStrength( const QString& password );
 
             // Variables
             std::ostringstream key_file;

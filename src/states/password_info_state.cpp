@@ -154,7 +154,6 @@ namespace kmanager::state{
             this -> username_label -> geometry().y() + 60.f
         );
         
-
         // Password textbox
         this -> password_textbox = QSharedPointer<QLineEdit>(
             new QLineEdit( this -> host )
@@ -201,7 +200,7 @@ namespace kmanager::state{
             this -> strength_label -> geometry().x() + 200.f,
             this -> strength_label -> geometry().y()
         );
-        this -> strength_textbox -> setText( "" );
+        this -> strength_textbox -> setText( QString::fromStdString( this -> info_map[ "strength" ] ) );
         this -> strength_textbox -> setReadOnly( true );
 
         // Last update
@@ -231,7 +230,7 @@ namespace kmanager::state{
             this -> last_update_label -> geometry().x() + 200.f,
             this -> last_update_label -> geometry().y()
         );
-        this -> last_update_textbox -> setText( "" );
+        this -> last_update_textbox -> setText( QString::fromStdString( this -> info_map[ "last_update" ] ) );
         this -> last_update_textbox -> setReadOnly( true );
 
         // Creation
@@ -261,7 +260,7 @@ namespace kmanager::state{
             this -> creation_label -> geometry().x() + 200.f,
             this -> creation_label -> geometry().y()
         );
-        this -> creation_textbox -> setText( "" );
+        this -> creation_textbox -> setText( QString::fromStdString( this -> info_map[ "creation" ] ) );
         this -> creation_textbox -> setReadOnly( true );
     }
 

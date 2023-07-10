@@ -97,6 +97,9 @@ namespace kmanager::state{
             widget::CustomQLineEdit* current_platform_label;
             widget::CustomQLineEdit* current_username_label;
             widget::CustomQLineEdit* current_password_label;
+            widget::CustomQLineEdit* current_creation_label;
+            widget::CustomQLineEdit* current_last_update_label;
+            widget::CustomQLineEdit* current_strength_label;
             widget::PasswordActions* current_password_actions;
             widget::PasswordToggle* password_widget;
             entity::Password<widget::CustomQLineEdit*> new_password;

@@ -446,11 +446,27 @@ namespace kmanager::state{
                  SLOT( animateClick() ) 
             );
 
+            // Get also information about extra stuff
+            this -> current_password.creation = json_obj.value( QString( "Creation" ) ).toString();
+            this -> current_creation_label = new widget::CustomQLineEdit( "Creation" );
+            this -> current_creation_label -> setText( this -> current_password.creation );
+
+            this -> current_password.last_update = json_obj.value( QString( "Last update" ) ).toString();
+            this -> current_last_update_label = new widget::CustomQLineEdit( "Last update" );
+            this -> current_last_update_label -> setText( this -> current_password.last_update );
+
+            this -> current_password.strength = json_obj.value( QString( "Strength" ) ).toString();
+            this -> current_strength_label = new widget::CustomQLineEdit( "Strength" );
+            this -> current_strength_label -> setText( this -> current_password.strength );
+
             // Fill the label containers
             this -> new_password.platform = this -> current_platform_label;
             this -> new_password.username = this -> current_username_label;
             this -> new_password.password_str = this -> current_password_label;
             this -> new_password.actions = this -> current_password_actions;
+            this -> new_password.creation = this -> current_creation_label;
+            this -> new_password.last_update = this -> current_last_update_label;
+            this -> new_password.strength = this -> current_strength_label;
             this -> new_password.password_toggle = this -> password_widget;
             this -> label_vec.push_back( new_password );
 
@@ -687,6 +703,12 @@ namespace kmanager::state{
                     );
                     main_container.insert( "Username", QJsonValue::fromVariant( 
                         QString::fromStdString( crypto_username.encrypt() ) ) 
+                    );
+                    main_container.insert( "Creation", QJsonValue::fromVariant( el.creation -> text() ) );
+                    main_container.insert( "Last update", QJsonValue::fromVariant( this -> getCurrentDateTime() ) );
+                    main_container.insert( "Strength", QJsonValue::fromVariant( 
+                            this -> evaluatePasswordStrength( el.password_str -> text() )
+                        ) 
                     );
 
                     // Json document settings

@@ -82,8 +82,11 @@ namespace kmanager::entity{
             const std::map<std::string, std::string> retrieveInfo() const {
                 return {
                     { "password", this -> password_str -> text().toStdString() },
-                    { "platform", this -> platform -> text().toStdString() } ,
-                    { "username", this -> username -> text().toStdString() }
+                    { "platform", this -> platform -> text().toStdString() },
+                    { "username", this -> username -> text().toStdString() },
+                    { "creation", this -> creation -> text().toStdString() },
+                    { "last_update", this -> last_update -> text().toStdString() },
+                    { "strength", this -> strength -> text().toStdString() }
                 };
             }
 
@@ -91,6 +94,9 @@ namespace kmanager::entity{
             T password_str;
             T platform;
             T username;
+            T creation;
+            T last_update;
+            T strength;
             widget::PasswordToggle* password_toggle;
             widget::PasswordActions* actions;
     };

@@ -270,6 +270,12 @@ namespace kmanager::state{
         this -> main_container.insert( "Username", QJsonValue::fromVariant( 
             QString::fromStdString( crypto_username.encrypt() ) ) 
         );
+        this -> main_container.insert( "Creation", QJsonValue::fromVariant( this -> getCurrentDateTime() ) );
+        this -> main_container.insert( "Last update", QJsonValue::fromVariant( this -> getCurrentDateTime() ) );
+        this -> main_container.insert( "Strength", QJsonValue::fromVariant( 
+                this -> evaluatePasswordStrength( this -> new_password.password_str )
+            )
+        );
         this -> json_doc.setObject( main_container );
         this -> json_doc_bytes = this -> json_doc.toJson( QJsonDocument::Indented );
 
