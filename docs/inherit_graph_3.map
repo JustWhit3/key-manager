@@ -1,10 +1,10 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,151,68,178"/>
-<area shape="rect" id="node2" href="$classkmanager_1_1state_1_1BaseState.html" title="Class used to construct the base state of the app." alt="" coords="116,151,297,178"/>
-<area shape="rect" id="node3" href="$classkmanager_1_1state_1_1AddPasswordState.html" title="Class used to construct the add password state of the app." alt="" coords="345,5,547,47"/>
-<area shape="rect" id="node4" href="$classkmanager_1_1state_1_1LoginState.html" title="Class used to construct the login state of the app." alt="" coords="355,71,537,98"/>
-<area shape="rect" id="node5" href="$classkmanager_1_1state_1_1MenuState.html" title="Class used to construct the menu state of the app." alt="" coords="355,122,537,149"/>
-<area shape="rect" id="node6" href="$classkmanager_1_1state_1_1PasswordGeneratorState.html" title="Class used to construct the password generator state of the app." alt="" coords="357,173,535,215"/>
-<area shape="rect" id="node7" href="$classkmanager_1_1state_1_1PasswordManagerState.html" title="Class used to construct the password manager state of the app." alt="" coords="357,239,535,280"/>
-<area shape="rect" id="node8" href="$classkmanager_1_1state_1_1SetPasswordState.html" title="Class used to construct the set password state of the app." alt="" coords="347,304,545,345"/>
+<area shape="rect" id="node1" href="$classkmanager_1_1state_1_1SetPasswordState.html" title="Class used to construct the set password state of the app." alt="" coords="5,144,204,185"/>
+<area shape="rect" id="node2" href="$classkmanager_1_1state_1_1BaseState.html" title="Class used to construct the base state of the app." alt="" coords="252,151,433,178"/>
+<area shape="rect" id="node3" href="$classkmanager_1_1state_1_1AddPasswordState.html" title="Class used to construct the add password state of the app." alt="" coords="481,5,683,47"/>
+<area shape="rect" id="node4" href="$classkmanager_1_1state_1_1LoginState.html" title="Class used to construct the login state of the app." alt="" coords="491,71,673,98"/>
+<area shape="rect" id="node5" href="$classkmanager_1_1state_1_1MenuState.html" title="Class used to construct the menu state of the app." alt="" coords="491,122,673,149"/>
+<area shape="rect" id="node6" href="$classkmanager_1_1state_1_1PasswordGeneratorState.html" title="Class used to construct the password generator state of the app." alt="" coords="493,173,671,215"/>
+<area shape="rect" id="node7" href="$classkmanager_1_1state_1_1PasswordInfoState.html" title="Class used to construct the password info state of the app." alt="" coords="493,239,671,280"/>
+<area shape="rect" id="node8" href="$classkmanager_1_1state_1_1PasswordManagerState.html" title="Class used to construct the password manager state of the app." alt="" coords="493,304,671,345"/>
 </map>
