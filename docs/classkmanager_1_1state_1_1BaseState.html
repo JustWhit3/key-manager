@@ -118,6 +118,12 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a76600c1525c5bcc3289945fc022bd6af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05d6efb5121fe78c0dc0586a87dd4a1a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkmanager_1_1state_1_1BaseState.html#a05d6efb5121fe78c0dc0586a87dd4a1a">assignProperties</a> ()=0</td></tr>
 <tr class="separator:a05d6efb5121fe78c0dc0586a87dd4a1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5f31dba41a36c0f57e095f2f0dd1829"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkmanager_1_1state_1_1BaseState.html#af5f31dba41a36c0f57e095f2f0dd1829">getCurrentDateTime</a> ()</td></tr>
+<tr class="memdesc:af5f31dba41a36c0f57e095f2f0dd1829"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method used to save the date of creation of a password.  <a href="classkmanager_1_1state_1_1BaseState.html#af5f31dba41a36c0f57e095f2f0dd1829">More...</a><br /></td></tr>
+<tr class="separator:af5f31dba41a36c0f57e095f2f0dd1829"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f7299e7a461306e40eec73dd4059d87"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkmanager_1_1state_1_1BaseState.html#a1f7299e7a461306e40eec73dd4059d87">evaluatePasswordStrength</a> (const QString &amp;password)</td></tr>
+<tr class="memdesc:a1f7299e7a461306e40eec73dd4059d87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate the strength of a password.  <a href="classkmanager_1_1state_1_1BaseState.html#a1f7299e7a461306e40eec73dd4059d87">More...</a><br /></td></tr>
+<tr class="separator:a1f7299e7a461306e40eec73dd4059d87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -238,6 +244,69 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1f7299e7a461306e40eec73dd4059d87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f7299e7a461306e40eec73dd4059d87">&#9670;&nbsp;</a></span>evaluatePasswordStrength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString kmanager::state::BaseState::evaluatePasswordStrength </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>password</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evaluate the strength of a password. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">password</td><td>The password to evaluate. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A string representing the password strength as a percentage compared to 100%. The returned string has the format "XX.XX%", where XX.XX represents the percentage value. </dd></dl>
+
+</div>
+</div>
+<a id="af5f31dba41a36c0f57e095f2f0dd1829"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5f31dba41a36c0f57e095f2f0dd1829">&#9670;&nbsp;</a></span>getCurrentDateTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString kmanager::state::BaseState::getCurrentDateTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Method used to save the date of creation of a password. </p>
+<dl class="section return"><dt>Returns</dt><dd>QString the date of creation with signature dd/mm/yyyy - hh:mm:ss. </dd></dl>
 
 </div>
 </div>
