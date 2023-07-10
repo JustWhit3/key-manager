@@ -38,7 +38,8 @@ namespace kmanager::widget{
     PasswordActions::PasswordActions( QWidget* parent ):
                 BaseWidget( parent ),
                 deleteMe( false ),
-                saveMySettings( false ){
+                saveMySettings( false ),
+                seeMyInfo( false ){
         
         // Initialize widget properties
         this -> initWidgetProperties();
@@ -78,6 +79,17 @@ namespace kmanager::widget{
     }
 
     //====================================================
+    //     seePasswordInformation
+    //====================================================
+    /**
+     * @brief Display a new window with specific password information.
+     * 
+     */
+    void PasswordActions::setInformationTrue(){
+        this -> seeMyInfo = true;
+    }
+
+    //====================================================
     //     initWidgetProperties
     //====================================================
     /**
@@ -98,11 +110,18 @@ namespace kmanager::widget{
         this -> save_password -> setIconSize( this -> icon_size );
         this -> save_password -> setToolTip( "Save" );
 
+        // See password info
+        this -> see_password_info = QSharedPointer<QPushButton>( new QPushButton() );
+        this -> see_password_info -> setIcon( QApplication::style() -> standardIcon( QStyle::SP_FileDialogInfoView ) );
+        this -> see_password_info -> setIconSize( this -> icon_size );
+        this -> see_password_info -> setToolTip( "Information" );
+
         // Setup layout
         this -> layout = QSharedPointer<QHBoxLayout>( new QHBoxLayout( this ) );
         this -> layout -> setSpacing( 10.f );
         this -> layout -> addWidget( this -> delete_password.get() );
         this -> layout -> addWidget( this -> save_password.get() );
+        this -> layout -> addWidget( this -> see_password_info.get() );
         this -> layout -> setContentsMargins( 0, 0, 0, 0 );
         this -> setLayout( layout.get() );
 

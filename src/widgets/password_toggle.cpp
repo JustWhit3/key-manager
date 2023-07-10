@@ -35,8 +35,9 @@ namespace kmanager::widget{
      * 
      * @param parent 
      */
-    PasswordToggle::PasswordToggle( QWidget* parent ):
-                BaseWidget( parent ){
+    PasswordToggle::PasswordToggle( bool styled, QWidget* parent ):
+        styled( styled ),
+        BaseWidget( parent ){
                     
     }
 
@@ -68,13 +69,24 @@ namespace kmanager::widget{
 
         // Setup checkbox
         this -> checkbox = new QCheckBox( this );
-        this -> checkbox -> setStyleSheet( 
-            "QCheckBox::indicator:unchecked { image: url(img/icons/hide.png); }" 
-            "QCheckBox::indicator:checked { image: url(img/icons/eye.png); }"
-            "QCheckBox::indicator { width: 25px; height: 25px; }"
-        );
-        this -> checkbox -> setFixedSize( 25, 25 );
-        this -> checkbox -> move( 220.f, 6.f );
+        if( this -> styled == true ){
+            this -> checkbox -> setStyleSheet( 
+                "QCheckBox::indicator:unchecked { image: url(img/icons/hide.png); }" 
+                "QCheckBox::indicator:checked { image: url(img/icons/eye.png); }"
+                "QCheckBox::indicator { width: 25px; height: 25px; }"
+            );
+            this -> checkbox -> setFixedSize( 25, 25 );
+            this -> checkbox -> move( 220.f, 6.f );
+        }
+        else{
+            this -> checkbox -> setStyleSheet( 
+                "QCheckBox::indicator:unchecked { image: url(img/icons/hide.png); }" 
+                "QCheckBox::indicator:checked { image: url(img/icons/eye.png); }"
+                "QCheckBox::indicator { width: 35px; height: 35px; background-color: #38394e; }"
+            );
+            this -> checkbox -> setFixedSize( 35, 35 );
+            this -> checkbox -> move( 340.f, 7.f );
+        }
 
         QObject::connect( 
              this -> checkbox, 
@@ -106,7 +118,9 @@ namespace kmanager::widget{
      * @param event Event triggered when mouse enter the widget.
      */
     void PasswordToggle::enterEvent( QEnterEvent* event ){
-        this -> setStyleSheet( this -> hover_settings );
+        if( styled == true ){
+            this -> setStyleSheet( this -> hover_settings );
+        }
         event -> accept();
     }
 
@@ -119,7 +133,9 @@ namespace kmanager::widget{
      * @param event Event triggered when mouse leave the widget.
      */
     void PasswordToggle::leaveEvent( QEvent* event ){
-        this -> setStyleSheet( this -> default_settings );
+        if( styled == true ){
+            this -> setStyleSheet( this -> default_settings );
+        }
         event -> accept();
     }
 }

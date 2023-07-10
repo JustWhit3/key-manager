@@ -149,6 +149,7 @@ namespace kmanager::state{
             void findAction();
             void deleteMachinery();
             void saveSettingsMachinery();
+            void setInformationMachinery();
     };
 }
 

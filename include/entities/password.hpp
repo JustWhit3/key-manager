@@ -28,6 +28,10 @@
 #include <QCheckBox>
 #include <QLayout>
 
+// STD
+#include <map>
+#include <string>
+
 namespace kmanager::entity{
 
     //====================================================
@@ -65,6 +69,22 @@ namespace kmanager::entity{
              */
             virtual ~Password(){
 
+            }
+
+            //====================================================
+            //     retrieveInfo
+            //====================================================
+            /**
+             * @brief Retrieve basic information about the password. Useful in order to pass information without requiring to pass the entire object.
+             * 
+             * @return const std::map<std::string, std::string> the vector of password information.
+             */
+            const std::map<std::string, std::string> retrieveInfo() const {
+                return {
+                    { "password", this -> password_str -> text().toStdString() },
+                    { "platform", this -> platform -> text().toStdString() } ,
+                    { "username", this -> username -> text().toStdString() }
+                };
             }
 
             // Attributes

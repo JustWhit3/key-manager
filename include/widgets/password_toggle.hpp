@@ -49,7 +49,7 @@ namespace kmanager::widget{
         public:
 
             // Constructors / destructor
-            explicit PasswordToggle( QWidget* parent = nullptr );
+            explicit PasswordToggle( bool styled = true, QWidget* parent = nullptr );
             ~PasswordToggle();
 
             // Methods
@@ -70,6 +70,7 @@ namespace kmanager::widget{
             // Variables
             QGridLayout* layout;
             QCheckBox* checkbox;
+            bool styled;
 
             // Constants
             const QString default_settings{ 

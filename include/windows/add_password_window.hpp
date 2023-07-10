@@ -24,9 +24,14 @@
 
 // States
 #include <states/add_password_state.hpp>
+#include <states/password_info_state.hpp>
 
 // Qt
 #include <QSharedPointer>
+
+// STD
+#include <map>
+#include <string>
 
 namespace kmanager::window{
 
@@ -45,7 +50,7 @@ namespace kmanager::window{
         public:
 
             // Constructors / destructor
-            explicit AddPasswordWindow( QWidget *parent = nullptr );
+            explicit AddPasswordWindow( int16_t window_height, std::map<std::string, std::string> info_map = {}, QWidget *parent = nullptr );
             ~AddPasswordWindow();
         
         //====================================================
@@ -61,6 +66,9 @@ namespace kmanager::window{
             // Variables (states)
             QSharedPointer<QStateMachine> state_machine;
             QSharedPointer<state::AddPasswordState> add_password_state;
+            QSharedPointer<state::PasswordInfoState> password_info_state;
+            int16_t window_height;
+            std::map<std::string, std::string> info_map;
     };
 }
 

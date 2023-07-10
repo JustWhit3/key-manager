@@ -61,8 +61,10 @@ namespace kmanager::widget{
             // Variables
             QSharedPointer<QPushButton> delete_password;
             QSharedPointer<QPushButton> save_password;
+            QSharedPointer<QPushButton> see_password_info;
             bool deleteMe;
             bool saveMySettings;
+            bool seeMyInfo;
             CustomQLineEdit* first_widget;
             CustomQLineEdit* second_widget;
             CustomQLineEdit* third_widget;
@@ -96,6 +98,7 @@ namespace kmanager::widget{
             // Methods
             void setDeleteTrue();
             void setSaveMySettingsTrue();
+            void setInformationTrue();
     };
 }
 

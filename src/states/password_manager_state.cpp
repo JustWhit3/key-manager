@@ -307,7 +307,9 @@ namespace kmanager::state{
      * 
      */
     void PasswordManagerState::addPassword(){
-        this -> add_password_window = QSharedPointer<window::AddPasswordWindow>( new window::AddPasswordWindow() );
+        this -> add_password_window = QSharedPointer<window::AddPasswordWindow>( 
+            new window::AddPasswordWindow( 330 ) 
+        );
         this -> add_password_window -> show();
     }
 
@@ -369,7 +371,7 @@ namespace kmanager::state{
             this -> current_password_label -> second_widget = this -> current_username_label;
 
             // Create widget for password toggle
-            this -> password_widget = new widget::PasswordToggle( this -> scroll_widget.get());
+            this -> password_widget = new widget::PasswordToggle( this -> scroll_widget.get() );
             this -> password_widget -> password_label = this -> current_password_label;
             this -> password_widget -> initWidgetProperties();
 
@@ -406,6 +408,20 @@ namespace kmanager::state{
                 SIGNAL( clicked() ), 
                 this,
                 SLOT( saveSettingsMachinery() ) 
+            );
+
+            QObject::connect( 
+                this -> current_password_actions -> see_password_info.get(), 
+                SIGNAL( clicked() ), 
+                this -> current_password_actions,
+                SLOT( setInformationTrue() ) 
+            );
+
+            QObject::connect( 
+                this -> current_password_actions -> see_password_info.get(), 
+                SIGNAL( clicked() ), 
+                this,
+                SLOT( setInformationMachinery() ) 
             );
 
             // Enter pressed
@@ -589,6 +605,35 @@ namespace kmanager::state{
 
         // Repaint everything
         this -> redrawWidgets();
+    }
+
+    //====================================================
+    //     setInformationMachinery
+    //====================================================
+    /**
+     * @brief Machinery for seeing specific password information.
+     * 
+     */
+    void PasswordManagerState::setInformationMachinery(){
+
+        // Check which password object has settings variable true
+        std::for_each(
+            this -> label_vec.cbegin(),
+            this -> label_vec.cend(),
+            [ this ]( const auto& el ){
+                if( el.actions -> seeMyInfo == true ){
+
+                    // Reset bool variable
+                    el.actions -> seeMyInfo = false;
+
+                    // Show AddPasswordWindow
+                    this -> add_password_window = QSharedPointer<window::AddPasswordWindow>( 
+                        new window::AddPasswordWindow( 480, el.retrieveInfo() ) 
+                    );
+                    this -> add_password_window -> show();
+                }
+            }
+        );
     }
 
     //====================================================

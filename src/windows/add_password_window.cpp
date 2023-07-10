@@ -12,12 +12,13 @@
 //     Headers
 //====================================================
 
-// States
-#include <states/add_password_state.hpp>
-
 // Windows
 #include <windows/base_window.hpp>
 #include <windows/add_password_window.hpp>
+
+// States
+#include <states/add_password_state.hpp>
+#include <states/password_info_state.hpp>
 
 // Qt
 #include <QWidget>
@@ -31,6 +32,10 @@
 #include <QSet>
 #include <QStateMachine>
 
+// STD
+#include <map>
+#include <string>
+
 namespace kmanager::window{
 
     //====================================================
@@ -41,7 +46,9 @@ namespace kmanager::window{
      * 
      * @param parent The parent widget (if there is one).
      */
-    AddPasswordWindow::AddPasswordWindow( QWidget *parent ): 
+    AddPasswordWindow::AddPasswordWindow( int16_t window_height, std::map<std::string, std::string> info_map, QWidget *parent ): 
+        window_height( window_height ),
+        info_map( info_map ),
         BaseWindow( parent ){
 
         // Set basic window properties
@@ -74,7 +81,7 @@ namespace kmanager::window{
         this -> setWindowState( Qt::WindowActive );
         this -> windowHandle() -> setScreen( qApp -> screens()[0] );
         this -> setWindowIcon( QIcon( "img/icons/app_icon.png" ) );
-        this -> setFixedSize( 650,  qApp -> screens()[0] -> geometry().height() * 0.38f );
+        this -> setFixedSize( 650, window_height );
         this -> move(
             ( qApp -> screens()[0] -> geometry().width() - this->width() ) * 0.5f,
             ( qApp -> screens()[0] -> geometry().height() - this->height() ) * 0.5f
@@ -152,11 +159,20 @@ namespace kmanager::window{
         this -> add_password_state = QSharedPointer<state::AddPasswordState>( 
             new state::AddPasswordState( this ) 
         );
+        this -> password_info_state = QSharedPointer<state::PasswordInfoState>(
+            new state::PasswordInfoState( this, info_map )
+        );
 
         // States machine properties
         this -> state_machine = QSharedPointer<QStateMachine>( new QStateMachine( this ) );
         this -> state_machine -> addState( this -> add_password_state.get() );
-        this -> state_machine -> setInitialState( this -> add_password_state.get() );
+        this -> state_machine -> addState( this -> password_info_state.get() );
+        if( this -> info_map.empty() ){
+            this -> state_machine -> setInitialState( this -> add_password_state.get() );
+        }
+        else{
+            this -> state_machine -> setInitialState( this -> password_info_state.get() );
+        }
         this -> state_machine -> start();
     }
 }
