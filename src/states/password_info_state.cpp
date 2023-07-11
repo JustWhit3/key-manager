@@ -81,6 +81,18 @@ namespace kmanager::state{
             this -> title -> geometry().y() + 30.f
         );
 
+        // Key image label
+        this -> key_img_label = QSharedPointer<QLabel>(
+            new QLabel( this -> host )
+        );
+        this -> key_img_label -> setVisible( false );
+        this -> key_img_label -> setPixmap( QPixmap( "img/icons/key.png" ) );
+        this -> key_img_label -> move(
+            this -> title -> geometry().x() + 320.f,
+            this -> title -> geometry().y() - 20.f
+        );
+        this -> key_img_label -> setStyleSheet( "QLabel { background-color: rgba( 255, 255, 255, 0% ) }"  );
+
         // Platform / website label
         this -> platform_website_label = QSharedPointer<QLabel>(
             new QLabel( this -> host )
@@ -282,6 +294,7 @@ namespace kmanager::state{
         this -> assignProperty( this -> strength_label.get(), "visible", true );
         this -> assignProperty( this -> last_update_label.get(), "visible", true );
         this -> assignProperty( this -> creation_label.get(), "visible", true );
+        this -> assignProperty( this -> key_img_label.get(), "visible", true );
 
         // QLineEdit
         this -> assignProperty( this -> platform_website_textbox.get(), "visible", true );

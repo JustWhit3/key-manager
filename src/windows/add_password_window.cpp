@@ -77,7 +77,12 @@ namespace kmanager::window{
      * 
      */
     void AddPasswordWindow::setWindowProperties(){
-        this -> setWindowTitle( "Information window" );
+        if( this -> info_map.empty() ){
+            this -> setWindowTitle( "Add a new password" );
+        }
+        else{
+            this -> setWindowTitle( "Password information" );
+        }
         this -> setWindowState( Qt::WindowActive );
         this -> windowHandle() -> setScreen( qApp -> screens()[0] );
         this -> setWindowIcon( QIcon( "img/icons/app_icon.png" ) );

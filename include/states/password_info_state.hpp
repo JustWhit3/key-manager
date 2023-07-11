@@ -67,6 +67,7 @@ namespace kmanager::state{
             QSharedPointer<QLabel> strength_label;
             QSharedPointer<QLabel> last_update_label;
             QSharedPointer<QLabel> creation_label;
+            QSharedPointer<QLabel> key_img_label;
             QSharedPointer<QLineEdit> platform_website_textbox;
             QSharedPointer<QLineEdit> username_textbox;
             QSharedPointer<QLineEdit> password_textbox;
