@@ -187,7 +187,6 @@ Other states are:
 - Add setup to password recovery in case of troubles.
 - Add possibility to change the app password.
 - Improve the encryption algorithm.
-- Add a feature to visualize a small report for each inserted password in the password manager state (date of creation, strenght, etc...).
 - Add the options state.
 - Add sounds.
 - Add (maybe) animations in transitions among states.
