@@ -43,4 +43,5 @@ Once your pull request will be submitted, I will carefully review it and, if it 
 ## How to raise an issue
 
 For a new feature request see [here](https://github.com/JustWhit3/key-manager/blob/main/.github/ISSUE_TEMPLATE/feature_request.md).
+
 For a bug report see [here](https://github.com/JustWhit3/key-manager/blob/main/.github/ISSUE_TEMPLATE/bug_report.md).
