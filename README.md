@@ -156,7 +156,7 @@ This state contains the main menu of the app and is used to access [password man
 
 <p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/password_manager_state.png" width = "500"></p>
 
-This state contains the password manager tool. Here you can add, delete and modify passwords from the database. See the [corresponding paragraph](#how-passwords-are-protected) to understand how passwords are keeping safe. Passwords are ordered in alphabetical order and can be searched through the corresponding tool.
+This state contains the password manager tool. Here you can add, delete and modify passwords from the database; there is also a third button which gives a more detailed information about a given password. See the [corresponding paragraph](#how-passwords-are-protected) to understand how passwords are keeping safe. Passwords are ordered in alphabetical order and can be searched through the corresponding tool.
 
 ### Password generator state
 
