@@ -316,17 +316,14 @@ namespace kmanager::window{
         // Buttons
         this -> p_manager_state -> assignProperty( this -> menu_state -> p_manager_button.get(), "visible", false );
         this -> p_manager_state -> assignProperty( this -> menu_state -> p_generator_button.get(), "visible", false );
-        this -> p_manager_state -> assignProperty( this -> menu_state -> options_button.get(), "visible", false );
         this -> p_manager_state -> assignProperty( this -> menu_state -> exit_button.get(), "visible", false );
 
         this -> login_state -> assignProperty( this -> menu_state -> p_manager_button.get(), "visible", false );
         this -> login_state -> assignProperty( this -> menu_state -> p_generator_button.get(), "visible", false );
-        this -> login_state -> assignProperty( this -> menu_state -> options_button.get(), "visible", false );
         this -> login_state -> assignProperty( this -> menu_state -> exit_button.get(), "visible", false );
 
         this -> p_generator_state -> assignProperty( this -> menu_state -> p_manager_button.get(), "visible", false );
         this -> p_generator_state -> assignProperty( this -> menu_state -> p_generator_button.get(), "visible", false );
-        this -> p_generator_state -> assignProperty( this -> menu_state -> options_button.get(), "visible", false );
         this -> p_generator_state -> assignProperty( this -> menu_state -> exit_button.get(), "visible", false );
 
         // Labels

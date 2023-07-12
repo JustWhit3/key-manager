@@ -98,18 +98,6 @@ namespace kmanager::state{
             this -> p_manager_button -> geometry().y() + 80.f
         );
 
-        // Options button
-        this -> options_button = QSharedPointer<QPushButton>( 
-            new QPushButton( "Options", this -> host ) 
-        );
-        this -> options_button -> setVisible( false );
-        this -> options_button -> resize( this -> button_width, this -> button_height );
-        this -> options_button -> setStyleSheet( this -> button_font_size );
-        this -> options_button -> move(
-            this -> p_generator_button -> geometry().x(),
-            this -> p_generator_button -> geometry().y() + 80.f
-        );
-
         // Exit button
         this -> exit_button = QSharedPointer<QPushButton>( 
             new QPushButton( "Exit", this -> host ) 
@@ -118,8 +106,8 @@ namespace kmanager::state{
         this -> exit_button -> resize( this -> button_width, this -> button_height );
         this -> exit_button -> setStyleSheet( this -> button_font_size );
         this -> exit_button -> move(
-            this -> options_button -> geometry().x(),
-            this -> options_button -> geometry().y() + 80.f
+            this -> p_generator_button -> geometry().x(),
+            this -> p_generator_button -> geometry().y() + 80.f
         );
 
         QObject::connect( 
@@ -192,7 +180,6 @@ namespace kmanager::state{
         // Buttons
         this -> assignProperty( this -> p_manager_button.get(), "visible", true );
         this -> assignProperty( this -> p_generator_button.get(), "visible", true );
-        this -> assignProperty( this -> options_button.get(), "visible", true );
         this -> assignProperty( this -> exit_button.get(), "visible", true );
         this -> assignProperty( this -> change_password_button.get(), "visible", true );
 

@@ -58,7 +58,6 @@ namespace kmanager::state{
             QSharedPointer<QPushButton> p_manager_button;
             QSharedPointer<QPushButton> p_generator_button;
             QSharedPointer<QPushButton> exit_button;
-            QSharedPointer<QPushButton> options_button;
             QSharedPointer<QPushButton> change_password_button;
             QSharedPointer<QLabel> version;
             QSharedPointer<QLabel> logo_img_label;

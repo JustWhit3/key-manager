@@ -25,7 +25,6 @@
   - [Menu state](#menu-state)
   - [Password manager state](#password-manager-state)
   - [Password generator state](#password-generator-state)
-  - [Options state](#options-state)
   - [Other states](#other-states)
 - [Todo](#todo)
 - [Credits](#credits)
@@ -149,7 +148,7 @@ All the code documentation is generated automatically using [Doxygen](https://ww
 
 <p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/menu_state.png" width = "500"></p>
 
-This state contains the main menu of the app and is used to access [password manager](#password-manager-state) and [password creation](#password-creation-state) tools and the [options state](#options-state). App metadata and release information is displayed on the left side. From this state it is possible also to come back to the [login state](#other-states).
+This state contains the main menu of the app and is used to access [password manager](#password-manager-state) and [password creation](#password-creation-state) tools. App metadata and release information is displayed on the left side. From this state it is possible also to come back to the [login state](#other-states).
 
 
 ### Password manager state
@@ -163,10 +162,6 @@ This state contains the password manager tool. Here you can add, delete and modi
 <p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/password_generator_state.png" width = "500"></p>
 
 This state contains the password generator. Here you can generate strong and safe passwords and save them to clipboard with a click. You can also chose which kind of letters and symbols type you want to use for the password generation.
-
-### Options state
-
-Work in progress.
 
 ### Other states
 
@@ -187,7 +182,6 @@ Other states are:
 - Add setup to password recovery in case of troubles.
 - Add possibility to change the app password.
 - Improve the encryption algorithm.
-- Add the options state.
 - Add sounds.
 - Add (maybe) animations in transitions among states.
 
