@@ -389,6 +389,9 @@ namespace kmanager::window{
         this -> menu_state -> assignProperty( this -> login_state -> user_img_label.get(), "visible", false );
         this -> menu_state -> assignProperty( this -> login_state -> rectangle.get(), "visible", false );
         this -> menu_state -> assignProperty( this -> login_state -> background_rectangle.get(), "visible", false );
+
+        // QPushButton
+        this -> menu_state -> assignProperty( this -> login_state -> confirm_button.get(), "visible", false );
     }
 
     //====================================================

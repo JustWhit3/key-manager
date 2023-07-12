@@ -29,6 +29,7 @@
 #include <QLabel>
 #include <QSharedPointer>
 #include <QObject>
+#include <QPushButton>
 
 // STD
 #include <cstdint>
@@ -64,6 +65,7 @@ namespace kmanager::state{
             QSharedPointer<QLabel> user_img_label;
             QSharedPointer<QLabel> rectangle;
             QSharedPointer<QLabel> background_rectangle;
+            QSharedPointer<QPushButton> confirm_button;
 
             // Variables (other)
             QWidget* host;

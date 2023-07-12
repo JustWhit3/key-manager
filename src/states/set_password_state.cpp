@@ -274,7 +274,10 @@ namespace kmanager::state{
             new QPushButton( "", this -> host ) 
         );
         this -> confirm_button -> setVisible( false );
-        this -> confirm_button -> setStyleSheet( "font-size: 20px" );
+        this -> confirm_button -> setStyleSheet( 
+            "font-size: 20px;"
+            "border-radius: 11px;"
+        );
         this -> confirm_button -> move(
             this -> enter_password_second -> geometry().x(),
             this -> enter_password_second -> geometry().y() * 1.18f

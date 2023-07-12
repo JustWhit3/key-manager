@@ -78,7 +78,7 @@ namespace kmanager::state{
         );
         this -> p_manager_button -> setVisible( false );
         this -> p_manager_button -> resize( this -> button_width, this -> button_height );
-        this -> p_manager_button -> setStyleSheet( this -> button_font_size );
+        this -> p_manager_button -> setStyleSheet( this -> button_style );
         this -> p_manager_button -> move(
             ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
                 this -> p_manager_button -> mapToGlobal( this -> p_manager_button -> geometry().center() ).x() ) * 1.45f,
@@ -92,7 +92,7 @@ namespace kmanager::state{
         );
         this -> p_generator_button -> setVisible( false );
         this -> p_generator_button -> resize( this -> button_width, this -> button_height );
-        this -> p_generator_button -> setStyleSheet( this -> button_font_size );
+        this -> p_generator_button -> setStyleSheet( this -> button_style );
         this -> p_generator_button -> move(
             this -> p_manager_button -> geometry().x(),
             this -> p_manager_button -> geometry().y() + 80.f
@@ -104,7 +104,7 @@ namespace kmanager::state{
         );
         this -> exit_button -> setVisible( false );
         this -> exit_button -> resize( this -> button_width, this -> button_height );
-        this -> exit_button -> setStyleSheet( this -> button_font_size );
+        this -> exit_button -> setStyleSheet( this -> button_style );
         this -> exit_button -> move(
             this -> p_generator_button -> geometry().x(),
             this -> p_generator_button -> geometry().y() + 80.f
@@ -123,7 +123,7 @@ namespace kmanager::state{
         );
         this -> change_password_button -> setVisible( false );
         this -> change_password_button -> setStyleSheet( 
-            "QPushButton{ background-color: rgba(255, 255, 255, 0); }"
+            "QPushButton{ background-color: rgba(255, 255, 255, 0); border-radius: 11px; }"
             "QPushButton::hover { background-color: rgba(255, 255, 255, 50); }"
             "QPushButton::pressed { background-color: rgba(255, 255, 255, 70); }"
         );

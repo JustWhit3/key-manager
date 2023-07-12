@@ -99,7 +99,7 @@ namespace kmanager::state{
             new QLabel( this -> host )
         );
         this -> rectangle -> setVisible( false );
-        this -> rectangle -> resize( 400, 500 );
+        this -> rectangle -> resize( 400, 600 );
         this -> rectangle -> setStyleSheet( 
             "background-color: rgba( 35, 36, 48, 100% );"
             "color: #c1c1c1;"
@@ -191,7 +191,7 @@ namespace kmanager::state{
         this -> error_label -> setStyleSheet( "QLabel { color : rgb(183, 0, 0); font-size: 20px }" );
         this -> error_label -> move(
             this -> enter_password -> geometry().x() + 7.f,
-            this -> enter_password -> geometry().y() + 90.f
+            this -> enter_password -> geometry().y() + 170.f
         );
 
         // User image label
@@ -206,6 +206,34 @@ namespace kmanager::state{
         );
         this -> user_img_label -> setStyleSheet(
             "QLabel { background-color: rgba( 255, 255, 255, 0% ); }" 
+        );
+
+        // Confirm button
+        this -> confirm_button = QSharedPointer<QPushButton>( 
+            new QPushButton( "", this -> host ) 
+        );
+        this -> confirm_button -> setVisible( false );
+        this -> confirm_button -> setStyleSheet( 
+            "font-size: 20px;"
+            "border-radius: 11px;"
+        );
+        this -> confirm_button -> move(
+            this -> enter_password -> geometry().x(),
+            this -> enter_password -> geometry().y() * 1.18f
+        );
+        this -> confirm_button -> setFixedSize( 
+            QSize( 
+                this -> enter_password -> geometry().width() , 
+                this -> enter_password -> geometry().height() 
+            ) 
+        );
+        this -> confirm_button -> setText( "Confirm" );
+
+        QObject::connect( 
+             this -> confirm_button.get(), 
+             SIGNAL( clicked() ), 
+             this, 
+             SLOT( login() ) 
         );
     }
 
@@ -270,5 +298,8 @@ namespace kmanager::state{
         this -> assignProperty( this -> user_img_label.get(), "visible", true );
         this -> assignProperty( this -> rectangle.get(), "visible", true );
         this -> assignProperty( this -> background_rectangle.get(), "visible", true );
+
+        // Buttons
+        this -> assignProperty( this -> confirm_button.get(), "visible", true );
     }
 }
