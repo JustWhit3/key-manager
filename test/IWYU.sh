@@ -10,9 +10,11 @@ declare -a source_files=(
   "states/base_state.cpp"
   "states/menu_state.cpp"
   "states/password_manager_state.cpp"
+  "states/password_generator_state.cpp"
   "states/add_password_state.cpp"
   "states/login_state.cpp"
   "states/set_password_state.cpp"
+  "states/password_info_state.cpp"
 
   # Utility
   "utility/crypto.cpp"

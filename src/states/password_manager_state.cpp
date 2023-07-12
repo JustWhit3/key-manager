@@ -287,6 +287,22 @@ namespace kmanager::state{
             SLOT( addPassword() ) 
         );
 
+        // Number of passwords label
+        this -> n_of_passwords = QSharedPointer<QLabel>( new QLabel( this -> host -> host ) );
+        this -> n_of_passwords -> setVisible( false );
+        this -> n_of_passwords -> resize( this -> label_height * 7.f, this -> label_height * 2.f );
+        this -> n_of_passwords -> setStyleSheet( 
+            "font-size: 23px;"
+            // "background-color: #ff9c2b;"
+        );
+        this -> n_of_passwords -> move(
+            this -> add_password_button -> geometry().x() + 101.f,
+            this -> add_password_button -> geometry().y()
+        );
+        this -> number_of_password_str << "Total stored passwords: " << this -> old_passwords_number;
+        this -> n_of_passwords -> setText( QString::fromStdString( number_of_password_str.str() ) );
+        this -> n_of_passwords -> setAlignment( Qt::AlignCenter );
+
         // Scroll area setup
         this -> setScrollArea();
 
@@ -504,6 +520,12 @@ namespace kmanager::state{
         for( int64_t i = 0; i < this -> scroll_layout -> count(); i++ ){
             this -> scroll_layout -> itemAt( i ) -> widget() -> deleteLater();
         }
+
+        // Redraw passwords number
+        this -> number_of_password_str.str( "" );
+        this -> number_of_password_str.clear();
+        this -> number_of_password_str << "Total stored passwords: " << this -> old_passwords_number;
+        this -> n_of_passwords -> setText( QString::fromStdString( number_of_password_str.str() ) );
         
         // Display the new view
         this -> displayPasswords();
@@ -529,12 +551,12 @@ namespace kmanager::state{
             // Compare with old number and update the view
             if( this -> current_passwords_number > this -> old_passwords_number || this -> repaint_passwords ){
 
-                // Redraw widgets
-                this -> redrawWidgets();
-
                 // Reset indicators
                 this -> old_passwords_number = this -> current_passwords_number;
                 this -> repaint_passwords = false;
+
+                // Redraw widgets
+                this -> redrawWidgets();
             }
         }
     }
@@ -761,6 +783,7 @@ namespace kmanager::state{
         this -> assignProperty( this -> password_username.get(), "visible", true );
         this -> assignProperty( this -> password_key.get(), "visible", true );
         this -> assignProperty( this -> password_actions.get(), "visible", true );
+        this -> assignProperty( this -> n_of_passwords.get(), "visible", true );
 
         // LineEdits
         this -> assignProperty( this -> find_input.get(), "visible", true );

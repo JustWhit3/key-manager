@@ -81,6 +81,7 @@ namespace kmanager::state{
             QSharedPointer<QLabel> password_key;
             QSharedPointer<QLabel> password_username;
             QSharedPointer<QLabel> password_actions;
+            QSharedPointer<QLabel> n_of_passwords;
             QSharedPointer<QPushButton> find_button;
             QSharedPointer<QPushButton> add_password_button;
             QSharedPointer<QPushButton> menu_button;
@@ -122,6 +123,7 @@ namespace kmanager::state{
             QIcon menu_icon;
             entity::Password<QString> current_password;
             std::ostringstream password_dir;
+            std::ostringstream number_of_password_str;
             QFile password_file;
             QString file_val;
             QJsonDocument json_doc;
