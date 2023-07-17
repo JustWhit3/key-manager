@@ -182,7 +182,6 @@ Other states are:
 - Add setup to password recovery in case of troubles.
 - Add possibility to change the app password.
 - Improve the encryption algorithm.
-- Add sounds.
 - Add (maybe) animations in transitions among states.
 
 ## Credits

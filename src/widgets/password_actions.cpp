@@ -103,18 +103,21 @@ namespace kmanager::widget{
         this -> delete_password -> setIcon( QApplication::style() -> standardIcon( QStyle::SP_TrashIcon ) );
         this -> delete_password -> setIconSize( this -> icon_size );
         this -> delete_password -> setToolTip( "Delete" );
+        this -> delete_password -> setStyleSheet( "border-radius: 11px;" );
 
         // Save button
         this -> save_password = QSharedPointer<QPushButton>( new QPushButton() );
         this -> save_password -> setIcon( QApplication::style() -> standardIcon( QStyle::SP_DialogSaveButton ) );
         this -> save_password -> setIconSize( this -> icon_size );
         this -> save_password -> setToolTip( "Save" );
+        this -> save_password -> setStyleSheet( "border-radius: 11px;" );
 
         // See password info
         this -> see_password_info = QSharedPointer<QPushButton>( new QPushButton() );
         this -> see_password_info -> setIcon( QApplication::style() -> standardIcon( QStyle::SP_FileDialogInfoView ) );
         this -> see_password_info -> setIconSize( this -> icon_size );
         this -> see_password_info -> setToolTip( "Information" );
+        this -> see_password_info -> setStyleSheet( "border-radius: 11px;" );
 
         // Setup layout
         this -> layout = QSharedPointer<QHBoxLayout>( new QHBoxLayout( this ) );
