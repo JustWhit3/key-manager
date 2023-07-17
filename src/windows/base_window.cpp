@@ -43,4 +43,15 @@ namespace kmanager::window{
     BaseWindow::~BaseWindow(){
 
     }
+
+    //====================================================
+    //     setAnimation
+    //====================================================
+    /**
+     * @brief Set animations of the window.
+     * 
+     */
+    void BaseWindow::setAnimation(){
+
+    }
 }

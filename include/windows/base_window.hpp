@@ -45,6 +45,9 @@ namespace kmanager::window{
             // Pure methods
             virtual void setWindowProperties() = 0;
             virtual void initStateMachine() = 0;
+
+            // Other methods
+            virtual void setAnimation();
     };
 }
 

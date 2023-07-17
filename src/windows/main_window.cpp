@@ -38,6 +38,8 @@
 #include <QScrollArea>
 #include <QStateMachine>
 #include <QSet>
+#include <QPropertyAnimation>
+#include <QEventTransition>
 
 // STD
 #include <filesystem>
@@ -74,6 +76,9 @@ namespace kmanager::window{
 
         // Set actions when buttons are pressed
         this -> buttonsPressedActions();
+
+        // Set animations
+        this -> setAnimation();
     }
 
     //====================================================
@@ -228,6 +233,89 @@ namespace kmanager::window{
             this -> state_machine -> setInitialState( this -> set_password_state.get() );
         }
         this -> state_machine -> start();
+    }
+
+    //====================================================
+    //     setAnimation
+    //====================================================
+    /**
+     * @brief Set animations of the window.
+     * 
+     */
+    void MainWindow::setAnimation(){
+
+        // Menu state -> password manager state
+        QObject::connect(
+            this -> menu_state.get(), 
+            &QState::entered, 
+            this -> menu_state -> p_manager_button.get(), 
+            [ this ](){ 
+                this -> a_MenuState_PasswordManagerState = QSharedPointer<QPropertyAnimation>( 
+                    new QPropertyAnimation( this -> menu_state -> p_manager_button.get(), "geometry" ) 
+                );
+                this -> a_MenuState_PasswordManagerState -> setStartValue( QRect( 0, 0, 100, 100 ) );
+                this -> a_MenuState_PasswordManagerState -> setEasingCurve( QEasingCurve::Linear );
+                this -> a_MenuState_PasswordManagerState -> setEndValue( 
+                    QRect( 
+                        this -> menu_state -> p_manager_button -> geometry().x(),
+                        this -> menu_state -> p_manager_button -> geometry().y(),
+                        220, 70 
+                    ) 
+                );
+                this -> a_MenuState_PasswordManagerState -> setDuration( 300 );
+                this -> a_MenuState_PasswordManagerState -> start(); 
+            }
+        );
+
+        // Menu state -> password generator state
+        QObject::connect(
+            this -> menu_state.get(), 
+            &QState::entered, 
+            this -> menu_state -> p_generator_button.get(), 
+            [ this ](){ 
+                this -> a_MenuState_PasswordGeneratorState = QSharedPointer<QPropertyAnimation>( 
+                    new QPropertyAnimation( this -> menu_state -> p_generator_button.get(), "geometry" ) 
+                );
+                this -> a_MenuState_PasswordGeneratorState -> setStartValue( 
+                    QRect( 0, this -> geometry().width() * 0.3f, 100, 100 ) 
+                );
+                this -> a_MenuState_PasswordGeneratorState -> setEasingCurve( QEasingCurve::Linear );
+                this -> a_MenuState_PasswordGeneratorState -> setEndValue( 
+                    QRect( 
+                        this -> menu_state -> p_generator_button -> geometry().x(),
+                        this -> menu_state -> p_generator_button -> geometry().y(),
+                        220, 70 
+                    ) 
+                );
+                this -> a_MenuState_PasswordGeneratorState -> setDuration( 300 );
+                this -> a_MenuState_PasswordGeneratorState -> start(); 
+            }
+        );
+
+        // Menu state -> exit
+        QObject::connect(
+            this -> menu_state.get(), 
+            &QState::entered, 
+            this -> menu_state -> exit_button.get(), 
+            [ this ](){ 
+                this -> a_MenuState_Exit = QSharedPointer<QPropertyAnimation>( 
+                    new QPropertyAnimation( this -> menu_state -> exit_button.get(), "geometry" ) 
+                );
+                this -> a_MenuState_Exit -> setStartValue(
+                    QRect( 0, this -> geometry().width() * 0.6f, 100, 100 ) 
+                );
+                this -> a_MenuState_Exit -> setEasingCurve( QEasingCurve::Linear );
+                this -> a_MenuState_Exit -> setEndValue( 
+                    QRect( 
+                        this -> menu_state -> exit_button -> geometry().x(),
+                        this -> menu_state -> exit_button -> geometry().y(),
+                        220, 70 
+                    ) 
+                );
+                this -> a_MenuState_Exit -> setDuration( 300 );
+                this -> a_MenuState_Exit -> start(); 
+            }
+        );
     }
 
     //====================================================

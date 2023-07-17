@@ -34,6 +34,8 @@
 #include <QStateMachine>
 #include <QObject>
 #include <QSharedPointer>
+#include <QPropertyAnimation>
+#include <QEventTransition>
 
 // STD
 #include <sstream>
@@ -74,6 +76,7 @@ namespace kmanager::window{
             void initStateMachine() override;
             void closeEvent( QCloseEvent* event ) override;
             void buttonsPressedActions();
+            void setAnimation() override;
 
             // Variables (states)
             QSharedPointer<QStateMachine> state_machine;
@@ -82,6 +85,9 @@ namespace kmanager::window{
             QSharedPointer<state::LoginState> login_state;
             QSharedPointer<state::SetPasswordState> set_password_state;
             QSharedPointer<state::PasswordGeneratorState> p_generator_state;
+            QSharedPointer<QPropertyAnimation> a_MenuState_PasswordManagerState;
+            QSharedPointer<QPropertyAnimation> a_MenuState_PasswordGeneratorState;
+            QSharedPointer<QPropertyAnimation> a_MenuState_Exit;
 
             // Variables (other)
             std::ostringstream login_key_file;
