@@ -55,9 +55,7 @@ The app is and will stay **free**, but if you want to support me with a donation
 
 ## How passwords are protected
 
-A login system is applied to the app and a new password setup is required during the first app run. The inserted user password is encrypted using a [XOR cipher method](https://en.wikipedia.org/wiki/XOR_cipher) and a generated random key of lenght 100 alpha-numerical characters is used for encryption and decryption operations. The encrypted password and the key are then saved into a configuration file `~/.key-manager_files/.key`.
-
-> :warning: there are work in progress plans to find a way to protect these sensitive data from reading.
+A login system is applied to the app and a new password setup is required during the first app run. The inserted user password is encrypted using the [AES (Advanced Encryption Standard)](https://it.wikipedia.org/wiki/Advanced_Encryption_Standard#:~:text=In%20crittografia%2C%20l'Advanced%20Encryption,degli%20Stati%20Uniti%20d'America.) method through the [crypto++](https://github.com/abdes/cryptopp-cmake) library and a generated random key of lenght 100 alpha-numerical characters is used for encryption and decryption operations. The encrypted password and the key are then saved into a configuration file `~/.key-manager_files/.key`.
 
 At every login the user password is required and it is verified the matching among it and the user password of the configuration file, which for this occasion is decrypted using the previously mentioned algorithm and the saved key.
 
@@ -95,8 +93,9 @@ Mandatory prerequisites:
 
 - C++20 standard
 - g++ compiler (developed on Ubuntu v22.04.1 with g++ v11.3.0)
-- [CMake](https://cmake.org/) (at least version 3.15)
+- [CMake](https://cmake.org/) (at least v3.15)
 - [Qt](https://www.qt.io/blog/qt-6.4.2-released) library (version 6.4.2), installed during the app installation.
+- [crypto++](https://github.com/abdes/cryptopp-cmake) library (version 8.8.0), installed during the app installation.
 
 To run the app:
 
@@ -181,7 +180,6 @@ Other states are:
 
 - Add setup to password recovery in case of troubles.
 - Add possibility to change the app password.
-- Improve the encryption algorithm.
 - Add (maybe) animations in transitions among states.
 
 ## Credits
