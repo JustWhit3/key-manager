@@ -35,6 +35,9 @@ list( APPEND CMAKE_INCLUDE_PATH ${QT_BUILD_DIR}/qtbase/include )
 list( APPEND CMAKE_INCLUDE_PATH ${QT_BUILD_DIR}/qtbase/include/QtWidgets )
 list( APPEND CMAKE_INCLUDE_PATH ${QT_BUILD_DIR}/qtbase/include/QtStateMachine )
 
+# crypto++ paths
+list( APPEND CMAKE_INCLUDE_PATH ${CMAKE_CURRENT_BINARY_DIR}/_deps/cryptopp/include )
+
 # Compiling the main app
 add_subdirectory( src )
 

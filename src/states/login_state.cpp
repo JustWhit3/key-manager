@@ -265,10 +265,10 @@ namespace kmanager::state{
         std::getline( input, password );
         std::getline( input, key );
         input.close();
-        utility::Crypto crypto( this -> enter_password -> text().toStdString(), key );
+        utility::Crypto crypto( password, key );
 
         // Analyze cases
-        if( crypto.decrypt() == password ){
+        if( this -> enter_password -> text().toStdString() == crypto.decrypt() ){
             this -> enter_password -> setText( "" );
             emit this -> login_successful( true );
         }

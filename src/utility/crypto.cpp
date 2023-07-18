@@ -15,6 +15,13 @@
 // Utility
 #include <utility/crypto.hpp>
 
+// crypto++
+#include <cryptopp/aes.h>
+#include <cryptopp/modes.h>
+#include <cryptopp/filters.h>
+#include <cryptopp/osrng.h>
+#include <cryptopp/base64.h>
+
 // STD
 #include <string>
 #include <string_view>
@@ -23,14 +30,6 @@
 #include <cstdlib>
 
 namespace kmanager::utility{
-
-    //====================================================
-    //     Static constants
-    //====================================================
-    const char Crypto::alpha_num[] =
-        "0123456789" 
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
-        "abcdefghijklmnopqrstuvwxyz";
 
     //====================================================
     //     Crypto (parametric constructor)
@@ -81,26 +80,73 @@ namespace kmanager::utility{
     std::string Crypto::encrypt(){
 
         // Case for empty key
-        if( ! this -> key.size() ){
+        if ( ! this -> key.size() ) {
             return this -> message;
         }
-            
-        // Other cases
-        for ( std::string::size_type i = 0; i < this -> message.size(); ++i ){
-            this -> message[i] ^= this -> key[ i % this -> key.size() ];
-        }
-        return this -> message;
+
+        // AES Encryption
+        CryptoPP::byte iv[ CryptoPP::AES::BLOCKSIZE ];
+        CryptoPP::OS_GenerateRandomBlock( true, iv, CryptoPP::AES::BLOCKSIZE );
+
+        std::string ciphertext;
+        CryptoPP::AES::Encryption aesEncryption( reinterpret_cast<const CryptoPP::byte*>( this -> key.data() ), CryptoPP::AES::MAX_KEYLENGTH);
+        CryptoPP::CBC_Mode_ExternalCipher::Encryption cbcEncryption( aesEncryption, iv );
+
+        CryptoPP::StringSource( this->message.data(), true,
+            new CryptoPP::StreamTransformationFilter(cbcEncryption,
+                new CryptoPP::StringSink( ciphertext ) ) );
+
+        // Prepend the IV to the ciphertext
+        ciphertext = std::string( reinterpret_cast<const char*>( iv ), CryptoPP::AES::BLOCKSIZE ) + ciphertext;
+
+        // Base64 encode the ciphertext and IV
+        std::string encodedCiphertext;
+        CryptoPP::StringSource( ciphertext, true,
+            new CryptoPP::Base64Encoder(
+                new CryptoPP::StringSink( encodedCiphertext ),
+                false
+            )
+        );
+
+        return encodedCiphertext;
     }
 
     //====================================================
-    //     encrypt
+    //     decrypt
     //====================================================
     /**
      * @brief Decrypt the encrypted "message" string using the "key" string.
      * 
      */
     std::string Crypto::decrypt(){
-        return this -> encrypt();
+
+        // Case for empty key
+        if ( ! this -> key.size() ) {
+            return this->message;
+        }
+
+        // Base64 decode the input message
+        std::string decodedMessage;
+        CryptoPP::StringSource( this->message, true,
+            new CryptoPP::Base64Decoder(
+                new CryptoPP::StringSink( decodedMessage )
+            )
+        );
+
+        // Extract the IV from the beginning of the ciphertext
+        CryptoPP::byte iv[ CryptoPP::AES::BLOCKSIZE ];
+        std::string ciphertextWithoutIV = decodedMessage.substr( CryptoPP::AES::BLOCKSIZE );
+        decodedMessage.copy( reinterpret_cast<char*>( iv ), CryptoPP::AES::BLOCKSIZE, 0 );
+
+        std::string decrypted;
+        CryptoPP::AES::Decryption aesDecryption( reinterpret_cast<const CryptoPP::byte*>( this->key.data() ), CryptoPP::AES::MAX_KEYLENGTH );
+        CryptoPP::CBC_Mode_ExternalCipher::Decryption cbcDecryption( aesDecryption, iv );
+
+        CryptoPP::StringSource( ciphertextWithoutIV.data(), true,
+            new CryptoPP::StreamTransformationFilter( cbcDecryption,
+                new CryptoPP::StringSink( decrypted ) ) );
+
+        return decrypted;
     }
 
     //====================================================
@@ -170,16 +216,19 @@ namespace kmanager::utility{
      */
     std::string Crypto::generateRandomKey( int64_t length ){
 
-        // Variables
+        // Array of alphanumeric characters used to generate the random key
+        const char alpha_num[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+        // Initialize the Crypto++ random number generator
+        CryptoPP::AutoSeededRandomPool rng;
+
         std::string result;
         result.reserve( length );
 
-        // Change random seed
-        srand( ( unsigned ) time( NULL ) * getpid() ); 
-
-        // Generate random key
-        for( int64_t i = 0; i < length; ++i ){
-            result += this -> alpha_num[ rand() % ( sizeof( this -> alpha_num ) - 1 ) ];
+        // // Generate a random number between 0 and the size of the alpha_num array - 1
+        for ( int64_t i = 0; i < length; ++i ) {
+            int randomIndex = rng.GenerateWord32( 0, sizeof( alpha_num ) - 2 );
+            result += alpha_num[ randomIndex ];
         }
 
         return result;

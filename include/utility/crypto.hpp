@@ -69,9 +69,6 @@ namespace kmanager::utility{
             // Members
             std::string message;
             std::string key;
-
-            // Constants
-            static const char alpha_num[];
     };
 }
 

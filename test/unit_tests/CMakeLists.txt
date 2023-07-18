@@ -44,3 +44,7 @@ set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${COMPILE_FLAGS}")
 # Link to doctest
 find_package( doctest )
 target_link_libraries( ${UNIT} PUBLIC doctest::doctest )
+
+# Link to crypto++
+find_package( cryptopp 8.8.0 REQUIRED )
+target_link_libraries( ${UNIT} PRIVATE cryptopp )

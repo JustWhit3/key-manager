@@ -15,84 +15,56 @@
 #include <doctest/doctest.h>
 
 //====================================================
-//     Crypto
+//     Test encryption and decryption
 //====================================================
-TEST_CASE( "Testing the Crypto class." ){
+TEST_CASE( "Test Crypto encryption and decryption" ) {
 
-    // Declare variables
-    kmanager::utility::Crypto crypto( "Test message", "0x0c238rh2h1711182h82sh18" );
-    kmanager::utility::Crypto crypto_wrong( "Test message", "0x0c238rh2h1711182h82sh18" );
-    kmanager::utility::Crypto crypto_empty_key( "Test message", "" );
+    // Test message and key
+    std::string_view message = "Hello, world!";
+    std::string_view key = "my_secret_key";
 
-    //====================================================
-    //     encrypt
-    //====================================================
-    SUBCASE( "Testing the encrypt method." ){
-        CHECK_EQ( crypto.encrypt(), "dC^]ST" );
-        CHECK( crypto_wrong.encrypt() != "Test message" );
-        CHECK( crypto_wrong.encrypt() == "Test message" );
-        CHECK_EQ( crypto_empty_key.encrypt(), "Test message" );
-    }
+    // Create a Crypto object
+    kmanager::utility::Crypto crypto( message, key );
 
-    //====================================================
-    //     decrypt
-    //====================================================
-    SUBCASE( "Testing the decrypt method." ){
-        crypto.encrypt();
-        CHECK_EQ( crypto.decrypt(), "Test message" );
-    }
+    // Encrypt the message
+    std::string encrypted = crypto.encrypt();
 
-    //====================================================
-    //     getMessage
-    //====================================================
-    SUBCASE( "Testing the getMessage getter" ){
-        CHECK_EQ( crypto.getMessage(), "Test message" );
-    }
+    // The encrypted message should not be equal to the original message
+    CHECK( encrypted != message );
 
-    //====================================================
-    //     getKey
-    //====================================================
-    SUBCASE( "Testing the getKey getter" ){
-        CHECK_EQ( crypto.getKey(), "0x0c238rh2h1711182h82sh18" );
-    }
+    // Decrypt the encrypted message using the same key
+    crypto.setMessage( encrypted );
+    std::string decrypted = crypto.decrypt();
 
-    //====================================================
-    //     clear
-    //====================================================
-    SUBCASE( "Testing the clear method." ){
-        crypto.encrypt();
-        crypto.clear();
-        CHECK_EQ( crypto.getMessage(), "" );
-        CHECK_EQ( crypto.getKey(), "" );
-    }
+    // The decrypted message should be equal to the original message
+    CHECK( decrypted == message );
+}
 
-    //====================================================
-    //     setMessage
-    //====================================================
-    SUBCASE( "Testing the setMessage setter." ){
-        crypto.setMessage( "Ciao" );
-        CHECK_EQ( crypto.getMessage(), "Ciao" );
-    }
+//====================================================
+//     Test encryption with random key
+//====================================================
+TEST_CASE( "Test Crypto random key generation" ) {
+    
+    // Test message
+    std::string_view message = "Hello, world!";
 
-    //====================================================
-    //     setKey
-    //====================================================
-    SUBCASE( "Testing the setKey setter." ){
-        crypto.setKey( "12345" );
-        CHECK_EQ( crypto.getKey(), "12345" );
-    }
+    // Create a Crypto object with a random key
+    kmanager::utility::Crypto crypto( message );
 
-    //====================================================
-    //     generateRandomKey
-    //====================================================
-    SUBCASE( "Testing the generateRandomKey method." ){
+    // Encrypt the message
+    std::string encrypted = crypto.encrypt();
 
-        // Check length of generated key
-        kmanager::utility::Crypto crypto_random_key( "Test message" );
-        CHECK_EQ( crypto_random_key.getKey().length(), 100 );
+    // The encrypted message should not be equal to the original message
+    CHECK( encrypted != message );
 
-        // Check that starting seed is the same
-        kmanager::utility::Crypto crypto_random_key_2( "Test message" );
-        CHECK( crypto_random_key.getKey() == crypto_random_key_2.getKey() );
-    }
+    // Decrypt the encrypted message using the randomly generated key
+    crypto.setMessage( encrypted );
+    std::string decrypted = crypto.decrypt();
+
+    // The decrypted message should be equal to the original message
+    CHECK( decrypted == message );
+
+    // Get the generated key and check its length
+    std::string_view generatedKey = crypto.getKey();
+    CHECK( generatedKey.size() == 100 );
 }

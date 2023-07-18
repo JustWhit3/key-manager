@@ -28,6 +28,7 @@ set( CMAKE_INCLUDE_CURRENT_DIR ON )
 
 # Include directories
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/../include )
+include_directories("/usr/include/botan-2")
 
 # File variables
 file( GLOB_RECURSE INC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/../include/*.hpp )
@@ -59,6 +60,10 @@ endif()
 # Link to Qt6
 find_package( Qt6 6.4.2 CONFIG REQUIRED COMPONENTS Core Widgets StateMachine )
 target_link_libraries( ${APP} PRIVATE Qt::Core Qt::Widgets Qt::StateMachine )
+
+# Link to crypto++
+find_package( cryptopp 8.8.0 REQUIRED )
+target_link_libraries( ${APP} PRIVATE cryptopp )
 
 # Install
 install ( TARGETS ${APP} RUNTIME )

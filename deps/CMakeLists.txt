@@ -17,6 +17,7 @@ endif()
 
 # Fetch deps
 add_subdirectory( qt6 )
+add_subdirectory( cryptopp )
 if( CMAKE_BUILD_TYPE STREQUAL "Debug" )
     add_subdirectory( doctest )
 endif()

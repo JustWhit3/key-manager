@@ -357,6 +357,7 @@ namespace kmanager::state{
 
         // Successful case
         else{
+            
             // Encrypt the password
             utility::Crypto crypto( this -> enter_password_first -> text().toStdString() );
 
