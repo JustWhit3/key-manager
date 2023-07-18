@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loginstate_220',['LoginState',['../classkmanager_1_1state_1_1LoginState.html',1,'kmanager::state']]]
+  ['loginstate_221',['LoginState',['../classkmanager_1_1state_1_1LoginState.html',1,'kmanager::state']]]
 ];
