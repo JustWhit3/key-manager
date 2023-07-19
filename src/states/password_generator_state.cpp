@@ -13,6 +13,7 @@
 //====================================================
 
 // States
+#include <states/base_state.hpp>
 #include <states/menu_state.hpp>
 #include <states/password_generator_state.hpp>
 
@@ -26,12 +27,16 @@
 #include <QString>
 #include <QGuiApplication>
 #include <QClipboard>
+#include <QClipboard>
+#include <QObject>
+#include <QPixmap>
 
 // STD
 #include <ctime>
 #include <cstdlib>
 #include <cstdint>
 #include <string>
+#include <stdexcept>
 
 namespace kmanager::state{
 

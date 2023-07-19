@@ -36,8 +36,9 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QStringConverter>
-#include <QVariant>
 #include <QWidget>
+#include <QString>
+#include <QTextStream>
 
 // STD
 #include <filesystem>

@@ -24,6 +24,9 @@
 #include <QSharedPointer>
 #include <QObject>
 #include <QPushButton>
+#include <QHBoxLayout>
+#include <QEvent>
+#include <QStyle>
 
 namespace kmanager::widget{
 

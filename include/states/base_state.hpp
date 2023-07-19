@@ -22,9 +22,9 @@
 // Qt
 #include <QState>
 #include <QSettings>
+#include <QString>
 
 // STD
-#include <sstream>
 #include <cstdlib>
 #include <string>
 

@@ -30,6 +30,8 @@
 #include <QString>
 #include <QTimer>
 #include <QWidget>
+#include <QPixmap>
+#include <QSize>
 
 // STD
 #include <fstream>

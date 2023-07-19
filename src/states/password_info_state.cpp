@@ -16,12 +16,17 @@
 #include <states/base_state.hpp>
 #include <states/password_info_state.hpp>
 
+// Widgets
+#include <widgets/password_toggle.hpp>
+
 // Qt
 #include <QSharedPointer>
 #include <QLabel>
 #include <QLineEdit>
 #include <QWidget>
 #include <QGridLayout>
+#include <QPixmap>
+#include <QString>
 
 // STD
 #include <unordered_map>

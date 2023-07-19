@@ -25,10 +25,8 @@
 #include <QWidget>
 #include <QSharedPointer>
 #include <QIcon>
-#include <QObject>
 #include <QPixmap>
 #include <QString>
-#include <QWidget>
 #include <QFile>
 
 namespace kmanager::state{

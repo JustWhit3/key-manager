@@ -27,12 +27,12 @@
 #include <QCheckBox>
 #include <QLabel>
 #include <QObject>
-#include <QString>
 #include <QTimer>
 #include <QWidget>
+#include <QPixmap>
+#include <QSize>
 
 // STD
-#include <fstream>
 #include <string>
 
 namespace kmanager::state{

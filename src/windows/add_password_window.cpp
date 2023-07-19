@@ -35,6 +35,7 @@
 // STD
 #include <unordered_map>
 #include <string>
+#include <cstdint>
 
 namespace kmanager::window{
 
