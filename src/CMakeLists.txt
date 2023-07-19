@@ -63,7 +63,7 @@ target_link_libraries( ${APP} PRIVATE Qt::Core Qt::Widgets Qt::StateMachine )
 
 # Link to crypto++
 find_package( cryptopp 8.8.0 REQUIRED )
-target_link_libraries( ${APP} PRIVATE cryptopp )
+target_link_libraries( ${APP} PRIVATE cryptopp::cryptopp )
 
 # Install
 install ( TARGETS ${APP} RUNTIME )

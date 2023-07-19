@@ -15,9 +15,11 @@ if( EXISTS "${LOC_PATH}" )
                          "remove CMakeCache.txt and CMakeFiles." )
 endif()
 
-# Fetch deps
+# Mandatory deps
 add_subdirectory( qt6 )
 add_subdirectory( cryptopp )
+
+# Debug deps
 if( CMAKE_BUILD_TYPE STREQUAL "Debug" )
     add_subdirectory( doctest )
 endif()

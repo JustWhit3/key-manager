@@ -1,5 +1,5 @@
 # Project settings
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required( VERSION 3.15 )
 
 project( key-manager-dependencies-cryptopp
     VERSION 1.0
@@ -16,25 +16,23 @@ if( EXISTS "${LOC_PATH}" )
 endif()
 
 # Try finding Crypto++ using find_package
-find_package( cryptopp REQUIRED )
+find_package( cryptopp 8.8.0 REQUIRED )
 
 # If Crypto++ is not found, fetch cryptopp-cmake repository
 if( NOT cryptopp_FOUND )
-    include(FetchContent)
 
-    # Set the URL and tag of the cryptopp-cmake repository for version 8.8.0
-    set( CRYPTOPP_CMAKE_URL "https://github.com/abdes/cryptopp-cmake.git" )
-    set( CRYPTOPP_CMAKE_TAG "v8.8.0" )  # Use the desired tag for version 8.8.0
+    # Initial settings
+    set( CMAKE_BUILD_TYPE "Release" )
+    include( ${CMAKE_SOURCE_DIR}/cmake/CPM.cmake )
+    include( ${CMAKE_SOURCE_DIR}/cmake/FasterBuild.cmake )
 
-    # Fetch cryptopp-cmake repository using FetchContent and rename it to cryptopp
-    FetchContent_Declare(
-        cryptopp
-        GIT_REPOSITORY ${CRYPTOPP_CMAKE_URL}
-        GIT_TAG ${CRYPTOPP_CMAKE_TAG}
+    # Fetching cryptopp
+    message( STATUS "Fetching crypto++ 8.8.0..." )
+    set( CRYPTOPP_INCLUDE_PREFIX "cryptopp" )
+    cpmaddpackage(
+        NAME cryptopp-cmake
+        GIT_REPOSITORY https://github.com./abdes/cryptopp-cmake
+        GIT_TAG v8.8.0
+        OPTIONS "CRYPTOPP_BUILD_TESTING OFF" "CRYPTOPP_INSTALL ON"
     )
-
-    # Enable FetchContent to download and configure the repository
-    FetchContent_MakeAvailable( cryptopp )
-else()
-    message( STATUS "crypto++ 8.8.0 found in the system." )
 endif()
