@@ -61,11 +61,11 @@ namespace kmanager::window{
         #ifdef _WIN32
             this -> login_key_file << "C:\\Users\\" 
                                  << this -> username 
-                                 << "\\.key-manager_files\\.key";
+                                 << "\\.config\\key-manager.conf";
         #else
             this -> login_key_file << "/home/" 
                                  << this -> username 
-                                 << "/.key-manager_files/.key";
+                                 << "/.config/key-manager.conf";
         #endif
 
         // Set basic window properties

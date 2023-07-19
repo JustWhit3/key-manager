@@ -45,7 +45,7 @@ The app offers two services.
 - [**Password management**](#password-manager-state): a password storage tool to safely lock information about given accounts (ex: platform, password, username, etc...). See the [corresponding paragraph](#how-passwords-are-protected) of this README for further information about how passwords are protected.
 - [**Password creation**](#password-generator-state): a tool to generate strong passwords based on several requirements chosen by the user (upper/lower letters only, length, etc...).
 
-All the app files are saved into an hidden directory `~/.key-manager_files` created at the beginning of the first app run.
+All the passwords are saved into an hidden directory `~/.key-manager_files` created at the beginning of the first app run.
 
 All contributions are more than welcome. Before contributing, please look at the [contributing file](https://github.com/JustWhit3/key-manager/blob/main/CONTRIBUTING.md) and pick one of the [todo items](#todo) of the list. To propose ideas post something in the [discussion page](https://github.com/JustWhit3/key-manager/discussions).
 
@@ -55,7 +55,7 @@ The app is and will stay **free**, but if you want to support me with a donation
 
 ## How passwords are protected
 
-A login system is applied to the app and a new password setup is required during the first app run. The inserted user password is encrypted using the [AES (Advanced Encryption Standard)](https://it.wikipedia.org/wiki/Advanced_Encryption_Standard#:~:text=In%20crittografia%2C%20l'Advanced%20Encryption,degli%20Stati%20Uniti%20d'America.) method through the [crypto++](https://github.com/abdes/cryptopp-cmake) library and a generated random key of lenght 100 alpha-numerical characters is used for encryption and decryption operations. The encrypted password and the key are then saved into a configuration file `~/.key-manager_files/.key`.
+A login system is applied to the app and a new password setup is required during the first app run. The inserted user password is encrypted using the [AES (Advanced Encryption Standard)](https://it.wikipedia.org/wiki/Advanced_Encryption_Standard#:~:text=In%20crittografia%2C%20l'Advanced%20Encryption,degli%20Stati%20Uniti%20d'America.) method through the [crypto++](https://github.com/abdes/cryptopp-cmake) library and a generated random key of lenght 100 alpha-numerical characters is used for encryption and decryption operations. The encrypted password and the key are then saved into a configuration file hidden in the system.
 
 At every login the user password is required and it is verified the matching among it and the user password of the configuration file, which for this occasion is decrypted using the previously mentioned algorithm and the saved key.
 
@@ -180,7 +180,6 @@ Other states are:
 
 - Add setup to password recovery in case of troubles.
 - Add possibility to change the app password.
-- Add (maybe) animations in transitions among states.
 
 ## Credits
 

@@ -168,7 +168,7 @@ namespace kmanager::utility{
      * @brief Return value of "message" variable.
      * 
      */
-    std::string_view Crypto::getMessage() const {
+    std::string Crypto::getMessage() const {
         return this -> message;
     }    
 
@@ -179,7 +179,7 @@ namespace kmanager::utility{
      * @brief Return value of "key" variable.
      * 
      */
-    std::string_view Crypto::getKey() const {
+    std::string Crypto::getKey() const {
         return this -> key;
     }
 

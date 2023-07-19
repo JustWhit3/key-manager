@@ -51,8 +51,8 @@ namespace kmanager::utility{
             void clear();
 
             // Getters
-            std::string_view getMessage() const;
-            std::string_view getKey() const;
+            std::string getMessage() const;
+            std::string getKey() const;
 
             // Setters
             void setMessage( std::string_view message );

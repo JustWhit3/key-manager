@@ -260,11 +260,8 @@ namespace kmanager::state{
     void LoginState::login(){
         
         // Read encrypted texts
-        std::string key, password;
-        std::ifstream input( this -> key_file.str() );
-        std::getline( input, password );
-        std::getline( input, key );
-        input.close();
+        std::string password = this -> settings.value( "Password" ).toString().toStdString();
+        std::string key = this -> settings.value( "Key" ).toString().toStdString();
         utility::Crypto crypto( password, key );
 
         // Analyze cases

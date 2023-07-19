@@ -19,6 +19,7 @@
 #include <QStateMachine>
 #include <QString>
 #include <QChar>
+#include <QCoreApplication>
 
 // STD
 #include <ctime>
@@ -37,18 +38,9 @@ namespace kmanager::state{
      * @param parent The parent state (if there is one).
      */
     BaseState::BaseState( QState *parent ): 
-        QState( parent ){
+        QState( parent ),
+        settings( QCoreApplication::applicationName() ){
 
-        // Define the key file
-        #ifdef _WIN32
-            this -> key_file << "C:\\Users\\" 
-                                 << this -> username 
-                                 << "\\.key-manager_files\\.key";
-        #else
-            this -> key_file << "/home/" 
-                                 << this -> username 
-                                 << "/.key-manager_files/.key";
-        #endif
     }
 
     //====================================================

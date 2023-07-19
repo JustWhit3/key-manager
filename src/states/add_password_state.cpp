@@ -254,11 +254,7 @@ namespace kmanager::state{
         this -> new_password.username = this -> username_textbox -> text();
 
         // Prepare encryption of username and password data
-        std::string key, password;
-        std::ifstream input( this -> key_file.str() );
-        std::getline( input, password );
-        std::getline( input, key );
-        input.close();
+        std::string key = this -> settings.value( "Key" ).toString().toStdString();
         utility::Crypto crypto_password( this -> new_password.password_str.toStdString(), key );
         utility::Crypto crypto_username( this -> new_password.username.toStdString(), key );
 

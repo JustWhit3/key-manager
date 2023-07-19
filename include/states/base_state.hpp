@@ -21,6 +21,7 @@
 
 // Qt
 #include <QState>
+#include <QSettings>
 
 // STD
 #include <sstream>
@@ -54,7 +55,7 @@ namespace kmanager::state{
             QString evaluatePasswordStrength( const QString& password );
 
             // Variables
-            std::ostringstream key_file;
+            QSettings settings;
 
             // Constants
             const std::string username{ std::getenv( "USERNAME" ) };

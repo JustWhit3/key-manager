@@ -351,10 +351,7 @@ namespace kmanager::state{
             this -> current_password.platform = json_obj.value( QString( "Platform / Website" ) ).toString();
 
             // Read encrypted username and password data
-            std::ifstream input( this -> key_file.str() );
-            std::getline( input, this -> file_password );
-            std::getline( input, this -> file_key );
-            input.close();
+            this -> file_key = this -> settings.value( "Key" ).toString().toStdString();
             utility::Crypto crypto_password( json_obj.value( QString( "Password" ) ).toString().toStdString(), this -> file_key );
             utility::Crypto crypto_username( json_obj.value( QString( "Username" ) ).toString().toStdString(), this -> file_key );
             this -> current_password.username = QString::fromStdString( crypto_username.decrypt() );
@@ -709,13 +706,9 @@ namespace kmanager::state{
                     iStream.setEncoding( QStringConverter::Utf8 );
 
                     // Prepare encryption of username and password data
-                    std::string key, password;
-                    std::ifstream input( this -> key_file.str() );
-                    std::getline( input, password );
-                    std::getline( input, key );
-                    input.close();
-                    utility::Crypto crypto_password( el.password_str -> text().toStdString(), key );
-                    utility::Crypto crypto_username( el.username -> text().toStdString(), key );
+                    this -> file_key = this -> settings.value( "Key" ).toString().toStdString();
+                    utility::Crypto crypto_password( el.password_str -> text().toStdString(), this -> file_key );
+                    utility::Crypto crypto_username( el.username -> text().toStdString(), this -> file_key );
 
                     // Json object settings
                     QJsonObject main_container;

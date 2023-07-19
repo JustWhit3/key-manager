@@ -50,17 +50,6 @@ namespace kmanager::state{
         BaseState( parent ),
         host( host ){
 
-        // Get login key path
-        #ifdef _WIN32
-            this -> login_key_file << "C:\\Users\\" 
-                                 << this -> username 
-                                 << "\\.key-manager_files\\.key";
-        #else
-            this -> login_key_file << "/home/" 
-                                 << this -> username 
-                                 << "/.key-manager_files/.key";
-        #endif
-    
         // Create widgets
         this -> addWidgets();
 
@@ -357,15 +346,9 @@ namespace kmanager::state{
 
         // Successful case
         else{
-            
-            // Encrypt the password
             utility::Crypto crypto( this -> enter_password_first -> text().toStdString() );
-
-            // Save encrypted password
-            std::ofstream output( this -> login_key_file.str() );
-            output << crypto.encrypt() << "\n";
-            output << crypto.getKey() << "\n";
-            output.close();
+            this -> settings.setValue( "Password", QString::fromStdString( crypto.encrypt() ) );
+            this -> settings.setValue( "Key", QString::fromStdString( crypto.getKey() ) );
             emit this -> save_password_successful( true );
         }
     }

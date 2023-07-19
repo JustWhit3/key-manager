@@ -82,9 +82,6 @@ namespace kmanager::state{
             void addWidgets() override;
             void assignProperties() override;
 
-            // Variables
-            std::ostringstream login_key_file;
-
             // Constants
             const uint32_t width{ 270 };
             const uint32_t height{ 70 };
