@@ -16,7 +16,7 @@ if( EXISTS "${LOC_PATH}" )
 endif()
 
 # Fetch the package
-find_package( doctest REQUIRED )
+find_package( doctest )
 
 if( NOT doctest_FOUND )
     include(FetchContent)

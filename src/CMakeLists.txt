@@ -62,7 +62,7 @@ find_package( Qt6 6.4.2 CONFIG REQUIRED COMPONENTS Core Widgets StateMachine )
 target_link_libraries( ${APP} PRIVATE Qt::Core Qt::Widgets Qt::StateMachine )
 
 # Link to crypto++
-find_package( cryptopp 8.8.0 REQUIRED )
+find_package( cryptopp 8.8.0 CONFIG )
 target_link_libraries( ${APP} PRIVATE cryptopp::cryptopp )
 
 # Install

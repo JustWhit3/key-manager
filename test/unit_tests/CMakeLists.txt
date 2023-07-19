@@ -46,5 +46,5 @@ find_package( doctest )
 target_link_libraries( ${UNIT} PUBLIC doctest::doctest )
 
 # Link to crypto++
-find_package( cryptopp 8.8.0 REQUIRED )
+find_package( cryptopp 8.8.0 CONFIG )
 target_link_libraries( ${UNIT} PRIVATE cryptopp::cryptopp )

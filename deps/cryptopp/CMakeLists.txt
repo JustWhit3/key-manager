@@ -16,7 +16,7 @@ if( EXISTS "${LOC_PATH}" )
 endif()
 
 # Try finding Crypto++ using find_package
-find_package( cryptopp 8.8.0 REQUIRED )
+find_package( cryptopp 8.8.0 )
 
 # If Crypto++ is not found, fetch cryptopp-cmake repository
 if( NOT cryptopp_FOUND )
@@ -30,7 +30,7 @@ if( NOT cryptopp_FOUND )
     message( STATUS "Fetching crypto++ 8.8.0..." )
     set( CRYPTOPP_INCLUDE_PREFIX "cryptopp" )
     cpmaddpackage(
-        NAME cryptopp
+        NAME cryptopp-cmake
         GIT_REPOSITORY https://github.com./abdes/cryptopp-cmake
         GIT_TAG v8.8.0
         OPTIONS "CRYPTOPP_BUILD_TESTING OFF" "CRYPTOPP_INSTALL ON"
