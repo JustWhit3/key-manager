@@ -174,7 +174,7 @@ Other states are:
 
 <p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/login_state.png" width = "500"></p>
 
-- Set new password state: work in progress.
+Other states will not be shown but could be observed directly through the app.
 
 ## Todo
 
