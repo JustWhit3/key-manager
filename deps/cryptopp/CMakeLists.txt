@@ -30,7 +30,7 @@ if( NOT cryptopp_FOUND )
     message( STATUS "Fetching crypto++ 8.8.0..." )
     set( CRYPTOPP_INCLUDE_PREFIX "cryptopp" )
     cpmaddpackage(
-        NAME cryptopp-cmake
+        NAME cryptopp
         GIT_REPOSITORY https://github.com./abdes/cryptopp-cmake
         GIT_TAG v8.8.0
         OPTIONS "CRYPTOPP_BUILD_TESTING OFF" "CRYPTOPP_INSTALL ON"
