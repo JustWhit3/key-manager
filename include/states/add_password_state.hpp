@@ -97,7 +97,7 @@ namespace kmanager::state{
             QFile json_doc_file;
 
             // Constants
-            const QString widget_font_size{ "font-size: 20px" };
+            static constexpr const char* widget_font_size{ "font-size: 20px" };
 
         //====================================================
         //     Private slots

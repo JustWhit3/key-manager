@@ -79,12 +79,9 @@ namespace kmanager::state{
             QIcon change_password_icon;
 
             // Constants
-            const QString button_style{ 
-                "font-size: 20px;"
-	            "border-radius: 11px;"
-            };
-            const uint32_t button_width{ 220 };
-            const uint32_t button_height{ 70 };
+            static const QString button_style;
+            static const uint32_t button_width{ 220 };
+            static const uint32_t button_height{ 70 };
     };
 }
 

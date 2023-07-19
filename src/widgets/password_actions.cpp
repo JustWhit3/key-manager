@@ -39,7 +39,10 @@ namespace kmanager::widget{
                 BaseWidget( parent ),
                 deleteMe( false ),
                 saveMySettings( false ),
-                seeMyInfo( false ){
+                seeMyInfo( false ),
+                first_widget( nullptr ),
+                second_widget( nullptr ),
+                third_widget( nullptr ){
         
         // Initialize widget properties
         this -> initWidgetProperties();

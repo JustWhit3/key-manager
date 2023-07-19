@@ -23,6 +23,16 @@
 namespace kmanager::widget{
 
     //====================================================
+    //     Variables
+    //====================================================
+    const QString CustomQLineEdit::default_settings{ 
+        "background-color: rgba( 255, 255, 255, 0% ); padding: 8%;" 
+    };
+    const QString CustomQLineEdit::hover_settings{ 
+        "background-color: rgba( 255, 255, 255, 0% ); padding: 8%; border-color: rgb(255, 255, 255);" 
+    };
+
+    //====================================================
     //     CustomQLineEdit (constructor)
     //====================================================
     /**
@@ -32,6 +42,8 @@ namespace kmanager::widget{
      */
     CustomQLineEdit::CustomQLineEdit( const QString& contents, QWidget *parent ): 
         QLineEdit( contents, parent ),
+        first_widget(nullptr),
+        second_widget(nullptr),
         old_label( "" ){
 
         // Init base properties

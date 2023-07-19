@@ -33,7 +33,7 @@
 #include <QStateMachine>
 
 // STD
-#include <map>
+#include <unordered_map>
 #include <string>
 
 namespace kmanager::window{
@@ -46,7 +46,7 @@ namespace kmanager::window{
      * 
      * @param parent The parent widget (if there is one).
      */
-    AddPasswordWindow::AddPasswordWindow( int16_t window_height, std::map<std::string, std::string> info_map, QWidget *parent ): 
+    AddPasswordWindow::AddPasswordWindow( int16_t window_height, std::unordered_map<std::string, std::string> info_map, QWidget *parent ): 
         window_height( window_height ),
         info_map( info_map ),
         BaseWindow( parent ){

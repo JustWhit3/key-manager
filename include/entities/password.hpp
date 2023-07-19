@@ -29,7 +29,7 @@
 #include <QLayout>
 
 // STD
-#include <map>
+#include <unordered_map>
 #include <string>
 
 namespace kmanager::entity{
@@ -77,9 +77,9 @@ namespace kmanager::entity{
             /**
              * @brief Retrieve basic information about the password. Useful in order to pass information without requiring to pass the entire object.
              * 
-             * @return const std::map<std::string, std::string> the vector of password information.
+             * @return const std::unordered_map<std::string, std::string> the vector of password information.
              */
-            const std::map<std::string, std::string> retrieveInfo() const {
+            const std::unordered_map<std::string, std::string> retrieveInfo() const {
                 return {
                     { "password", this -> password_str -> text().toStdString() },
                     { "platform", this -> platform -> text().toStdString() },

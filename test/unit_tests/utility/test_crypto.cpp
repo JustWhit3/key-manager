@@ -83,10 +83,10 @@ TEST_CASE( "Test Crypto encryption and decryption with invalid key" ) {
 
     // Encrypt the message with an invalid key
     std::string encrypted = crypto.encrypt();
-    CHECK( encrypted == encrypted );
+    CHECK( encrypted == "" );
 
     // Decrypt the encrypted message using an invalid key
     crypto.setMessage( encrypted );
     std::string decrypted = crypto.decrypt();
-    CHECK( decrypted == decrypted );
+    CHECK( decrypted == "" );
 }

@@ -81,7 +81,7 @@ namespace kmanager::utility{
 
         // Case for empty key
         if ( ! this -> key.size() ) {
-            return this -> message;
+            return "";
         }
 
         // Try to perform encryption
@@ -114,7 +114,7 @@ namespace kmanager::utility{
             return encodedCiphertext;
         } 
         catch ( const std::exception& e ) {
-            return this -> message;
+            return "";
         }        
     }
 
@@ -129,7 +129,7 @@ namespace kmanager::utility{
 
         // Case for empty key
         if ( ! this -> key.size() ) {
-            return this -> message;
+            return "";
         }
 
         // Try to perform decryption
@@ -159,7 +159,7 @@ namespace kmanager::utility{
             return decrypted;
         }
         catch ( const std::exception& e ) {
-            return this -> message;
+            return "";
         }     
     }
 

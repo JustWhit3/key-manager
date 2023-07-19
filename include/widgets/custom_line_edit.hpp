@@ -56,12 +56,8 @@ namespace kmanager::widget{
             void keyPressEvent( QKeyEvent *event ) override;
 
             // Constants
-            const QString default_settings{ 
-                "background-color: rgba( 255, 255, 255, 0% ); padding: 8%;" 
-            };
-            const QString hover_settings{ 
-                "background-color: rgba( 255, 255, 255, 0% ); padding: 8%; border-color: rgb(255, 255, 255);" 
-            };
+            static const QString default_settings;
+            static const QString hover_settings;
     };
 }
 

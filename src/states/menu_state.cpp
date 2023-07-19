@@ -33,6 +33,15 @@
 
 namespace kmanager::state{
 
+
+    //====================================================
+    //     Initialize constants
+    //====================================================
+    const QString MenuState::button_style{ 
+        "font-size: 20px;"
+	    "border-radius: 11px;"
+    };
+
     //====================================================
     //     MenuState (default constructor)
     //====================================================

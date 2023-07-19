@@ -41,8 +41,8 @@ namespace kmanager::utility{
         public:
 
             // Constructors / destructor
-            Crypto( std::string_view message, std::string_view key );
-            Crypto( std::string_view message );
+            explicit Crypto( std::string_view message, std::string_view key );
+            explicit Crypto( std::string_view message );
             ~Crypto();
 
             // Methods

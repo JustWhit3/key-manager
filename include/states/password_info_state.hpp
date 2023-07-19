@@ -32,7 +32,7 @@
 #include <QCheckBox>
 
 // STD
-#include <map>
+#include <unordered_map>
 #include <string>
 #include <sstream>
 
@@ -56,7 +56,11 @@ namespace kmanager::state{
         public:
 
             // Constructors / destructor
-            explicit PasswordInfoState( QWidget* host, std::map<std::string, std::string> info_map, QState *parent = nullptr );
+            explicit PasswordInfoState( 
+                QWidget* host, 
+                std::unordered_map<std::string, std::string> info_map, 
+                QState *parent = nullptr 
+            );
             ~PasswordInfoState();
 
             // Variables (widgets)
@@ -89,10 +93,10 @@ namespace kmanager::state{
             void assignProperties() override;
 
             // Variables
-            std::map<std::string, std::string> info_map;
+            std::unordered_map<std::string, std::string> info_map;
 
             // Constants
-            const QString widget_font_size{ "font-size: 20px" };
+            static const QString widget_font_size;
     };
 }
 

@@ -56,7 +56,7 @@ namespace kmanager::widget{
     //     initWidgetProperties
     //====================================================
     /**
-     * @brief Initialize basic widgets properties.
+     * @brief Initialize basic widgets properties. The password_label variable is initialized outside the class.
      * 
      */
     void PasswordToggle::initWidgetProperties(){

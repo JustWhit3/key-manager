@@ -24,10 +24,15 @@
 #include <QGridLayout>
 
 // STD
-#include <map>
+#include <unordered_map>
 #include <string>
 
 namespace kmanager::state{
+
+    //====================================================
+    //     Constants
+    //====================================================
+    const QString PasswordInfoState::widget_font_size{ "font-size: 20px" };
 
     //====================================================
     //     PasswordInfoState (default constructor)
@@ -37,7 +42,7 @@ namespace kmanager::state{
      * 
      * @param parent The parent state (if there is one).
      */
-    PasswordInfoState::PasswordInfoState( QWidget *host, std::map<std::string, std::string> info_map, QState *parent ): 
+    PasswordInfoState::PasswordInfoState( QWidget *host, std::unordered_map<std::string, std::string> info_map, QState *parent ): 
         info_map( info_map ),
         BaseState( parent ),
         host( host ){
