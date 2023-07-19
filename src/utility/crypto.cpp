@@ -84,31 +84,38 @@ namespace kmanager::utility{
             return this -> message;
         }
 
-        // AES Encryption
-        CryptoPP::byte iv[ CryptoPP::AES::BLOCKSIZE ];
-        CryptoPP::OS_GenerateRandomBlock( true, iv, CryptoPP::AES::BLOCKSIZE );
+        // Try to perform encryption
+        try{
 
-        std::string ciphertext;
-        CryptoPP::AES::Encryption aesEncryption( reinterpret_cast<const CryptoPP::byte*>( this -> key.data() ), CryptoPP::AES::MAX_KEYLENGTH);
-        CryptoPP::CBC_Mode_ExternalCipher::Encryption cbcEncryption( aesEncryption, iv );
+            // AES Encryption
+            CryptoPP::byte iv[ CryptoPP::AES::BLOCKSIZE ];
+            CryptoPP::OS_GenerateRandomBlock( true, iv, CryptoPP::AES::BLOCKSIZE );
 
-        CryptoPP::StringSource( this->message.data(), true,
-            new CryptoPP::StreamTransformationFilter(cbcEncryption,
-                new CryptoPP::StringSink( ciphertext ) ) );
+            std::string ciphertext;
+            CryptoPP::AES::Encryption aesEncryption( reinterpret_cast<const CryptoPP::byte*>( this -> key.data() ), CryptoPP::AES::MAX_KEYLENGTH);
+            CryptoPP::CBC_Mode_ExternalCipher::Encryption cbcEncryption( aesEncryption, iv );
 
-        // Prepend the IV to the ciphertext
-        ciphertext = std::string( reinterpret_cast<const char*>( iv ), CryptoPP::AES::BLOCKSIZE ) + ciphertext;
+            CryptoPP::StringSource( this->message.data(), true,
+                new CryptoPP::StreamTransformationFilter(cbcEncryption,
+                    new CryptoPP::StringSink( ciphertext ) ) );
 
-        // Base64 encode the ciphertext and IV
-        std::string encodedCiphertext;
-        CryptoPP::StringSource( ciphertext, true,
-            new CryptoPP::Base64Encoder(
-                new CryptoPP::StringSink( encodedCiphertext ),
-                false
-            )
-        );
+            // Prepend the IV to the ciphertext
+            ciphertext = std::string( reinterpret_cast<const char*>( iv ), CryptoPP::AES::BLOCKSIZE ) + ciphertext;
 
-        return encodedCiphertext;
+            // Base64 encode the ciphertext and IV
+            std::string encodedCiphertext;
+            CryptoPP::StringSource( ciphertext, true,
+                new CryptoPP::Base64Encoder(
+                    new CryptoPP::StringSink( encodedCiphertext ),
+                    false
+                )
+            );
+
+            return encodedCiphertext;
+        } 
+        catch ( const std::exception& e ) {
+            return this -> message;
+        }        
     }
 
     //====================================================
@@ -122,31 +129,38 @@ namespace kmanager::utility{
 
         // Case for empty key
         if ( ! this -> key.size() ) {
-            return this->message;
+            return this -> message;
         }
 
-        // Base64 decode the input message
-        std::string decodedMessage;
-        CryptoPP::StringSource( this->message, true,
-            new CryptoPP::Base64Decoder(
-                new CryptoPP::StringSink( decodedMessage )
-            )
-        );
+        // Try to perform decryption
+        try{
 
-        // Extract the IV from the beginning of the ciphertext
-        CryptoPP::byte iv[ CryptoPP::AES::BLOCKSIZE ];
-        std::string ciphertextWithoutIV = decodedMessage.substr( CryptoPP::AES::BLOCKSIZE );
-        decodedMessage.copy( reinterpret_cast<char*>( iv ), CryptoPP::AES::BLOCKSIZE, 0 );
+            // Base64 decode the input message
+            std::string decodedMessage;
+            CryptoPP::StringSource( this->message, true,
+                new CryptoPP::Base64Decoder(
+                    new CryptoPP::StringSink( decodedMessage )
+                )
+            );
 
-        std::string decrypted;
-        CryptoPP::AES::Decryption aesDecryption( reinterpret_cast<const CryptoPP::byte*>( this->key.data() ), CryptoPP::AES::MAX_KEYLENGTH );
-        CryptoPP::CBC_Mode_ExternalCipher::Decryption cbcDecryption( aesDecryption, iv );
+            // Extract the IV from the beginning of the ciphertext
+            CryptoPP::byte iv[ CryptoPP::AES::BLOCKSIZE ];
+            std::string ciphertextWithoutIV = decodedMessage.substr( CryptoPP::AES::BLOCKSIZE );
+            decodedMessage.copy( reinterpret_cast<char*>( iv ), CryptoPP::AES::BLOCKSIZE, 0 );
 
-        CryptoPP::StringSource( ciphertextWithoutIV.data(), true,
-            new CryptoPP::StreamTransformationFilter( cbcDecryption,
-                new CryptoPP::StringSink( decrypted ) ) );
+            std::string decrypted;
+            CryptoPP::AES::Decryption aesDecryption( reinterpret_cast<const CryptoPP::byte*>( this->key.data() ), CryptoPP::AES::MAX_KEYLENGTH );
+            CryptoPP::CBC_Mode_ExternalCipher::Decryption cbcDecryption( aesDecryption, iv );
 
-        return decrypted;
+            CryptoPP::StringSource( ciphertextWithoutIV.data(), true,
+                new CryptoPP::StreamTransformationFilter( cbcDecryption,
+                    new CryptoPP::StringSink( decrypted ) ) );
+
+            return decrypted;
+        }
+        catch ( const std::exception& e ) {
+            return this -> message;
+        }     
     }
 
     //====================================================

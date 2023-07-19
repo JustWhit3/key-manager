@@ -68,3 +68,25 @@ TEST_CASE( "Test Crypto random key generation" ) {
     std::string_view generatedKey = crypto.getKey();
     CHECK( generatedKey.size() == 100 );
 }
+
+//====================================================
+//     Test encryption and decryption with invalid key
+//====================================================
+TEST_CASE( "Test Crypto encryption and decryption with invalid key" ) {
+
+    // Test message and an empty key (invalid)
+    std::string_view message = "Hello, world!";
+    std::string_view invalidKey = "";
+
+    // Create a Crypto object with an invalid key
+    kmanager::utility::Crypto crypto( message, invalidKey );
+
+    // Encrypt the message with an invalid key
+    std::string encrypted = crypto.encrypt();
+    CHECK( encrypted == encrypted );
+
+    // Decrypt the encrypted message using an invalid key
+    crypto.setMessage( encrypted );
+    std::string decrypted = crypto.decrypt();
+    CHECK( decrypted == decrypted );
+}
