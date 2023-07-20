@@ -20,6 +20,9 @@
 #include <states/add_password_state.hpp>
 #include <states/password_info_state.hpp>
 
+// Utility
+#include <utility/generic.hpp>
+
 // Qt
 #include <QWidget>
 #include <QApplication>
@@ -86,7 +89,7 @@ namespace kmanager::window{
         }
         this -> setWindowState( Qt::WindowActive );
         this -> windowHandle() -> setScreen( qApp -> screens()[0] );
-        this -> setWindowIcon( QIcon( "img/icons/app_icon.png" ) );
+        this -> setWindowIcon( QIcon( utility::getRealImgPath( "img/icons/app_icon.png" ) ) );
         this -> setFixedSize( 650, window_height );
         this -> move(
             ( qApp -> screens()[0] -> geometry().width() - this->width() ) * 0.5f,

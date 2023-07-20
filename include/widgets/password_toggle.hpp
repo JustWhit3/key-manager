@@ -73,12 +73,10 @@ namespace kmanager::widget{
             bool styled;
 
             // Constants
-            const QString default_settings{ 
-                "background-color: rgba( 255, 255, 255, 0% );" 
-            };
-            const QString hover_settings{ 
-                "background-color: rgba( 255, 255, 255, 0% ); border-color: rgb(255, 255, 255);" 
-            };
+            static const QString default_settings;
+            static const QString hover_settings;
+            static const QString checkbox_style_1;
+            static const QString checkbox_style_2;
 
         //====================================================
         //     private slots

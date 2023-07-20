@@ -18,6 +18,7 @@
 
 // Utility
 #include <utility/crypto.hpp>
+#include <utility/generic.hpp>
 
 // Qt
 #include <QState>
@@ -32,6 +33,7 @@
 #include <QWidget>
 #include <QPixmap>
 #include <QSize>
+#include <QString>
 
 // STD
 #include <fstream>
@@ -39,6 +41,18 @@
 #include <string_view>
 
 namespace kmanager::state{
+
+    //====================================================
+    //     Constants
+    //====================================================
+    const QString SetPasswordState::checkbox_first_style = 
+        "QCheckBox::indicator:unchecked { image: url(" + utility::getRealImgPath( "img/hide.png" ) + "); }"
+        "QCheckBox::indicator:checked { image: url(" + utility::getRealImgPath( "img/eye.png" ) + "); }"
+        "QCheckBox::indicator { width: 35px; height: 35px; background-color: #38394e; }";
+    const QString SetPasswordState::checkbox_second_style = 
+        "QCheckBox::indicator:unchecked { image: url(" + utility::getRealImgPath( "img/hide.png" ) + "); }"
+        "QCheckBox::indicator:checked { image: url(" + utility::getRealImgPath( "img/eye.png" ) + "); }"
+        "QCheckBox::indicator { width: 35px; height: 35px; background-color: #38394e; }";
 
     //====================================================
     //     SetPasswordState (default constructor)
@@ -178,12 +192,7 @@ namespace kmanager::state{
             new QCheckBox( this -> host ) 
         );
         this -> checkbox_first -> setVisible( false );
-        this -> checkbox_first -> setStyleSheet( 
-            "QCheckBox::indicator:unchecked { image: url(img/icons/hide.png); }" 
-            "QCheckBox::indicator:checked { image: url(img/icons/eye.png); }"
-            "QCheckBox::indicator { width: 35px; height: 35px; background-color: #38394e; }"
-            
-        );
+        this -> checkbox_first -> setStyleSheet( this -> checkbox_first_style );
         this -> checkbox_first -> move(
             ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
                 this -> checkbox_first -> mapToGlobal( this -> checkbox_first -> geometry().center() ).x() ) * 1.29f,
@@ -204,12 +213,7 @@ namespace kmanager::state{
             new QCheckBox( this -> host ) 
         );
         this -> checkbox_second -> setVisible( false );
-        this -> checkbox_second -> setStyleSheet( 
-            "QCheckBox::indicator:unchecked { image: url(img/icons/hide.png); }" 
-            "QCheckBox::indicator:checked { image: url(img/icons/eye.png); }"
-            "QCheckBox::indicator { width: 35px; height: 35px; background-color: #38394e; }"
-            
-        );
+        this -> checkbox_second -> setStyleSheet( this -> checkbox_second_style );
         this -> checkbox_second -> move(
             ( this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() - 
                 this -> checkbox_second -> mapToGlobal( this -> checkbox_second -> geometry().center() ).x() ) * 1.29f,
@@ -253,7 +257,7 @@ namespace kmanager::state{
             new QLabel( this -> host )
         );
         this -> user_img_label -> setVisible( false );
-        this -> user_img_label -> setPixmap( QPixmap( "img/icons/user.png" ) );
+        this -> user_img_label -> setPixmap( QPixmap( utility::getRealImgPath( "img/user.png" ) ) );
         this -> user_img_label -> move(
             this -> enter_password_second -> geometry().x() + 33.f,
             this -> enter_password_label -> geometry().y() * 0.4f

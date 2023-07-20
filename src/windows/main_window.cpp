@@ -23,6 +23,9 @@
 #include <windows/base_window.hpp>
 #include <windows/main_window.hpp>
 
+// Utility
+#include <utility/generic.hpp>
+
 // Qt
 #include <QWidget>
 #include <QApplication>
@@ -97,7 +100,7 @@ namespace kmanager::window{
         this -> setWindowTitle( "Key Manager" );
         this -> setWindowState( Qt::WindowActive );
         this -> windowHandle() -> setScreen( qApp -> screens()[0] );
-        this -> setWindowIcon( QIcon( "img/icons/app_icon.png" ) );
+        this -> setWindowIcon( QIcon( utility::getRealImgPath( "img/app_icon.png" ) ) );
         this -> setFixedSize( 1100,  qApp -> screens()[0] -> geometry().height() * 0.95f );
     }
 

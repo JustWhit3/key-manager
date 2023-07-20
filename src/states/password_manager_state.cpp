@@ -25,6 +25,7 @@
 
 // Utility
 #include <utility/crypto.hpp>
+#include <utility/generic.hpp>
 
 // Widgets
 #include <widgets/password_toggle.hpp>
@@ -251,7 +252,7 @@ namespace kmanager::state{
         this -> menu_button -> resize( this -> label_height * 2.f, this -> label_height * 2.f );
         this -> menu_button -> setStyleSheet( "font-size: 20px;");
         this -> menu_button -> move( 0.f, 1.f );
-        this -> menu_icon.addFile( "img/icons/home_icon.png" );
+        this -> menu_icon.addFile( utility::getRealImgPath( "img/home_icon.png" ) );
         this -> menu_button -> setIcon( this -> menu_icon );
         this -> menu_button -> setIconSize( QSize( this -> label_height, this -> label_height ) );
 
@@ -271,7 +272,7 @@ namespace kmanager::state{
             this -> menu_button -> geometry().x() + 101.f,
             this -> menu_button -> geometry().y()
         );
-        this -> add_password_icon.addFile( "img/icons/plus_icon.png" );
+        this -> add_password_icon.addFile( utility::getRealImgPath( "img/plus_icon.png" ) );
         this -> add_password_button -> setIcon( this -> add_password_icon );
         this -> add_password_button -> setIconSize( QSize( this -> label_height, this -> label_height ) );
 

@@ -30,6 +30,7 @@
 #include <QSharedPointer>
 #include <QObject>
 #include <QPushButton>
+#include <QString>
 
 // STD
 #include <cstdint>
@@ -82,6 +83,7 @@ namespace kmanager::state{
             // Constants
             const uint32_t width{ 270 };
             const uint32_t height{ 70 };
+            static const QString checkbox_style;
 
         //====================================================
         //     private slots

@@ -16,6 +16,10 @@
 #include <states/base_state.hpp>
 #include <states/menu_state.hpp>
 
+// Utils
+#include <utility/generic.hpp>
+#include <utility/generic.hpp>
+
 // Qt
 #include <QState>
 #include <QLabel>
@@ -138,7 +142,7 @@ namespace kmanager::state{
             this -> host -> mapToGlobal( this -> host -> geometry().center() ).x() * 1.84f,
             this -> host -> mapToGlobal( this -> host -> geometry().center() ).y() + 315.f
         );
-        this -> change_password_icon.addFile( "img/icons/user.png" );
+        this -> change_password_icon.addFile( utility::getRealImgPath( "img/user.png" ) );
         this -> change_password_button -> setIcon( this -> change_password_icon );
         this -> change_password_button -> setIconSize( QSize( this -> button_height, this -> button_height ) );
 
@@ -147,7 +151,7 @@ namespace kmanager::state{
             new QLabel( this -> host )
         );
         this -> logo_img_label -> setVisible( false );
-        this -> logo_img_label -> setPixmap( QPixmap( "img/images/logo_app.png" ) );
+        this -> logo_img_label -> setPixmap( QPixmap( utility::getRealImgPath( "img/logo_app.png" ) ) );
         this -> logo_img_label -> move(
             this -> p_manager_button -> geometry().x() * 0.86f,
             this -> p_manager_button -> geometry().y() * 0.2f
@@ -169,7 +173,7 @@ namespace kmanager::state{
 	        "border-color: #4a4c68;"
             "font-size: 20px;"
         );
-        QFile file( "html/metadata.html" );
+        QFile file( kmanager::utility::copyToSystem( "html/metadata.html" ) );
         file.open( QFile::ReadOnly );
         this -> side_rectangle -> setText( QLatin1String( file.readAll() ) );
         this -> side_rectangle -> setAlignment( Qt::AlignTop );

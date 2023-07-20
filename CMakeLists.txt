@@ -26,6 +26,14 @@ endif()
 # Fetching deps
 add_subdirectory( deps )
 
+# Copy configuration files
+message( STATUS "Copy configuration files in the system location." )
+execute_process(
+    COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/scripts/copy_files.sh
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    RESULT_VARIABLE SCRIPT_RESULT
+)
+
 # Qt paths
 set( QT_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/_deps/qt6/qt6-build/qtbase" )
 set( ENV{QTDIR} ${QT_BUILD_DIR} )

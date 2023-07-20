@@ -20,6 +20,7 @@
 #include <QStandardPaths>
 #include <QDir>
 #include <QFile>
+#include <QFileInfoList>
 
 namespace kmanager::utility{
 
@@ -49,5 +50,61 @@ namespace kmanager::utility{
         }
 
         return destinationFilePath;
+    }
+
+    //====================================================
+    //     copyToSystem
+    //====================================================
+    /**
+     * @brief Copy a directory into the app system location.
+     * 
+     * @param sourceDir The directory to be copied.
+     */
+    void copyDirectory( const QString& sourceDir, const QString& extra_info ){
+
+        // Variables
+        QDir sourceDirectory( sourceDir );
+        QString extra_path = "";
+        if( extra_info.isEmpty() ){
+            extra_path = "";
+        } else {
+            extra_path = extra_info + QDir::separator().toLatin1();
+        }
+        QDir destinationDirectory( 
+            QStandardPaths::writableLocation( QStandardPaths::AppDataLocation ) + QDir::separator() + extra_path + "img"
+        );
+        QFileInfoList fileList = sourceDirectory.entryInfoList(QDir::Files | QDir::Dirs | QDir::NoDotAndDotDot);
+
+        // Create the destination dir if it doesn't exist
+        if ( ! destinationDirectory.exists() ) {
+            destinationDirectory.mkpath( "." );
+        }
+        
+        // Copy files of the sourceDir
+        foreach ( const QFileInfo& fileInfo, fileList ) {
+            QString srcFilePath = fileInfo.filePath();
+            QString destFilePath = destinationDirectory.filePath( fileInfo.fileName() );
+
+            if ( fileInfo.isDir() ) copyDirectory( srcFilePath, extra_info );
+            else QFile::copy( srcFilePath, destFilePath );
+        }
+    }
+
+    //====================================================
+    //     getRealImgPath
+    //====================================================
+    /**
+     * @brief Get the real path of an image, based on the application system path.
+     * 
+     * @param img The image which path should be given.
+     * @return QString The real application system path of the image.
+     */
+    QString getRealImgPath( const QString& img ){
+        QString appDataLocation = QStandardPaths::writableLocation( QStandardPaths::AppDataLocation );
+        if( appDataLocation.contains( "key-manager" ) ){
+            return appDataLocation + QDir::separator() + img;
+        } else {
+            return appDataLocation + QDir::separator() + "key-manager" + QDir::separator() + img;
+        }
     }
 }

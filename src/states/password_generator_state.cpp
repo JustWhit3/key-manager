@@ -17,6 +17,9 @@
 #include <states/menu_state.hpp>
 #include <states/password_generator_state.hpp>
 
+// Utility
+#include <utility/generic.hpp>
+
 // Qt
 #include <QSharedPointer>
 #include <QLabel>
@@ -143,7 +146,7 @@ namespace kmanager::state{
         this -> menu_button -> resize( 100.f, 100.f );
         this -> menu_button -> setStyleSheet( "font-size: 20px;");
         this -> menu_button -> move( 0.f, 1.f );
-        this -> menu_icon.addFile( "img/icons/home_icon.png" );
+        this -> menu_icon.addFile( utility::getRealImgPath( "img/home_icon.png" ) );
         this -> menu_button -> setIcon( this -> menu_icon );
         this -> menu_button -> setIconSize( QSize( 50.f, 50.f ) );
 
@@ -174,7 +177,7 @@ namespace kmanager::state{
         this -> generate_button -> setVisible( false );
         this -> generate_button -> resize( 70.f, 70.f );
         this -> generate_button -> setStyleSheet( "font-size: 20px;");
-        this -> generate_icon.addFile( "img/icons/refresh_icon.png" );
+        this -> generate_icon.addFile( utility::getRealImgPath( "img/refresh_icon.png" ) );
         this -> generate_button -> setIcon( this -> generate_icon );
         this -> generate_button -> setIconSize( QSize( 35.f, 35.f ) );
         this -> generate_button -> move(
@@ -198,7 +201,7 @@ namespace kmanager::state{
             "QPushButton::hover { background-color: rgba(255, 255, 255, 50); }"
             "QPushButton::pressed { background-color: rgba(255, 255, 255, 70); }"
         );
-        this -> copy_icon.addFile( "img/icons/copy.png" );
+        this -> copy_icon.addFile( utility::getRealImgPath( "img/copy.png" ) );
         this -> copy_button -> setIcon( this -> copy_icon );
         this -> copy_button -> setIconSize( QSize( 35.f, 35.f ) );
         this -> copy_button -> move(
@@ -409,7 +412,7 @@ namespace kmanager::state{
             new QLabel( this -> host -> host )
         );
         this -> lock_img -> setVisible( false );
-        this -> lock_img -> setPixmap( QPixmap( "img/icons/lock.png" ) );
+        this -> lock_img -> setPixmap( QPixmap( utility::getRealImgPath( "img/lock.png" ) ) );
         this -> lock_img -> move(
             this -> password_generator_label -> geometry().center().x() - this -> lock_img -> geometry().width() * 0.5f - 20.f,
             ( this -> password_generator_label -> geometry().center().y() - this -> lock_img -> geometry().height() * 0.5f ) * 0.55f

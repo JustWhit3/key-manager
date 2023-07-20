@@ -18,6 +18,7 @@
 
 // Utility
 #include <utility/crypto.hpp>
+#include <utility/generic.hpp>
 
 // Qt
 #include <QState>
@@ -36,6 +37,14 @@
 #include <string>
 
 namespace kmanager::state{
+
+    //====================================================
+    //     Constants
+    //====================================================
+    const QString LoginState::checkbox_style = 
+        "QCheckBox::indicator:unchecked { image: url(" + utility::getRealImgPath( "img/hide.png" ) + "); }"
+        "QCheckBox::indicator:checked { image: url(" + utility::getRealImgPath( "img/eye.png" ) + "); }"
+        "QCheckBox::indicator { width: 35px; height: 35px; background-color: #38394e; }";;
 
     //====================================================
     //     LoginState (default constructor)
@@ -146,12 +155,7 @@ namespace kmanager::state{
             new QCheckBox( this -> host ) 
         );
         this -> checkbox -> setVisible( false );
-        this -> checkbox -> setStyleSheet( 
-            "QCheckBox::indicator:unchecked { image: url(img/icons/hide.png); }" 
-            "QCheckBox::indicator:checked { image: url(img/icons/eye.png); }"
-            "QCheckBox::indicator { width: 35px; height: 35px; background-color: #38394e; }"
-            
-        );
+        this -> checkbox -> setStyleSheet( this -> checkbox_style );
         this -> checkbox -> move(
             ( this -> enter_password -> geometry().center().x() - this -> checkbox -> geometry().center().x() * 0.5f ) + 115.f,
             ( this -> enter_password -> geometry().center().y() - this -> checkbox -> geometry().center().y() * 0.5f ) - 7.8f
@@ -199,7 +203,7 @@ namespace kmanager::state{
             new QLabel( this -> host )
         );
         this -> user_img_label -> setVisible( false );
-        this -> user_img_label -> setPixmap( QPixmap( "img/icons/user.png" ) );
+        this -> user_img_label -> setPixmap( QPixmap( utility::getRealImgPath( "img/user.png" ) ) );
         this -> user_img_label -> move(
             this -> enter_password_label -> geometry().x() * 1.01f,
             this -> enter_password_label -> geometry().y() * 0.55f

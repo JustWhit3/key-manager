@@ -33,6 +33,9 @@ int main( int argc, char **argv ){
     // Create the app
     QApplication app( argc, argv );
 
+    // Copy the img directory into the system app directory
+    kmanager::utility::copyDirectory( "img" );
+
     // Set the app theme
     QFile theme_file( kmanager::utility::copyToSystem( "themes/Obit.qss" ) );
     theme_file.open( QFile::ReadOnly );

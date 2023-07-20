@@ -28,6 +28,8 @@ namespace kmanager::utility{
     //     Functions
     //====================================================
     extern QString copyToSystem( const QString& fileNameToCopy );
+    extern void copyDirectory( const QString& sourceDir, const QString& extra_info = "" );
+    extern QString getRealImgPath( const QString& img );
 }
 
 #endif

@@ -19,6 +19,9 @@
 // Widgets
 #include <widgets/password_toggle.hpp>
 
+// Utility
+#include <utility/generic.hpp>
+
 // Qt
 #include <QSharedPointer>
 #include <QLabel>
@@ -96,7 +99,7 @@ namespace kmanager::state{
             new QLabel( this -> host )
         );
         this -> key_img_label -> setVisible( false );
-        this -> key_img_label -> setPixmap( QPixmap( "img/icons/key.png" ) );
+        this -> key_img_label -> setPixmap( QPixmap( utility::getRealImgPath( "img/key.png" ) ) );
         this -> key_img_label -> move(
             this -> title -> geometry().x() + 320.f,
             this -> title -> geometry().y() - 20.f

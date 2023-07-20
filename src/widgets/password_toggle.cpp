@@ -16,6 +16,9 @@
 #include <widgets/base_widget.hpp>
 #include <widgets/password_toggle.hpp>
 
+// Utility
+#include <utility/generic.hpp>
+
 // Qt
 #include <QWidget>
 #include <QEvent>
@@ -26,6 +29,27 @@
 #include <QObject>
 
 namespace kmanager::widget{
+
+    //====================================================
+    //     Constants
+    //====================================================
+    const QString PasswordToggle::default_settings{ 
+        "background-color: rgba( 255, 255, 255, 0% );" 
+    };
+    const QString PasswordToggle::hover_settings{ 
+        "background-color: rgba( 255, 255, 255, 0% ); border-color: rgb(255, 255, 255);" 
+    };
+    const QString PasswordToggle::checkbox_style_1{
+        "QCheckBox::indicator:unchecked { image: url(" + utility::getRealImgPath( "img/hide.png" ) + "); }"
+        "QCheckBox::indicator:checked { image: url(" + utility::getRealImgPath( "img/eye.png" ) + "); }"
+        "QCheckBox::indicator { width: 25px; height: 25px; }"
+    };
+    const QString PasswordToggle::checkbox_style_2{
+        "QCheckBox::indicator:unchecked { image: url(" + utility::getRealImgPath( "img/hide.png" ) + "); }"
+        "QCheckBox::indicator:checked { image: url(" + utility::getRealImgPath( "img/eye.png" ) + "); }"
+        "QCheckBox::indicator { width: 35px; height: 35px; background-color: #38394e; }"
+    };
+
 
     //====================================================
     //     PasswordToggle (constructor)
@@ -70,20 +94,12 @@ namespace kmanager::widget{
         // Setup checkbox
         this -> checkbox = new QCheckBox( this );
         if( this -> styled == true ){
-            this -> checkbox -> setStyleSheet( 
-                "QCheckBox::indicator:unchecked { image: url(img/icons/hide.png); }" 
-                "QCheckBox::indicator:checked { image: url(img/icons/eye.png); }"
-                "QCheckBox::indicator { width: 25px; height: 25px; }"
-            );
+            this -> checkbox -> setStyleSheet( this -> checkbox_style_1 );
             this -> checkbox -> setFixedSize( 25, 25 );
             this -> checkbox -> move( 220.f, 6.f );
         }
         else{
-            this -> checkbox -> setStyleSheet( 
-                "QCheckBox::indicator:unchecked { image: url(img/icons/hide.png); }" 
-                "QCheckBox::indicator:checked { image: url(img/icons/eye.png); }"
-                "QCheckBox::indicator { width: 35px; height: 35px; background-color: #38394e; }"
-            );
+            this -> checkbox -> setStyleSheet( this -> checkbox_style_2 );
             this -> checkbox -> setFixedSize( 35, 35 );
             this -> checkbox -> move( 340.f, 7.f );
         }
