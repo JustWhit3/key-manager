@@ -45,7 +45,7 @@ The app offers two services.
 - [**Password management**](#password-manager-state): a password storage tool to safely lock information about given accounts (ex: platform, password, username, etc...). See the [corresponding paragraph](#how-passwords-are-protected) of this README for further information about how passwords are protected.
 - [**Password creation**](#password-generator-state): a tool to generate strong passwords based on several requirements chosen by the user (upper/lower letters only, length, etc...).
 
-All the passwords are saved into an hidden directory `~/.key-manager_files` created at the beginning of the first app run.
+All the passwords are saved into an hidden directory located into the system.
 
 All contributions are more than welcome. Before contributing, please look at the [contributing file](https://github.com/JustWhit3/key-manager/blob/main/CONTRIBUTING.md). To propose ideas post something in the [discussion page](https://github.com/JustWhit3/key-manager/discussions).
 
@@ -59,7 +59,7 @@ A login system is applied to the app and a new password setup is required during
 
 At every login the user password is required and it is verified the matching among it and the user password of the configuration file, which for this occasion is decrypted using the previously mentioned algorithm and the saved key.
 
-Once a new password is added to the database, it is saved into a [Json](https://it.wikipedia.org/wiki/JavaScript_Object_Notation) file located into the `~/.key-manager_files/passwords` directory, which is created at the first app run. Every password sensitive data (username and password itself) is encrypted using the previous algorithm and the saved key.
+Once a new password is added to the database, it is saved into a [Json](https://it.wikipedia.org/wiki/JavaScript_Object_Notation) file located into the `passwords` directory (which lies in the application data directory, located in the system), which is created at the first app run. Every password sensitive data (username and password itself) is encrypted using the previous algorithm and the saved key.
 
 Once a password is displayed into the [password manager state](#password-manager-state) it is decrypted and shown in the corresponding interface so only the logged user can see it. Passwords reading is also protected with a toggle system.
 
