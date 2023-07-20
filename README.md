@@ -47,7 +47,7 @@ The app offers two services.
 
 All the passwords are saved into an hidden directory `~/.key-manager_files` created at the beginning of the first app run.
 
-All contributions are more than welcome. Before contributing, please look at the [contributing file](https://github.com/JustWhit3/key-manager/blob/main/CONTRIBUTING.md) and pick one of the [todo items](#todo) of the list. To propose ideas post something in the [discussion page](https://github.com/JustWhit3/key-manager/discussions).
+All contributions are more than welcome. Before contributing, please look at the [contributing file](https://github.com/JustWhit3/key-manager/blob/main/CONTRIBUTING.md). To propose ideas post something in the [discussion page](https://github.com/JustWhit3/key-manager/discussions).
 
 The app is and will stay **free**, but if you want to support me with a donation it would be really appreciated!
 
@@ -73,7 +73,7 @@ Steps to be reproduced:
 
 **2)** Unzip and enter the downloaded repository directory.
 
-**3)** Install and compile the game and its dependencies:
+**3)** Install and compile the app and its dependencies:
 
 ```bash
 cmake -B build
@@ -92,10 +92,10 @@ sudo cmake --build build --target install
 Mandatory prerequisites:
 
 - C++20 standard
-- g++ compiler (developed on Ubuntu v22.04.1 with g++ v11.3.0)
+- g++ compiler (app developed on Ubuntu v22.04.1 with g++ v11.3.0)
 - [CMake](https://cmake.org/) (at least v3.15)
-- [Qt](https://www.qt.io/blog/qt-6.4.2-released) library (version 6.4.2), installed during the app installation.
-- [crypto++](https://github.com/abdes/cryptopp-cmake) library (version 8.8.0), installed during the app installation.
+- [Qt](https://www.qt.io/blog/qt-6.4.2-released) library (v6.4.2), installed during the app installation.
+- [crypto++](https://github.com/abdes/cryptopp-cmake) library (v8.8.0), installed during the app installation.
 
 To run the app:
 
@@ -120,14 +120,14 @@ cmake -B build -DCMAKE_BUILD_TYPE=Debug
 sudo cmake --build build
 ```
 
-This will automatically compile unit tests and source code with debug tools (like cppcheck).
+This will automatically compile unit tests and source code with debug tools.
 
-Optional prerequisites for debug mode:
+Prerequisites for debug mode:
 
 - [cppcheck](https://cppcheck.sourceforge.io/)
 - [doctest](https://github.com/doctest/doctest)
 
-To run all the tests (unit tests and profiling):
+To run all the unit tests:
 
 ```bash
 ./build/test/unit_tests/key-manager_unit_tests
@@ -137,6 +137,12 @@ To run [IWYU](https://github.com/include-what-you-use/include-what-you-use) chec
 
 ```bash
 ./test/IWYU.sh
+```
+
+To run profiling tests:
+
+```bash
+./test/all_tests.sh
 ```
 
 All the code documentation is generated automatically using [Doxygen](https://www.doxygen.nl/) and is stored [here](https://justwhit3.github.io/key-manager/).
@@ -154,17 +160,15 @@ This state contains the main menu of the app and is used to access [password man
 
 <p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/password_manager_state.png" width = "500"></p>
 
-This state contains the password manager tool. Here you can add, delete and modify passwords from the database; there is also a third button which gives a more detailed information about a given password. See the [corresponding paragraph](#how-passwords-are-protected) to understand how passwords are keeping safe. Passwords are ordered in alphabetical order and can be searched through the corresponding tool.
+This state contains the password manager tool. Here you can add, delete and modify passwords from the database; there is also a third button which gives a more detailed information about a given password. See the [corresponding paragraph](#how-passwords-are-protected) to understand how passwords are kept safe. Passwords are ordered in alphabetical order and can be searched through the corresponding tool.
 
 ### Password generator state
 
 <p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/password_generator_state.png" width = "500"></p>
 
-This state contains the password generator. Here you can generate strong and safe passwords and save them to clipboard with a click. You can also chose which kind of letters and symbols type you want to use for the password generation.
+This state contains the password generator. Here you can generate strong and safe passwords and save them to clipboard with a click. You can also choose which kind of letters and symbols type you want to use for the password generation.
 
 ### Other states
-
-Other states are:
 
 - Add password state:
 
@@ -175,11 +179,6 @@ Other states are:
 <p align="center"><img src="https://github.com/JustWhit3/key-manager/blob/main/img/examples/login_state.png" width = "500"></p>
 
 Other states will not be shown but could be observed directly through the app.
-
-## Todo
-
-- Add setup to password recovery in case of troubles.
-- Add possibility to change the app password.
 
 ## Credits
 
