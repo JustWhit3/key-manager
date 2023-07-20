@@ -36,11 +36,8 @@
 #include <QSharedPointer>
 #include <QPropertyAnimation>
 #include <QEventTransition>
-
-// STD
-#include <sstream>
-#include <cstdlib>
-#include <string>
+#include <QString>
+#include <QFile>
 
 namespace kmanager::window{
 
@@ -88,12 +85,8 @@ namespace kmanager::window{
             QSharedPointer<QPropertyAnimation> a_MenuState_PasswordManagerState;
             QSharedPointer<QPropertyAnimation> a_MenuState_PasswordGeneratorState;
             QSharedPointer<QPropertyAnimation> a_MenuState_Exit;
-
-            // Variables (other)
-            std::ostringstream login_key_file;
-
-            // Constants
-            const std::string username{ std::getenv( "USERNAME" ) };
+            QString login_key_file_path;
+            QFile login_key_file;
 
         //====================================================
         //     Private slots

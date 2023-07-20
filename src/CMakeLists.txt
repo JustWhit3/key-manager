@@ -28,7 +28,6 @@ set( CMAKE_INCLUDE_CURRENT_DIR ON )
 
 # Include directories
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/../include )
-include_directories("/usr/include/botan-2")
 
 # File variables
 file( GLOB_RECURSE INC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/../include/*.hpp )
@@ -66,4 +65,5 @@ find_package( cryptopp 8.8.0 CONFIG )
 target_link_libraries( ${APP} PRIVATE cryptopp::cryptopp )
 
 # Install
-install ( TARGETS ${APP} RUNTIME )
+include( GNUInstallDirs )
+install( TARGETS ${APP} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} )

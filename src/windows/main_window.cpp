@@ -40,9 +40,9 @@
 #include <QSet>
 #include <QPropertyAnimation>
 #include <QEventTransition>
-
-// STD
-#include <filesystem>
+#include <QStandardPaths>
+#include <QString>
+#include <QFile>
 
 namespace kmanager::window{
 
@@ -58,15 +58,9 @@ namespace kmanager::window{
         BaseWindow( parent ){
 
         // Get login key path
-        #ifdef _WIN32
-            this -> login_key_file << "C:\\Users\\" 
-                                 << this -> username 
-                                 << "\\.config\\key-manager.conf";
-        #else
-            this -> login_key_file << "/home/" 
-                                 << this -> username 
-                                 << "/.config/key-manager.conf";
-        #endif
+        QString appDataLocation = QStandardPaths::writableLocation( QStandardPaths::ConfigLocation );
+        this -> login_key_file_path = appDataLocation + "/key-manager.conf";
+        this -> login_key_file.setFileName( login_key_file_path );
 
         // Set basic window properties
         this -> setWindowProperties();
@@ -226,7 +220,7 @@ namespace kmanager::window{
         this -> state_machine -> addState( this -> p_manager_state.get() );
         this -> state_machine -> addState( this -> set_password_state.get() );
         this -> state_machine -> addState( this -> p_generator_state.get() );
-        if( std::filesystem::exists( this -> login_key_file.str() ) ){
+        if( login_key_file.exists() ){
             this -> state_machine -> setInitialState( this -> login_state.get() );
         }
         else{

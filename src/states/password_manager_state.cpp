@@ -53,6 +53,8 @@
 #include <QString>
 #include <QTextStream>
 #include <QWidget>
+#include <QStandardPaths>
+#include <QDir>
 
 // STD
 #include <filesystem>
@@ -80,15 +82,8 @@ namespace kmanager::state{
         repaint_passwords( false ){
 
         // Get passwords path
-        #ifdef _WIN32
-            this -> password_dir << "C:\\Users\\" 
-                                 << this -> username 
-                                 << "\\.key-manager_files\\passwords\\";
-        #else
-            this -> password_dir << "/home/" 
-                                 << this -> username 
-                                 << "/.key-manager_files/passwords/";
-        #endif
+        this -> password_dir << QStandardPaths::writableLocation( QStandardPaths::AppDataLocation ).toStdString() 
+                             << QDir::separator().toLatin1() << "passwords" << QDir::separator().toLatin1();
 
         // Create directories recursively
         std::filesystem::create_directories( 

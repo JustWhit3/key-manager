@@ -39,6 +39,8 @@
 #include <QWidget>
 #include <QString>
 #include <QTextStream>
+#include <QStandardPaths>
+#include <QDir>
 
 // STD
 #include <filesystem>
@@ -279,19 +281,12 @@ namespace kmanager::state{
         // Set file name and save file
         this -> file_oss.str( "" );
         this -> file_oss.clear();
-        #ifdef _WIN32
-            this -> file_oss << "C:\\Users\\" 
-                             << this -> username 
-                             << "\\.key-manager_files\\passwords\\"
-                             << this -> new_password.username.toStdString() 
-                             << ".json";
-        #else
-            this -> file_oss << "/home/" 
-                             << this -> username 
-                             << "/.key-manager_files/passwords/"
-                             << this -> new_password.username.toStdString() 
-                             << ".json";
-        #endif
+        this -> file_oss << QStandardPaths::writableLocation( QStandardPaths::AppDataLocation ).toStdString() 
+                         << QDir::separator().toLatin1() 
+                         << "passwords"
+                         << QDir::separator().toLatin1() 
+                         << this -> new_password.username.toStdString() 
+                         << ".json";
         this -> json_doc_file.setFileName( QString::fromStdString( this -> file_oss.str() ) );
 
         // Create dirs

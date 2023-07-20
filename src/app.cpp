@@ -15,6 +15,9 @@
 // Windows
 #include <windows/main_window.hpp>
 
+// Utility
+#include <utility/generic.hpp>
+
 // Qt
 #include <QApplication>
 #include <QFile>
@@ -31,7 +34,7 @@ int main( int argc, char **argv ){
     QApplication app( argc, argv );
 
     // Set the app theme
-    QFile theme_file( "themes/Obit.qss" );
+    QFile theme_file( kmanager::utility::copyToSystem( "themes/Obit.qss" ) );
     theme_file.open( QFile::ReadOnly );
     QString theme = QLatin1String( theme_file.readAll() );
     app.setStyleSheet( theme );

@@ -56,9 +56,6 @@ namespace kmanager::state{
 
             // Variables
             QSettings settings;
-
-            // Constants
-            const std::string username{ std::getenv( "USERNAME" ) };
     };
 }
 
