@@ -2,7 +2,7 @@
 
 <h3 align="center">A desktop app for password management and creation, developed using Qt</h3>
 <p align="center">
-    <img title="v0.3" alt="v0.3" src="https://img.shields.io/badge/version-v0.3-informational?style=flat-square"
+    <img title="v1.0" alt="v1.0" src="https://img.shields.io/badge/version-v1.0-informational?style=flat-square"
     <a href="LICENSE">
         <img title="MIT License" alt="license" src="https://img.shields.io/badge/license-MIT-informational?style=flat-square">
     </a>
