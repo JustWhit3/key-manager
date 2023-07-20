@@ -1,14 +1,7 @@
 var searchData=
 [
-  ['password_2ehpp_261',['password.hpp',['../password_8hpp.html',1,'']]],
-  ['password_5factions_2ecpp_262',['password_actions.cpp',['../password__actions_8cpp.html',1,'']]],
-  ['password_5factions_2ehpp_263',['password_actions.hpp',['../password__actions_8hpp.html',1,'']]],
-  ['password_5fgenerator_5fstate_2ecpp_264',['password_generator_state.cpp',['../password__generator__state_8cpp.html',1,'']]],
-  ['password_5fgenerator_5fstate_2ehpp_265',['password_generator_state.hpp',['../password__generator__state_8hpp.html',1,'']]],
-  ['password_5finfo_5fstate_2ecpp_266',['password_info_state.cpp',['../password__info__state_8cpp.html',1,'']]],
-  ['password_5finfo_5fstate_2ehpp_267',['password_info_state.hpp',['../password__info__state_8hpp.html',1,'']]],
-  ['password_5fmanager_5fstate_2ecpp_268',['password_manager_state.cpp',['../password__manager__state_8cpp.html',1,'']]],
-  ['password_5fmanager_5fstate_2ehpp_269',['password_manager_state.hpp',['../password__manager__state_8hpp.html',1,'']]],
-  ['password_5ftoggle_2ecpp_270',['password_toggle.cpp',['../password__toggle_8cpp.html',1,'']]],
-  ['password_5ftoggle_2ehpp_271',['password_toggle.hpp',['../password__toggle_8hpp.html',1,'']]]
+  ['main_5fwindow_2ecpp_262',['main_window.cpp',['../main__window_8cpp.html',1,'']]],
+  ['main_5fwindow_2ehpp_263',['main_window.hpp',['../main__window_8hpp.html',1,'']]],
+  ['menu_5fstate_2ecpp_264',['menu_state.cpp',['../menu__state_8cpp.html',1,'']]],
+  ['menu_5fstate_2ehpp_265',['menu_state.hpp',['../menu__state_8hpp.html',1,'']]]
 ];
