@@ -88,32 +88,28 @@ $(function() {
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// Qt</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;QWidget&gt;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacekmanager_1_1widget.html">kmanager::widget</a>{</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacekmanager_1_1widget.html">kmanager::widget</a> {</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">//====================================================</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">//     BaseWidget</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">//====================================================</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classkmanager_1_1widget_1_1BaseWidget.html">   34</a></span>&#160;<span class="comment"></span>    <span class="keyword">class </span><a class="code" href="classkmanager_1_1widget_1_1BaseWidget.html">BaseWidget</a>: <span class="keyword">public</span> QWidget{</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="comment">//====================================================</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="comment">//     protected</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="comment">//====================================================</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classkmanager_1_1widget_1_1BaseWidget.html">   34</a></span>&#160;<span class="comment"></span>    <span class="keyword">class </span><a class="code" href="classkmanager_1_1widget_1_1BaseWidget.html">BaseWidget</a> : <span class="keyword">public</span> QWidget {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="comment">// Constructors / destructor</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keyword">explicit</span> <a class="code" href="classkmanager_1_1widget_1_1BaseWidget.html#aabe9672ac4e909b50f50a21b62d0f558">BaseWidget</a>(QWidget *parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="classkmanager_1_1widget_1_1BaseWidget.html#af6a5935f80cd3db0ba668fd3aec6e3f8">~BaseWidget</a>();</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="comment">// Constructors / destructor</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keyword">explicit</span> <a class="code" href="classkmanager_1_1widget_1_1BaseWidget.html#aabe9672ac4e909b50f50a21b62d0f558">BaseWidget</a>( QWidget *parent = <span class="keyword">nullptr</span> );</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="classkmanager_1_1widget_1_1BaseWidget.html#af6a5935f80cd3db0ba668fd3aec6e3f8">~BaseWidget</a>();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="comment">// Methods</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classkmanager_1_1widget_1_1BaseWidget.html#a003f91a1a253e9994c76d2b5d0d710dc">   46</a></span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classkmanager_1_1widget_1_1BaseWidget.html#a003f91a1a253e9994c76d2b5d0d710dc">initWidgetProperties</a>() = 0;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    };</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="comment">// Methods</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classkmanager_1_1widget_1_1BaseWidget.html#a003f91a1a253e9994c76d2b5d0d710dc">   42</a></span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classkmanager_1_1widget_1_1BaseWidget.html#a003f91a1a253e9994c76d2b5d0d710dc">initWidgetProperties</a>() = 0;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    };</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}  <span class="comment">// namespace kmanager::widget</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclasskmanager_1_1widget_1_1BaseWidget_html"><div class="ttname"><a href="classkmanager_1_1widget_1_1BaseWidget.html">kmanager::widget::BaseWidget</a></div><div class="ttdoc">Class used to construct the base state of the app.</div><div class="ttdef"><b>Definition:</b> base_widget.hpp:34</div></div>
 <div class="ttc" id="aclasskmanager_1_1widget_1_1BaseWidget_html_a003f91a1a253e9994c76d2b5d0d710dc"><div class="ttname"><a href="classkmanager_1_1widget_1_1BaseWidget.html#a003f91a1a253e9994c76d2b5d0d710dc">kmanager::widget::BaseWidget::initWidgetProperties</a></div><div class="ttdeci">virtual void initWidgetProperties()=0</div></div>
 <div class="ttc" id="aclasskmanager_1_1widget_1_1BaseWidget_html_aabe9672ac4e909b50f50a21b62d0f558"><div class="ttname"><a href="classkmanager_1_1widget_1_1BaseWidget.html#aabe9672ac4e909b50f50a21b62d0f558">kmanager::widget::BaseWidget::BaseWidget</a></div><div class="ttdeci">BaseWidget(QWidget *parent=nullptr)</div><div class="ttdoc">Construct a new BaseWidget object.</div><div class="ttdef"><b>Definition:</b> base_widget.cpp:31</div></div>
-<div class="ttc" id="aclasskmanager_1_1widget_1_1BaseWidget_html_af6a5935f80cd3db0ba668fd3aec6e3f8"><div class="ttname"><a href="classkmanager_1_1widget_1_1BaseWidget.html#af6a5935f80cd3db0ba668fd3aec6e3f8">kmanager::widget::BaseWidget::~BaseWidget</a></div><div class="ttdeci">virtual ~BaseWidget()</div><div class="ttdoc">Destruct a new BaseWidget object.</div><div class="ttdef"><b>Definition:</b> base_widget.cpp:43</div></div>
+<div class="ttc" id="aclasskmanager_1_1widget_1_1BaseWidget_html_af6a5935f80cd3db0ba668fd3aec6e3f8"><div class="ttname"><a href="classkmanager_1_1widget_1_1BaseWidget.html#af6a5935f80cd3db0ba668fd3aec6e3f8">kmanager::widget::BaseWidget::~BaseWidget</a></div><div class="ttdeci">virtual ~BaseWidget()</div><div class="ttdoc">Destruct a new BaseWidget object.</div><div class="ttdef"><b>Definition:</b> base_widget.cpp:40</div></div>
 <div class="ttc" id="anamespacekmanager_1_1widget_html"><div class="ttname"><a href="namespacekmanager_1_1widget.html">kmanager::widget</a></div><div class="ttdef"><b>Definition:</b> base_widget.cpp:21</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
