@@ -23,35 +23,31 @@
 #include <states/base_state.hpp>
 
 // Qt
-#include <QStateMachine>
-#include <QSharedPointer>
-#include <QPushButton>
-#include <QLabel>
 #include <QIcon>
+#include <QLabel>
 #include <QPixmap>
+#include <QPushButton>
+#include <QSharedPointer>
+#include <QStateMachine>
 #include <QString>
 
 // STD
 #include <cstdint>
 
-namespace kmanager::state{
+namespace kmanager::state {
 
     //====================================================
     //     MenuState
     //====================================================
     /**
      * @brief Class used to construct the menu state of the app.
-     * 
+     *
      */
-    class MenuState: public BaseState{
-    
-        //====================================================
-        //     Public
-        //====================================================
+    class MenuState : public BaseState {
         public:
 
             // Constructors / destructor
-            explicit MenuState( QWidget* host, QState *parent = nullptr );
+            explicit MenuState(QWidget* host, QState* parent = nullptr);
             ~MenuState();
 
             // Variables (widgets)
@@ -65,10 +61,7 @@ namespace kmanager::state{
 
             // Variables (other)
             QWidget* host;
-        
-        //====================================================
-        //     Private
-        //====================================================
+
         private:
 
             // Methods
@@ -80,9 +73,9 @@ namespace kmanager::state{
 
             // Constants
             static const QString button_style;
-            static const uint32_t button_width{ 220 };
-            static const uint32_t button_height{ 70 };
+            static const uint32_t button_width{220};
+            static const uint32_t button_height{70};
     };
-}
+}  // namespace kmanager::state
 
 #endif

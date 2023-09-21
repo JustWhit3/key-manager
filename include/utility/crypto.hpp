@@ -20,29 +20,25 @@
 //====================================================
 
 // STD
+#include <cstdint>
 #include <string>
 #include <string_view>
-#include <cstdint>
 
-namespace kmanager::utility{
+namespace kmanager::utility {
 
     //====================================================
     //     Headers
     //====================================================
     /**
      * @brief Basic class used to manage encryption and decryption of a string.
-     * 
+     *
      */
-    class Crypto{
-
-        //====================================================
-        //     public
-        //====================================================
+    class Crypto {
         public:
 
             // Constructors / destructor
-            explicit Crypto( std::string_view message, std::string_view key );
-            explicit Crypto( std::string_view message );
+            explicit Crypto(std::string_view message, std::string_view key);
+            explicit Crypto(std::string_view message);
             ~Crypto();
 
             // Methods
@@ -55,21 +51,18 @@ namespace kmanager::utility{
             std::string getKey() const;
 
             // Setters
-            void setMessage( std::string_view message );
-            void setKey( std::string_view key );
+            void setMessage(std::string_view message);
+            void setKey(std::string_view key);
 
-        //====================================================
-        //     private
-        //====================================================
         private:
 
             // Methods
-            std::string generateRandomKey( int64_t length );
+            std::string generateRandomKey(int64_t length);
 
             // Members
             std::string message;
             std::string key;
     };
-}
+}  // namespace kmanager::utility
 
 #endif

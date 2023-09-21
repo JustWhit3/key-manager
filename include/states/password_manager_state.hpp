@@ -30,50 +30,45 @@
 #include <entities/password.hpp>
 
 // Widgets
-#include <widgets/password_toggle.hpp>
-#include <widgets/password_actions.hpp>
 #include <widgets/custom_line_edit.hpp>
+#include <widgets/password_actions.hpp>
+#include <widgets/password_toggle.hpp>
 
 // Qt
-#include <QSharedPointer>
-#include <QLabel>
-#include <QPushButton>
-#include <QLineEdit>
-#include <QVBoxLayout>
-#include <QWidget>
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <QTimer>
-#include <QScrollBar>
-#include <QSignalMapper>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
 #include <QScrollArea>
+#include <QScrollBar>
+#include <QSharedPointer>
+#include <QSignalMapper>
+#include <QTimer>
+#include <QVBoxLayout>
+#include <QWidget>
 
 // STD
 #include <sstream>
 #include <vector>
 
-namespace kmanager::state{
-    
+namespace kmanager::state {
+
     //====================================================
     //     PasswordManagerState
     //====================================================
     /**
      * @brief Class used to construct the password manager state of the app.
-     * 
+     *
      */
-    class PasswordManagerState: public BaseState{
+    class PasswordManagerState : public BaseState {
+            Q_OBJECT
 
-        // Macro for Qt
-        Q_OBJECT
-    
-        //====================================================
-        //     Public
-        //====================================================
         public:
 
             // Constructors / destructor
-            explicit PasswordManagerState( MenuState* host, QState *parent = nullptr );
+            explicit PasswordManagerState(MenuState* host, QState* parent = nullptr);
             ~PasswordManagerState();
 
             // Variables (widgets)
@@ -104,10 +99,7 @@ namespace kmanager::state{
             widget::PasswordActions* current_password_actions;
             widget::PasswordToggle* password_widget;
             entity::Password<widget::CustomQLineEdit*> new_password;
-        
-        //====================================================
-        //     Private
-        //====================================================
+
         private:
 
             // Methods
@@ -135,15 +127,13 @@ namespace kmanager::state{
             bool repaint_passwords;
             std::string file_key;
             std::string file_password;
-            
-            // Constants
-            const float label_width = this -> host -> host -> width() * 0.2482f;
-            static constexpr float label_height{ 50.f };
-            const QString label_settings{ "background-color: #4682b4; color: white; padding: 8%; font-size: 20px; border: green" };
 
-        //====================================================
-        //     Private slots
-        //====================================================
+            // Constants
+            const float label_width = this->host->host->width() * 0.2482f;
+            static constexpr float label_height{50.f};
+            const QString label_settings{
+                "background-color: #4682b4; color: white; padding: 8%; font-size: 20px; border: green"};
+
         private slots:
 
             // Methods
@@ -156,6 +146,6 @@ namespace kmanager::state{
             void saveSettingsMachinery();
             void setInformationMachinery();
     };
-}
+}  // namespace kmanager::state
 
 #endif

@@ -22,24 +22,20 @@
 // Qt
 #include <QWidget>
 
-namespace kmanager::window{
+namespace kmanager::window {
 
     //====================================================
     //     BaseWindow
     //====================================================
     /**
      * @brief Class used to construct the base window of the app.
-     * 
+     *
      */
-    class BaseWindow: public QWidget{
-        
-        //====================================================
-        //     Protected
-        //====================================================
+    class BaseWindow : public QWidget {
         protected:
 
             // Constructors / destructor
-            explicit BaseWindow( QWidget *parent = nullptr );
+            explicit BaseWindow(QWidget *parent = nullptr);
             virtual ~BaseWindow();
 
             // Pure methods
@@ -49,6 +45,6 @@ namespace kmanager::window{
             // Other methods
             virtual void setAnimation();
     };
-}
+}  // namespace kmanager::window
 
 #endif

@@ -24,29 +24,25 @@
 #include <widgets/password_toggle.hpp>
 
 // Qt
-#include <QString>
 #include <QCheckBox>
 #include <QLayout>
+#include <QString>
 
 // STD
-#include <unordered_map>
 #include <string>
+#include <unordered_map>
 
-namespace kmanager::entity{
+namespace kmanager::entity {
 
     //====================================================
     //     Password
     //====================================================
     /**
      * @brief Template class used to construct the password entity.
-     * 
+     *
      */
     template <typename T>
     class Password {
-    
-        //====================================================
-        //     public
-        //====================================================
         public:
 
             //====================================================
@@ -54,40 +50,35 @@ namespace kmanager::entity{
             //====================================================
             /**
              * @brief Construct a new Password object.
-             * 
+             *
              */
-            Password(){
-
-            }
+            Password() {}
 
             //====================================================
             //     Password (destructor)
             //====================================================
             /**
              * @brief Destroy the Password object.
-             * 
+             *
              */
-            virtual ~Password(){
-
-            }
+            virtual ~Password() {}
 
             //====================================================
             //     retrieveInfo
             //====================================================
             /**
-             * @brief Retrieve basic information about the password. Useful in order to pass information without requiring to pass the entire object.
-             * 
+             * @brief Retrieve basic information about the password. Useful in order to pass information without
+             * requiring to pass the entire object.
+             *
              * @return const std::unordered_map<std::string, std::string> the vector of password information.
              */
             const std::unordered_map<std::string, std::string> retrieveInfo() const {
-                return {
-                    { "password", this -> password_str -> text().toStdString() },
-                    { "platform", this -> platform -> text().toStdString() },
-                    { "username", this -> username -> text().toStdString() },
-                    { "creation", this -> creation -> text().toStdString() },
-                    { "last_update", this -> last_update -> text().toStdString() },
-                    { "strength", this -> strength -> text().toStdString() }
-                };
+                return {{"password", this->password_str->text().toStdString()},
+                        {"platform", this->platform->text().toStdString()},
+                        {"username", this->username->text().toStdString()},
+                        {"creation", this->creation->text().toStdString()},
+                        {"last_update", this->last_update->text().toStdString()},
+                        {"strength", this->strength->text().toStdString()}};
             }
 
             // Attributes
@@ -100,6 +91,6 @@ namespace kmanager::entity{
             widget::PasswordToggle* password_toggle;
             widget::PasswordActions* actions;
     };
-}
+}  // namespace kmanager::entity
 
 #endif

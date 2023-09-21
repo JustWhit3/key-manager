@@ -26,43 +26,37 @@
 #include <entities/password.hpp>
 
 // Qt
-#include <QObject>
-#include <QState>
-#include <QSharedPointer>
-#include <QPushButton>
-#include <QLabel>
-#include <QLineEdit>
-#include <QJsonObject>
+#include <QByteArray>
+#include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <QFile>
-#include <QByteArray>
+#include <QLabel>
+#include <QLineEdit>
+#include <QObject>
+#include <QPushButton>
+#include <QSharedPointer>
+#include <QState>
 #include <QString>
 
 // STD
 #include <sstream>
 
-namespace kmanager::state{
+namespace kmanager::state {
 
     //====================================================
     //     AddPasswordState
     //====================================================
     /**
      * @brief Class used to construct the add password state of the app.
-     * 
+     *
      */
-    class AddPasswordState: public BaseState{
+    class AddPasswordState : public BaseState {
+            Q_OBJECT
 
-        // Macro for Qt
-        Q_OBJECT
-    
-        //====================================================
-        //     Public
-        //====================================================
         public:
 
             // Constructors / destructor
-            explicit AddPasswordState( QWidget* host, QState *parent = nullptr );
+            explicit AddPasswordState(QWidget* host, QState* parent = nullptr);
             ~AddPasswordState();
 
             // Variables (widgets)
@@ -78,10 +72,10 @@ namespace kmanager::state{
 
             // Variables (other)
             QWidget* host;
-        
-        //====================================================
-        //     Private
-        //====================================================
+
+            //====================================================
+            //     Private
+            //====================================================
         private:
 
             // Methods
@@ -97,16 +91,16 @@ namespace kmanager::state{
             QFile json_doc_file;
 
             // Constants
-            static constexpr const char* widget_font_size{ "font-size: 20px" };
+            static constexpr const char* widget_font_size{"font-size: 20px"};
 
-        //====================================================
-        //     Private slots
-        //====================================================
+            //====================================================
+            //     Private slots
+            //====================================================
         private slots:
-        
+
             // Methods
             void savePassword();
     };
-}
+}  // namespace kmanager::state
 
 #endif

@@ -23,39 +23,34 @@
 #include <states/base_state.hpp>
 
 // Qt
-#include <QState>
-#include <QLineEdit>
 #include <QCheckBox>
 #include <QLabel>
-#include <QSharedPointer>
+#include <QLineEdit>
 #include <QObject>
 #include <QPushButton>
+#include <QSharedPointer>
+#include <QState>
 #include <QString>
 
 // STD
 #include <cstdint>
 
-namespace kmanager::state{
+namespace kmanager::state {
 
     //====================================================
     //     LoginState
     //====================================================
     /**
      * @brief Class used to construct the login state of the app.
-     * 
+     *
      */
-    class LoginState: public BaseState{
+    class LoginState : public BaseState {
+            Q_OBJECT
 
-        // Macro for Qt
-        Q_OBJECT
-    
-        //====================================================
-        //     Public
-        //====================================================
         public:
 
             // Constructors / destructor
-            explicit LoginState( QWidget* host, QState *parent = nullptr );
+            explicit LoginState(QWidget* host, QState* parent = nullptr);
             ~LoginState();
 
             // Variables (widgets)
@@ -70,10 +65,7 @@ namespace kmanager::state{
 
             // Variables (other)
             QWidget* host;
-        
-        //====================================================
-        //     Private
-        //====================================================
+
         private:
 
             // Methods
@@ -81,23 +73,19 @@ namespace kmanager::state{
             void assignProperties() override;
 
             // Constants
-            const uint32_t width{ 270 };
-            const uint32_t height{ 70 };
+            const uint32_t width{270};
+            const uint32_t height{70};
             static const QString checkbox_style;
 
-        //====================================================
-        //     private slots
-        //====================================================
         private slots:
+
             void changeToggleState();
             void login();
 
-        //====================================================
-        //     signals
-        //====================================================
         signals:
-            void login_successful( bool checked = false );
+
+            void login_successful(bool checked = false);
     };
-}
+}  // namespace kmanager::state
 
 #endif

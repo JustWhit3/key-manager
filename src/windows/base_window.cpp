@@ -18,40 +18,33 @@
 // Qt
 #include <QWidget>
 
-namespace kmanager::window{
+namespace kmanager::window {
 
     //====================================================
     //     BaseWindow (default constructor)
     //====================================================
     /**
      * @brief Construct a new BaseWindow object.
-     * 
+     *
      * @param parent The parent widget (if there is one).
      */
-    BaseWindow::BaseWindow( QWidget *parent ): 
-        QWidget( parent ){
-
-    }
+    BaseWindow::BaseWindow(QWidget *parent) : QWidget(parent) {}
 
     //====================================================
     //     BaseWindow (destructor)
     //====================================================
     /**
      * @brief Destruct a new BaseWindow object.
-     * 
+     *
      */
-    BaseWindow::~BaseWindow(){
-
-    }
+    BaseWindow::~BaseWindow() {}
 
     //====================================================
     //     setAnimation
     //====================================================
     /**
      * @brief Set animations of the window.
-     * 
+     *
      */
-    void BaseWindow::setAnimation(){
-
-    }
-}
+    void BaseWindow::setAnimation() {}
+}  // namespace kmanager::window

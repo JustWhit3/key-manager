@@ -24,35 +24,30 @@
 #include <widgets/custom_line_edit.hpp>
 
 // Qt
-#include <QWidget>
 #include <QHBoxLayout>
+#include <QIcon>
 #include <QPushButton>
 #include <QSharedPointer>
-#include <QIcon>
 #include <QSize>
 #include <QString>
+#include <QWidget>
 
-namespace kmanager::widget{
+namespace kmanager::widget {
 
     //====================================================
     //     PasswordActions
     //====================================================
     /**
      * @brief Class used to construct a password actions widget.
-     * 
+     *
      */
-    class PasswordActions: public BaseWidget{
+    class PasswordActions : public BaseWidget {
+            Q_OBJECT
 
-        // Qt macros
-        Q_OBJECT
-
-        //====================================================
-        //     public
-        //====================================================
         public:
 
             // Constructors / destructor
-            explicit PasswordActions( QWidget* parent = nullptr );
+            explicit PasswordActions(QWidget* parent = nullptr);
             ~PasswordActions();
 
             // Methods
@@ -69,30 +64,21 @@ namespace kmanager::widget{
             CustomQLineEdit* second_widget;
             CustomQLineEdit* third_widget;
 
-        //====================================================
-        //     private
-        //====================================================
         private:
 
             // Variables
-            void enterEvent( QEnterEvent* event ) override;
-            void leaveEvent( QEvent* event ) override;
+            void enterEvent(QEnterEvent* event) override;
+            void leaveEvent(QEvent* event) override;
 
             // Variables
             QSharedPointer<QHBoxLayout> layout;
 
             // Constants
-            const QSize icon_size = QSize( 23.f, 23.f );
-            const QString default_settings{ 
-                "background-color: rgba( 255, 255, 255, 0% ); padding: 8%;" 
-            };
-            const QString hover_settings{ 
-                "background-color: rgba( 255, 255, 255, 0% ); padding: 8%; border-color: rgb(255, 255, 255);" 
-            };
+            const QSize icon_size = QSize(23.f, 23.f);
+            const QString default_settings{"background-color: rgba( 255, 255, 255, 0% ); padding: 8%;"};
+            const QString hover_settings{
+                "background-color: rgba( 255, 255, 255, 0% ); padding: 8%; border-color: rgb(255, 255, 255);"};
 
-        //====================================================
-        //     private slots
-        //====================================================
         private slots:
 
             // Methods
@@ -100,6 +86,6 @@ namespace kmanager::widget{
             void setSaveMySettingsTrue();
             void setInformationTrue();
     };
-}
+}  // namespace kmanager::widget
 
 #endif

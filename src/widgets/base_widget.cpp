@@ -18,29 +18,24 @@
 // Qt
 #include <QWidget>
 
-namespace kmanager::widget{
+namespace kmanager::widget {
 
     //====================================================
     //     BaseWidget (default constructor)
     //====================================================
     /**
      * @brief Construct a new BaseWidget object.
-     * 
+     *
      * @param parent The parent widget (if there is one).
      */
-    BaseWidget::BaseWidget( QWidget *parent ): 
-        QWidget( parent ){
-
-    }
+    BaseWidget::BaseWidget(QWidget *parent) : QWidget(parent) {}
 
     //====================================================
     //     BaseWidget (destructor)
     //====================================================
     /**
      * @brief Destruct a new BaseWidget object.
-     * 
+     *
      */
-    BaseWidget::~BaseWidget(){
-
-    }
-}
+    BaseWidget::~BaseWidget() {}
+}  // namespace kmanager::widget

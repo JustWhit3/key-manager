@@ -22,29 +22,25 @@
 // Qt
 #include <QWidget>
 
-namespace kmanager::widget{
+namespace kmanager::widget {
 
     //====================================================
     //     BaseWidget
     //====================================================
     /**
      * @brief Class used to construct the base state of the app.
-     * 
+     *
      */
-    class BaseWidget: public QWidget{
-    
-        //====================================================
-        //     protected
-        //====================================================
+    class BaseWidget : public QWidget {
         protected:
 
             // Constructors / destructor
-            explicit BaseWidget( QWidget *parent = nullptr );
+            explicit BaseWidget(QWidget *parent = nullptr);
             virtual ~BaseWidget();
 
             // Methods
             virtual void initWidgetProperties() = 0;
     };
-}
+}  // namespace kmanager::widget
 
 #endif

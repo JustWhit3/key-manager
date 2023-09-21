@@ -30,40 +30,31 @@
 #include <QSharedPointer>
 
 // STD
-#include <unordered_map>
 #include <string>
+#include <unordered_map>
 
-namespace kmanager::window{
+namespace kmanager::window {
 
     //====================================================
     //     AddPasswordWindow
     //====================================================
     /**
      * @brief Class used to construct the main window of the app.
-     * 
+     *
      */
-    class AddPasswordWindow: public BaseWindow{
-
-        //====================================================
-        //     Public
-        //====================================================
+    class AddPasswordWindow : public BaseWindow {
         public:
 
             // Constructors / destructor
-            explicit AddPasswordWindow( 
-                int16_t window_height, 
-                std::unordered_map<std::string, std::string> info_map = {}, 
-                QWidget *parent = nullptr 
-            );
+            explicit AddPasswordWindow(int16_t window_height,
+                                       std::unordered_map<std::string, std::string> info_map = {},
+                                       QWidget *parent = nullptr);
             ~AddPasswordWindow();
-        
-        //====================================================
-        //     Private
-        //====================================================
+
         private:
 
             // Methods
-            void keyPressEvent( QKeyEvent *event ) override;
+            void keyPressEvent(QKeyEvent *event) override;
             void setWindowProperties() override;
             void initStateMachine() override;
 
@@ -74,6 +65,6 @@ namespace kmanager::window{
             int16_t window_height;
             std::unordered_map<std::string, std::string> info_map;
     };
-}
+}  // namespace kmanager::window
 
 #endif

@@ -20,96 +20,83 @@
 #include <utility/generic.hpp>
 
 // Qt
-#include <QWidget>
-#include <QEvent>
-#include <QEnterEvent>
 #include <QCheckBox>
+#include <QEnterEvent>
+#include <QEvent>
 #include <QGridLayout>
 #include <QLineEdit>
 #include <QObject>
+#include <QWidget>
 
-namespace kmanager::widget{
+namespace kmanager::widget {
 
     //====================================================
     //     Constants
     //====================================================
-    const QString PasswordToggle::default_settings{ 
-        "background-color: rgba( 255, 255, 255, 0% );" 
-    };
-    const QString PasswordToggle::hover_settings{ 
-        "background-color: rgba( 255, 255, 255, 0% ); border-color: rgb(255, 255, 255);" 
-    };
-    const QString PasswordToggle::checkbox_style_1{
-        "QCheckBox::indicator:unchecked { image: url(" + utility::getRealImgPath( "img/hide.png" ) + "); }"
-        "QCheckBox::indicator:checked { image: url(" + utility::getRealImgPath( "img/eye.png" ) + "); }"
-        "QCheckBox::indicator { width: 25px; height: 25px; }"
-    };
+    const QString PasswordToggle::default_settings{"background-color: rgba( 255, 255, 255, 0% );"};
+    const QString PasswordToggle::hover_settings{
+        "background-color: rgba( 255, 255, 255, 0% ); border-color: rgb(255, 255, 255);"};
+    const QString PasswordToggle::checkbox_style_1{"QCheckBox::indicator:unchecked { image: url(" +
+                                                   utility::getRealImgPath("img/hide.png") +
+                                                   "); }"
+                                                   "QCheckBox::indicator:checked { image: url(" +
+                                                   utility::getRealImgPath("img/eye.png") +
+                                                   "); }"
+                                                   "QCheckBox::indicator { width: 25px; height: 25px; }"};
     const QString PasswordToggle::checkbox_style_2{
-        "QCheckBox::indicator:unchecked { image: url(" + utility::getRealImgPath( "img/hide.png" ) + "); }"
-        "QCheckBox::indicator:checked { image: url(" + utility::getRealImgPath( "img/eye.png" ) + "); }"
-        "QCheckBox::indicator { width: 35px; height: 35px; background-color: #38394e; }"
-    };
-
+        "QCheckBox::indicator:unchecked { image: url(" + utility::getRealImgPath("img/hide.png") +
+        "); }"
+        "QCheckBox::indicator:checked { image: url(" +
+        utility::getRealImgPath("img/eye.png") +
+        "); }"
+        "QCheckBox::indicator { width: 35px; height: 35px; background-color: #38394e; }"};
 
     //====================================================
     //     PasswordToggle (constructor)
     //====================================================
     /**
      * @brief Construct a new Password Toggle object.
-     * 
-     * @param parent 
+     *
+     * @param parent
      */
-    PasswordToggle::PasswordToggle( bool styled, QWidget* parent ):
-        styled( styled ),
-        BaseWidget( parent ){
-                    
-    }
+    PasswordToggle::PasswordToggle(bool styled, QWidget* parent) : styled(styled), BaseWidget(parent) {}
 
     //====================================================
     //     PasswordToggle (destructor)
     //====================================================
     /**
      * @brief Destruct a new Password Toggle object.
-     * 
+     *
      */
-    PasswordToggle::~PasswordToggle(){
-
-    }
+    PasswordToggle::~PasswordToggle() {}
 
     //====================================================
     //     initWidgetProperties
     //====================================================
     /**
      * @brief Initialize basic widgets properties. The password_label variable is initialized outside the class.
-     * 
+     *
      */
-    void PasswordToggle::initWidgetProperties(){
-
+    void PasswordToggle::initWidgetProperties() {
         // Setup layout
-        this -> layout = new QGridLayout( this );
-        this -> layout -> addWidget( password_label, 0, 0 );
-        this -> layout -> setContentsMargins( 0, 0, 0, 0 );
-        this -> setLayout( layout );
+        this->layout = new QGridLayout(this);
+        this->layout->addWidget(password_label, 0, 0);
+        this->layout->setContentsMargins(0, 0, 0, 0);
+        this->setLayout(layout);
 
         // Setup checkbox
-        this -> checkbox = new QCheckBox( this );
-        if( this -> styled == true ){
-            this -> checkbox -> setStyleSheet( this -> checkbox_style_1 );
-            this -> checkbox -> setFixedSize( 25, 25 );
-            this -> checkbox -> move( 220.f, 6.f );
-        }
-        else{
-            this -> checkbox -> setStyleSheet( this -> checkbox_style_2 );
-            this -> checkbox -> setFixedSize( 35, 35 );
-            this -> checkbox -> move( 340.f, 7.f );
+        this->checkbox = new QCheckBox(this);
+        if (this->styled == true) {
+            this->checkbox->setStyleSheet(this->checkbox_style_1);
+            this->checkbox->setFixedSize(25, 25);
+            this->checkbox->move(220.f, 6.f);
+        } else {
+            this->checkbox->setStyleSheet(this->checkbox_style_2);
+            this->checkbox->setFixedSize(35, 35);
+            this->checkbox->move(340.f, 7.f);
         }
 
-        QObject::connect( 
-             this -> checkbox, 
-             SIGNAL( clicked() ), 
-             this, 
-             SLOT( changeToggleState() ) 
-        );
+        QObject::connect(this->checkbox, SIGNAL(clicked()), this, SLOT(changeToggleState()));
     }
 
     //====================================================
@@ -117,12 +104,11 @@ namespace kmanager::widget{
     //====================================================
     /**
      * @brief Slot used to change toggle state of password checkbox when clicked.
-     * 
+     *
      */
-    void PasswordToggle::changeToggleState(){
-        this -> password_label -> setEchoMode(
-            this -> checkbox->checkState() == Qt::Checked ? QLineEdit::Normal : QLineEdit::Password 
-        );
+    void PasswordToggle::changeToggleState() {
+        this->password_label->setEchoMode(this->checkbox->checkState() == Qt::Checked ? QLineEdit::Normal
+                                                                                      : QLineEdit::Password);
     }
 
     //====================================================
@@ -130,14 +116,14 @@ namespace kmanager::widget{
     //====================================================
     /**
      * @brief Override the enterEvent widget function.
-     * 
+     *
      * @param event Event triggered when mouse enter the widget.
      */
-    void PasswordToggle::enterEvent( QEnterEvent* event ){
-        if( styled == true ){
-            this -> setStyleSheet( this -> hover_settings );
+    void PasswordToggle::enterEvent(QEnterEvent* event) {
+        if (styled == true) {
+            this->setStyleSheet(this->hover_settings);
         }
-        event -> accept();
+        event->accept();
     }
 
     //====================================================
@@ -145,13 +131,13 @@ namespace kmanager::widget{
     //====================================================
     /**
      * @brief Override the leaveEvent widget function.
-     * 
+     *
      * @param event Event triggered when mouse leave the widget.
      */
-    void PasswordToggle::leaveEvent( QEvent* event ){
-        if( styled == true ){
-            this -> setStyleSheet( this -> default_settings );
+    void PasswordToggle::leaveEvent(QEvent* event) {
+        if (styled == true) {
+            this->setStyleSheet(this->default_settings);
         }
-        event -> accept();
+        event->accept();
     }
-}
+}  // namespace kmanager::widget

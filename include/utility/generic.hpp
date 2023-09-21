@@ -22,14 +22,14 @@
 // Qt
 #include <QString>
 
-namespace kmanager::utility{
+namespace kmanager::utility {
 
     //====================================================
     //     Functions
     //====================================================
-    extern QString copyToSystem( const QString& fileNameToCopy );
-    extern void copyDirectory( const QString& sourceDir, const QString& extra_info = "" );
-    extern QString getRealImgPath( const QString& img );
-}
+    extern QString copyToSystem(const QString& fileNameToCopy);
+    extern void copyDirectory(const QString& sourceDir, const QString& extra_info = "");
+    extern QString getRealImgPath(const QString& img);
+}  // namespace kmanager::utility
 
 #endif

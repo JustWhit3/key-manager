@@ -23,33 +23,28 @@
 #include <widgets/base_widget.hpp>
 
 // Qt
-#include <QWidget>
-#include <QHBoxLayout>
 #include <QCheckBox>
+#include <QHBoxLayout>
 #include <QLineEdit>
 #include <QSharedPointer>
+#include <QWidget>
 
-namespace kmanager::widget{
+namespace kmanager::widget {
 
     //====================================================
     //     PasswordToggle
     //====================================================
     /**
      * @brief Class used to construct a password toggle widget.
-     * 
+     *
      */
-    class PasswordToggle: public BaseWidget{
+    class PasswordToggle : public BaseWidget {
+            Q_OBJECT
 
-        // Qt macros
-        Q_OBJECT
-
-        //====================================================
-        //     public
-        //====================================================
         public:
 
             // Constructors / destructor
-            explicit PasswordToggle( bool styled = true, QWidget* parent = nullptr );
+            explicit PasswordToggle(bool styled = true, QWidget* parent = nullptr);
             ~PasswordToggle();
 
             // Methods
@@ -57,15 +52,12 @@ namespace kmanager::widget{
 
             // Variables
             QLineEdit* password_label;
-        
-        //====================================================
-        //     private
-        //====================================================
+
         private:
 
             // Methods
-            void enterEvent( QEnterEvent* event ) override;
-            void leaveEvent( QEvent* event ) override;
+            void enterEvent(QEnterEvent* event) override;
+            void leaveEvent(QEvent* event) override;
 
             // Variables
             QGridLayout* layout;
@@ -78,14 +70,11 @@ namespace kmanager::widget{
             static const QString checkbox_style_1;
             static const QString checkbox_style_2;
 
-        //====================================================
-        //     private slots
-        //====================================================
         private slots:
 
             // Methods
             void changeToggleState();
     };
-}
+}  // namespace kmanager::widget
 
 #endif

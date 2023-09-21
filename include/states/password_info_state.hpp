@@ -26,41 +26,33 @@
 #include <widgets/password_toggle.hpp>
 
 // Qt
-#include <QSharedPointer>
+#include <QCheckBox>
 #include <QLabel>
 #include <QLineEdit>
-#include <QCheckBox>
+#include <QSharedPointer>
 
 // STD
-#include <unordered_map>
-#include <string>
 #include <sstream>
+#include <string>
+#include <unordered_map>
 
-namespace kmanager::state{
+namespace kmanager::state {
 
     //====================================================
     //     PasswordInfoState
     //====================================================
     /**
      * @brief Class used to construct the password info state of the app.
-     * 
+     *
      */
-    class PasswordInfoState: public BaseState{
+    class PasswordInfoState : public BaseState {
+            Q_OBJECT
 
-        // Macro for Qt
-        Q_OBJECT
-    
-        //====================================================
-        //     Public
-        //====================================================
         public:
 
             // Constructors / destructor
-            explicit PasswordInfoState( 
-                QWidget* host, 
-                std::unordered_map<std::string, std::string> info_map, 
-                QState *parent = nullptr 
-            );
+            explicit PasswordInfoState(QWidget* host, std::unordered_map<std::string, std::string> info_map,
+                                       QState* parent = nullptr);
             ~PasswordInfoState();
 
             // Variables (widgets)
@@ -82,12 +74,9 @@ namespace kmanager::state{
 
             // Variables (other)
             QWidget* host;
-        
-        //====================================================
-        //     Private
-        //====================================================
+
         private:
-    
+
             // Methods
             void addWidgets() override;
             void assignProperties() override;
@@ -98,6 +87,6 @@ namespace kmanager::state{
             // Constants
             static const QString widget_font_size;
     };
-}
+}  // namespace kmanager::state
 
 #endif

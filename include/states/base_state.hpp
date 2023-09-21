@@ -20,43 +20,39 @@
 //====================================================
 
 // Qt
-#include <QState>
 #include <QSettings>
+#include <QState>
 #include <QString>
 
 // STD
 #include <cstdlib>
 #include <string>
 
-namespace kmanager::state{
+namespace kmanager::state {
 
     //====================================================
     //     BaseState
     //====================================================
     /**
      * @brief Class used to construct the base state of the app.
-     * 
+     *
      */
-    class BaseState: public QState{
-    
-        //====================================================
-        //     protected
-        //====================================================
+    class BaseState : public QState {
         protected:
 
             // Constructors / destructor
-            explicit BaseState( QState *parent = nullptr );
+            explicit BaseState(QState* parent = nullptr);
             virtual ~BaseState();
 
             // Methods
             virtual void addWidgets() = 0;
             virtual void assignProperties() = 0;
             QString getCurrentDateTime();
-            QString evaluatePasswordStrength( const QString& password );
+            QString evaluatePasswordStrength(const QString& password);
 
             // Variables
             QSettings settings;
     };
-}
+}  // namespace kmanager::state
 
 #endif

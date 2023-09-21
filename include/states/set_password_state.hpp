@@ -23,40 +23,35 @@
 #include <states/base_state.hpp>
 
 // Qt
-#include <QState>
-#include <QLineEdit>
 #include <QCheckBox>
 #include <QLabel>
-#include <QSharedPointer>
+#include <QLineEdit>
 #include <QObject>
 #include <QPushButton>
+#include <QSharedPointer>
+#include <QState>
 #include <QString>
 
 // STD
-#include <sstream>
 #include <cstdint>
+#include <sstream>
 
-namespace kmanager::state{
+namespace kmanager::state {
 
     //====================================================
     //     SetPasswordState
     //====================================================
     /**
      * @brief Class used to construct the set password state of the app.
-     * 
+     *
      */
-    class SetPasswordState: public BaseState{
+    class SetPasswordState : public BaseState {
+            Q_OBJECT
 
-        // Macro for Qt
-        Q_OBJECT
-    
-        //====================================================
-        //     Public
-        //====================================================
         public:
 
             // Constructors / destructor
-            explicit SetPasswordState( QWidget* host, QState *parent = nullptr );
+            explicit SetPasswordState(QWidget* host, QState* parent = nullptr);
             ~SetPasswordState();
 
             // Variables (widgets)
@@ -73,10 +68,7 @@ namespace kmanager::state{
 
             // Variables (other)
             QWidget* host;
-        
-        //====================================================
-        //     Private
-        //====================================================
+
         private:
 
             // Methods
@@ -84,25 +76,21 @@ namespace kmanager::state{
             void assignProperties() override;
 
             // Constants
-            const uint32_t width{ 270 };
-            const uint32_t height{ 70 };
+            const uint32_t width{270};
+            const uint32_t height{70};
             static const QString checkbox_first_style;
             static const QString checkbox_second_style;
 
-        //====================================================
-        //     private slots
-        //====================================================
         private slots:
+
             void changeToggleState_first();
             void changeToggleState_second();
             void savePassword();
 
-        //====================================================
-        //     signals
-        //====================================================
         signals:
-            void save_password_successful( bool checked = true );
+
+            void save_password_successful(bool checked = true);
     };
-}
+}  // namespace kmanager::state
 
 #endif

@@ -23,55 +23,47 @@
 #include <windows/base_window.hpp>
 
 // States
-#include <states/menu_state.hpp>
-#include <states/password_manager_state.hpp>
 #include <states/login_state.hpp>
-#include <states/set_password_state.hpp>
+#include <states/menu_state.hpp>
 #include <states/password_generator_state.hpp>
+#include <states/password_manager_state.hpp>
+#include <states/set_password_state.hpp>
 
 // Qt
-#include <QWidget>
-#include <QStateMachine>
-#include <QObject>
-#include <QSharedPointer>
-#include <QPropertyAnimation>
 #include <QEventTransition>
-#include <QString>
 #include <QFile>
+#include <QObject>
+#include <QPropertyAnimation>
+#include <QSharedPointer>
+#include <QStateMachine>
+#include <QString>
+#include <QWidget>
 
-namespace kmanager::window{
+namespace kmanager::window {
 
     //====================================================
     //     MainWindow
     //====================================================
     /**
      * @brief Class used to construct the main window of the app.
-     * 
+     *
      */
-    class MainWindow: public BaseWindow{
+    class MainWindow : public BaseWindow {
+            Q_OBJECT
 
-        // Macro for Qt
-        Q_OBJECT
-
-        //====================================================
-        //     Public
-        //====================================================
         public:
 
             // Constructors / destructor
-            explicit MainWindow( QWidget *parent = nullptr );
+            explicit MainWindow(QWidget *parent = nullptr);
             ~MainWindow();
-        
-        //====================================================
-        //     Private
-        //====================================================
+
         private:
 
             // Methods
-            void keyPressEvent( QKeyEvent *event ) override;
+            void keyPressEvent(QKeyEvent *event) override;
             void setWindowProperties() override;
             void initStateMachine() override;
-            void closeEvent( QCloseEvent* event ) override;
+            void closeEvent(QCloseEvent *event) override;
             void buttonsPressedActions();
             void setAnimation() override;
 
@@ -88,11 +80,8 @@ namespace kmanager::window{
             QString login_key_file_path;
             QFile login_key_file;
 
-        //====================================================
-        //     Private slots
-        //====================================================
         private slots:
-        
+
             // Methods
             void MenuState_PasswordManagerState();
             void PasswordManagerState_MenuState();
@@ -100,6 +89,6 @@ namespace kmanager::window{
             void SetPasswordState_MenuState();
             void PasswordGeneratorState_MenuState();
     };
-}
+}  // namespace kmanager::window
 
 #endif

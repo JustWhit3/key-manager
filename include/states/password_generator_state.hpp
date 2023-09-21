@@ -23,39 +23,34 @@
 #include <states/menu_state.hpp>
 
 // Qt
-#include <QObject>
-#include <QSharedPointer>
-#include <QLabel>
-#include <QPushButton>
-#include <QIcon>
 #include <QCheckBox>
-#include <QString>
+#include <QIcon>
+#include <QLabel>
 #include <QLineEdit>
+#include <QObject>
+#include <QPushButton>
+#include <QSharedPointer>
+#include <QString>
 
 // STD
 #include <string>
 
-namespace kmanager::state{
+namespace kmanager::state {
 
     //====================================================
     //     PasswordGeneratorState
     //====================================================
     /**
      * @brief Class used to construct the password generator state of the app.
-     * 
+     *
      */
-    class PasswordGeneratorState: public BaseState{
+    class PasswordGeneratorState : public BaseState {
+            Q_OBJECT
 
-        // Macro for Qt
-        Q_OBJECT
-    
-        //====================================================
-        //     Public
-        //====================================================
         public:
 
             // Constructors / destructor
-            explicit PasswordGeneratorState( MenuState* host, QState *parent = nullptr );
+            explicit PasswordGeneratorState(MenuState* host, QState* parent = nullptr);
             ~PasswordGeneratorState();
 
             // Variables (widgets)
@@ -84,10 +79,7 @@ namespace kmanager::state{
 
             // Variables (other)
             MenuState* host;
-        
-        //====================================================
-        //     Private
-        //====================================================
+
         private:
 
             // Methods
@@ -107,13 +99,10 @@ namespace kmanager::state{
                 "QCheckBox::indicator:checked { image: url(img/icons/done.png); background-color: #38394e; }"
                 "QCheckBox:disabled { background-color:rgba( 255, 255, 255, 0% ); }";
 
-        //====================================================
-        //     Private slots
-        //====================================================
         private slots:
             void copiedPassword();
             void generatePassword();
     };
-}
+}  // namespace kmanager::state
 
 #endif

@@ -20,24 +20,20 @@
 //====================================================
 
 // Qt
-#include <QLineEdit>
 #include <QEnterEvent>
+#include <QLineEdit>
 #include <QString>
 
-namespace kmanager::widget{
+namespace kmanager::widget {
 
     //====================================================
     //     CustomQLineEdit
     //====================================================
-    class CustomQLineEdit: public QLineEdit{
+    class CustomQLineEdit : public QLineEdit {
+        public:
 
-        //====================================================
-        //     Public
-        //====================================================
-        public: 
-        
             // Constructors / destructor
-            explicit CustomQLineEdit( const QString& contents, QWidget *parent = nullptr );
+            explicit CustomQLineEdit(const QString& contents, QWidget* parent = nullptr);
             ~CustomQLineEdit();
 
             // Variables
@@ -45,20 +41,17 @@ namespace kmanager::widget{
             CustomQLineEdit* second_widget;
             QString old_label;
 
-        //====================================================
-        //     Private
-        //====================================================
         private:
 
             // Methods
-            void enterEvent( QEnterEvent* event ) override;
-            void leaveEvent( QEvent* event ) override;
-            void keyPressEvent( QKeyEvent *event ) override;
+            void enterEvent(QEnterEvent* event) override;
+            void leaveEvent(QEvent* event) override;
+            void keyPressEvent(QKeyEvent* event) override;
 
             // Constants
             static const QString default_settings;
             static const QString hover_settings;
     };
-}
+}  // namespace kmanager::widget
 
 #endif
