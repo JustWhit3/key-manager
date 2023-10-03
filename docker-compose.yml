@@ -15,7 +15,7 @@ services:
             bash -c "cd /proj
             && cmake -B build
             && cmake --build build
-            && rm -rf build
+            && rm -rf build"
 
     ##########################################
     #      CLANG
