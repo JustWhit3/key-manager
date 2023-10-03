@@ -1,4 +1,4 @@
-version: "2"
+version: "3.8"
 services:
 
     ##########################################
@@ -7,11 +7,10 @@ services:
 
     # gcc 11
     build_gcc_11:
-        image: justwhit3/qt-6.4.2:gcc-11
-        network_mode: bridge
+        image: justwhit3/qt-6.4.2:gcc_11
         volumes:
             - .:/proj
-        container_name: build
+        working_dir: /proj
         command: >
             bash -c "cd /proj
             && cmake -B build
