@@ -36,6 +36,8 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       run: |
         docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace justwhit3/qt-6.4.2:gcc_11 /bin/bash -c "
+        chmod +x scripts/cmake_helper.sh && ./scripts/cmake_helper.sh
+        apt update && apt upgrade && apt install -y git
         cmake -B build
         cmake --build build
         sudo cmake --build build --target install"
