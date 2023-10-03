@@ -139,11 +139,8 @@ namespace kmanager::state {
         this->enter_password_label = QSharedPointer<QLabel>(new QLabel(this->host));
         this->enter_password_label->setVisible(false);
         this->enter_password_label->setText("Welcome back!");
-        this->enter_password_label->move(
-            (this->host->mapToGlobal(this->host->geometry().center()).x() -
-             this->enter_password_label->mapToGlobal(this->enter_password_label->geometry().center()).x()) *
-                0.89f,
-            this->enter_password->geometry().y() * 0.83f);
+        this->enter_password_label->move(this->enter_password->geometry().x() * 1.06f,
+                                         this->enter_password->geometry().y() * 0.83f);
         this->enter_password_label->resize(this->width, this->height);
         this->enter_password_label->setStyleSheet(
             "QLabel { background-color: rgba( 255, 255, 255, 0% ); font-size: 30px }");
@@ -154,14 +151,14 @@ namespace kmanager::state {
         this->error_label->setVisible(false);
         this->error_label->setText("Inserted password is wrong!");
         this->error_label->setStyleSheet("QLabel { color : rgb(183, 0, 0); font-size: 20px }");
-        this->error_label->move(this->enter_password->geometry().x() + 7.f,
+        this->error_label->move(this->enter_password->geometry().x() * 1.f,
                                 this->enter_password->geometry().y() + 170.f);
 
         // User image label
         this->user_img_label = QSharedPointer<QLabel>(new QLabel(this->host));
         this->user_img_label->setVisible(false);
         this->user_img_label->setPixmap(QPixmap(utility::getRealImgPath("img/user.png")));
-        this->user_img_label->move(this->enter_password_label->geometry().x() * 1.01f,
+        this->user_img_label->move(this->enter_password_label->geometry().x() * 1.04f,
                                    this->enter_password_label->geometry().y() * 0.55f);
         this->user_img_label->setStyleSheet("QLabel { background-color: rgba( 255, 255, 255, 0% ); }");
 

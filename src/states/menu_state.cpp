@@ -38,7 +38,7 @@ namespace kmanager::state {
     //     Initialize constants
     //====================================================
     const QString MenuState::button_style{
-        "font-size: 20px;"
+        "font-size: 18px;"
         "border-radius: 11px;"};
 
     //====================================================

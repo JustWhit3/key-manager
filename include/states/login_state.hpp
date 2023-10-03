@@ -73,7 +73,7 @@ namespace kmanager::state {
             void assignProperties() override;
 
             // Constants
-            const uint32_t width{270};
+            const uint32_t width{280};
             const uint32_t height{70};
             static const QString checkbox_style;
 

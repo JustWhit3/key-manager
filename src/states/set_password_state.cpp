@@ -186,11 +186,8 @@ namespace kmanager::state {
         this->enter_password_label = QSharedPointer<QLabel>(new QLabel(this->host));
         this->enter_password_label->setVisible(false);
         this->enter_password_label->setText("Set a new password:");
-        this->enter_password_label->move(
-            (this->host->mapToGlobal(this->host->geometry().center()).x() -
-             this->enter_password_label->mapToGlobal(this->enter_password_label->geometry().center()).x()) *
-                0.865f,
-            this->enter_password_first->geometry().y() * 0.87f);
+        this->enter_password_label->move(this->enter_password_first->geometry().x() * 1.02f,
+                                         this->enter_password_first->geometry().y() * 0.87f);
         this->enter_password_label->setStyleSheet(
             "QLabel { background-color: rgba( 255, 255, 255, 0% ); font-size: 25px }");
 
@@ -258,9 +255,9 @@ namespace kmanager::state {
         // Case in which one of the two is empty
         if (this->enter_password_first->text() == "" || this->enter_password_second->text() == "") {
             this->error_label->setVisible(true);
-            this->error_label->setText("One of the two entries is empty!");
-            this->error_label->move(this->enter_password_second->geometry().x() - 10.f,
-                                    this->enter_password_second->geometry().y() + 170.f);
+            this->error_label->setText("One of the two entries is empty");
+            this->error_label->move(this->enter_password_second->geometry().x() * 0.95f,
+                                    this->enter_password_second->geometry().y() * 1.35f);
             QTimer::singleShot(2000, this->error_label.get(), &QLabel::hide);
         }
 
@@ -268,7 +265,7 @@ namespace kmanager::state {
         else if (this->enter_password_first->text() != this->enter_password_second->text()) {
             this->error_label->setVisible(true);
             this->error_label->setText("The two entries are different!");
-            this->error_label->move(this->enter_password_second->geometry().x(),
+            this->error_label->move(this->enter_password_second->geometry().x() * 0.98f,
                                     this->enter_password_second->geometry().y() + 170.f);
             QTimer::singleShot(2000, this->error_label.get(), &QLabel::hide);
         }
