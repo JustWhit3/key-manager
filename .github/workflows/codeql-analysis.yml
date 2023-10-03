@@ -35,9 +35,10 @@ jobs:
     - name: Installing extra dependencies and compiling (Ubuntu)
       if: matrix.os == 'ubuntu-latest'
       run: |
-       cmake -B build
-       cmake --build build
-       sudo cmake --build build --target install
+        docker run -it --rm -v ${{ github.workspace }}:/workspace -w /workspace justwhit3/qt-6.4.2:gcc_11 /bin/bash -c "
+        cmake -B build
+        cmake --build build
+        sudo cmake --build build --target install"
 
     - name: Installing extra dependencies and compiling (MacOS)
       if: matrix.os == 'macos-latest'

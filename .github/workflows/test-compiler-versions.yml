@@ -1,0 +1,15 @@
+name: Docker Compose Actions Workflow
+on: push
+jobs:
+  GCC:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build with gcc 11
+        run: docker-compose run --rm build_gcc_11
+  #CLANG:
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - uses: actions/checkout@v3
+  #    - name: Build with clang 6
+  #      run: docker-compose run --rm build_clang_6
