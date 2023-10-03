@@ -40,7 +40,7 @@ jobs:
         apt update && apt upgrade && apt install -y git
         cmake -B build
         cmake --build build
-        sudo cmake --build build --target install"
+        cmake --build build --target install"
 
     - name: Installing extra dependencies and compiling (MacOS)
       if: matrix.os == 'macos-latest'
