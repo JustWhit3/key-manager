@@ -88,7 +88,7 @@ namespace kmanager::state {
         this->key_img_label = QSharedPointer<QLabel>(new QLabel(this->host));
         this->key_img_label->setVisible(false);
         this->key_img_label->setPixmap(QPixmap(utility::getRealImgPath("img/key.png")));
-        this->key_img_label->move(this->title->geometry().x() + 320.f, this->title->geometry().y() - 20.f);
+        this->key_img_label->move(this->title->geometry().x() + 340.f, this->title->geometry().y() - 20.f);
         this->key_img_label->setStyleSheet("QLabel { background-color: rgba( 255, 255, 255, 0% ) }");
 
         // Platform / website label

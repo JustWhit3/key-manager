@@ -98,11 +98,11 @@ namespace kmanager::state {
         this->password_generator_label->setVisible(false);
         this->password_generator_label->resize(400, 70);
         this->password_generator_label->setStyleSheet(
-            "QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 40px; }");
+            "QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 38px; }");
         this->password_generator_label->move(
             (this->host->host->mapToGlobal(this->host->host->geometry().center()).x() -
              this->password_generator_label->mapToGlobal(this->password_generator_label->geometry().center()).x()) *
-                1.05f,
+                1.02f,
             (this->host->host->mapToGlobal(this->host->host->geometry().center()).y() -
              this->password_generator_label->mapToGlobal(this->password_generator_label->geometry().center()).y()) *
                 0.65f);
@@ -115,7 +115,7 @@ namespace kmanager::state {
         this->comment_label->setStyleSheet("QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 20px; }");
         this->comment_label->move((this->host->host->mapToGlobal(this->host->host->geometry().center()).x() -
                                    this->comment_label->mapToGlobal(this->comment_label->geometry().center()).x()) *
-                                      1.08f,
+                                      1.03f,
                                   (this->host->host->mapToGlobal(this->host->host->geometry().center()).y() -
                                    this->comment_label->mapToGlobal(this->comment_label->geometry().center()).y()) *
                                       0.85f);
@@ -213,7 +213,7 @@ namespace kmanager::state {
         this->length_label = QSharedPointer<QLabel>(new QLabel(this->host->host));
         this->length_label->setVisible(false);
         this->length_label->resize(100, 25);
-        this->length_label->setStyleSheet("QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 20px; }");
+        this->length_label->setStyleSheet("QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 18px; }");
         this->length_label->move(length_line_edit->geometry().x() - 300.f, length_line_edit->geometry().y());
         this->length_label->setText("Length");
 
@@ -229,7 +229,7 @@ namespace kmanager::state {
         this->uppercase_label = QSharedPointer<QLabel>(new QLabel(this->host->host));
         this->uppercase_label->setVisible(false);
         this->uppercase_label->resize(300, 25);
-        this->uppercase_label->setStyleSheet("QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 20px; }");
+        this->uppercase_label->setStyleSheet("QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 18px; }");
         this->uppercase_label->move(uppercase_checkbox->geometry().x() - 300.f,
                                     uppercase_checkbox->geometry().y() - 2.f);
         this->uppercase_label->setText("Uppercase characters (ABCDE...)");
@@ -246,7 +246,7 @@ namespace kmanager::state {
         this->lowercase_label = QSharedPointer<QLabel>(new QLabel(this->host->host));
         this->lowercase_label->setVisible(false);
         this->lowercase_label->resize(300, 25);
-        this->lowercase_label->setStyleSheet("QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 20px; }");
+        this->lowercase_label->setStyleSheet("QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 18px; }");
         this->lowercase_label->move(lowercase_checkbox->geometry().x() - 300.f,
                                     lowercase_checkbox->geometry().y() - 2.f);
         this->lowercase_label->setText("Lowercase characters (abcde...)");
@@ -263,7 +263,7 @@ namespace kmanager::state {
         this->symbols_label = QSharedPointer<QLabel>(new QLabel(this->host->host));
         this->symbols_label->setVisible(false);
         this->symbols_label->resize(170, 25);
-        this->symbols_label->setStyleSheet("QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 20px; }");
+        this->symbols_label->setStyleSheet("QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 18px; }");
         this->symbols_label->move(symbols_checkbox->geometry().x() - 310.f, symbols_checkbox->geometry().y());
         this->symbols_label->setText("Symbols (@#$%...)");
 
@@ -279,7 +279,7 @@ namespace kmanager::state {
         this->numbers_label = QSharedPointer<QLabel>(new QLabel(this->host->host));
         this->numbers_label->setVisible(false);
         this->numbers_label->resize(160, 25);
-        this->numbers_label->setStyleSheet("QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 20px; }");
+        this->numbers_label->setStyleSheet("QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 18px; }");
         this->numbers_label->move(numbers_checkbox->geometry().x() - 310.f, numbers_checkbox->geometry().y());
         this->numbers_label->setText("Numbers (1234...)");
 
@@ -296,17 +296,17 @@ namespace kmanager::state {
         this->ambiguous_characters_label->setVisible(false);
         this->ambiguous_characters_label->resize(300, 25);
         this->ambiguous_characters_label->setStyleSheet(
-            "QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 20px; }");
+            "QLabel{ background-color: rgba( 255, 255, 255, 0% ); font-size: 18px; }");
         this->ambiguous_characters_label->move(ambiguous_characters_checkbox->geometry().x() - 310.f,
                                                ambiguous_characters_checkbox->geometry().y());
-        this->ambiguous_characters_label->setText("Ambiguous characters ({}()[]:/*...)");
+        this->ambiguous_characters_label->setText("Ambiguous characters ({}()[]:/...)");
 
         // Lock img
         this->lock_img = QSharedPointer<QLabel>(new QLabel(this->host->host));
         this->lock_img->setVisible(false);
         this->lock_img->setPixmap(QPixmap(utility::getRealImgPath("img/lock.png")));
         this->lock_img->move(
-            this->password_generator_label->geometry().center().x() - this->lock_img->geometry().width() * 0.5f - 20.f,
+            this->password_generator_label->geometry().center().x() - this->lock_img->geometry().width() * 0.5f - 10.f,
             (this->password_generator_label->geometry().center().y() - this->lock_img->geometry().height() * 0.5f) *
                 0.55f);
         this->lock_img->setStyleSheet("background-color: rgba( 255, 255, 255, 0% );");
@@ -387,7 +387,7 @@ namespace kmanager::state {
             !this->lowercase_checkbox->isChecked() && !this->symbols_checkbox->isChecked() &&
             !this->ambiguous_characters_checkbox->isChecked()) {
             this->copied->setStyleSheet(
-                "font-size: 20px;"
+                "font-size: 18px;"
                 "color: rgb(183, 0, 0);"
                 "background-color: rgba( 255, 255, 255, 0% );");
             this->copied->setText("Select at least one!");
@@ -397,7 +397,7 @@ namespace kmanager::state {
             QTimer::singleShot(2000, this->copied.get(), &QLabel::hide);
         } else if (this->length_line_edit->text() == "") {
             this->copied->setStyleSheet(
-                "font-size: 20px;"
+                "font-size: 18px;"
                 "color: rgb(183, 0, 0);"
                 "background-color: rgba( 255, 255, 255, 0% );");
             this->copied->setText("Insert a lenght!");
