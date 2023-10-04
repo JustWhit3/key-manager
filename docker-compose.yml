@@ -29,6 +29,7 @@ services:
             bash -c "cd /proj
             && chmod +x scripts/cmake_helper.sh && ./scripts/cmake_helper.sh
             && apt update -y && apt upgrade -y && apt install -y git
+            && git config --global http.sslBackend schannel
             && cmake -B build
             && cmake --build build
             && rm -rf build"
