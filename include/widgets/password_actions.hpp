@@ -75,9 +75,11 @@ namespace kmanager::widget {
 
             // Constants
             const QSize icon_size = QSize(23.f, 23.f);
-            const QString default_settings{"background-color: rgba( 255, 255, 255, 0% ); padding: 8%;"};
+            const QString default_settings{
+                "background-color: rgba( 255, 255, 255, 0% ); padding: 8%; font-size: 18px;"};
             const QString hover_settings{
-                "background-color: rgba( 255, 255, 255, 0% ); padding: 8%; border-color: rgb(255, 255, 255);"};
+                "background-color: rgba( 255, 255, 255, 0% ); padding: 8%; border-color: rgb(255, 255, 255); "
+                "font-size: 18px;"};
 
         private slots:
 
