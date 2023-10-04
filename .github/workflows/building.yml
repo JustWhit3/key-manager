@@ -1,4 +1,4 @@
-name: "CodeQL"
+name: Build
 
 on:
   push:
@@ -9,8 +9,8 @@ on:
     - cron: '45 22 * * 0'
 
 jobs:
-  analyze:
-    name: Analyze
+  build:
+    name: Build
     runs-on: ${{ matrix.os }}
     permissions:
       actions: read
@@ -26,11 +26,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
-      with:
-        languages: ${{ matrix.language }}
 
     - name: Installing extra dependencies and compiling (Ubuntu)
       if: matrix.os == 'ubuntu-latest'
@@ -48,6 +43,3 @@ jobs:
        cmake -B build
        cmake --build build
        sudo cmake --build build --target install
-
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
