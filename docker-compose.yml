@@ -14,7 +14,7 @@ services:
         command: >
             bash -c "cd /proj
             && chmod +x scripts/cmake_helper.sh && ./scripts/cmake_helper.sh
-            && apt update && apt upgrade && apt install -y git
+            && apt update -y && apt upgrade -y && apt install -y git
             && cmake -B build
             && cmake --build build
             && rm -rf build"
@@ -28,7 +28,7 @@ services:
         command: >
             bash -c "cd /proj
             && chmod +x scripts/cmake_helper.sh && ./scripts/cmake_helper.sh
-            && apt update && apt upgrade && apt install -y git
+            && apt update -y && apt upgrade -y && apt install -y git
             && cmake -B build
             && cmake --build build
             && rm -rf build"
