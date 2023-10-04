@@ -28,7 +28,9 @@ namespace kmanager::window {
      *
      * @param parent The parent widget (if there is one).
      */
-    BaseWindow::BaseWindow(QWidget *parent) : QWidget(parent) {}
+    BaseWindow::BaseWindow(QWidget *parent) : QWidget(parent) {
+        this->setWindowFlags(Qt::Window | Qt::WindowTitleHint);
+    }
 
     //====================================================
     //     BaseWindow (destructor)
