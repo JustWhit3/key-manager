@@ -27,9 +27,9 @@ services:
         working_dir: /proj
         command: >
             bash -c "cd /proj
+            && git config --unset-all http.sslBackend
             && chmod +x scripts/cmake_helper.sh && ./scripts/cmake_helper.sh
             && apt update -y && apt upgrade -y && apt install -y git
-            && git config --unset-all http.sslBackend
             && cmake -B build
             && cmake --build build
             && rm -rf build"
