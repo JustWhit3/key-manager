@@ -5,6 +5,34 @@ services:
     #      GCC
     ##########################################
 
+    # gcc 9
+    build_gcc_9:
+        image: justwhit3/qt-6.4.2:gcc_9
+        volumes:
+            - .:/proj
+        working_dir: /proj
+        command: >
+            bash -c "cd /proj
+            && chmod +x scripts/cmake_helper.sh && ./scripts/cmake_helper.sh
+            && apt update -y && apt upgrade -y && apt install -y git
+            && cmake -B build
+            && cmake --build build
+            && rm -rf build"
+
+    # gcc 10
+    build_gcc_10:
+        image: justwhit3/qt-6.4.2:gcc_10
+        volumes:
+            - .:/proj
+        working_dir: /proj
+        command: >
+            bash -c "cd /proj
+            && chmod +x scripts/cmake_helper.sh && ./scripts/cmake_helper.sh
+            && apt update -y && apt upgrade -y && apt install -y git
+            && cmake -B build
+            && cmake --build build
+            && rm -rf build"
+
     # gcc 11
     build_gcc_11:
         image: justwhit3/qt-6.4.2:gcc_11
