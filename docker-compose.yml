@@ -67,14 +67,15 @@ services:
     ##########################################
 
     # clang 6
-    #build_clang_6:
-    #    image: silkeh/clang:6
-    #    network_mode: bridge
-    #    volumes:
-    #        - .:/proj
-    #    container_name: build
-    #    command: >
-    #        bash -c "cd /proj
-    #        && rm -rf build
-    #        && cmake -B build -D CMAKE_CXX_compiler=clang++
-    #        && cmake --build build"
+    build_clang_6:
+        image: justwhit3/qt-6.4.2:clang_6
+        volumes:
+            - .:/proj
+        working_dir: /proj
+        command: >
+            bash -c "cd /proj
+            && chmod +x scripts/cmake_helper.sh && ./scripts/cmake_helper.sh
+            && apt update -y && apt upgrade -y && apt install -y git
+            && cmake -B build -D CMAKE_CXX_compiler=clang++
+            && cmake --build build
+            && rm -rf build"
