@@ -66,9 +66,79 @@ services:
     #      CLANG
     ##########################################
 
+    # clang 5
+    build_clang_5:
+        image: justwhit3/qt-6.4.2:clang_5
+        volumes:
+            - .:/proj
+        working_dir: /proj
+        command: >
+            bash -c "cd /proj
+            && chmod +x scripts/cmake_helper.sh && ./scripts/cmake_helper.sh
+            && apt update -y && apt upgrade -y && apt install -y git
+            && cmake -B build -D CMAKE_CXX_compiler=clang++
+            && cmake --build build
+            && rm -rf build"
+
     # clang 6
     build_clang_6:
         image: justwhit3/qt-6.4.2:clang_6
+        volumes:
+            - .:/proj
+        working_dir: /proj
+        command: >
+            bash -c "cd /proj
+            && chmod +x scripts/cmake_helper.sh && ./scripts/cmake_helper.sh
+            && apt update -y && apt upgrade -y && apt install -y git
+            && cmake -B build -D CMAKE_CXX_compiler=clang++
+            && cmake --build build
+            && rm -rf build"
+
+    # clang 11
+    build_clang_11:
+        image: justwhit3/qt-6.4.2:clang_11
+        volumes:
+            - .:/proj
+        working_dir: /proj
+        command: >
+            bash -c "cd /proj
+            && chmod +x scripts/cmake_helper.sh && ./scripts/cmake_helper.sh
+            && apt update -y && apt upgrade -y && apt install -y git
+            && cmake -B build -D CMAKE_CXX_compiler=clang++
+            && cmake --build build
+            && rm -rf build"
+
+    # clang 12
+    build_clang_12:
+        image: justwhit3/qt-6.4.2:clang_12
+        volumes:
+            - .:/proj
+        working_dir: /proj
+        command: >
+            bash -c "cd /proj
+            && chmod +x scripts/cmake_helper.sh && ./scripts/cmake_helper.sh
+            && apt update -y && apt upgrade -y && apt install -y git
+            && cmake -B build -D CMAKE_CXX_compiler=clang++
+            && cmake --build build
+            && rm -rf build"
+
+    # clang 13
+    build_clang_13:
+        image: justwhit3/qt-6.4.2:clang_13
+        volumes:
+            - .:/proj
+        working_dir: /proj
+        command: >
+            bash -c "cd /proj
+            && chmod +x scripts/cmake_helper.sh && ./scripts/cmake_helper.sh
+            && apt update -y && apt upgrade -y && apt install -y git
+            && cmake -B build -D CMAKE_CXX_compiler=clang++
+            && cmake --build build
+            && rm -rf build"
+
+    # clang 14
+    build_clang_14:
+        image: justwhit3/qt-6.4.2:clang_14
         volumes:
             - .:/proj
         working_dir: /proj
