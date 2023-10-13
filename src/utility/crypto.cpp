@@ -24,6 +24,7 @@
 
 // STD
 #include <exception>
+#include <iomanip>
 #include <string>
 #include <string_view>
 
@@ -199,21 +200,19 @@ namespace kmanager::utility {
      *
      */
     std::string Crypto::generateRandomKey(int64_t length) {
-        // Array of alphanumeric characters used to generate the random key
-        const char alpha_num[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-
-        // Initialize the Crypto++ random number generator
+        // Inizializza il generatore di numeri casuali
         CryptoPP::AutoSeededRandomPool rng;
 
-        std::string result;
-        result.reserve(length);
+        // Genera un seed casuale di 1024 bit
+        CryptoPP::byte seed[128];
+        rng.GenerateBlock(seed, sizeof(seed));
 
-        // // Generate a random number between 0 and the size of the alpha_num array - 1
-        for (int64_t i = 0; i < length; ++i) {
-            int randomIndex = rng.GenerateWord32(0, sizeof(alpha_num) - 2);
-            result += alpha_num[randomIndex];
+        // Converti il seed in una stringa esadecimale
+        std::stringstream ss;
+        for (size_t i = 0; i < sizeof(seed); ++i) {
+            ss << std::setw(2) << std::setfill('0') << std::hex << static_cast<int>(seed[i]);
         }
 
-        return result;
+        return ss.str();
     }
 }  // namespace kmanager::utility

@@ -64,7 +64,7 @@ TEST_CASE("Test Crypto random key generation") {
 
     // Get the generated key and check its length
     std::string_view generatedKey = crypto.getKey();
-    CHECK(generatedKey.size() == 100);
+    CHECK(generatedKey.size() == 256);
 }
 
 //====================================================

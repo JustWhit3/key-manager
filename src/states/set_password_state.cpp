@@ -273,7 +273,7 @@ namespace kmanager::state {
         // Successful case
         else {
             utility::Crypto crypto(this->enter_password_first->text().toStdString());
-            this->settings.setValue("Password", QString::fromStdString(crypto.encrypt()));
+            this->settings.setValue("Master", QString::fromStdString(crypto.encrypt()));
             this->settings.setValue("Key", QString::fromStdString(crypto.getKey()));
             emit this->save_password_successful(true);
         }

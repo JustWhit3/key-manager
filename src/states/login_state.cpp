@@ -197,7 +197,7 @@ namespace kmanager::state {
      */
     void LoginState::login() {
         // Read encrypted texts
-        std::string password = this->settings.value("Password").toString().toStdString();
+        std::string password = this->settings.value("Master").toString().toStdString();
         std::string key = this->settings.value("Key").toString().toStdString();
         utility::Crypto crypto(password, key);
 
