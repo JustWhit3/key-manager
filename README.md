@@ -17,6 +17,7 @@
 ## Table of contents
 
 - [Introduction](#introduction)
+- [Architectures support](#architectures-support)
 - [How passwords are protected](#how-passwords-are-protected)
 - [Install and use](#install-and-use)
   - [Install](#install)
@@ -52,6 +53,23 @@ All contributions are more than welcome. Before contributing, please look at the
 The app is and will stay **free**, but if you want to support me with a donation it would be really appreciated!
 
 <a href="https://www.buymeacoffee.com/JustWhit33" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
+## Architectures support
+
+### Operating systems
+
+- **Linux**
+  - *Ubuntu* (tested)
+  - *WSL* (tested)
+- **Windows**
+  - *Windows 10* or higher (tested)
+- **MacOS**
+
+### Compilers
+
+- **gcc**: v. 9/10/11/12
+- **clang**: v. 11/12/13/14
+- **MSVC**: not directly tested, but should work
 
 ## How passwords are protected
 
