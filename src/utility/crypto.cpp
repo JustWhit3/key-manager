@@ -25,9 +25,9 @@
 // STD
 #include <exception>
 #include <iomanip>
+#include <sstream>
 #include <string>
 #include <string_view>
-#include <sstream>
 
 namespace kmanager::utility {
 
